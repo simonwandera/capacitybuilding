@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 
 public class Index implements Servlet {
     public void init(ServletConfig servletConfig) throws ServletException {
-
+        System.out.println("Hello here");
     }
 
     public ServletConfig getServletConfig() {
