@@ -25,6 +25,7 @@ public class Auth extends HttpServlet {
                 + "<body>"
                 + " To Register <a href='./welcome?action=register'>Register</a><br/>"
                 + " To Loging <a href='./welcome?action=login'>Login</a><br/>"
+                + "<script src=\"./assets/js/index.js\"></script>"
                 + "</body>"
                 + "</html>";
     }

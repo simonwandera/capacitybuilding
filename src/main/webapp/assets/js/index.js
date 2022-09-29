@@ -1,3 +1,4 @@
+
 let signUpButton = document.querySelector('#signUp');
 let signInButton = document.getElementById('signIn');
 let container = document.querySelector('#container');

@@ -10,7 +10,7 @@
   </servlet>
 
   <servlet>
-    <servlet-name>capacityBuildingIndex</servlet-name>
+    <servlet-name>capacityBuildingAuth</servlet-name>
     <servlet-class>com.sys.capacitybuilding.Auth</servlet-class>
   </servlet>
 
