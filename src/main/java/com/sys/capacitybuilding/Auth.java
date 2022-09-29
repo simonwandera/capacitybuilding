@@ -34,7 +34,7 @@ public class Auth extends HttpServlet {
         boolean register = action != null && action.equalsIgnoreCase("signup");
         boolean login = action != null && action.equalsIgnoreCase("login");
 
-        System.out.println(req);
+        System.out.println("Register: " + register);
 
         String actionError = "";
 
@@ -61,8 +61,19 @@ public class Auth extends HttpServlet {
             System.out.println("Email: " + email);
             System.out.println("Password: "+ password);
 
+            if (email == null || email.equalsIgnoreCase(""))
+                actionError = "Please provide an email<br/>";
 
+            if (password == null || password.equalsIgnoreCase(""))
+                actionError += "Password is required<br/>";
 
+            if (name == null || name.equalsIgnoreCase(""))
+                actionError += "Name is required<br/>";
+
+            if (actionError.equals(""))
+                wr.print(this.home());
+            else
+                wr.print(this.signUp(actionError));
 
         }
 
@@ -81,7 +92,7 @@ public class Auth extends HttpServlet {
                 "</head>\n" +
                 "\n" +
                 "<body>\n" +
-                "<h2>Welcome to capacity buiding system</h2>\n" +
+                "<h2>Welcome to capacity building system</h2>\n" +
                 "<div class=\"container \" id=\"container\">\n" +
                 "\t<div class=\"form-container sign-in-container\">\n" +
                 "\t\t<form action=\"./auth\" method=\"post\">" +
@@ -138,7 +149,7 @@ public class Auth extends HttpServlet {
                 "<h2>Welcome to capacity buiding system</h2>\n" +
                 "<div class=\"container right-panel-active\" id=\"container\">\n" +
                 "\t<div class=\"form-container sign-up-container\">\n" +
-                "\t\t<form action=\"#\">\n" +
+                "\t\t<form action=\"./auth\" method=\"post\">" +
                 "\t\t\t<h1>Create Account</h1>\n" +
                 "\t\t\t<div class=\"social-container\">\n" +
                 "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-facebook-f\"></i></a>\n" +
