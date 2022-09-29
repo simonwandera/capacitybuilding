@@ -13,4 +13,9 @@
     <servlet-name>capacityBuildingIndex</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>capacityBuildingIndex.Auth</servlet-name>
+    <url-pattern>/auth</url-pattern>
+  </servlet-mapping>
 </web-app>
