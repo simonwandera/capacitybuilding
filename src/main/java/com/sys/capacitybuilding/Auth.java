@@ -32,7 +32,7 @@ public class Auth extends HttpServlet {
                 "<h2>Welcome to capacity buiding system</h2>\n" +
                 "<div class=\"container\" id=\"container\">\n" +
                 "\t<div class=\"form-container sign-up-container\">\n" +
-                "\t\t<form action=\"#\">\n" +
+                "\t\t<form action=\"./auth\" method=\"post\">" +
                 "\t\t\t<h1>Create Account</h1>\n" +
                 "\t\t\t<div class=\"social-container\">\n" +
                 "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-facebook-f\"></i></a>\n" +
@@ -47,7 +47,7 @@ public class Auth extends HttpServlet {
                 "\t\t</form>\n" +
                 "\t</div>\n" +
                 "\t<div class=\"form-container sign-in-container\">\n" +
-                "\t\t<form action=\"#\">\n" +
+                "\t\t<form action=\"./auth\" method=\"post\">" +
                 "\t\t\t<h1>Sign in</h1>\n" +
                 "\t\t\t<div class=\"social-container\">\n" +
                 "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-facebook-f\"></i></a>\n" +
