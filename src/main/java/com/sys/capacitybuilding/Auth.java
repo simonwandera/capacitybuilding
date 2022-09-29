@@ -26,10 +26,24 @@ public class Auth extends HttpServlet {
         PrintWriter wr = res.getWriter();
 
         String action = req.getParameter("action");
-
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String name = req.getParameter("name");
+
+        boolean register = action != null && action.equalsIgnoreCase("signup");
+        boolean login = action != null && action.equalsIgnoreCase("login");
+
+        String actionError = "";
+
+        if (login){
+            System.out.println("email: " + email);
+            System.out.println("Password: " + password);
+        } else if (register) {
+            System.out.println("name: " + name);
+            System.out.println("Email: " + email);
+            System.out.println("Password: "+ password);
+        }
+
     }
 
     private String login(String actionError){
