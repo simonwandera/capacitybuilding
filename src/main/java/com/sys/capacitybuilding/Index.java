@@ -77,7 +77,7 @@ public class Index implements Servlet {
         pw.print("<footer>");
         pw.print("<p> Like a battery, the human mind and body must be fully discharged to stretch their capacity. </p>");
         pw.print("</footer>");
-        pw.print("<script type=\"text/javascript\" src=\"index.js\"></script>");
+        pw.print("<script src=\"./assets/js/index.js\"></script>");
         pw.print("</body>");
         pw.print("</html>");
 
