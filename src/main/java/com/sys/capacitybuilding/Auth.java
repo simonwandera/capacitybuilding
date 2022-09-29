@@ -20,6 +20,10 @@ public class Auth extends HttpServlet {
             wr.print(this.home());
     }
 
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        
+    }
+
     private String auth(String actionError){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
