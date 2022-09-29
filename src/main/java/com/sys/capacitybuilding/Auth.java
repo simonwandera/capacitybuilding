@@ -64,11 +64,6 @@ public class Auth extends HttpServlet {
                 "\t</div>\n" +
                 "\t<div class=\"overlay-container\">\n" +
                 "\t\t<div class=\"overlay\">\n" +
-                "\t\t\t<div class=\"overlay-panel overlay-left\">\n" +
-                "\t\t\t\t<h1>Welcome Back!</h1>\n" +
-                "\t\t\t\t<p>To keep connected with us, login and track your training</p>\n" +
-                "\t\t\t\t<button class=\"ghost\" id=\"signIn\">Sign In</button>\n" +
-                "\t\t\t</div>\n" +
                 "\t\t\t<div class=\"overlay-panel overlay-right\">\n" +
                 "\t\t\t\t<h1>Hello, Friend!</h1>\n" +
                 "\t\t\t\t<p>Please log in and enroll to one of the available trainings</p>\n" +
@@ -125,11 +120,6 @@ public class Auth extends HttpServlet {
                 "\t\t\t<div class=\"overlay-panel overlay-left\">\n" +
                 "\t\t\t\t<h1>Welcome Back!</h1>\n" +
                 "\t\t\t\t<p>To keep connected with us, login and track your training</p>\n" +
-                "\t\t\t\t<button class=\"ghost\" id=\"signIn\">Sign In</button>\n" +
-                "\t\t\t</div>\n" +
-                "\t\t\t<div class=\"overlay-panel overlay-right\">\n" +
-                "\t\t\t\t<h1>Hello, Friend!</h1>\n" +
-                "\t\t\t\t<p>Enter your personal details and start your empowerment journey with us</p>\n" +
                 "\t\t\t\t<a href=\"auth?action=login\"><button class=\"ghost\" id=\"signIn\" name=\"signUp\">Login</button></a>" +
                 "\t\t\t</div>\n" +
                 "\t\t</div>\n" +
