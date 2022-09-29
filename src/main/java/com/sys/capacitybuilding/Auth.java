@@ -83,7 +83,7 @@ public class Auth extends HttpServlet {
                 "    </p>\n" +
                 "</footer>\n" +
                 "\n" +
-                "<script type=\"text/javascript\" src=\"index.js\"></script>\n" +
+                "<script type=\"text/javascript\" src=\"./assets/js/index.js\"></script>\n" +
                 "\n" +
                 "</body>\n" +
                 "</html>";
