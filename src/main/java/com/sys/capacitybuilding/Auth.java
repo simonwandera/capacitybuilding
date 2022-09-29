@@ -36,22 +36,34 @@ public class Auth extends HttpServlet {
 
         System.out.println(req);
 
-        System.out.println("register\t" + register);
-        System.out.println("Login\t" + login);
-        System.out.println("Action\t" + action);
-
-
-
         String actionError = "";
 
         if (login){
             System.out.println("Action:" + action);
             System.out.println("Email: " + email);
             System.out.println("Password: " + password);
+
+            if (email == null || email.equalsIgnoreCase(""))
+                actionError = "Email is required<br/>";
+
+            if (password == null || password.equalsIgnoreCase(""))
+                actionError += "Password is required<br/>";
+
+            if(actionError.equals(""))
+                wr.print(this.loggedIn(email));
+            else
+                wr.print(this.login(actionError));
+
+
         } else if (register) {
+            System.out.println("Action:" + action);
             System.out.println("name: " + name);
             System.out.println("Email: " + email);
             System.out.println("Password: "+ password);
+
+
+
+
         }
 
     }
@@ -84,7 +96,7 @@ public class Auth extends HttpServlet {
                 "\t\t\t<input type=\"email\" name=\"email\" placeholder=\"Email\" />\n" +
                 "\t\t\t<input type=\"password\" name=\"password\" placeholder=\"Password\" />\n" +
                 "\t\t\t<a href=\"#\">Forgot your password?</a>\n" +
-                "\t\t\t<input type=\"submit\" value=\"Submit\">\n" +
+                "\t\t\t<button>Sign In</button>\n" +
                 "\t\t</form>\n" +
                 "\t</div>\n" +
                 "\t<div class=\"overlay-container\">\n" +
@@ -134,9 +146,10 @@ public class Auth extends HttpServlet {
                 "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-linkedin-in\"></i></a>\n" +
                 "\t\t\t</div>\n" +
                 "\t\t\t<span>or use your email for registration</span>\n" +
-                "\t\t\t<input type=\"text\" placeholder=\"Name\" />\n" +
-                "\t\t\t<input type=\"email\" placeholder=\"Email\" />\n" +
-                "\t\t\t<input type=\"password\" placeholder=\"Password\" />\n" +
+                "\t\t\t<input type=\"hidden\" name=\"action\" value=\"signup\">\n" +
+                "\t\t\t<input type=\"text\" name=\"name\" placeholder=\"Name\" />\n" +
+                "\t\t\t<input type=\"email\" name=\"email\" placeholder=\"Email\" />\n" +
+                "\t\t\t<input type=\"password\" name=\"password\" placeholder=\"Password\" />\n" +
                 "\t\t\t<button>Sign Up</button>\n" +
                 "\t\t</form>\n" +
                 "\t</div>\n" +
@@ -160,7 +173,7 @@ public class Auth extends HttpServlet {
                 "</html>";
     }
 
-    private String loggedIn(){
+    private String loggedIn(String email){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
