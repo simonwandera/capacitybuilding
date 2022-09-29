@@ -9,6 +9,11 @@
     <servlet-class>com.sys.capacitybuilding.Index</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>capacityBuildingIndex</servlet-name>
+    <servlet-class>com.sys.capacitybuilding.Auth</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>capacityBuildingIndex</servlet-name>
     <url-pattern>/index</url-pattern>
