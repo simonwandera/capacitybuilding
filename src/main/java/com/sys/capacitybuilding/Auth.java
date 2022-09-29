@@ -98,7 +98,7 @@ public class Auth extends HttpServlet {
                 "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                 "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Poppins\">\n" +
-                "<link rel=\"stylesheet\" href=\"welcome.css\">\n" +
+                "<link rel=\"stylesheet\" href=\"./assets/css/welcome.css\">\n" +
                 "</head>\n" +
                 "<body>\n" +
                 "\n" +
@@ -248,7 +248,7 @@ public class Auth extends HttpServlet {
                 "\n" +
                 "<!-- W3.CSS Container -->\n" +
                 "\n" +
-                "<script src=\"welcome.js\">\n" +
+                "<script src=\"./assets/js/welcome.js\">\n" +
                 "// Script to open and close sidebar\n" +
                 "</script>\n" +
                 "\n" +
