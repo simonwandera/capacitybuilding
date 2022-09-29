@@ -1,10 +1,11 @@
 package com.sys.capacitybuilding;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Index implements Servlet {
+public class Index extends HttpServlet {
     public void init(ServletConfig servletConfig) throws ServletException {
         System.out.println("Hello here");
     }
