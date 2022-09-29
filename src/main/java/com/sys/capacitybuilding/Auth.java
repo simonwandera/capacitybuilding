@@ -100,7 +100,6 @@ public class Auth extends HttpServlet {
                 "\t\t\t<div class=\"social-container\">\n" +
                 "\t\t\t<span class=\"errorMessage\">"+ (actionError != null? actionError : "") +"</span>"+
                 "\t\t\t</div>\n" +
-                "\t\t\t<span>or use your account</span>\n" +
                 "\t\t\t<input type=\"hidden\" name=\"action\" value=\"login\">\n" +
                 "\t\t\t<input type=\"email\" name=\"email\" placeholder=\"Email\" />\n" +
                 "\t\t\t<input type=\"password\" name=\"password\" placeholder=\"Password\" />\n" +
@@ -152,7 +151,6 @@ public class Auth extends HttpServlet {
                 "\t\t\t<div class=\"social-container\">\n" +
                 "\t\t\t<span class=\"errorMessage\">"+ (actionError != null? actionError : "") +"</span>"+
                 "\t\t\t</div>\n" +
-                "\t\t\t<span>or use your email for registration</span>\n" +
                 "\t\t\t<input type=\"hidden\" name=\"action\" value=\"signup\">\n" +
                 "\t\t\t<input type=\"text\" name=\"name\" placeholder=\"Name\" />\n" +
                 "\t\t\t<input type=\"email\" name=\"email\" placeholder=\"Email\" />\n" +
@@ -197,7 +195,7 @@ public class Auth extends HttpServlet {
                 "<nav class=\"w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding\" style=\"z-index:3;width:300px;font-weight:bold;\" id=\"mySidebar\"><br>\n" +
                 "  <a href=\"javascript:void(0)\" onclick=\"w3_close()\" class=\"w3-button w3-hide-large w3-display-topleft\" style=\"width:100%;font-size:22px\">Close Menu</a>\n" +
                 "  <div class=\"w3-container\">\n" +
-                "    <h3 class=\"w3-padding-64\"><b>Company<br>Name</b></h3>\n" +
+                "    <h5 class=\"w3-padding-64\">"+ email.toLowerCase() + "</h5>\n" +
                 "  </div>\n" +
                 "  <div class=\"w3-bar-block\">\n" +
                 "    <a href=\"#\" onclick=\"w3_close()\" class=\"w3-bar-item w3-button w3-hover-white\">Home</a> \n" +
