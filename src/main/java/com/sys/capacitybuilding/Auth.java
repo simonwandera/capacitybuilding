@@ -23,6 +23,7 @@ public class Auth extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
         PrintWriter wr = res.getWriter();
 
         String action = req.getParameter("action");
@@ -33,10 +34,19 @@ public class Auth extends HttpServlet {
         boolean register = action != null && action.equalsIgnoreCase("signup");
         boolean login = action != null && action.equalsIgnoreCase("login");
 
+        System.out.println(req);
+
+        System.out.println("register\t" + register);
+        System.out.println("Login\t" + login);
+        System.out.println("Action\t" + action);
+
+
+
         String actionError = "";
 
         if (login){
-            System.out.println("email: " + email);
+            System.out.println("Action:" + action);
+            System.out.println("Email: " + email);
             System.out.println("Password: " + password);
         } else if (register) {
             System.out.println("name: " + name);
@@ -62,7 +72,7 @@ public class Auth extends HttpServlet {
                 "<h2>Welcome to capacity buiding system</h2>\n" +
                 "<div class=\"container \" id=\"container\">\n" +
                 "\t<div class=\"form-container sign-in-container\">\n" +
-                "\t\t<form action=\"#\">\n" +
+                "\t\t<form action=\"./auth\" method=\"post\">" +
                 "\t\t\t<h1>Sign in</h1>\n" +
                 "\t\t\t<div class=\"social-container\">\n" +
                 "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-facebook-f\"></i></a>\n" +
@@ -70,10 +80,11 @@ public class Auth extends HttpServlet {
                 "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-linkedin-in\"></i></a>\n" +
                 "\t\t\t</div>\n" +
                 "\t\t\t<span>or use your account</span>\n" +
-                "\t\t\t<input type=\"email\" placeholder=\"Email\" />\n" +
-                "\t\t\t<input type=\"password\" placeholder=\"Password\" />\n" +
+                "\t\t\t<input type=\"hidden\" name=\"action\" value=\"login\">\n" +
+                "\t\t\t<input type=\"email\" name=\"email\" placeholder=\"Email\" />\n" +
+                "\t\t\t<input type=\"password\" name=\"password\" placeholder=\"Password\" />\n" +
                 "\t\t\t<a href=\"#\">Forgot your password?</a>\n" +
-                "\t\t\t<button>Sign In</button>\n" +
+                "\t\t\t<input type=\"submit\" value=\"Submit\">\n" +
                 "\t\t</form>\n" +
                 "\t</div>\n" +
                 "\t<div class=\"overlay-container\">\n" +
