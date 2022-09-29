@@ -16,7 +16,7 @@ public class Auth extends HttpServlet {
 
         if (action != null && action.equalsIgnoreCase("login"))
             wr.print(this.login(null));
-        else if (action != null && action.equalsIgnoreCase("signup")) {
+        else if (action != null && action.equalsIgnoreCase("signUp")) {
             wr.print(this.signUp(null));
         } else
             wr.print(this.home());
@@ -72,7 +72,7 @@ public class Auth extends HttpServlet {
                 "\t\t\t<div class=\"overlay-panel overlay-right\">\n" +
                 "\t\t\t\t<h1>Hello, Friend!</h1>\n" +
                 "\t\t\t\t<p>Please log in and enroll to one of the available trainings</p>\n" +
-                "\t\t\t\t<a href = \"auth?action=signup\" class=\"ghost\" name=\"signUp\">Sign Up</a>" +
+                "\t\t\t\t<a href=\"auth?action=signup\"><button class=\"ghost\" id=\"signUp\" name=\"signUp\">Sign Up</button></a>" +
                 "\t\t\t</div>\n" +
                 "\t\t</div>\n" +
                 "\t</div>\n" +
@@ -130,6 +130,7 @@ public class Auth extends HttpServlet {
                 "\t\t\t<div class=\"overlay-panel overlay-right\">\n" +
                 "\t\t\t\t<h1>Hello, Friend!</h1>\n" +
                 "\t\t\t\t<p>Enter your personal details and start your empowerment journey with us</p>\n" +
+                "\t\t\t\t<a href=\"auth?action=login\"><button class=\"ghost\" id=\"signIn\" name=\"signUp\">Login</button></a>" +
                 "\t\t\t</div>\n" +
                 "\t\t</div>\n" +
                 "\t</div>\n" +
@@ -140,9 +141,6 @@ public class Auth extends HttpServlet {
                 "        Like a battery, the human mind and body must be fully discharged to stretch their capacity.\n" +
                 "    </p>\n" +
                 "</footer>\n" +
-                "\n" +
-                "<script type=\"text/javascript\" src=\"./assets/js/index.js\"></script>\n" +
-                "\n" +
                 "</body>\n" +
                 "</html>";
     }
