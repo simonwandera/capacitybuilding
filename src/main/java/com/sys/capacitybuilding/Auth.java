@@ -331,7 +331,7 @@ public class Auth extends HttpServlet {
                 "  <a href=\"javascript:void(0)\" onclick=\"w3_close()\" class=\"w3-button w3-hide-large w3-display-topleft\" style=\"width:100%;font-size:22px\">Close Menu</a>\n" +
 
                 "  <div class=\"w3-container\">\n" +
-                "     <a href=\"./auth?action=auth\" class=\"w3-button w3-block w3-ripple w3-text-black w3-red w3-margin-bottom\"> Login </a>" +
+                "     <a href=\"./auth?action=login\" class=\"w3-button w3-block w3-ripple w3-text-black w3-red w3-margin-bottom\"> Login </a>" +
                 "  </div>\n" +
 
                 "  <div class=\"w3-bar-block\">\n" +
