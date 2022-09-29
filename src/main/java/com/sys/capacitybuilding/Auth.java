@@ -98,9 +98,7 @@ public class Auth extends HttpServlet {
                 "\t\t<form action=\"./auth\" method=\"post\">" +
                 "\t\t\t<h1>Sign in</h1>\n" +
                 "\t\t\t<div class=\"social-container\">\n" +
-                "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-facebook-f\"></i></a>\n" +
-                "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-google-plus-g\"></i></a>\n" +
-                "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-linkedin-in\"></i></a>\n" +
+                "\t\t\t<span class=\"errorMessage\">"+ (actionError != null? actionError : "") +"</span>"+
                 "\t\t\t</div>\n" +
                 "\t\t\t<span>or use your account</span>\n" +
                 "\t\t\t<input type=\"hidden\" name=\"action\" value=\"login\">\n" +
@@ -152,9 +150,7 @@ public class Auth extends HttpServlet {
                 "\t\t<form action=\"./auth\" method=\"post\">" +
                 "\t\t\t<h1>Create Account</h1>\n" +
                 "\t\t\t<div class=\"social-container\">\n" +
-                "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-facebook-f\"></i></a>\n" +
-                "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-google-plus-g\"></i></a>\n" +
-                "\t\t\t\t<a href=\"#\" class=\"social\"><i class=\"fab fa-linkedin-in\"></i></a>\n" +
+                "\t\t\t<span class=\"errorMessage\">"+ (actionError != null? actionError : "") +"</span>"+
                 "\t\t\t</div>\n" +
                 "\t\t\t<span>or use your email for registration</span>\n" +
                 "\t\t\t<input type=\"hidden\" name=\"action\" value=\"signup\">\n" +
