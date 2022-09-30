@@ -67,6 +67,9 @@ public class Auth extends HttpServlet {
             if (password == null || password.equalsIgnoreCase(""))
                 actionError += "Password is required<br/>";
 
+            if (password == null || password.length() < 5)
+                actionError += "Password must be more than 5 characters<br/>";
+
             if (name == null || name.equalsIgnoreCase(""))
                 actionError += "Name is required<br/>";
 
