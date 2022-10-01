@@ -4,20 +4,20 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-    <servlet-name>capacityBuildingIndex</servlet-name>
-    <servlet-class>com.sys.capacitybuilding.Index</servlet-class>
-  </servlet>
 
   <servlet>
     <servlet-name>capacityBuildingAuth</servlet-name>
     <servlet-class>com.sys.capacitybuilding.Auth</servlet-class>
-  </servlet>
+    <init-param>
+      <param-name>username</param-name>
+      <param-value>simonwandera@gmail.com</param-value>
+    </init-param>
 
-  <servlet-mapping>
-    <servlet-name>capacityBuildingIndex</servlet-name>
-    <url-pattern>/index</url-pattern>
-  </servlet-mapping>
+    <init-param>
+      <param-name>password</param-name>
+      <param-value>password1234kenya</param-value>
+    </init-param>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>capacityBuildingAuth</servlet-name>
