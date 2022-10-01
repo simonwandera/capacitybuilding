@@ -1,5 +1,6 @@
 package com.sys.capacitybuilding;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Auth extends HttpServlet {
+
+    ServletConfig servletConfig = null;
+
+    public void init(ServletConfig servletConfig) throws ServletException{
+        this.servletConfig = servletConfig;
+    }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
@@ -19,7 +26,7 @@ public class Auth extends HttpServlet {
         else if (action != null && action.equalsIgnoreCase("signUp")) {
             wr.print(this.signUp(null));
         } else
-            wr.print(this.home());
+            wr.print(this.home(servletConfig.getInitParameter("applicationName")));
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -77,7 +84,7 @@ public class Auth extends HttpServlet {
                 actionError += "Name is required<br/>";
 
             if (actionError.equals(""))
-                wr.print(this.home());
+                wr.print(this.home(servletConfig.getInitParameter("applicationName")));
             else
                 wr.print(this.signUp(actionError));
 
@@ -351,7 +358,7 @@ public class Auth extends HttpServlet {
                 "</html>\n";
     }
 
-    public String home(){
+    public String home(String label){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
@@ -384,7 +391,7 @@ public class Auth extends HttpServlet {
                 "<!-- Top menu on small screens -->\n" +
                 "<header class=\"w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding\">\n" +
                 "  <a href=\"javascript:void(0)\" class=\"w3-button w3-red w3-margin-right\" onclick=\"w3_open()\">☰</a>\n" +
-                "  <span>Capacity Building</span>\n" +
+                "  <span>" + label + "</span>\n" +
                 "</header>\n" +
                 "\n" +
                 "<!-- Overlay effect when opening sidebar on small screens -->\n" +
