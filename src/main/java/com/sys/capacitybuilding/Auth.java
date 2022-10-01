@@ -11,7 +11,6 @@ import java.util.Enumeration;
 import java.util.Map;
 
 public class Auth extends HttpServlet {
-
     ServletConfig servletConfig = null;
 
     public void init(ServletConfig servletConfig) throws ServletException{
@@ -24,11 +23,6 @@ public class Auth extends HttpServlet {
         while (headers.hasMoreElements())
             System.out.println("Headers: " + headers.nextElement());
 
-        Map<String, String[]> paramsInMap = req.getParameterMap();
-        for (Map.Entry<String, String[]> map : paramsInMap.entrySet()) {
-            if (map.getValue() != null && map.getValue().length > 0)
-                System.out.println(map.getKey() + " ============= " + map.getValue()[0]);
-        }
 
         String action = req.getParameter("action");
         PrintWriter wr = res.getWriter();
@@ -42,8 +36,16 @@ public class Auth extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        PrintWriter wr = res.getWriter();
+        Map<String, String[]> paramsInMap = req.getParameterMap();
+        for (Map.Entry<String, String[]> map : paramsInMap.entrySet()) {
+            if (map.getValue() != null && map.getValue().length > 0)
+                System.out.println(map.getKey() + " ============= " + map.getValue()[0]);
+        }
 
+        System.out.println("Character Encoding: "+ req.getCharacterEncoding());
+
+
+        PrintWriter wr = res.getWriter();
         String action = req.getParameter("action");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
@@ -69,7 +71,7 @@ public class Auth extends HttpServlet {
                 actionError += "Incorrect password<br/>";
 
             if(actionError.equals(""))
-                wr.print(this.loggedIn(email, servletConfig.getServletContext().getInitParameter("applicationName")));
+                wr.print(this.loggedIn(email, servletConfig.getServletContext().getInitParameter("appName")));
             else
                 wr.print(this.login(actionError));
 
