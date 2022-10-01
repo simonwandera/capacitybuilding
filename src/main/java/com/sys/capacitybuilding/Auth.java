@@ -24,6 +24,7 @@ public class Auth extends HttpServlet {
             System.out.println("Headers: " + headers.nextElement());
 
         System.out.println("Content length: "+ req.getContentLength());
+        System.out.println("Get Protocol: "+ req.getProtocol());
 
 
         String action = req.getParameter("action");
