@@ -60,7 +60,7 @@ public class Auth extends HttpServlet {
                 actionError += "Incorrect password<br/>";
 
             if(actionError.equals(""))
-                wr.print(this.loggedIn(email));
+                wr.print(this.loggedIn(email, servletConfig.getInitParameter("applicationName")));
             else
                 wr.print(this.login(actionError));
 
@@ -191,7 +191,7 @@ public class Auth extends HttpServlet {
                 "</html>";
     }
 
-    private String loggedIn(String email){
+    private String loggedIn(String email, String label){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
@@ -233,7 +233,7 @@ public class Auth extends HttpServlet {
                 "\n" +
                 "  <!-- Header -->\n" +
                 "  <div class=\"w3-container\" style=\"margin-top:80px\" id=\"showcase\">\n" +
-                "    <h1 class=\"w3-jumbo\"><b>Capacity Building</b></h1>\n" +
+                "    <h1 class=\"w3-jumbo\"><b>" + label + "</b></h1>\n" +
                 "    <h1 class=\"w3-xxxlarge w3-text-red\"><b>Showcase.</b></h1>\n" +
                 "    <hr style=\"width:50px;border:5px solid red\" class=\"w3-round\">\n" +
                 "  </div>\n" +
@@ -402,7 +402,7 @@ public class Auth extends HttpServlet {
                 "\n" +
                 "  <!-- Header -->\n" +
                 "  <div class=\"w3-container\" style=\"margin-top:80px\" id=\"showcase\">\n" +
-                "    <h1 class=\"w3-jumbo\"><b>Capacity Building</b></h1>\n" +
+                "    <h1 class=\"w3-jumbo\"><b>" + label + "</b></h1>\n" +
                 "    <h1 class=\"w3-xxxlarge w3-text-red\"><b>Showcase.</b></h1>\n" +
                 "    <hr style=\"width:50px;border:5px solid red\" class=\"w3-round\">\n" +
                 "  </div>\n" +

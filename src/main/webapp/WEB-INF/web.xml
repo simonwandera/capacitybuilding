@@ -5,18 +5,14 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+  <context-param>
+      <param-name>applicationName</param-name>
+      <param-value>Capacity building system</param-value>
+  </context-param>
+
   <servlet>
     <servlet-name>capacityBuildingAuth</servlet-name>
     <servlet-class>com.sys.capacitybuilding.Auth</servlet-class>
-    <init-param>
-      <param-name>applicationName</param-name>
-      <param-value>Capacity building system</param-value>
-    </init-param>
-
-    <init-param>
-      <param-name>password</param-name>
-      <param-value>password1234kenya</param-value>
-    </init-param>
   </servlet>
 
   <servlet-mapping>
