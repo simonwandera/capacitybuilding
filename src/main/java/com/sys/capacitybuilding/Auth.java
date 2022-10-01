@@ -26,15 +26,18 @@ public class Auth extends HttpServlet {
         System.out.println("Content length: "+ req.getContentLength());
         System.out.println("Get Protocol: "+ req.getProtocol());
         System.out.println("Get scheme: "+ req.getScheme());
-        System.out.println("Get serverName" + req.getServerName());
-        System.out.println("Get ServerPort" + req.getServerPort());
-        System.out.println("Get RemoteAddress" + req.getRemoteAddr());
-        System.out.println("Get RemoteHost" + req.getRemoteHost());
-        System.out.println("Get Locale" + req.getLocale());
-        System.out.println("Is secure" + req.isSecure());
-        System.out.println("Get RemotePort" + req.getRemotePort());
-        System.out.println("Get RemotePort" + req.getRemotePort());
-
+        System.out.println("Get serverName: " + req.getServerName());
+        System.out.println("Get ServerPort: " + req.getServerPort());
+        System.out.println("Get RemoteAddress: " + req.getRemoteAddr());
+        System.out.println("Get RemoteHost: " + req.getRemoteHost());
+        System.out.println("Get Locale: " + req.getLocale());
+        System.out.println("Is secure: " + req.isSecure());
+        System.out.println("Get RemotePort: " + req.getRemotePort());
+        System.out.println("Get RemotePort: " + req.getRemotePort());
+        System.out.println("Get LocalAddr: " + req.getLocalAddr());
+        System.out.println("Get LocalPort: " + req.getLocalPort());
+        System.out.println("Is AsyncStarted: " + req.isAsyncStarted());
+        System.out.println("Is AsyncSupported: " + req.isAsyncSupported());
 
 
         String action = req.getParameter("action");
