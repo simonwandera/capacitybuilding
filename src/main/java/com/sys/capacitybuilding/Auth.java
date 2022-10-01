@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.Map;
 
 public class Auth extends HttpServlet {
 
@@ -19,11 +20,18 @@ public class Auth extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
+        Enumeration<String> headers = req.getHeaderNames();
+        while (headers.hasMoreElements())
+            System.out.println("Headers: " + headers.nextElement());
+
+        Map<String, String[]> paramsInMap = req.getParameterMap();
+        for (Map.Entry<String, String[]> map : paramsInMap.entrySet()) {
+            if (map.getValue() != null && map.getValue().length > 0)
+                System.out.println(map.getKey() + " ============= " + map.getValue()[0]);
+        }
+
         String action = req.getParameter("action");
         PrintWriter wr = res.getWriter();
-
-        System.out.println("App name: " + servletConfig.getServletContext().getInitParameter("appName"));
-
         if (action != null && action.equalsIgnoreCase("login"))
             wr.print(this.login(null));
         else if (action != null && action.equalsIgnoreCase("signUp")) {
