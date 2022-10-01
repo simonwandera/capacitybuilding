@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 public class Auth extends HttpServlet {
 
@@ -21,12 +22,14 @@ public class Auth extends HttpServlet {
         String action = req.getParameter("action");
         PrintWriter wr = res.getWriter();
 
+        System.out.println("App name: " + servletConfig.getServletContext().getInitParameter("appName"));
+
         if (action != null && action.equalsIgnoreCase("login"))
             wr.print(this.login(null));
         else if (action != null && action.equalsIgnoreCase("signUp")) {
             wr.print(this.signUp(null));
         } else
-            wr.print(this.home(servletConfig.getInitParameter("applicationName")));
+            wr.print(this.home(servletConfig.getServletContext().getInitParameter("appName")));
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -40,8 +43,6 @@ public class Auth extends HttpServlet {
 
         boolean register = action != null && action.equalsIgnoreCase("signup");
         boolean login = action != null && action.equalsIgnoreCase("login");
-
-        System.out.println("Register: " + register);
 
         String actionError = "";
 
@@ -60,7 +61,7 @@ public class Auth extends HttpServlet {
                 actionError += "Incorrect password<br/>";
 
             if(actionError.equals(""))
-                wr.print(this.loggedIn(email, servletConfig.getInitParameter("applicationName")));
+                wr.print(this.loggedIn(email, servletConfig.getServletContext().getInitParameter("applicationName")));
             else
                 wr.print(this.login(actionError));
 

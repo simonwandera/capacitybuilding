@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <context-param>
-      <param-name>applicationName</param-name>
+      <param-name>appName</param-name>
       <param-value>Capacity building system</param-value>
   </context-param>
 
