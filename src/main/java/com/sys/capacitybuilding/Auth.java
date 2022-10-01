@@ -24,7 +24,7 @@ public class Auth extends HttpServlet {
             System.out.println("Headers: " + headers.nextElement());
 
 //        ************************ HttpServletRequest methods ******************************
-        System.out.println("HttpServletRequest methods".toUpperCase() + "\n\n\n\n");
+        System.out.println("HttpServletRequest methods".toUpperCase() + "\n\n");
         System.out.println("Content length: "+ req.getContentLength());
         System.out.println("Get Protocol: "+ req.getProtocol());
         System.out.println("Get scheme: "+ req.getScheme());
@@ -41,9 +41,11 @@ public class Auth extends HttpServlet {
         System.out.println("Is AsyncSupported: " + req.isAsyncSupported());
 
         //        ************************ HttpServletResponse methods ******************************
-        System.out.println("HttpServletResponse methods".toUpperCase() + "\n\n\n\n");
-        System.out.println("getCharacterEncoding: " + res.getCharacterEncoding());
-
+        System.out.println("\n\nHttpServletResponse methods".toUpperCase() + "\n\n");
+        System.out.println("Get CharacterEncoding: " + res.getCharacterEncoding());
+        System.out.println("Get ContentType" + res.getContentType());
+        System.out.println("Get BufferSize" + res.getBufferSize());
+        System.out.println("Is Committed: " + res.isCommitted());
 
 
         String action = req.getParameter("action");
