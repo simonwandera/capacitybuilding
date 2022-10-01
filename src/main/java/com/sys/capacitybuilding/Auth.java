@@ -23,6 +23,8 @@ public class Auth extends HttpServlet {
         while (headers.hasMoreElements())
             System.out.println("Headers: " + headers.nextElement());
 
+        System.out.println("Content length: "+ req.getContentLength());
+
 
         String action = req.getParameter("action");
         PrintWriter wr = res.getWriter();
@@ -43,6 +45,12 @@ public class Auth extends HttpServlet {
         }
 
         System.out.println("Character Encoding: "+ req.getCharacterEncoding());
+        System.out.println("Content length: "+ req.getContentLength());
+
+        Enumeration<String> parameterName = req.getParameterNames();
+        while (parameterName.hasMoreElements()){
+            System.out.println("\t\t" + req.getParameter(parameterName.nextElement()));
+        }
 
 
         PrintWriter wr = res.getWriter();
@@ -57,6 +65,7 @@ public class Auth extends HttpServlet {
         String actionError = "";
 
         if (login){
+            System.out.println("\n\n");
             System.out.println("Action:" + action);
             System.out.println("Email: " + email);
             System.out.println("Password: " + password);
@@ -95,7 +104,7 @@ public class Auth extends HttpServlet {
                 actionError += "Name is required<br/>";
 
             if (actionError.equals(""))
-                wr.print(this.home(servletConfig.getInitParameter("applicationName")));
+                wr.print(this.home(servletConfig.getInitParameter("appName")));
             else
                 wr.print(this.signUp(actionError));
 
