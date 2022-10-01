@@ -49,6 +49,9 @@ public class Auth extends HttpServlet {
             if (password == null || password.equalsIgnoreCase(""))
                 actionError += "Password is required<br/>";
 
+            if (password != null && !password.equals("password") )
+                actionError += "Incorrect password<br/>";
+
             if(actionError.equals(""))
                 wr.print(this.loggedIn(email));
             else
