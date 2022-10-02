@@ -22,31 +22,32 @@ public class Auth extends HttpServlet {
 
         Enumeration<String> headers = req.getHeaderNames();
         while (headers.hasMoreElements())
-            System.out.println("Headers: " + headers.nextElement());
+            System.out.println("Headers:\t" + headers.nextElement());
 
 //        ************************ HttpServletRequest methods ******************************
         System.out.println("HttpServletRequest methods".toUpperCase() + "\n\n");
-        System.out.println("Content length: "+ req.getContentLength());
-        System.out.println("Get Protocol: "+ req.getProtocol());
-        System.out.println("Get scheme: "+ req.getScheme());
-        System.out.println("Get serverName: " + req.getServerName());
-        System.out.println("Get ServerPort: " + req.getServerPort());
-        System.out.println("Get RemoteAddress: " + req.getRemoteAddr());
-        System.out.println("Get RemoteHost: " + req.getRemoteHost());
-        System.out.println("Get Locale: " + req.getLocale());
-        System.out.println("Is secure: " + req.isSecure());
-        System.out.println("Get RemotePort: " + req.getRemotePort());
-        System.out.println("Get LocalAddr: " + req.getLocalAddr());
-        System.out.println("Get LocalPort: " + req.getLocalPort());
-        System.out.println("Is AsyncStarted: " + req.isAsyncStarted());
-        System.out.println("Is AsyncSupported: " + req.isAsyncSupported());
+        System.out.println("Content length:\t"+ req.getContentLength());
+        System.out.println("Get Protocol:\t"+ req.getProtocol());
+        System.out.println("Get scheme:\t"+ req.getScheme());
+        System.out.println("Get serverName:\t" + req.getServerName());
+        System.out.println("Get ServerPort:\t" + req.getServerPort());
+        System.out.println("Get RemoteAddress:\t" + req.getRemoteAddr());
+        System.out.println("Get RemoteHost:\t" + req.getRemoteHost());
+        System.out.println("Get Locale:\t" + req.getLocale());
+        System.out.println("Is secure:\t" + req.isSecure());
+        System.out.println("Get RemotePort:\t" + req.getRemotePort());
+        System.out.println("Get LocalAddr:\t" + req.getLocalAddr());
+        System.out.println("Get LocalPort:\t" + req.getLocalPort());
+        System.out.println("Is AsyncStarted:\t" + req.isAsyncStarted());
+        System.out.println("Is AsyncSupported:\t" + req.isAsyncSupported());
 
         //        ************************ HttpServletResponse methods ******************************
+        res.setContentType("text/HTML");
         System.out.println("\n\nHttpServletResponse methods".toUpperCase() + "\n\n");
-        System.out.println("Get CharacterEncoding: " + res.getCharacterEncoding());
-        System.out.println("Get ContentType" + res.getContentType());
-        System.out.println("Get BufferSize" + res.getBufferSize());
-        System.out.println("Is Committed: " + res.isCommitted());
+        System.out.println("Get CharacterEncoding:\t" + res.getCharacterEncoding());
+        System.out.println("Get ContentType:\t" + res.getContentType());
+        System.out.println("Get BufferSize:\t" + res.getBufferSize());
+        System.out.println("Is Committed:\t" + res.isCommitted());
 
         String action = req.getParameter("action");
         PrintWriter wr = res.getWriter();
@@ -66,8 +67,8 @@ public class Auth extends HttpServlet {
                 System.out.println(map.getKey() + " ============= " + map.getValue()[0]);
         }
 
-        System.out.println("Character Encoding: "+ req.getCharacterEncoding());
-        System.out.println("Content length: "+ req.getContentLength());
+        System.out.println("Character Encoding:\t"+ req.getCharacterEncoding());
+        System.out.println("Content length:\t"+ req.getContentLength());
 
         Enumeration<String> parameterName = req.getParameterNames();
         while (parameterName.hasMoreElements()){
@@ -75,28 +76,33 @@ public class Auth extends HttpServlet {
         }
 
         System.out.println("HttpServletRequest methods".toUpperCase() + "\n\n\n\n");
-        System.out.println("Content length: "+ req.getContentLength());
-        System.out.println("Get Protocol: "+ req.getProtocol());
-        System.out.println("Get scheme: "+ req.getScheme());
-        System.out.println("Get serverName: " + req.getServerName());
-        System.out.println("Get ServerPort: " + req.getServerPort());
-        System.out.println("Get RemoteAddress: " + req.getRemoteAddr());
-        System.out.println("Get RemoteHost: " + req.getRemoteHost());
-        System.out.println("Get Locale: " + req.getLocale());
-        System.out.println("Is secure: " + req.isSecure());
-        System.out.println("Get RemotePort: " + req.getRemotePort());
-        System.out.println("Get LocalAddr: " + req.getLocalAddr());
-        System.out.println("Get LocalPort: " + req.getLocalPort());
-        System.out.println("Is AsyncStarted: " + req.isAsyncStarted());
-        System.out.println("Is AsyncSupported: " + req.isAsyncSupported());
+        System.out.println("Content length:\t"+ req.getContentLength());
+        System.out.println("Get ContentType\t" + res.getContentType());
+        System.out.println("Get Protocol:\t"+ req.getProtocol());
+        System.out.println("Get scheme:\t"+ req.getScheme());
+        System.out.println("Get serverName:\t" + req.getServerName());
+        System.out.println("Get ServerPort:\t" + req.getServerPort());
+        System.out.println("Get RemoteAddress:\t" + req.getRemoteAddr());
+        System.out.println("Get RemoteHost:\t" + req.getRemoteHost());
+        System.out.println("Get Locale:\t" + req.getLocale());
+        System.out.println("Is secure:\t" + req.isSecure());
+        System.out.println("Get RemotePort:\t" + req.getRemotePort());
+        System.out.println("Get LocalAddr:\t" + req.getLocalAddr());
+        System.out.println("Get LocalPort:\t" + req.getLocalPort());
+        System.out.println("Is AsyncStarted:\t" + req.isAsyncStarted());
+        System.out.println("Is AsyncSupported:\t" + req.isAsyncSupported());
 
-        res.addHeader("name", "Simon");
-        res.addHeader("Age", "Twenty four");
-        res.addHeader("Location", "Nairobi");
+        res.addHeader("Contect-Type\t", "application/json; charset=UTF-8");
 
         res.setStatus(504, "Internal server Error");
-        System.out.println("Get status: " + res.getStatus());
+        System.out.println("Get status:\t" + res.getStatus());
 //        res.sendError(504, "Internal server error");
+
+        Collection<String> headerNames = res.getHeaderNames();
+
+        for (String header: headerNames){
+            System.out.println("Value for\t" + header + "\tis\t" + res.getHeader(header));
+        }
 
         PrintWriter wr = res.getWriter();
         String action = req.getParameter("action");
@@ -109,8 +115,6 @@ public class Auth extends HttpServlet {
 
         String actionError = "";
 
-
-
         if (login){
             System.out.println("\n\n");
             System.out.println("Action:" + action);
@@ -118,7 +122,7 @@ public class Auth extends HttpServlet {
             System.out.println("Password: " + password);
 
             if (email == null || email.equalsIgnoreCase(""))
-                actionError = "Email is required<br/>";
+                actionError += "Email is required<br/>";
 
             if (password == null || password.equalsIgnoreCase(""))
                 actionError += "Password is required<br/>";
@@ -128,8 +132,10 @@ public class Auth extends HttpServlet {
 
             if(actionError.equals(""))
                 wr.print(this.loggedIn(email, servletConfig.getServletContext().getInitParameter("appName")));
-            else
+            else{
+                res.setStatus(504, "Internal server Error");
                 wr.print(this.login(actionError));
+            }
 
 
         } else if (register) {
@@ -151,7 +157,7 @@ public class Auth extends HttpServlet {
                 actionError += "Name is required<br/>";
 
             if (actionError.equals(""))
-                wr.print(this.home(servletConfig.getInitParameter("appName")));
+                wr.print(this.home(servletConfig.getServletContext().getInitParameter("appName")));
             else
                 wr.print(this.signUp(actionError));
 
