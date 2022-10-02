@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -46,7 +47,6 @@ public class Auth extends HttpServlet {
         System.out.println("Get ContentType" + res.getContentType());
         System.out.println("Get BufferSize" + res.getBufferSize());
         System.out.println("Is Committed: " + res.isCommitted());
-
 
         String action = req.getParameter("action");
         PrintWriter wr = res.getWriter();
@@ -91,6 +91,9 @@ public class Auth extends HttpServlet {
         System.out.println("Is AsyncSupported: " + req.isAsyncSupported());
 
 
+        res.sendError(504);
+        res.sendError(504, "Internal server error");
+
         PrintWriter wr = res.getWriter();
         String action = req.getParameter("action");
         String password = req.getParameter("password");
@@ -101,6 +104,8 @@ public class Auth extends HttpServlet {
         boolean login = action != null && action.equalsIgnoreCase("login");
 
         String actionError = "";
+
+
 
         if (login){
             System.out.println("\n\n");
