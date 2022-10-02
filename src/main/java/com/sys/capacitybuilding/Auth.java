@@ -90,9 +90,13 @@ public class Auth extends HttpServlet {
         System.out.println("Is AsyncStarted: " + req.isAsyncStarted());
         System.out.println("Is AsyncSupported: " + req.isAsyncSupported());
 
+        res.addHeader("name", "Simon");
+        res.addHeader("Age", "Twenty four");
+        res.addHeader("Location", "Nairobi");
 
-        res.sendError(504);
-        res.sendError(504, "Internal server error");
+        res.setStatus(504, "Internal server Error");
+        System.out.println("Get status: " + res.getStatus());
+//        res.sendError(504, "Internal server error");
 
         PrintWriter wr = res.getWriter();
         String action = req.getParameter("action");
