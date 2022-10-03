@@ -30,9 +30,19 @@
     <servlet-class>com.sys.capacitybuilding.Home</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>capacityBuildingRegister</servlet-name>
+    <servlet-class>com.sys.capacitybuilding.Register</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>capacityBuildingAuth</servlet-name>
     <url-pattern>/auth</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>capacityBuildingRegister</servlet-name>
+    <url-pattern>/register</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
