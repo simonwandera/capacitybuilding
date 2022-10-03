@@ -16,6 +16,8 @@ public class Home extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
+        System.out.println("Sessions:\t" + req.getSession().getAttribute("students"));
+
         res.getWriter().print("<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "  <head>\n" +
