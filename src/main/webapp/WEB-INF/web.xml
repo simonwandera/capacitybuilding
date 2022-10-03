@@ -25,6 +25,11 @@
     <servlet-class>com.sys.capacitybuilding.Login</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>capacityBuildingHome</servlet-name>
+    <servlet-class>com.sys.capacitybuilding.Home</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>capacityBuildingAuth</servlet-name>
     <url-pattern>/auth</url-pattern>
@@ -33,5 +38,10 @@
   <servlet-mapping>
     <servlet-name>capacityBuildingLogin</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>capacityBuildingHome</servlet-name>
+    <url-pattern>/home</url-pattern>
   </servlet-mapping>
 </web-app>
