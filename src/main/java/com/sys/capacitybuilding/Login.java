@@ -1,5 +1,6 @@
 package com.sys.capacitybuilding;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,40 @@ public class Login extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.login(null));
+    }
+
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        PrintWriter wr = res.getWriter();
+        String action = req.getParameter("action");
+        String password = req.getParameter("password");
+        String email = req.getParameter("email");
+        String name = req.getParameter("name");
+
+        String actionError = "";
+
+        System.out.println("\n\n");
+        System.out.println("Action:" + action);
+        System.out.println("Email: " + email);
+        System.out.println("Password: " + password);
+
+        if (email == null || email.equalsIgnoreCase("")){
+            wr.print(this.login("Email is required<br/>"));
+            return;
+        }
+
+        if (password == null || password.equalsIgnoreCase("")) {
+            wr.print(this.login("Password is required<br/>"));
+            return;
+        }
+
+        if (password != null && !password.equals("password")){
+            wr.print(this.login("Incorrect password<br/>"));
+            return;
+        }
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("./home");
+        requestDispatcher.forward(req, res);
     }
 
     public String login(String actionError){
