@@ -2,6 +2,7 @@ package com.sys.capacitybuilding;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +18,9 @@ public class Auth extends HttpServlet {
     public void init(ServletConfig servletConfig) throws ServletException{
         this.servletConfig = servletConfig;
     }
-
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        res.reset();
 
         Enumeration<String> headers = req.getHeaderNames();
         while (headers.hasMoreElements())
@@ -42,12 +44,17 @@ public class Auth extends HttpServlet {
         System.out.println("Is AsyncSupported:\t" + req.isAsyncSupported());
 
         //        ************************ HttpServletResponse methods ******************************
-        res.setContentType("text/HTML");
+        Cookie cookie = new Cookie("token", "token");
+        res.addCookie(cookie);
+
+
         System.out.println("\n\nHttpServletResponse methods".toUpperCase() + "\n\n");
+        res.setContentType("text/HTML");
         System.out.println("Get CharacterEncoding:\t" + res.getCharacterEncoding());
         System.out.println("Get ContentType:\t" + res.getContentType());
         System.out.println("Get BufferSize:\t" + res.getBufferSize());
         System.out.println("Is Committed:\t" + res.isCommitted());
+        System.out.println("Get Local:\t" + res.getLocale());
 
         String action = req.getParameter("action");
         PrintWriter wr = res.getWriter();
@@ -57,15 +64,23 @@ public class Auth extends HttpServlet {
             wr.print(this.signUp(null));
         } else
             wr.print(this.home(servletConfig.getServletContext().getInitParameter("appName")));
+
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+
+        res.reset();
+
+        Cookie cookie = new Cookie("token", "token");
+        res.addCookie(cookie);
 
         Map<String, String[]> paramsInMap = req.getParameterMap();
         for (Map.Entry<String, String[]> map : paramsInMap.entrySet()) {
             if (map.getValue() != null && map.getValue().length > 0)
                 System.out.println(map.getKey() + " ============= " + map.getValue()[0]);
         }
+
 
         System.out.println("Character Encoding:\t"+ req.getCharacterEncoding());
         System.out.println("Content length:\t"+ req.getContentLength());
@@ -160,9 +175,7 @@ public class Auth extends HttpServlet {
                 wr.print(this.home(servletConfig.getServletContext().getInitParameter("appName")));
             else
                 wr.print(this.signUp(actionError));
-
         }
-
     }
 
     private String login(String actionError){
