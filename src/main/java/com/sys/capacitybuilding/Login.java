@@ -84,14 +84,14 @@ public class Login extends HttpServlet {
                 "                  <div class=\"mb-5\">\n" +
                 "                    <h4 class=\"card-title\">LogIn</h4>\n" +
                 "                  </div>\n" +
-                "                  <form class=\"forms-sample\">\n" +
+                "                  <form action=\"./login\" class=\"forms-sample\" method=\"post\">\n" +
                 "                    <div class=\"form-group\">\n" +
                 "                      <label for=\"exampleInputEmail1\">Email address</label>\n" +
-                "                      <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Email\" />\n" +
+                "                      <input type=\"email\" class=\"form-control\" name=\"email\" id=\"exampleInputEmail1\" placeholder=\"Email\" />\n" +
                 "                    </div>\n" +
                 "                    <div class=\"form-group\">\n" +
                 "                      <label for=\"exampleInputPassword1\">Password</label>\n" +
-                "                      <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" />\n" +
+                "                      <input type=\"password\" class=\"form-control\" name=\"password\" id=\"exampleInputPassword1\" placeholder=\"Password\" />\n" +
                 "                    </div>\n" +
                 "                    <div class=\"form-check form-check-flat form-check-primary\">\n" +
                 "                      <label class=\"form-check-label\">\n" +
