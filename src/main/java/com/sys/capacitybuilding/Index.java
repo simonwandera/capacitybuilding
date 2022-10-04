@@ -69,7 +69,7 @@ public class Index extends HttpServlet {
         pw.print("</div>");
         pw.print("<div class=\"overlay-panel overlay-right\">");
         pw.print("<h1>Hello, Friend!</h1>");
-        pw.print("<p>Enter your personal details and start the empowerment journey with us</p>");
+        pw.print("<p>Enter your personal details and start your empowerment journey with us</p>");
         pw.print("<button class=\"ghost\" id=\"signUp\" name=\"signUp\">Sign Up</button>");
         pw.print("</div>");
         pw.print("</div>");
