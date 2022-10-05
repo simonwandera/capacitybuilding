@@ -54,4 +54,22 @@
     <servlet-name>capacityBuildingHome</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
+
+  <filter>
+    <filter-name>SessionFilter</filter-name>
+    <filter-class>com.capacitybuilding.filters.SessionFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>SessionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <listener>
+    <listener-class>com.capacitybuilding.listeners.ContextListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>com.capacitybuilding.listeners.RequestListener</listener-class>
+  </listener>
 </web-app>
