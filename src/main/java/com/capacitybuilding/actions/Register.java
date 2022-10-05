@@ -34,6 +34,15 @@ public class Register extends HttpServlet {
         if (confirmPassword == null || confirmPassword.equalsIgnoreCase(""))
             actionError += "Confirm password is required<br/>";
 
+        if (firstName == null || firstName.equalsIgnoreCase(""))
+            actionError += "FirstName is required<br/>";
+
+        if (lastName == null || lastName.equalsIgnoreCase(""))
+            actionError += "LastName is required<br/>";
+
+        if (dateOfBirth == null || dateOfBirth.equalsIgnoreCase(""))
+            actionError += "Date of Birth is required<br/>";
+
         if (password != null && confirmPassword != null && !password.equals(confirmPassword))
             actionError += "Password & confirm password do not match<br/>";
 
@@ -64,7 +73,7 @@ public class Register extends HttpServlet {
                 "            <div class=\"main-panel\">\n" +
                 "                <div class=\"content-wrapper\">\n" +
                 "                    <div class=\"page-header\">\n" +
-                "                        <h3 class=\"page-title m-auto\">" + getServletContext().getAttribute("appName") + "</h3>\n" +
+                "                        <h3 class=\"page-title m-auto\">" + getServletContext().getInitParameter("appName") + "</h3>\n" +
                 "                    </div>\n" +
                 "                    <div class=\"row\">\n" +
                 "                        <div class=\"col-12 grid-margin\">\n" +
