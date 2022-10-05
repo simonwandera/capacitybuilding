@@ -13,12 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Login extends HttpServlet {
-    ServletConfig servletConfig = null;
-
-    public void init(ServletConfig servletConfig) throws ServletException {
-        this.servletConfig = servletConfig;
-    }
-
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.login(null));
     }
