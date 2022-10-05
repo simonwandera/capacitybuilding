@@ -19,6 +19,9 @@ public class Register extends HttpServlet {
 
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirmPassword");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String dateOfBirth = req.getParameter("dateOfBirth");
         String email = req.getParameter("email");
 
         String actionError = "";
@@ -70,7 +73,7 @@ public class Register extends HttpServlet {
                 "                                    <div>\n" +
                 "                                        <h4 class=\"card-title\">Sign Up</h4>\n" +
                 "                                    </div>\n" +
-                "                                    <form class=\"form-sample\" action=\"./register\">\n" +
+                "                                    <form class=\"form-sample\" action=\"./register\" method=\"post\">\n" +
                 "                                        <p class=\"card-description\">Personal info</p>\n" +
                 "                                        <div class=\"row\">\n" +
                 "                                            <div class=\"col-md-6\">\n" +
