@@ -47,7 +47,7 @@ public class Home extends HttpServlet {
                 "                <span class=\"login-status online\"></span>\n" +
                 "              </div>\n" +
                 "              <div class=\"nav-profile-text d-flex flex-column pr-3\">\n" +
-                "                <span class=\"font-weight-medium mb-2\">User</span>\n" +
+                "                <span class=\"font-weight-medium mb-2\">" +req.getParameter("email")+ "</span>\n" +
                 "                <span class=\"font-weight-normal\">Admin</span>\n" +
                 "              </div>\n" +
                 "              <span class=\"badge badge-danger text-white ml-3 rounded\">3</span>\n" +
@@ -216,7 +216,7 @@ public class Home extends HttpServlet {
                 "              <li class=\"nav-item nav-profile dropdown border-0\">\n" +
                 "                <a class=\"nav-link dropdown-toggle\" id=\"profileDropdown\" href=\"#\" data-toggle=\"dropdown\">\n" +
                 "                  <img class=\"nav-profile-img mr-2\" alt=\"\" src=\"assets/images/faces/face1.jpg\" />\n" +
-                "                  <span class=\"profile-name\">John Doe</span>\n" +
+                "                  <span class=\"profile-name\">" +req.getParameter("email")+ "</span>\n" +
                 "                </a>\n" +
                 "                <div class=\"dropdown-menu navbar-dropdown w-100\" aria-labelledby=\"profileDropdown\">\n" +
                 "                  <a class=\"dropdown-item\" href=\"#\">\n" +
