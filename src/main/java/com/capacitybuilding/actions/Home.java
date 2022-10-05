@@ -1,4 +1,4 @@
-package com.sys.capacitybuilding;
+package com.capacitybuilding.actions;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

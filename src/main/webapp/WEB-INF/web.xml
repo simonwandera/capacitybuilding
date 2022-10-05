@@ -17,22 +17,22 @@
 
   <servlet>
     <servlet-name>capacityBuildingAuth</servlet-name>
-    <servlet-class>com.sys.capacitybuilding.Auth</servlet-class>
+    <servlet-class>com.capacitybuilding.actions.Auth</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>capacityBuildingLogin</servlet-name>
-    <servlet-class>com.sys.capacitybuilding.Login</servlet-class>
+    <servlet-class>com.capacitybuilding.actions.Login</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>capacityBuildingHome</servlet-name>
-    <servlet-class>com.sys.capacitybuilding.Home</servlet-class>
+    <servlet-class>com.capacitybuilding.actions.Home</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>capacityBuildingRegister</servlet-name>
-    <servlet-class>com.sys.capacitybuilding.Register</servlet-class>
+    <servlet-class>com.capacitybuilding.actions.Register</servlet-class>
   </servlet>
 
   <servlet-mapping>
