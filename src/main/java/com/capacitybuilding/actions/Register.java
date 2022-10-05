@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Register extends HttpServlet {
     ServletConfig config = null;
@@ -15,6 +16,32 @@ public class Register extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.register(null));
+    }
+
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        PrintWriter wr = res.getWriter();
+
+        String password = req.getParameter("password");
+        String confirmPassword = req.getParameter("confirmPassword");
+        String email = req.getParameter("email");
+
+        String actionError = "";
+        if (email == null || email.equalsIgnoreCase(""))
+            actionError = "Email is required<br/>";
+
+        if (password == null || password.equalsIgnoreCase(""))
+            actionError += "Password is required<br/>";
+
+        if (confirmPassword == null || confirmPassword.equalsIgnoreCase(""))
+            actionError += "Confirm password is required<br/>";
+
+        if (password != null && confirmPassword != null && !password.equals(confirmPassword))
+            actionError += "Password & confirm password do not match<br/>";
+
+        if (actionError.equals(""))
+            res.sendRedirect("./login");
+        else
+            wr.print(this.register(actionError));
     }
 
     public String register(String actionError){
@@ -54,7 +81,7 @@ public class Register extends HttpServlet {
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">First Name</label>\n" +
                 "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <input type=\"text\" class=\"form-control\" />\n" +
+                "                                                        <input type=\"text\" name=\"firstName\" class=\"form-control\" />\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
                 "                                            </div>\n" +
@@ -62,7 +89,7 @@ public class Register extends HttpServlet {
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">Last Name</label>\n" +
                 "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <input type=\"text\" class=\"form-control\" />\n" +
+                "                                                        <input type=\"text\" name=\"lastName\" class=\"form-control\" />\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
                 "                                            </div>\n" +
@@ -83,7 +110,7 @@ public class Register extends HttpServlet {
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">Date of Birth</label>\n" +
                 "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <input class=\"form-control\" placeholder=\"dd/mm/yyyy\" />\n" +
+                "                                                        <input class=\"form-control\" name=\"dateOfBirth\" placeholder=\"dd/mm/yyyy\" />\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
                 "                                            </div>\n" +
@@ -95,7 +122,7 @@ public class Register extends HttpServlet {
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">Email</label>\n" +
                 "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <input type=\"email\" class=\"form-control\" />\n" +
+                "                                                        <input type=\"email\" name=\"email\" class=\"form-control\" />\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
                 "                                            </div>\n" +
@@ -107,7 +134,7 @@ public class Register extends HttpServlet {
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">Password</label>\n" +
                 "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <input type=\"password\" class=\"form-control\" />\n" +
+                "                                                        <input type=\"password\" name=\"password\" class=\"form-control\" />\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
                 "                                            </div>\n" +
@@ -115,7 +142,7 @@ public class Register extends HttpServlet {
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">Confirm password</label>\n" +
                 "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <input type=\"password\" class=\"form-control\" />\n" +
+                "                                                        <input type=\"password\" name=\"confirmPassword\" class=\"form-control\" />\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
                 "                                            </div>\n" +
