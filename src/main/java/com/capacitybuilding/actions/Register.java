@@ -9,10 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Register extends HttpServlet {
-    ServletConfig config = null;
-    public void init(ServletConfig config) throws ServletException {
-        this.config = config;
-    }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.register(null));

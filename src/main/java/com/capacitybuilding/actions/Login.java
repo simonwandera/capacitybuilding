@@ -115,7 +115,7 @@ public class Login extends HttpServlet {
                 "                      <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
                 "                    </div>\n" +
                 "                    <button type=\"submit\" class=\"btn btn-primary mr-2\"> Login </button>\n" +
-                "                    <a href=\"./register\">Register</a>\n\" +"+
+                "                    <a href=\"./register\">Register</a>\n"+
                 "                  </form>\n" +
                 "                </div>\n" +
                 "              </div>\n" +
