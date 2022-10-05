@@ -38,7 +38,7 @@ public class Register extends HttpServlet {
                 "            <div class=\"main-panel\">\n" +
                 "                <div class=\"content-wrapper\">\n" +
                 "                    <div class=\"page-header\">\n" +
-                "                        <h3 class=\"page-title m-auto\">Capacity buiding system</h3>\n" +
+                "                        <h3 class=\"page-title m-auto\">" + getServletContext().getAttribute("appName") + "</h3>\n" +
                 "                    </div>\n" +
                 "                    <div class=\"row\">\n" +
                 "                        <div class=\"col-12 grid-margin\">\n" +
@@ -121,7 +121,7 @@ public class Register extends HttpServlet {
                 "                                            </div>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"my-3 py-2 text-center\">\n" +
-                "                                            <span class=\"text-danger\">Sign error messages here</span>\n" +
+                "                                            <span class=\"text-danger\">" +(actionError != null? actionError : "")+ "</span>\n" +
                 "                                        </div>\n" +
                 "                                        <button type=\"submit\" class=\"btn btn-primary mr-2\"> Sign In </button>\n" +
                 "                                        <a href=\"./login\">Login</a>\n" +
