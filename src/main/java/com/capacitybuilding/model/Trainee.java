@@ -10,7 +10,7 @@ public class Trainee implements Serializable {
     private String gender;
 
     public Trainee() {
-
+        id = id + 1;
     }
 
     public String getFirstName() {

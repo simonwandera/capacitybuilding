@@ -1,5 +1,10 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.model.Trainee;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,16 +12,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/addTrainee")
 public class TraineeAction extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        res.getWriter().print(this.addTrainee(null, (String) session.getAttribute("email")));
+        String email = (String) session.getAttribute("email");
+        res.getWriter().print(this.addTrainee(null, email));
+    }
+
+    @SuppressWarnings("unchecked")
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        PrintWriter wr = res.getWriter();
+        Trainee trainee = new Trainee();
+        String email = (String) session.getAttribute("email");
+
+        try {
+            BeanUtils.populate(trainee, req.getParameterMap());
+
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+        if (StringUtils.isBlank(trainee.getEmail())) {
+            wr.print(this.addTrainee("Email is required<br/>", email));
+            return;
+        }
+
+        if (StringUtils.isBlank(trainee.getGender())) {
+            wr.print(this.addTrainee("Gender No is required<br/>", email));
+            return;
+        }
+
+        List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
+
+        if (trainees == null)
+            trainees = new ArrayList<Trainee>();
+
+        trainees.add(trainee);
+        session.setAttribute("trainees", trainees);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("./trainees");
+        dispatcher.forward(req, res);
+
     }
 
     public String addTrainee(String actionError, String email){
+
         return Common.Header() +
                 "  <body>\n" +
                 "    <div class=\"container-scroller\">\n" +
@@ -76,7 +123,9 @@ public class TraineeAction extends HttpServlet {
                 "                                <option>Other</option>\n" +
                 "                            </select>\n" +
                 "                          </div>\n" +
-                "\n" +
+                "                          <div class=\"my-3 py-2 text-center\">\n" +
+                "                               <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
+                "                          </div>\n" +
                 "                          <button type=\"submit\" class=\"btn btn-primary mr-2\"> Submit </button>\n" +
                 "                        </form>\n" +
                 "                      </div>\n" +
