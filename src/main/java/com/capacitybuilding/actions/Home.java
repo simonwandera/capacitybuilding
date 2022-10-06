@@ -672,7 +672,7 @@ public class Home extends HttpServlet {
                 "                  </div>\n" +
                 "                </div>\n" +
                 "              </div>\n" +
-                "            </div>\n" +
+                "            </div>"+
                 "            <div class=\"row\">\n" +
                 "              <div class=\"col-xl-4 grid-margin stretch-card\">\n" +
                 "                <!--activity-->\n" +

@@ -14,7 +14,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/login")
+@WebServlet(urlPatterns = "/login", initParams = {
+        @WebInitParam(name = "email", value = "simon@skytrix.com"),
+        @WebInitParam(name = "password", value = "password")
+})
 public class Login extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.login(null));
@@ -45,7 +48,7 @@ public class Login extends HttpServlet {
             return;
         }
 
-        if (password != null && !password.equals("password")){
+        if (!email.equals(getServletConfig().getInitParameter("username")) && !password.equals(getServletConfig().getInitParameter("password"))) {
             wr.print(this.login("Incorrect password<br/>"));
             return;
         }
