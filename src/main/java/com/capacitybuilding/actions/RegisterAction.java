@@ -1,6 +1,5 @@
 package com.capacitybuilding.actions;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/register")
-public class Register extends HttpServlet {
+public class RegisterAction extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.register(null));

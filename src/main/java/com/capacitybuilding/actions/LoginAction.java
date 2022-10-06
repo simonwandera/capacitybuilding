@@ -1,7 +1,6 @@
 package com.capacitybuilding.actions;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,7 @@ import java.util.List;
         @WebInitParam(name = "email", value = "simon@skytrix.com"),
         @WebInitParam(name = "password", value = "password")
 })
-public class Login extends HttpServlet {
+public class LoginAction extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.login(null));
     }

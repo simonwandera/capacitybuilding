@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/home")
-public class Home extends HttpServlet {
+public class HomeAction extends HttpServlet {
     ServletConfig config = null;
 
     public void init(ServletConfig config) throws ServletException {
