@@ -34,6 +34,105 @@ public class Common {
                 "</html>";
     }
 
+    public static  String TopNav(String email){
+        return "<nav class=\"navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row\">\n" +
+                "          <div class=\"navbar-menu-wrapper d-flex align-items-stretch justify-content-between\">\n" +
+                "            <a class=\"navbar-brand brand-logo-mini align-self-center d-lg-none\" href=\"index.html\"><img src=\"assets/images/logo-mini.svg\" alt=\"logo\" /></a>\n" +
+                "            <button class=\"navbar-toggler navbar-toggler align-self-center mr-2\" type=\"button\" data-toggle=\"minimize\">\n" +
+                "              <i class=\"mdi mdi-menu\"></i>\n" +
+                "            </button>\n" +
+                "            <ul class=\"navbar-nav\">\n" +
+                "              <li class=\"nav-item dropdown\">\n" +
+                "                <a class=\"nav-link count-indicator dropdown-toggle\" id=\"notificationDropdown\" href=\"#\" data-toggle=\"dropdown\">\n" +
+                "                  <i class=\"mdi mdi-bell-outline\"></i>\n" +
+                "                  <span class=\"count count-varient1\">2</span>\n" +
+                "                </a>\n" +
+                "                <div class=\"dropdown-menu navbar-dropdown navbar-dropdown-large preview-list\" aria-labelledby=\"notificationDropdown\">\n" +
+                "                  <h6 class=\"p-3 mb-0\">Notifications</h6>\n" +
+                "                  <a class=\"dropdown-item preview-item\">\n" +
+                "                    <div class=\"preview-thumbnail\">\n" +
+                "                      <img src=\"assets/images/faces/face4.jpg\" alt=\"\" class=\"profile-pic\" />\n" +
+                "                    </div>\n" +
+                "                    <div class=\"preview-item-content\">\n" +
+                "                      <p class=\"mb-0\"> Mark Mwima <span class=\"text-small text-muted\">Registered for training</span>\n" +
+                "                      </p>\n" +
+                "                    </div>\n" +
+                "                  </a>\n" +
+                "                  <a class=\"dropdown-item preview-item\">\n" +
+                "                    <div class=\"preview-thumbnail\">\n" +
+                "                      <img src=\"assets/images/faces/face3.jpg\" alt=\"\" class=\"profile-pic\" />\n" +
+                "                    </div>\n" +
+                "                    <div class=\"preview-item-content\">\n" +
+                "                      <p class=\"mb-0\"> James Korir <span class=\"text-small text-muted\">Enrolled for training</span>\n" +
+                "                      </p>\n" +
+                "                    </div>\n" +
+                "                  </a>\n" +
+                "                  <a class=\"dropdown-item preview-item\">\n" +
+                "                    <div class=\"preview-thumbnail\">\n" +
+                "                      <img src=\"assets/images/faces/face2.jpg\" alt=\"\" class=\"profile-pic\" />\n" +
+                "                    </div>\n" +
+                "                    <div class=\"preview-item-content\">\n" +
+                "                      <p class=\"mb-0\"> Mercy Bore <span class=\"text-small text-muted\">Completed one training</span>\n" +
+                "                      </p>\n" +
+                "                    </div>\n" +
+                "                  </a>\n" +
+                "                  <div class=\"dropdown-divider\"></div>\n" +
+                "                  <p class=\"p-3 mb-0\">View all activities</p>\n" +
+                "                </div>\n" +
+                "              </li>\n" +
+                "              <li class=\"nav-item dropdown d-none d-sm-flex\">\n" +
+                "                <a class=\"nav-link count-indicator dropdown-toggle\" id=\"messageDropdown\" href=\"#\" data-toggle=\"dropdown\">\n" +
+                "                  <i class=\"mdi mdi-email-outline\"></i>\n" +
+                "                  <span class=\"count count-varient2\">5</span>\n" +
+                "                </a>\n" +
+                "                <div class=\"dropdown-menu navbar-dropdown navbar-dropdown-large preview-list\" aria-labelledby=\"messageDropdown\">\n" +
+                "                  <h6 class=\"p-3 mb-0\">Messages</h6>\n" +
+                "                  <a class=\"dropdown-item preview-item\">\n" +
+                "                    <div class=\"preview-item-content flex-grow\">\n" +
+                "                      <span class=\"badge badge-pill badge-success\">Request</span>\n" +
+                "                      <p class=\"text-small text-muted ellipsis mb-0\"> Suport needed for this user </p>\n" +
+                "                    </div>\n" +
+                "                    <p class=\"text-small text-muted align-self-start\"> 4:10 PM </p>\n" +
+                "                  </a>\n" +
+                "                  <a class=\"dropdown-item preview-item\">\n" +
+                "                    <div class=\"preview-item-content flex-grow\">\n" +
+                "                      <span class=\"badge badge-pill badge-warning\">Competencies</span>\n" +
+                "                      <p class=\"text-small text-muted ellipsis mb-0\"> Most of the users are Scoring high </p>\n" +
+                "                    </div>\n" +
+                "                    <p class=\"text-small text-muted align-self-start\"> 4:10 PM </p>\n" +
+                "                  </a>\n" +
+                "                  <a class=\"dropdown-item preview-item\">\n" +
+                "                    <div class=\"preview-item-content flex-grow\">\n" +
+                "                      <span class=\"badge badge-pill badge-danger\">Training</span>\n" +
+                "                      <p class=\"text-small text-muted ellipsis mb-0\"> Two trainings are scheduled to end tomorrow </p>\n" +
+                "                    </div>\n" +
+                "                    <p class=\"text-small text-muted align-self-start\"> 4:10 PM </p>\n" +
+                "                  </a>\n" +
+                "                  <h6 class=\"p-3 mb-0\">See all activity</h6>\n" +
+                "                </div>\n" +
+                "              </li>\n" +
+                "\n" +
+                "            </ul>\n" +
+                "            <ul class=\"navbar-nav navbar-nav-right ml-lg-auto\">\n" +
+                "\n" +
+                "              <li class=\"nav-item nav-profile dropdown border-0\">\n" +
+                "                <a class=\"nav-link dropdown-toggle\" id=\"profileDropdown\" href=\"#\" data-toggle=\"dropdown\">\n" +
+                "                  <img class=\"nav-profile-img mr-2\" alt=\"\" src=\"assets/images/faces/face1.jpg\" />\n" +
+                "                  <span class=\"profile-name\">" +email+ "</span>\n" +
+                "                </a>\n" +
+                "                <div class=\"dropdown-menu navbar-dropdown w-100\" aria-labelledby=\"profileDropdown\">\n" +
+                "                  <a class=\"dropdown-item\" href=\"#\">\n" +
+                "                    <i class=\"mdi mdi-logout mr-2 text-primary\"></i> Signout </a>\n" +
+                "                </div>\n" +
+                "              </li>\n" +
+                "            </ul>\n" +
+                "            <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-toggle=\"offcanvas\">\n" +
+                "              <span class=\"mdi mdi-menu\">dd</span>\n" +
+                "            </button>\n" +
+                "          </div>\n" +
+                "        </nav>";
+    }
+
     public static String SideNav(){
         return  "      <nav class=\"sidebar sidebar-offcanvas\" id=\"sidebar\">\n" +
                 "        <div class=\"text-center sidebar-brand-wrapper d-flex align-items-center\">\n" +
