@@ -1,12 +1,14 @@
 package com.capacitybuilding.actions;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@WebServlet("/trainees")
 public class DisplayTraineesAction  extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -42,7 +44,7 @@ public class DisplayTraineesAction  extends HttpServlet {
                 "                    <div class=\"page-header flex-wrap\">\n" +
                 "                        <h3 class=\"mb-0\"> All Trainees </h3>\n" +
                 "                        <div class=\"d-flex\">\n" +
-                "                            <button type=\"button\" class=\"btn btn-sm ml-3 btn-success\"> Add Trainee </button>\n" +
+                "                            <a class=\"btn btn-sm ml-3 btn-success\" href=\"./addTrainee\"> Add Trainee </a>\n" +
                 "                        </div>\n" +
                 "                    </div>\n" +
                 "                </div>\n" +
