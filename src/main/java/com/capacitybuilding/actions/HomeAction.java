@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/home")
@@ -18,6 +19,8 @@ public class HomeAction extends HttpServlet {
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        HttpSession session = req.getSession();
 
         System.out.println("Sessions:\t" + req.getSession().getAttribute("students"));
 
@@ -42,7 +45,7 @@ public class HomeAction extends HttpServlet {
                         "            <div class=\"tiles dark\"></div>\n" +
                         "          </div>\n" +
                         "        </div>\n" +
-                        Common.TopNav(req.getParameter("email")) +
+                        Common.TopNav((String) session.getAttribute("email")) +
                         "        <div class=\"main-panel\">\n" +
                         "          <div class=\"content-wrapper pb-0\">\n" +
                         "            <div class=\"page-header flex-wrap\">\n" +

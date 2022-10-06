@@ -48,11 +48,12 @@ public class LoginAction extends HttpServlet {
         }
 
         if (!email.equals(getServletConfig().getInitParameter("username")) && !password.equals(getServletConfig().getInitParameter("password"))) {
-            wr.print(this.login("Incorrect password<br/>"));
+            wr.print(this.login("Invalid username & password combination<br/>"));
             return;
         }
 
         HttpSession session = req.getSession(true);
+        session.setAttribute("email", email);
 
         List<String> studentNames  = new ArrayList<String>();
         studentNames.add("Bonnie");

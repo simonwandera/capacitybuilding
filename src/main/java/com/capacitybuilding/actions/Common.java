@@ -1,5 +1,7 @@
 package com.capacitybuilding.actions;
 
+import javax.servlet.http.HttpSession;
+
 public class Common {
 
     public static String Header(){
