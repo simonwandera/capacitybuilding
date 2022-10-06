@@ -1,5 +1,7 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.model.Trainee;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,17 +9,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @WebServlet("/trainees")
 public class DisplayTraineesAction  extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        res.getWriter().print(this.DisplayTrainees(null, (String) session.getAttribute("email")));
+        res.getWriter().print(this.DisplayTrainees((String) session.getAttribute("email"), req.getSession()));
 
     }
 
-    public String DisplayTrainees(String actionError, String email){
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        if (session == null || session.getId() == null)
+            res.sendRedirect("./");
+
+        res.getWriter().print(this.DisplayTrainees((String) session.getAttribute("email"), req.getSession()));
+    }
+
+    public String DisplayTrainees(String email, HttpSession session){
         return Common.Header() +
                 "  <body>\n" +
                 "    <div class=\"container-scroller\">\n" +
@@ -55,66 +69,7 @@ public class DisplayTraineesAction  extends HttpServlet {
                 "                        <h4 class=\"card-title\">All Registered Trainees</h4>\n" +
                 "                        <p class=\"card-description\"> Updated </p>\n" +
                 "                        <div class=\"table-responsive\">\n" +
-                "                          <table class=\"table table-striped\">\n" +
-                "                            <thead>\n" +
-                "                              <tr>\n" +
-                "                                <th>User</th>\n" +
-                "                                <th>First name</th>\n" +
-                "                                <th>Last Name</th>\n" +
-                "                                <th>Email</th>\n" +
-                "                                <th>Gender</th>\n" +
-                "                                <th>Date</th>\n" +
-                "                                <th>Action</th>\n" +
-                "                              </tr>\n" +
-                "                            </thead>\n" +
-                "                            <tbody>\n" +
-                "                              <tr>\n" +
-                "                                <td class=\"py-1\">\n" +
-                "                                  <img src=\"./assets/images/faces-clipart/pic-1.png\" alt=\"image\" />\n" +
-                "                                </td>\n" +
-                "                                <td>Herman</td>\n" +
-                "                                <td>Beck</td>\n" +
-                "                                <td>hermanback@gmail.com</td>\n" +
-                "                                <td>$ 77.99</td>\n" +
-                "                                <td>May 15, 2015</td>\n" +
-                "                                <td>\n" +
-                "                                    <i class=\"mdi mdi-border-color mdi-24px\"></i>\n" +
-                "                                    <i class=\"mdi mdi-delete md-24 mdi-24px\"></i>\n" +
-                "                                </td>\n" +
-                "                              </tr>\n" +
-                "                              <tr>\n" +
-                "                                <td class=\"py-1\">\n" +
-                "                                  <img src=\"./assets/images/faces-clipart/pic-2.png\" alt=\"image\" />\n" +
-                "                                </td>\n" +
-                "                                <td>Messsy</td>\n" +
-                "                                <td>Adam</td>\n" +
-                "                                <td>hermanback@company.com</td>\n" +
-                "                                <td>$245.30</td>\n" +
-                "                                <td>July 1, 2015</td>\n" +
-                "                                <td>\n" +
-                "                                    <i class=\"mdi mdi-border-color mdi-24px\"></i>\n" +
-                "                                    <i class=\"mdi mdi-delete md-24 mdi-24px\"></i>\n" +
-                "                                </td>\n" +
-                "                              </tr>\n" +
-                "\n" +
-                "                              <tr>\n" +
-                "                                <td class=\"py-1\">\n" +
-                "                                  <img src=\"./assets/images/faces-clipart/pic-3.png\" alt=\"image\" />\n" +
-                "                                </td>\n" +
-                "                                <td>John </td>\n" +
-                "                                <td>Richards</td>\n" +
-                "                                <td>kevinmill@gmail.com</td>\n" +
-                "                                <td>$138.00</td>\n" +
-                "                                <td>Apr 12, 2015</td>\n" +
-                "                                <td>\n" +
-                "                                    <i class=\"mdi mdi-border-color mdi-24px\"></i>\n" +
-                "                                    <i class=\"mdi mdi-delete md-24 mdi-24px\"></i>\n" +
-                "                                </td>\n" +
-                "                              </tr>\n" +
-                "\n" +
-                "                              \n" +
-                "                            </tbody>\n" +
-                "                          </table>\n" +
+                                            traineeGrid((List<Trainee>) session.getAttribute("trainees")) +
                 "                        </div>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +
@@ -126,5 +81,48 @@ public class DisplayTraineesAction  extends HttpServlet {
                 "        </div>\n" +
                 "    </div>"+
                 Common.Footer();
+    }
+
+    public String traineeGrid(List<Trainee> trainees) {
+
+        if (trainees == null)
+            trainees = new ArrayList<Trainee>();
+
+        String traineeGrid = "<table class=\"table table-striped\">\n" +
+                "<thead>\n" +
+                "  <tr>\n" +
+                "    <th>User</th>\n" +
+                "    <th>First name</th>\n" +
+                "    <th>Last Name</th>\n" +
+                "    <th>Email</th>\n" +
+                "    <th>Gender</th>\n" +
+                "    <th>Date</th>\n" +
+                "    <th>Action</th>\n" +
+                "  </tr>\n" +
+                "</thead>\n" +
+                "<tbody>\n" ;
+
+        for (Trainee trainee : trainees)
+            traineeGrid += "<tr>" +
+                "<td class=\"py-1\">\n" +
+                "<img src=\"./assets/images/faces-clipart/pic-1.png\" alt=\"image\" />\n" +
+                "</td>\n" +
+                "<td>" + trainee.getFirstName() + "</td>\n" +
+                "<td>" +trainee.getLastName() + "</td>\n" +
+                "<td>" +trainee.getEmail() + "</td>\n" +
+                "<td>"+trainee.getGender()+"</td>\n" +
+                "<td>" + new Date() + "</td>\n" +
+                "<td>\n" +
+                "<i class=\"mdi mdi-border-color mdi-24px\"></i>\n" +
+                "<i class=\"mdi mdi-delete md-24 mdi-24px\"></i>\n" +
+                "</td>\n" +
+                "</tr>\n";
+
+        traineeGrid += "</tbody>\n" +
+                "</table>\n";
+
+
+        return traineeGrid;
+
     }
 }

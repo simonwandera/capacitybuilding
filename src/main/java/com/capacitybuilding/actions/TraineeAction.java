@@ -44,6 +44,11 @@ public class TraineeAction extends HttpServlet {
             return;
         }
 
+        if (StringUtils.isBlank(trainee.getLastName())) {
+            wr.print(this.addTrainee("Last name is required<br/>", email));
+            return;
+        }
+
         if (StringUtils.isBlank(trainee.getGender())) {
             wr.print(this.addTrainee("Gender No is required<br/>", email));
             return;
@@ -52,7 +57,7 @@ public class TraineeAction extends HttpServlet {
         List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
 
         if (trainees == null)
-            trainees = new ArrayList<Trainee>();
+            trainees = new ArrayList<>();
 
         trainees.add(trainee);
         session.setAttribute("trainees", trainees);
