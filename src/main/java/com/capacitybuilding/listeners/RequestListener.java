@@ -12,6 +12,7 @@ public class RequestListener implements ServletRequestListener {
 
     public void requestInitialized(ServletRequestEvent requestEvent) {
         System.out.println(">>>>Request Made: " + requestEvent.getServletContext().getContextPath());
+        requestEvent.getServletContext().setAttribute("appName", "Capacity building system | Made in Kenya");
         ServletRequest servletRequest = requestEvent.getServletRequest();
         HttpServletRequest request = (HttpServletRequest) servletRequest;  // Cast to subinterface.
 
