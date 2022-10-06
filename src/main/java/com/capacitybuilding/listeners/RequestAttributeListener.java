@@ -2,7 +2,9 @@ package com.capacitybuilding.listeners;
 
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
+import javax.servlet.annotation.WebListener;
 
+@WebListener
 public class RequestAttributeListener implements ServletRequestAttributeListener {
 
     public void attributeAdded(ServletRequestAttributeEvent event) {

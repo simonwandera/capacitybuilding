@@ -3,6 +3,8 @@ package com.capacitybuilding.actions;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+@WebServlet(urlPatterns = "/login")
 public class Login extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.login(null));
@@ -61,6 +64,7 @@ public class Login extends HttpServlet {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("./home");
         requestDispatcher.forward(req, res);
     }
+
 
     public String login(String actionError){
         return "<!DOCTYPE html>\n" +

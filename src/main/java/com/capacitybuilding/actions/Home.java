@@ -2,11 +2,13 @@ package com.capacitybuilding.actions;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebServlet("/home")
 public class Home extends HttpServlet {
     ServletConfig config = null;
 
@@ -14,6 +16,7 @@ public class Home extends HttpServlet {
         this.config = config;
     }
 
+    @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         System.out.println("Sessions:\t" + req.getSession().getAttribute("students"));
@@ -209,17 +212,15 @@ public class Home extends HttpServlet {
                 "                  <h6 class=\"p-3 mb-0\">See all activity</h6>\n" +
                 "                </div>\n" +
                 "              </li>\n" +
-                "\n" +
                 "            </ul>\n" +
                 "            <ul class=\"navbar-nav navbar-nav-right ml-lg-auto\">\n" +
-                "\n" +
                 "              <li class=\"nav-item nav-profile dropdown border-0\">\n" +
                 "                <a class=\"nav-link dropdown-toggle\" id=\"profileDropdown\" href=\"#\" data-toggle=\"dropdown\">\n" +
                 "                  <img class=\"nav-profile-img mr-2\" alt=\"\" src=\"assets/images/faces/face1.jpg\" />\n" +
                 "                  <span class=\"profile-name\">" +req.getParameter("email")+ "</span>\n" +
                 "                </a>\n" +
                 "                <div class=\"dropdown-menu navbar-dropdown w-100\" aria-labelledby=\"profileDropdown\">\n" +
-                "                  <a class=\"dropdown-item\" href=\"#\">\n" +
+                "                  <a class=\"dropdown-item\" href=\"./logout\">\n" +
                 "                    <i class=\"mdi mdi-logout mr-2 text-primary\"></i> Signout </a>\n" +
                 "                </div>\n" +
                 "              </li>\n" +
