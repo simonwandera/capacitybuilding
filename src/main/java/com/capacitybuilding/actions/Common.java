@@ -8,7 +8,7 @@ public class Common {
                 "<head>\n" +
                 "  <meta charset=\"utf-8\" />\n" +
                 "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n" +
-                "  <title>Login</title>\n" +
+                "  <title>Capacity Building</title>\n" +
                 "  <link rel=\"stylesheet\" href=\"./assets/vendors/mdi/css/materialdesignicons.min.css\" />\n" +
                 "  <link rel=\"stylesheet\" href=\"./assets/vendors/flag-icon-css/css/flag-icon.min.css\" />\n" +
                 "  <link rel=\"stylesheet\" href=\"./assets/vendors/css/vendor.bundle.base.css\" />\n" +
@@ -166,7 +166,7 @@ public class Common {
                 "            </a>\n" +
                 "          </li>\n" +
                 "          <li class=\"nav-item\">\n" +
-                "            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"/trainees\" aria-controls=\"ui-basic\">\n" +
+                "            <a class=\"nav-link\" href=\"./trainees\" aria-controls=\"ui-basic\">\n" +
                 "              <i class=\"mdi mdi-account-multiple menu-icon\"></i>\n" +
                 "              <span class=\"menu-title\">Trainees</span>\n" +
                 "            </a>\n" +

@@ -3,10 +3,15 @@ package com.capacitybuilding.model;
 import java.io.Serializable;
 
 public class Trainee implements Serializable {
+    static int id;
     private String firstName;
     private String lastName;
     private String email;
     private String gender;
+
+    public Trainee() {
+
+    }
 
     public String getFirstName() {
         return firstName;
