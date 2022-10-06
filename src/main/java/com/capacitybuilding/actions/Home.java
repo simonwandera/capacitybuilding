@@ -21,20 +21,8 @@ public class Home extends HttpServlet {
 
         System.out.println("Sessions:\t" + req.getSession().getAttribute("students"));
 
-        res.getWriter().print("<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                "  <head>\n" +
-                "    <meta charset=\"utf-8\" />\n" +
-                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n" +
-                "    <title>Capacity Building</title>\n" +
-                "    <link rel=\"stylesheet\" href=\"./assets/vendors/mdi/css/materialdesignicons.min.css\" />\n" +
-                "    <link rel=\"stylesheet\" href=\"./assets/vendors/flag-icon-css/css/flag-icon.min.css\" />\n" +
-                "    <link rel=\"stylesheet\" href=\"./assets/vendors/css/vendor.bundle.base.css\" />\n" +
-                "    <link rel=\"stylesheet\" href=\"./assets/vendors/font-awesome/css/font-awesome.min.css\" />\n" +
-                "    <link rel=\"stylesheet\" href=\"./assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css\" />\n" +
-                "    <link rel=\"stylesheet\" href=\"./assets/css/style.css\" />\n" +
-                "    <link rel=\"shortcut icon\" href=\"./assets/images/favicon.png\" />\n" +
-                "  </head>\n" +
+        res.getWriter().print(
+                Common.Header() +
                 "  <body>\n" +
                 "    <div class=\"container-scroller\">\n" +
                 "      <nav class=\"sidebar sidebar-offcanvas\" id=\"sidebar\">\n" +
@@ -68,7 +56,6 @@ public class Home extends HttpServlet {
                 "              <span class=\"menu-title\">Home</span>\n" +
                 "            </a>\n" +
                 "          </li>\n" +
-                "\n" +
                 "          <li class=\"nav-item\">\n" +
                 "            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#ui-basic\" aria-expanded=\"false\" aria-controls=\"ui-basic\">\n" +
                 "              <i class=\"mdi mdi-account-multiple menu-icon\"></i>\n" +
@@ -948,21 +935,8 @@ public class Home extends HttpServlet {
                 "        </div>\n" +
                 "      </div>\n" +
                 "    </div>\n" +
-                "    <script src=\"./assets/vendors/js/vendor.bundle.base.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/chart.js/Chart.min.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/flot/jquery.flot.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/flot/jquery.flot.resize.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/flot/jquery.flot.categories.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/flot/jquery.flot.fillbetween.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/flot/jquery.flot.stack.js\"></script>\n" +
-                "    <script src=\"./assets/vendors/flot/jquery.flot.pie.js\"></script>\n" +
-                "    <script src=\"./assets/js/off-canvas.js\"></script>\n" +
-                "    <script src=\"./assets/js/hoverable-collapse.js\"></script>\n" +
-                "    <script src=\"./assets/js/misc.js\"></script>\n" +
-                "    <script src=\"./assets/js/dashboard.js\"></script>\n" +
-                "  </body>\n" +
-                "</html>");
+                Common.Footer()
+        );
 
     }
 }
