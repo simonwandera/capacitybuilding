@@ -62,7 +62,7 @@ public class Register extends HttpServlet {
                 "            <div class=\"main-panel\">\n" +
                 "                <div class=\"content-wrapper\">\n" +
                 "                    <div class=\"page-header\">\n" +
-                "                        <h3 class=\"page-title m-auto\">" + getServletContext().getInitParameter("appName") + "</h3>\n" +
+                "                        <h3 class=\"page-title m-auto\">" + getServletContext().getAttribute("appName") + "</h3>\n" +
                 "                    </div>\n" +
                 "                    <div class=\"row\">\n" +
                 "                        <div class=\"col-12 grid-margin\">\n" +
