@@ -166,7 +166,7 @@ public class Common {
                 "            </a>\n" +
                 "          </li>\n" +
                 "          <li class=\"nav-item\">\n" +
-                "            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"#ui-basic\" aria-expanded=\"false\" aria-controls=\"ui-basic\">\n" +
+                "            <a class=\"nav-link\" data-toggle=\"collapse\" href=\"/trainees\" aria-controls=\"ui-basic\">\n" +
                 "              <i class=\"mdi mdi-account-multiple menu-icon\"></i>\n" +
                 "              <span class=\"menu-title\">Trainees</span>\n" +
                 "            </a>\n" +
