@@ -185,7 +185,7 @@ public class Common {
                 "            </a>\n" +
                 "          </li>\n" +
                 "          <li class=\"nav-item\">\n" +
-                "            <a class=\"nav-link\" href=\"pages/charts/chartjs.html\">\n" +
+                "            <a class=\"nav-link\" href=\"./trainees\">\n" +
                 "              <i class=\"mdi mdi-chart-bar menu-icon\"></i>\n" +
                 "              <span class=\"menu-title\">Trainings</span>\n" +
                 "            </a>\n" +
