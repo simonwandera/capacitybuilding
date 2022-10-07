@@ -29,7 +29,6 @@ public class DeleteTrainee extends HttpServlet {
                 trainees.remove(trainee);
                 break;
             }
-
         }
         res.sendRedirect("./trainees");
     }
