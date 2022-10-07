@@ -17,10 +17,20 @@ public class DeleteTrainee extends HttpServlet {
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        System.out.println("Deleting trainee  >> " + req.getParameter("id"));
+        int traineeId = Integer.parseInt(req.getParameter("id"));
+
+        System.out.println("Trainee id: " + traineeId);
 
         HttpSession session = req.getSession();
         List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
+
+        for (Trainee trainee: trainees){
+            if (trainee.getId() == traineeId) {
+                trainees.remove(trainee);
+                break;
+            }
+
+        }
         res.sendRedirect("./trainees");
     }
 }
