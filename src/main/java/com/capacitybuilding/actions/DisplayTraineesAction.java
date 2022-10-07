@@ -113,8 +113,8 @@ public class DisplayTraineesAction  extends HttpServlet {
                 "<td>"+trainee.getGender()+"</td>\n" +
                 "<td>" + new Date() + "</td>\n" +
                 "<td>\n" +
-                "<i class=\"mdi mdi-border-color mdi-24px\"></i>\n" +
-                "<i class=\"mdi mdi-delete md-24 mdi-24px\"></i>\n" +
+                "<a href=\"./editTrainee?id="+ trainee.getId() +"\"><i class=\"mdi mdi-border-color mdi-24px\"></i></a>\n" +
+                "<a href=\"./deleteTrainee?id="+ trainee.getId() +"\"><i class=\"mdi mdi-delete md-24 mdi-24px\"></i></a>\n" +
                 "</td>\n" +
                 "</tr>\n";
 

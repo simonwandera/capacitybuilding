@@ -3,19 +3,30 @@ package com.capacitybuilding.model;
 import java.io.Serializable;
 
 public class Trainee implements Serializable {
-    static int id;
+    static int maxId = 0;
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String gender;
 
     public Trainee() {
-        id = id + 1;
+        maxId = maxId + 1;
+        id = maxId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
         return firstName;
     }
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
