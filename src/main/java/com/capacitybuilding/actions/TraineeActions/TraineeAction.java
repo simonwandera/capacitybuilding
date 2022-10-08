@@ -1,5 +1,6 @@
-package com.capacitybuilding.actions;
+package com.capacitybuilding.actions.TraineeActions;
 
+import com.capacitybuilding.actions.Common;
 import com.capacitybuilding.model.Trainee;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +19,6 @@ import java.util.List;
 
 @WebServlet("/addTrainee")
 public class TraineeAction extends HttpServlet {
-
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("email");

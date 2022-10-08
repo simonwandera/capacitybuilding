@@ -1,5 +1,6 @@
-package com.capacitybuilding.actions;
+package com.capacitybuilding.actions.TraineeActions;
 
+import com.capacitybuilding.actions.Common;
 import com.capacitybuilding.model.Trainee;
 
 import javax.servlet.ServletException;

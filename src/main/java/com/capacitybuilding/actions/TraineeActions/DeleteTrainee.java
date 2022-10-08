@@ -1,4 +1,4 @@
-package com.capacitybuilding.actions;
+package com.capacitybuilding.actions.TraineeActions;
 
 import com.capacitybuilding.model.Trainee;
 
