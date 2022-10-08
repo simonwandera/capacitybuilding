@@ -15,25 +15,27 @@ import java.util.List;
 
 @WebServlet("/updateTrainee")
 public class UpdateTrainee extends HttpServlet {
-
+    private String sessionEmail;
+    private Trainee trainee = null;
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        String email = (String) session.getAttribute("email");
-        res.getWriter().print(this.updateTrainee(null, email));
+        sessionEmail = (String) session.getAttribute("email");
 
         List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
 
         int id = Integer.parseInt(req.getParameter("id"));
 
-        for (Trainee trainee: trainees){
-            if(trainee.getId() == id)
-                System.out.println("You have a trainee: " + trainee.getId() + "\t" + trainee.getFirstName());
+        for (Trainee tr: trainees){
+            if(tr.getId() == id)
+                trainee = tr;
         }
 
+        System.out.println(trainee.getId() + "\t" + trainee.getFirstName() + "\t" + trainee.getEmail() + trainee.getGender());
+        res.getWriter().print(this.updateTrainee(null, trainee));
     }
 
-    public String updateTrainee(String actionError, String email){
+    public String updateTrainee(String actionError, Trainee trainee){
 
         return Common.Header() +
 
@@ -56,7 +58,7 @@ public class UpdateTrainee extends HttpServlet {
                 "            <div class=\"tiles dark\"></div>\n" +
                 "          </div>\n" +
                 "        </div>\n" +
-                Common.TopNav(email) +
+                Common.TopNav(sessionEmail) +
                 "<div class=\"main-panel\">\n" +
                 "                <div class=\"content-wrapper pb-0\">\n" +
                 "                    <div class=\"page-header flex-wrap\">\n" +
