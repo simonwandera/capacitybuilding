@@ -75,22 +75,23 @@ public class UpdateTrainee extends HttpServlet {
                 "                        <h4 class=\"card-title\">Update Trainee</h4>\n" +
                 "                        <p class=\"card-description\">Basic form layout</p>\n" +
                 "                        <form class=\"forms-sample\" method=\"POST\"> \n" +
+                "                          <input type=\"hidden\" name=\"id\" id=\"id\" " + trainee.getId() + " placeholder=\"John\" />\n" +
                 "                          <div class=\"form-group\">\n" +
-                "                            <label for=\"exampleInputUsername1\">First name</label>\n" +
-                "                            <input type=\"text\" class=\"form-control\" name=\"firstName\" id=\"exampleInputUsername1\" placeholder=\"John\" />\n" +
+                "                            <label for=\"email\">First name</label>\n" +
+                "                            <input type=\"text\" class=\"form-control\" name=\"firstName\" id=\"firstName\" " + trainee.getFirstName() + " placeholder=\"John\" />\n" +
                 "                          </div>\n" +
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"exampleInputEmail1\">Last Name</label>\n" +
-                "                            <input type=\"text\" class=\"form-control\" name=\"lastName\" id=\"exampleInputEmail1\" placeholder=\"Doe\" />\n" +
+                "                            <input type=\"text\" class=\"form-control\" name=\"lastName\" id=\"lastName\" " + trainee.getLastName() + " placeholder=\"Doe\" />\n" +
                 "                          </div>\n" +
-                "\n" +
+
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"exampleInputEmail1\">Email</label>\n" +
-                "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"exampleInputEmail1\" placeholder=\"johndoe@example.com\" />\n" +
+                "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" " + trainee.getEmail() + " placeholder=\"johndoe@example.com\" />\n" +
                 "                          </div>\n" +
-                "\n" +
+
                 "                          <div class=\"form-group\">\n" +
-                "                            <label for=\"exampleInputPassword1\">Gender</label>\n" +
+                "                            <label for=\"gender\">Gender</label>\n" +
                 "                            <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
                 "                                <option>Male</option>\n" +
                 "                                <option>Female</option>\n" +
