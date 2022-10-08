@@ -35,6 +35,10 @@ public class UpdateTrainee extends HttpServlet {
         res.getWriter().print(this.updateTrainee(null, trainee));
     }
 
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+    }
+
     public String updateTrainee(String actionError, Trainee trainee){
 
         return Common.Header() +
@@ -104,7 +108,9 @@ public class UpdateTrainee extends HttpServlet {
     }
     public String SelectGender(Trainee trainee){
 
-        if(trainee.getGender().equalsIgnoreCase("male")) {
+        System.out.println("Gender " + trainee.getGender());
+
+        if(trainee.getGender().equalsIgnoreCase("Male")) {
             return  "<div class=\"form-group\">\n" +
                     "  <label for=\"gender\">Gender</label>\n" +
                     "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
@@ -114,7 +120,7 @@ public class UpdateTrainee extends HttpServlet {
                     "  </select>\n" +
                     "</div>\n" ;
 
-        } else if (trainee.getGender().equalsIgnoreCase("female")){
+        } else if (trainee.getGender().equalsIgnoreCase("Female")){
             return  "<div class=\"form-group\">\n" +
                     "  <label for=\"gender\">Gender</label>\n" +
                     "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
