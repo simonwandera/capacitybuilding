@@ -22,9 +22,15 @@ public class UpdateTrainee extends HttpServlet {
         String email = (String) session.getAttribute("email");
         res.getWriter().print(this.updateTrainee(null, email));
 
-         req.getParameter("id");
-
         List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
+
+        int id = Integer.parseInt(req.getParameter("id"));
+
+        for (Trainee trainee: trainees){
+            if(trainee.getId() == id)
+                System.out.println("You have a trainee: " + trainee.getId() + "\t" + trainee.getFirstName());
+        }
+
     }
 
     public String updateTrainee(String actionError, String email){
