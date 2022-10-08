@@ -1,6 +1,8 @@
 package com.capacitybuilding.actions.TraineeActions;
 
 import com.capacitybuilding.actions.Common;
+import com.capacitybuilding.model.Trainee;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,13 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/updateTrainee")
 public class UpdateTrainee extends HttpServlet {
+
+    @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("email");
         res.getWriter().print(this.updateTrainee(null, email));
+
+        System.out.println("This Trainee's id: " + req.getParameter("id"));
+
+        List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
     }
 
     public String updateTrainee(String actionError, String email){
