@@ -38,7 +38,6 @@ public class UpdateTrainee extends HttpServlet {
     public String updateTrainee(String actionError, Trainee trainee){
 
         return Common.Header() +
-
                 "  <body>\n" +
                 "    <div class=\"container-scroller\">\n" +
                 Common.SideNav() +
@@ -89,15 +88,7 @@ public class UpdateTrainee extends HttpServlet {
                 "                            <label for=\"exampleInputEmail1\">Email</label>\n" +
                 "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" value=\"" + trainee.getEmail() + "\" placeholder=\"johndoe@example.com\" />\n" +
                 "                          </div>\n" +
-
-                "                          <div class=\"form-group\">\n" +
-                "                            <label for=\"gender\">Gender</label>\n" +
-                "                            <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
-                "                                <option>Male</option>\n" +
-                "                                <option>Female</option>\n" +
-                "                                <option>Other</option>\n" +
-                "                            </select>\n" +
-                "                          </div>\n" +
+                                            this.SelectGender(trainee) +
                 "                          <div class=\"my-3 py-2 text-center\">\n" +
                 "                               <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
                 "                          </div>\n" +
@@ -111,4 +102,46 @@ public class UpdateTrainee extends HttpServlet {
                 "    </div>" +
                 Common.Footer();
     }
+    public String SelectGender(Trainee trainee){
+
+        if(trainee.getGender().equalsIgnoreCase("male")) {
+            return  "<div class=\"form-group\">\n" +
+                    "  <label for=\"gender\">Gender</label>\n" +
+                    "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
+                    "      <option selected>Male</option>\n" +
+                    "      <option>Female</option>\n" +
+                    "      <option>Other</option>\n" +
+                    "  </select>\n" +
+                    "</div>\n" ;
+
+        } else if (trainee.getGender().equalsIgnoreCase("female")){
+            return  "<div class=\"form-group\">\n" +
+                    "  <label for=\"gender\">Gender</label>\n" +
+                    "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
+                    "      <option>Male</option>\n" +
+                    "      <option selected>Female</option>\n" +
+                    "      <option>Other</option>\n" +
+                    "  </select>\n" +
+                    "</div>\n" ;
+        } else if (trainee.getGender().equalsIgnoreCase("other")){
+            return  "<div class=\"form-group\">\n" +
+                    "  <label for=\"gender\">Gender</label>\n" +
+                    "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
+                    "      <option>Male</option>\n" +
+                    "      <option>Female</option>\n" +
+                    "      <option selected>Other</option>\n" +
+                    "  </select>\n" +
+                    "</div>\n" ;
+        }else{
+            return  "<div class=\"form-group\">\n" +
+                    "  <label for=\"gender\">Gender</label>\n" +
+                    "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
+                    "      <option>Male</option>\n" +
+                    "      <option>Female</option>\n" +
+                    "      <option>Other</option>\n" +
+                    "  </select>\n" +
+                    "</div>\n" ;
+        }
+        }
+
 }
