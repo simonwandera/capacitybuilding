@@ -22,7 +22,7 @@ public class UpdateTrainee extends HttpServlet {
         String email = (String) session.getAttribute("email");
         res.getWriter().print(this.updateTrainee(null, email));
 
-        System.out.println("This Trainee's id: " + req.getParameter("id"));
+         req.getParameter("id");
 
         List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
     }
