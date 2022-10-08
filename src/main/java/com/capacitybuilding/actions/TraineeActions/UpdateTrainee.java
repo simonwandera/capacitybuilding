@@ -75,19 +75,19 @@ public class UpdateTrainee extends HttpServlet {
                 "                        <h4 class=\"card-title\">Update Trainee</h4>\n" +
                 "                        <p class=\"card-description\">Basic form layout</p>\n" +
                 "                        <form class=\"forms-sample\" method=\"POST\"> \n" +
-                "                          <input type=\"hidden\" name=\"id\" id=\"id\" " + trainee.getId() + " placeholder=\"John\" />\n" +
+                "                          <input type=\"hidden\" name=\"id\" id=\"id\" value=\"" + trainee.getId() + "\" placeholder=\"John\" />\n" +
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"email\">First name</label>\n" +
-                "                            <input type=\"text\" class=\"form-control\" name=\"firstName\" id=\"firstName\" " + trainee.getFirstName() + " placeholder=\"John\" />\n" +
+                "                            <input type=\"text\" class=\"form-control\" name=\"firstName\" id=\"firstName\" value=\"" + trainee.getFirstName() + "\" placeholder=\"John\" />\n" +
                 "                          </div>\n" +
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"exampleInputEmail1\">Last Name</label>\n" +
-                "                            <input type=\"text\" class=\"form-control\" name=\"lastName\" id=\"lastName\" " + trainee.getLastName() + " placeholder=\"Doe\" />\n" +
+                "                            <input type=\"text\" class=\"form-control\" name=\"lastName\" id=\"lastName\" value=\"" + trainee.getLastName() + "\" placeholder=\"Doe\" />\n" +
                 "                          </div>\n" +
 
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"exampleInputEmail1\">Email</label>\n" +
-                "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" " + trainee.getEmail() + " placeholder=\"johndoe@example.com\" />\n" +
+                "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" value=\"" + trainee.getEmail() + "\" placeholder=\"johndoe@example.com\" />\n" +
                 "                          </div>\n" +
 
                 "                          <div class=\"form-group\">\n" +
@@ -101,15 +101,12 @@ public class UpdateTrainee extends HttpServlet {
                 "                          <div class=\"my-3 py-2 text-center\">\n" +
                 "                               <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
                 "                          </div>\n" +
-                "                          <button type=\"submit\" class=\"btn btn-primary mr-2\"> Submit </button>\n" +
+                "                          <button type=\"submit\" class=\"btn btn-primary mr-2 mt-1\"> Submit </button>\n" +
                 "                        </form>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +
                 "                  </div>\n" +
-                "\n" +
-                "\n" +
                 "            </div>\n" +
-                "\n" +
                 "        </div>\n" +
                 "    </div>" +
                 Common.Footer();
