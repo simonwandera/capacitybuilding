@@ -72,7 +72,6 @@ public class UpdateTrainee extends HttpServlet {
                 tr.setGender(trainee.getGender());
             }
         }
-//        session.setAttribute("trainees", trainees);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("./trainees");
         dispatcher.forward(req, res);
