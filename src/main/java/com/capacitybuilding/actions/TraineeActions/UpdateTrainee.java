@@ -3,7 +3,9 @@ package com.capacitybuilding.actions.TraineeActions;
 import com.capacitybuilding.actions.Common;
 import com.capacitybuilding.model.Trainee;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang3.StringUtils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet("/updateTrainee")
 public class UpdateTrainee extends HttpServlet {
@@ -35,8 +40,42 @@ public class UpdateTrainee extends HttpServlet {
         res.getWriter().print(this.updateTrainee(null, trainee));
     }
 
+    @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        PrintWriter wr = res.getWriter();
 
+        Trainee trainee = new Trainee();
+
+        try {
+            BeanUtils.populate(trainee, req.getParameterMap());
+
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+        if (StringUtils.isBlank(trainee.getFirstName())) {
+            wr.print(this.updateTrainee("First name is required<br/>", trainee));
+            return;
+        }
+
+        List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
+
+        if (trainees == null)
+            trainees = new ArrayList<>();
+
+        for (Trainee tr: trainees){
+            if(tr.getId() == trainee.getId()) {
+                tr.setEmail(trainee.getEmail());
+                tr.setFirstName(trainee.getFirstName());
+                tr.setLastName(trainee.getLastName());
+                tr.setGender(trainee.getGender());
+            }
+        }
+//        session.setAttribute("trainees", trainees);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("./trainees");
+        dispatcher.forward(req, res);
     }
 
     public String updateTrainee(String actionError, Trainee trainee){
