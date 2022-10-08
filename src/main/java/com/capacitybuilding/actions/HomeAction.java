@@ -11,18 +11,11 @@ import java.io.IOException;
 
 @WebServlet("/home")
 public class HomeAction extends HttpServlet {
-    ServletConfig config = null;
-
-    public void init(ServletConfig config) throws ServletException {
-        this.config = config;
-    }
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-
-        System.out.println("Sessions:\t" + req.getSession().getAttribute("students"));
 
         res.getWriter().print("" +
                         Common.Header() +

@@ -32,11 +32,6 @@ public class LoginAction extends HttpServlet {
 
         String actionError = "";
 
-        System.out.println("\n\n");
-        System.out.println("Action:" + action);
-        System.out.println("Email: " + email);
-        System.out.println("Password: " + password);
-
         if (email == null || email.equalsIgnoreCase("")){
             wr.print(this.login("Email is required<br/>"));
             return;
