@@ -16,18 +16,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet("/updateTrainee")
 public class UpdateTrainee extends HttpServlet {
     private String sessionEmail;
     private Trainee trainee = null;
+    private List<Trainee> trainees;
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         sessionEmail = (String) session.getAttribute("email");
 
-        List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
+        trainees = (List<Trainee>) session.getAttribute("trainees");
 
         int id = Integer.parseInt(req.getParameter("id"));
 
@@ -42,10 +42,7 @@ public class UpdateTrainee extends HttpServlet {
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         PrintWriter wr = res.getWriter();
-
-        Trainee trainee = new Trainee();
 
         try {
             BeanUtils.populate(trainee, req.getParameterMap());
@@ -58,8 +55,6 @@ public class UpdateTrainee extends HttpServlet {
             wr.print(this.updateTrainee("First name is required<br/>", trainee));
             return;
         }
-
-        List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
 
         if (trainees == null)
             trainees = new ArrayList<>();
@@ -146,8 +141,6 @@ public class UpdateTrainee extends HttpServlet {
     }
     public String SelectGender(Trainee trainee){
 
-        System.out.println("Gender " + trainee.getGender());
-
         if(trainee.getGender().equalsIgnoreCase("Male")) {
             return  "<div class=\"form-group\">\n" +
                     "  <label for=\"gender\">Gender</label>\n" +
@@ -170,7 +163,7 @@ public class UpdateTrainee extends HttpServlet {
         } else if (trainee.getGender().equalsIgnoreCase("other")){
             return  "<div class=\"form-group\">\n" +
                     "  <label for=\"gender\">Gender</label>\n" +
-                    "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
+                    "  <select class=\"form-control\" name=\"gender\" id=\"gender\">\n" +
                     "      <option>Male</option>\n" +
                     "      <option>Female</option>\n" +
                     "      <option selected>Other</option>\n" +
