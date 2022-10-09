@@ -36,7 +36,7 @@ public class UpdateTrainee extends HttpServlet {
         }
 
         System.out.println(trainee.getId() + "\t" + trainee.getFirstName() + "\t" + trainee.getEmail() + trainee.getGender());
-        res.getWriter().print(this.updateTrainee("Some action error", trainee));
+        res.getWriter().print(this.updateTrainee(null, trainee));
     }
 
     @SuppressWarnings("unchecked")
@@ -52,6 +52,21 @@ public class UpdateTrainee extends HttpServlet {
 
         if (StringUtils.isBlank(trainee.getFirstName())) {
             wr.print(this.updateTrainee("First name is required<br/>", trainee));
+            return;
+        }
+
+        if (StringUtils.isBlank(trainee.getLastName())) {
+            wr.print(this.updateTrainee("Last name is required<br/>", trainee));
+            return;
+        }
+
+        if (StringUtils.isBlank(trainee.getGender())) {
+            wr.print(this.updateTrainee("Gender is required<br/>", trainee));
+            return;
+        }
+
+        if (StringUtils.isBlank(trainee.getEmail())) {
+            wr.print(this.updateTrainee("Email is required<br/>", trainee));
             return;
         }
 
