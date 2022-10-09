@@ -26,7 +26,6 @@ public class UpdateTrainee extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         sessionEmail = (String) session.getAttribute("email");
-
         trainees = (List<Trainee>) session.getAttribute("trainees");
 
         int id = Integer.parseInt(req.getParameter("id"));
@@ -37,7 +36,7 @@ public class UpdateTrainee extends HttpServlet {
         }
 
         System.out.println(trainee.getId() + "\t" + trainee.getFirstName() + "\t" + trainee.getEmail() + trainee.getGender());
-        res.getWriter().print(this.updateTrainee(null, trainee));
+        res.getWriter().print(this.updateTrainee("Some action error", trainee));
     }
 
     @SuppressWarnings("unchecked")
@@ -126,7 +125,7 @@ public class UpdateTrainee extends HttpServlet {
                 "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" value=\"" + trainee.getEmail() + "\" placeholder=\"johndoe@example.com\" />\n" +
                 "                          </div>\n" +
                                             this.SelectGender(trainee) +
-                "                          <div class=\"my-3 py-2 text-center\">\n" +
+                "                          <div class=\"py-1 text-center\">\n" +
                 "                               <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
                 "                          </div>\n" +
                 "                          <button type=\"submit\" class=\"btn btn-primary mr-2 mt-1\"> Submit </button>\n" +
