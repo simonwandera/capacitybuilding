@@ -156,7 +156,7 @@ public class Common {
                 "            </a>\n" +
                 "          </li>\n" +
                 "          <li class=\"nav-item\">\n" +
-                "            <a class=\"nav-link\" href=\"index.html\">\n" +
+                "            <a class=\"nav-link\" href=\"./home\">\n" +
                 "              <i class=\"mdi mdi-home menu-icon\"></i>\n" +
                 "              <span class=\"menu-title\">Dashboard</span>\n" +
                 "            </a>\n" +

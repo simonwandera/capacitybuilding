@@ -45,7 +45,6 @@ public class UpdateTrainee extends HttpServlet {
 
         try {
             BeanUtils.populate(trainee, req.getParameterMap());
-
         } catch (Exception ex){
             System.out.println(ex.getMessage());
         }

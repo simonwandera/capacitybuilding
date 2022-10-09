@@ -19,6 +19,7 @@ import java.util.List;
 
 @WebServlet("/addTrainee")
 public class TraineeAction extends HttpServlet {
+    List<Trainee> trainees;
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("email");
@@ -54,7 +55,7 @@ public class TraineeAction extends HttpServlet {
             return;
         }
 
-        List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
+        trainees = (List<Trainee>) session.getAttribute("trainees");
 
         if (trainees == null)
             trainees = new ArrayList<>();

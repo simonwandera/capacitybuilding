@@ -1,5 +1,7 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.model.Trainee;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,14 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/home")
 public class HomeAction extends HttpServlet {
+    List<Trainee> trainees;
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
         HttpSession session = req.getSession();
+
+        trainees = (List<Trainee>) session.getAttribute("trainees");
+
+        if (trainees == null)
+            trainees = new ArrayList<>();
+
 
         res.getWriter().print("" +
                         Common.Header() +
@@ -72,7 +82,7 @@ public class HomeAction extends HttpServlet {
                         "                        <div class=\"d-flex justify-content-between align-items-start\">\n" +
                         "                          <div class=\"color-card\">\n" +
                         "                            <p class=\"mb-0 color-card-head\">Trainees</p>\n" +
-                        "                            <h2 class=\"text-white\"> 130</span>\n" +
+                        "                            <h2 class=\"text-white\">" + trainees.size() + "</span>\n" +
                         "                            </h2>\n" +
                         "                          </div>\n" +
                         "                          <i class=\"card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger\"></i>\n" +
