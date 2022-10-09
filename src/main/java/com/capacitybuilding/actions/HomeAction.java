@@ -16,8 +16,10 @@ import java.util.List;
 public class HomeAction extends HttpServlet {
     List<Trainee> trainees;
 
+    @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
         HttpSession session = req.getSession();
+        trainees = (List<Trainee>) session.getAttribute("trainees");
         if (trainees == null)
             trainees = new ArrayList<>();
         res.getWriter().print(HomeDashboard((String) session.getAttribute("email")));
@@ -59,7 +61,7 @@ public class HomeAction extends HttpServlet {
                 "            <div class=\"tiles dark\"></div>\n" +
                 "          </div>\n" +
                 "        </div>\n" +
-                            email+
+                            Common.TopNav(email) +
                 "        <div class=\"main-panel\">\n" +
                 "          <div class=\"content-wrapper pb-0\">\n" +
                 "            <div class=\"page-header flex-wrap\">\n" +
