@@ -143,7 +143,7 @@ public class UpdateTrainee extends HttpServlet {
                 "                          <div class=\"py-1 text-center\">\n" +
                 "                               <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
                 "                          </div>\n" +
-                "                          <button type=\"submit\" class=\"btn btn-primary mr-2 mt-1\"> Submit </button>\n" +
+                "                          <button type=\"submit\" class=\"btn btn-success mr-2 mt-1\"> Submit </button>\n" +
                 "                        </form>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +

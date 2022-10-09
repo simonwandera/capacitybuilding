@@ -128,7 +128,7 @@ public class TraineeAction extends HttpServlet {
                 "                                <option>Other</option>\n" +
                 "                            </select>\n" +
                 "                          </div>\n" +
-                "                          <div class=\"my-3 py-2 text-center\">\n" +
+                "                          <div class=\"py-1 text-center\">\n" +
                 "                               <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
                 "                          </div>\n" +
                 "                          <button type=\"submit\" class=\"btn btn-primary mr-2\"> Submit </button>\n" +
