@@ -149,7 +149,7 @@ public class RegisterAction extends HttpServlet {
                 "                                        <div class=\"my-3 py-2 text-center\">\n" +
                 "                                            <span class=\"text-danger\">" +(actionError != null? actionError : "")+ "</span>\n" +
                 "                                        </div>\n" +
-                "                                        <button type=\"submit\" class=\"btn btn-primary mr-2\"> Sign In </button>\n" +
+                "                                        <button type=\"submit\" class=\"btn btn-primary mr-2\"> Register </button>\n" +
                 "                                        <a href=\"./login\">Login</a>\n" +
                 "                                    </form>\n" +
                 "                                </div>\n" +

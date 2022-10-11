@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(urlPatterns = "/login", initParams = {
         @WebInitParam(name = "email", value = "simon@skytrix.com"),
@@ -29,7 +31,6 @@ public class LoginAction extends HttpServlet {
         PrintWriter wr = res.getWriter();
         String password = req.getParameter("password");
         String email = req.getParameter("email");
-        String name = req.getParameter("name");
 
         if (email == null || email.equalsIgnoreCase("")){
             wr.print(this.login("Email is required<br/>"));
@@ -40,6 +41,8 @@ public class LoginAction extends HttpServlet {
             wr.print(this.login("Password is required<br/>"));
             return;
         }
+
+        Map<String, String> criteria = new HashMap<>();
 
         if (!email.equals(getServletConfig().getInitParameter("username")) && !password.equals(getServletConfig().getInitParameter("password"))) {
             wr.print(this.login("Invalid username & password combination<br/>"));
