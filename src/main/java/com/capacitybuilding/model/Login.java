@@ -12,9 +12,9 @@ import java.util.Map;
 public class Login extends Entity {
 
     private int Id;
-    private String Username;
-    private String Password;
-    private String UserType;
+    private String username;
+    private String password;
+    private String userType;
 
     static ResultSet resultSet;
     private static final String tableName = "Login";
@@ -44,26 +44,29 @@ public class Login extends Entity {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        entitiesMap.put("Username", username);
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        entitiesMap.put("Password", password);
+        this.password = password;
     }
 
     public String getUserType() {
-        return UserType;
+        return userType;
     }
 
     public void setUserType(String userType) {
-        UserType = userType;
+        entitiesMap.put("UserType", userType);
+        this.userType = userType;
     }
 }
