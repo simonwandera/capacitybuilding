@@ -51,6 +51,13 @@ public class LoginAction extends HttpServlet {
             put("Password", password);
         }};;
 
+        try {
+            Login login = new Login();
+
+            System.out.println("Login Size: " + login.login(criteria).size());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
         if (!email.equals(getServletConfig().getInitParameter("username")) && !password.equals(getServletConfig().getInitParameter("password"))) {
