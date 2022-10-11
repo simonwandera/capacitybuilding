@@ -36,6 +36,7 @@ public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
             isFirst = false;
         }
 
+        System.out.println("?>>>>>: " + stringBuilder.toString());
         return stringBuilder.toString();
     }
 

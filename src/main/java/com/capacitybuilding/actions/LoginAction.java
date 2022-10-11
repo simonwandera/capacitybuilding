@@ -54,25 +54,20 @@ public class LoginAction extends HttpServlet {
         try {
             Login login = new Login();
 
-            System.out.println("Login Size: " + login.login(criteria).size());
+            if(login.login(criteria).size() > 0){
+                HttpSession session = req.getSession(true);
+                session.setAttribute("email", email);
+
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("./home");
+                requestDispatcher.forward(req, res);
+            }else {
+                wr.print(this.login("Invalid username & password combination<br/>"));
+                return;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-
-        if (!email.equals(getServletConfig().getInitParameter("username")) && !password.equals(getServletConfig().getInitParameter("password"))) {
-            wr.print(this.login("Invalid username & password combination<br/>"));
-            return;
-        }
-
-        HttpSession session = req.getSession(true);
-        session.setAttribute("email", email);
-
-        List<Trainee> trainees  = new ArrayList<>();
-        session.setAttribute("trainees", trainees);
-
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("./home");
-        requestDispatcher.forward(req, res);
     }
 
 
