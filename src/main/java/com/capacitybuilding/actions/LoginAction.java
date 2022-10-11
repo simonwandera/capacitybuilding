@@ -1,6 +1,8 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.model.Login;
 import com.capacitybuilding.model.Trainee;
+import com.mysql.cj.log.Log;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +50,8 @@ public class LoginAction extends HttpServlet {
             put("Username", email);
             put("Password", password);
         }};;
+
+
 
         if (!email.equals(getServletConfig().getInitParameter("username")) && !password.equals(getServletConfig().getInitParameter("password"))) {
             wr.print(this.login("Invalid username & password combination<br/>"));

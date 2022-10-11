@@ -31,9 +31,8 @@ public class Login extends Entity {
     public Login() throws SQLException {
         super(entitiesMap, tableName);
     }
-
-    public static IMySQLDB<Login> getLoginDB() throws SQLException {
-        return new MySQLDB<>(new Login());
+    public static Map<String, Object> getEntities() {
+        return entitiesMap;
     }
 
     public int getId() {
@@ -72,18 +71,25 @@ public class Login extends Entity {
         this.userType = userType;
     }
 
-    public static List<Login> displayAll() throws SQLException {
-        List<Login> studentList = new ArrayList<>();
-        resultSet = getLoginDB().fetchAll();
+    public List<Login> display() throws SQLException {
+        List<Login> loginList = new ArrayList<>();
+        resultSet = this.getAll();
         while (resultSet.next()){
             Login login = new Login();
             login.setId(resultSet.getInt("id"));
             login.setUsername(resultSet.getString("username"));
             login.setPassword(resultSet.getString("password"));
             login.setUserType(resultSet.getString("userType"));
-            studentList.add(login);
+            loginList.add(login);
         }
-        return studentList;
+        return loginList;
+    }
+
+    public List<Login> login() throws SQLException{
+        List<Login> loginList = new ArrayList<>();
+
+        
+        return loginList;
     }
 
     @Override
