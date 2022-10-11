@@ -42,7 +42,10 @@ public class LoginAction extends HttpServlet {
             return;
         }
 
-        Map<String, String> criteria = new HashMap<>();
+        Map<String, String> criteria = new HashMap<>(){{
+            put("Username", email);
+            put("Password", password);
+        }};;
 
         if (!email.equals(getServletConfig().getInitParameter("username")) && !password.equals(getServletConfig().getInitParameter("password"))) {
             wr.print(this.login("Invalid username & password combination<br/>"));
