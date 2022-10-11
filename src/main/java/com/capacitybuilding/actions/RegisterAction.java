@@ -113,14 +113,6 @@ public class RegisterAction extends HttpServlet {
                 "                                            </div>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"row\">\n" +
-                "                                            <div class=\"col-md-6\">\n" +
-                "                                                <div class=\"form-group row\">\n" +
-                "                                                    <label class=\"col-sm-3 col-form-label\">Date of Birth</label>\n" +
-                "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <input class=\"form-control\" name=\"dateOfBirth\" placeholder=\"dd/mm/yyyy\" />\n" +
-                "                                                    </div>\n" +
-                "                                                </div>\n" +
-                "                                            </div>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"row\">\n" +
                 "                                        </div>\n" +
