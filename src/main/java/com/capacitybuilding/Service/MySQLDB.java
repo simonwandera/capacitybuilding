@@ -14,6 +14,15 @@ public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
         this.openConnection();
     }
 
+    private boolean openConnection() throws SQLException {
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CapacityBuilding", "root", "");
+            return true;
+        }catch (SQLException e){
+            throw e;
+        }
+    }
+
     @Override
     public String createSelectWithWhereClauseQuery() {
         StringBuilder stringBuilder = new StringBuilder("SELECT * FROM ");
@@ -35,14 +44,6 @@ public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
         return stringBuilder.toString();
     }
 
-    private boolean openConnection() throws SQLException {
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CapacityBuilding", "root", "");
-            return true;
-        }catch (SQLException e){
-            throw e;
-        }
-    }
     @Override
     public String createInsertQuery() {
         StringBuilder stringBuilder = new StringBuilder("INSERT INTO "); // insert into
@@ -87,7 +88,6 @@ public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
 
         updateQuery.append(" WHERE ").append("id =").append(entryMap.get("id"));
 
-        System.out.println("Update query = " + updateQuery.toString());
         return updateQuery.toString();
     }
 
