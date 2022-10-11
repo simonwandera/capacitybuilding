@@ -1,5 +1,7 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.model.Trainee;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -25,12 +27,9 @@ public class LoginAction extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         PrintWriter wr = res.getWriter();
-        String action = req.getParameter("action");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String name = req.getParameter("name");
-
-        String actionError = "";
 
         if (email == null || email.equalsIgnoreCase("")){
             wr.print(this.login("Email is required<br/>"));
@@ -50,14 +49,8 @@ public class LoginAction extends HttpServlet {
         HttpSession session = req.getSession(true);
         session.setAttribute("email", email);
 
-        List<String> studentNames  = new ArrayList<String>();
-        studentNames.add("Bonnie");
-        studentNames.add("Simon");
-        studentNames.add("James");
-        studentNames.add("Mercy");
-        studentNames.add("George");
-
-        session.setAttribute("students", studentNames);
+        List<Trainee> trainees  = new ArrayList<>();
+        session.setAttribute("trainees", trainees);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("./home");
         requestDispatcher.forward(req, res);

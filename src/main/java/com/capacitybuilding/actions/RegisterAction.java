@@ -1,5 +1,9 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.Service.IMySQLDB;
+import com.capacitybuilding.Service.MySQLDB;
+import com.capacitybuilding.model.Login;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 @WebServlet("/register")
 public class RegisterAction extends HttpServlet {
@@ -47,8 +52,25 @@ public class RegisterAction extends HttpServlet {
         if (password != null && confirmPassword != null && !password.equals(confirmPassword))
             actionError += "Password & confirm password do not match<br/>";
 
-        if (actionError.equals(""))
+        if (actionError.equals("")) {
+
+            try {
+                Login login = new Login();
+
+                login.setUsername(email);
+                login.setPassword(password);
+                login.setUserType("USER");
+
+                IMySQLDB<Login> iMySQLDB = new MySQLDB<>(login);
+                iMySQLDB.save();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
             res.sendRedirect("./login");
+        }
+
+
         else
             wr.print(this.register(actionError));
     }
@@ -91,17 +113,6 @@ public class RegisterAction extends HttpServlet {
                 "                                            </div>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"row\">\n" +
-                "                                            <div class=\"col-md-6\">\n" +
-                "                                                <div class=\"form-group row\">\n" +
-                "                                                    <label class=\"col-sm-3 col-form-label\">Gender</label>\n" +
-                "                                                    <div class=\"col-sm-9\">\n" +
-                "                                                        <select class=\"form-control\">\n" +
-                "                                                            <option>Male</option>\n" +
-                "                                                            <option>Female</option>\n" +
-                "                                                        </select>\n" +
-                "                                                    </div>\n" +
-                "                                                </div>\n" +
-                "                                            </div>\n" +
                 "                                            <div class=\"col-md-6\">\n" +
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">Date of Birth</label>\n" +
