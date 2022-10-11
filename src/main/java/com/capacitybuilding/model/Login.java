@@ -6,7 +6,9 @@ import com.capacitybuilding.Service.MySQLDB;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Login extends Entity {
@@ -68,5 +70,28 @@ public class Login extends Entity {
     public void setUserType(String userType) {
         entitiesMap.put("UserType", userType);
         this.userType = userType;
+    }
+
+    public static List<Login> displayAll() throws SQLException {
+        List<Login> studentList = new ArrayList<>();
+        resultSet = getLoginDB().fetchAll();
+        while (resultSet.next()){
+            Login login = new Login();
+            login.setId(resultSet.getInt("id"));
+            login.setUsername(resultSet.getString("username"));
+            login.setPassword(resultSet.getString("password"));
+            login.setUserType(resultSet.getString("userType"));
+            studentList.add(login);
+        }
+        return studentList;
+    }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userType='" + userType + '\'' +
+                '}';
     }
 }
