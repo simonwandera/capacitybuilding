@@ -83,7 +83,7 @@ public class DisplayTraineesAction  extends HttpServlet {
                 "                        <h4 class=\"card-title\">All Registered Trainees</h4>\n" +
                 "                        <p class=\"card-description\"> Updated </p>\n" +
                 "                        <div class=\"table-responsive\">\n" +
-                                            traineeGrid((traineesList) +
+                                            traineeGrid(traineesList) +
                 "                        </div>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +

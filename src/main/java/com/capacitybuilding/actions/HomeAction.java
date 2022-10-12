@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,13 @@ public class HomeAction extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        trainees = (List<Trainee>) session.getAttribute("trainees");
+        Trainee trainee = new Trainee();
 
-        if (trainees == null)
-            trainees = new ArrayList<>();
+        try {
+            trainees = trainee.display();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         res.getWriter().print(HomeDashboard((String) session.getAttribute("email")));
 
