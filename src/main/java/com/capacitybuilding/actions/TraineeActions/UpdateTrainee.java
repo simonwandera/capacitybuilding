@@ -8,6 +8,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +29,14 @@ public class UpdateTrainee extends HttpServlet {
     private String sessionEmail;
     private Trainee trainee = null;
     private List<Trainee> trainees;
-    ServletContext servletContext = getServletConfig().getServletContext();
-    Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+    Connection connection;
+    ServletContext servletContext;
+
+    public void init(ServletConfig config) throws ServletException{
+        super.init(config);
+        servletContext = getServletConfig().getServletContext();
+        connection = (Connection) servletContext.getAttribute("dbConnection");
+    }
 
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

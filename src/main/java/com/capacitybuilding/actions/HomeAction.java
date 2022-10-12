@@ -4,6 +4,7 @@ import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Trainee;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +22,14 @@ import java.util.List;
 @WebServlet("/home")
 public class HomeAction extends HttpServlet {
     List<Trainee> trainees;
+    Connection connection;
+    ServletContext servletContext;
 
-    ServletContext servletContext = getServletConfig().getServletContext();
-    Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+    public void init(ServletConfig config) throws ServletException{
+        super.init(config);
+        servletContext = getServletConfig().getServletContext();
+        connection = (Connection) servletContext.getAttribute("dbConnection");
+    }
 
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
