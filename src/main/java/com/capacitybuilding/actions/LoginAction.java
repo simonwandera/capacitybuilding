@@ -1,10 +1,12 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.Service.IMySQLDB;
+import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Login;
-import com.capacitybuilding.model.Trainee;
 import com.mysql.cj.log.Log;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -14,20 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.Statement;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/login", initParams = {
-        @WebInitParam(name = "email", value = "simon@skytrix.com"),
-        @WebInitParam(name = "password", value = "password")
-})
+@WebServlet(urlPatterns = "/login")
 public class LoginAction extends HttpServlet {
+
+    ServletContext servletContext = getServletConfig().getServletContext();
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        res.getWriter().print(this.login(null));
+        res.getWriter().print(this.loginPage(null));
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -37,12 +38,12 @@ public class LoginAction extends HttpServlet {
         String email = req.getParameter("email");
 
         if (email == null || email.equalsIgnoreCase("")){
-            wr.print(this.login("Email is required<br/>"));
+            wr.print(this.loginPage("Email is required<br/>"));
             return;
         }
 
         if (password == null || password.equalsIgnoreCase("")) {
-            wr.print(this.login("Password is required<br/>"));
+            wr.print(this.loginPage("Password is required<br/>"));
             return;
         }
 
@@ -51,26 +52,37 @@ public class LoginAction extends HttpServlet {
             put("Password", password);
         }};;
 
+        
+    }
+
+    public Login login(Map<String, String> criteria) {
+
+        Login login = new Login();
+
         try {
-            Login login = new Login();
+            Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+            Statement statement = connection.createStatement();
+            IMySQLDB<Login, Connection> loginMysqlDb = new MySQLDB<>(login, connection);
 
-            if(login.login(criteria).size() > 0){
-                HttpSession session = req.getSession(true);
-                session.setAttribute("email", email);
+            String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
+            ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
 
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("./home");
-                requestDispatcher.forward(req, res);
-            }else {
-                wr.print(this.login("Invalid username & password combination<br/>"));
-                return;
+            while (resultSet.next()) {
+                login = new Login();
+                login.setUsername(resultSet.getString("userName"));
+                login.setUserType(resultSet.getString("userType"));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        }catch (Exception ex) {
+            System.out.println("Log In Error: " + ex.getMessage());
         }
+
+        return login;
+
     }
 
 
-    public String login(String actionError){
+    public String loginPage(String actionError){
         return Common.Header() +
                 "<body>\n" +
                 "  <div class=\"container-scroller\">\n" +

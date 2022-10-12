@@ -30,7 +30,7 @@ public class Login extends Entity {
         put("UserType", "");
     }};;
 
-    public Login() throws SQLException {
+    public Login(){
         super(entitiesMap, tableName);
     }
     public static Map<String, Object> getEntities() {
@@ -83,16 +83,6 @@ public class Login extends Entity {
             loginList.add(login);
         }
         return loginList;
-    }
-
-    public List<Login> login(Map<String, String> criteria) throws SQLException{
-        List<Login> loginList = new ArrayList<>();
-
-        Login login = new Login();
-
-        String loginQuery = this.getMySqlDB().createSelectWithWhereClauseQuery(criteria);
-        ResultSet resultSet1 = this.getMySqlDB().executeReadQuery(loginQuery);
-        return generateList(resultSet1);
     }
 
     @Override
