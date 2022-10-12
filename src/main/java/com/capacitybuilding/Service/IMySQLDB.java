@@ -1,10 +1,11 @@
 package com.capacitybuilding.Service;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-public interface IMySQLDB<T extends Entity> {
+public interface IMySQLDB<T extends Entity, I extends Connection> {
 
     String createInsertQuery();
     String createUpdateQuery(Map<String, Object> entryMap);

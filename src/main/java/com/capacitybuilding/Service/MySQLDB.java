@@ -3,25 +3,25 @@ package com.capacitybuilding.Service;
 import java.sql.*;
 import java.util.Map;
 
-public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
+public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB<T, I> {
     private Connection connection;
     static ResultSet resultSet;
     private Statement statement;
     private T t;
 
-    public MySQLDB(T t) throws SQLException {
+    public MySQLDB(T t, I i) throws SQLException {
         this.t = t;
-        this.openConnection();
+        this.connection = i;
     }
 
-    private boolean openConnection() throws SQLException {
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CapacityBuilding", "root", "");
-            return true;
-        }catch (SQLException e){
-            throw e;
-        }
-    }
+//    private boolean openConnection() throws SQLException {
+//        try {
+//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CapacityBuilding", "root", "");
+//            return true;
+//        }catch (SQLException e){
+//            throw e;
+//        }
+//    }
 
     @Override
     public String createSelectWithWhereClauseQuery(Map<String, String> criteria) {

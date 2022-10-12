@@ -4,6 +4,7 @@ import com.capacitybuilding.Service.Entity;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Struct;
@@ -84,14 +85,10 @@ public class Login extends Entity {
         return loginList;
     }
 
-
-    public List<Login> display() throws SQLException {
-        resultSet = this.getAll();
-        return generateList(resultSet);
-    }
-
     public List<Login> login(Map<String, String> criteria) throws SQLException{
         List<Login> loginList = new ArrayList<>();
+
+        Login login = new Login();
 
         String loginQuery = this.getMySqlDB().createSelectWithWhereClauseQuery(criteria);
         ResultSet resultSet1 = this.getMySqlDB().executeReadQuery(loginQuery);

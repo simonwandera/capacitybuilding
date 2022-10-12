@@ -11,10 +11,6 @@ public class Entity {
         return entitiesMap;
     }
 
-    public IMySQLDB<Entity> getMySqlDB() throws SQLException {
-        return new MySQLDB<>(new Entity(this.entitiesMap, this.tableName));
-    }
-
     public String getTableName() {
         return tableName;
     }
@@ -24,12 +20,12 @@ public class Entity {
         this.entitiesMap = entitiesMap;
     }
 
-    public ResultSet getAll() throws SQLException {
-        return this.getMySqlDB().fetchAll();
-    }
+//    public ResultSet getAll() throws SQLException {
+//        return this.getMySqlDB().fetchAll();
+//    }
 
-    public ResultSet getOne() throws SQLException {
-        return this.getMySqlDB().fetchOne();
-    }
+//    public ResultSet getOne() throws SQLException {
+//        return this.getMySqlDB().fetchOne();
+//    }
 
 }
