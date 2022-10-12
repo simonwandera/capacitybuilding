@@ -28,10 +28,12 @@ import java.util.Map;
 public class LoginAction extends HttpServlet {
 
     ServletContext servletContext;
+    Connection connection;
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
         servletContext = getServletConfig().getServletContext();
+        connection = (Connection) servletContext.getAttribute("dbConnection");
     }
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.loginPage(null));
@@ -58,11 +60,9 @@ public class LoginAction extends HttpServlet {
             put("Password", password);
         }};;
 
-        int n = 3;
-
         Login login = this.login(criteria);
 
-        if (login == null) {
+        if (login == null || login.getId() < 1) {
             wr.print(this.loginPage("Invalid username & password combination<br/>"));
             return;
         }
@@ -79,7 +79,6 @@ public class LoginAction extends HttpServlet {
         Login login = new Login();
 
         try {
-            Connection connection = (Connection) servletContext.getAttribute("dbConnection");
 
             IMySQLDB<Login, Connection> loginMysqlDb = new MySQLDB<>(login, connection);
 
@@ -88,7 +87,6 @@ public class LoginAction extends HttpServlet {
 
             while (resultSet.next()) {
                 login = new Login();
-
                 login.setId(resultSet.getInt("id"));
                 login.setUsername(resultSet.getString("userName"));
                 login.setUserType(resultSet.getString("userType"));
