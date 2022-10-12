@@ -4,6 +4,7 @@ import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Login;
 import com.mysql.cj.log.Log;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -37,6 +38,7 @@ public class LoginAction extends HttpServlet {
     }
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.loginPage(null));
+
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -57,7 +59,7 @@ public class LoginAction extends HttpServlet {
 
         Map<String, String> criteria = new HashMap<>(){{
             put("Username", email);
-            put("Password", password);
+            put("Password", DigestUtils.md5Hex(password));
         }};;
 
         Login login = this.login(criteria);

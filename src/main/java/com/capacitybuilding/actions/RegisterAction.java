@@ -3,6 +3,7 @@ package com.capacitybuilding.actions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Login;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -36,7 +37,6 @@ public class RegisterAction extends HttpServlet {
         String confirmPassword = req.getParameter("confirmPassword");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-        String dateOfBirth = req.getParameter("dateOfBirth");
         String email = req.getParameter("email");
 
         String actionError = "";
@@ -55,8 +55,6 @@ public class RegisterAction extends HttpServlet {
         if (lastName == null || lastName.equalsIgnoreCase(""))
             actionError += "LastName is required<br/>";
 
-        if (dateOfBirth == null || dateOfBirth.equalsIgnoreCase(""))
-            actionError += "Date of Birth is required<br/>";
 
         if (password != null && confirmPassword != null && !password.equals(confirmPassword))
             actionError += "Password & confirm password do not match<br/>";
@@ -68,7 +66,7 @@ public class RegisterAction extends HttpServlet {
                 Login login = new Login();
 
                 login.setUsername(email);
-                login.setPassword(password);
+                login.setPassword(DigestUtils.md5Hex(password));
                 login.setUserType("USER");
 
                 IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
