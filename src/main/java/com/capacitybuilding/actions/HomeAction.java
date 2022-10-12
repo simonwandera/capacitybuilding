@@ -20,9 +20,12 @@ public class HomeAction extends HttpServlet {
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
         HttpSession session = req.getSession();
-        trainees = (List<Trainee>) session.getAttribute("trainees");
-        if (trainees == null)
-            trainees = new ArrayList<>();
+        Trainee trainee = new Trainee();
+        try {
+            trainees = trainee.display();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         res.getWriter().print(HomeDashboard((String) session.getAttribute("email")));
     }
 
