@@ -1,7 +1,10 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.Service.IMySQLDB;
+import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Trainee;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +22,19 @@ import java.util.List;
 public class HomeAction extends HttpServlet {
     List<Trainee> trainees;
 
+    ServletContext servletContext = getServletConfig().getServletContext();
+    Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
         HttpSession session = req.getSession();
         Trainee trainee = new Trainee();
+
         try {
-            trainees = trainee.display();
+            IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(trainee, connection);
+            ResultSet resultSet = traineeMysqlDB.fetchAll();
+            trainees = trainee.generateList(resultSet);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -36,7 +48,10 @@ public class HomeAction extends HttpServlet {
         Trainee trainee = new Trainee();
 
         try {
-            trainees = trainee.display();
+            IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(trainee, connection);
+            ResultSet resultSet = traineeMysqlDB.fetchAll();
+            trainees = trainee.generateList(resultSet);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

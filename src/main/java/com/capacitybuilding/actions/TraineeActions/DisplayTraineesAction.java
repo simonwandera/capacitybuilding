@@ -22,7 +22,6 @@ import java.util.List;
 
 @WebServlet("/trainees")
 public class DisplayTraineesAction  extends HttpServlet {
-
     ServletContext servletContext = getServletConfig().getServletContext();
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
