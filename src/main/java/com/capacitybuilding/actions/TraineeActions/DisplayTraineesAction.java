@@ -52,7 +52,6 @@ public class DisplayTraineesAction  extends HttpServlet {
         Connection connection = (Connection) servletContext.getAttribute("dbConnection");
         Trainee trainee = new Trainee();
         IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(trainee, connection);
-
         ResultSet resultSet = traineeMysqlDB.fetchAll();
 
         List<Trainee> traineesList = trainee.generateList(resultSet);

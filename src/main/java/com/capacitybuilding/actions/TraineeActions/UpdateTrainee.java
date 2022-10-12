@@ -8,6 +8,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,18 +28,24 @@ public class UpdateTrainee extends HttpServlet {
     private String sessionEmail;
     private Trainee trainee = null;
     private List<Trainee> trainees;
+    ServletContext servletContext = getServletConfig().getServletContext();
+    Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         sessionEmail = (String) session.getAttribute("email");
-
-        Trainee mytrainee = new Trainee();
+        Trainee myTrainee = new Trainee();
 
         try {
-            trainees = mytrainee.display();
+            IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(myTrainee, connection);
+            ResultSet resultSet = traineeMysqlDB.fetchAll();
+            trainees = myTrainee.generateList(resultSet);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
 
         int id = Integer.parseInt(req.getParameter("id"));
 
@@ -91,9 +99,8 @@ public class UpdateTrainee extends HttpServlet {
                 tr.setGender(trainee.getGender());
 
                 try{
-
-                    IMySQLDB<Trainee, Connection> traineeMysqlDB = MySQLDB<>(tr, );
-                    tr.getMySqlDB().update();
+                    IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(tr, connection);
+                    traineeMysqlDB.update();
                 }catch (SQLException ex){
                     System.out.println(ex.getMessage());
                 }
