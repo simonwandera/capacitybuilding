@@ -6,6 +6,7 @@ import com.capacitybuilding.model.Login;
 import com.mysql.cj.log.Log;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -26,7 +27,12 @@ import java.util.Map;
 @WebServlet(urlPatterns = "/login")
 public class LoginAction extends HttpServlet {
 
-    ServletContext servletContext = getServletConfig().getServletContext();
+    ServletContext servletContext;
+
+    public void init(ServletConfig config) throws ServletException{
+        super.init(config);
+        servletContext = getServletConfig().getServletContext();
+    }
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.loginPage(null));
     }
