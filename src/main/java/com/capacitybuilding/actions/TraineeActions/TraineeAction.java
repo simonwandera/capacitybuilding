@@ -22,7 +22,6 @@ import java.util.List;
 public class TraineeAction extends HttpServlet {
     private List<Trainee> trainees;
 
-    ServletContext servletContext = getServletConfig().getServletContext();
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("email");
