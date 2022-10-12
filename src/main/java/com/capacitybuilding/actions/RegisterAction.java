@@ -61,8 +61,8 @@ public class RegisterAction extends HttpServlet {
                 login.setPassword(password);
                 login.setUserType("USER");
 
-                IMySQLDB<Login> iMySQLDB = new MySQLDB<>(login);
-                iMySQLDB.save();
+                login.getMySqlDB().save();
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

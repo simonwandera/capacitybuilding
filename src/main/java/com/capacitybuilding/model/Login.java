@@ -86,10 +86,8 @@ public class Login extends Entity {
 
 
     public List<Login> display() throws SQLException {
-
         resultSet = this.getAll();
         return generateList(resultSet);
-
     }
 
     public List<Login> login(Map<String, String> criteria) throws SQLException{

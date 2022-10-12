@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,11 @@ public class DisplayTraineesAction  extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        res.getWriter().print(this.DisplayTrainees((String) session.getAttribute("email"), req.getSession()));
+        try {
+            res.getWriter().print(this.DisplayTrainees((String) session.getAttribute("email"), req.getSession()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -29,10 +34,18 @@ public class DisplayTraineesAction  extends HttpServlet {
         if (session == null || session.getId() == null)
             res.sendRedirect("./");
 
-        res.getWriter().print(this.DisplayTrainees((String) session.getAttribute("email"), req.getSession()));
+        try {
+            res.getWriter().print(this.DisplayTrainees((String) session.getAttribute("email"), req.getSession()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public String DisplayTrainees(String email, HttpSession session){
+    public String DisplayTrainees(String email, HttpSession session) throws SQLException {
+
+        Trainee trainee = new Trainee();
+        List<Trainee> traineesList = trainee.display();
+
         return Common.Header() +
                 "  <body>\n" +
                 "    <div class=\"container-scroller\">\n" +
@@ -70,7 +83,7 @@ public class DisplayTraineesAction  extends HttpServlet {
                 "                        <h4 class=\"card-title\">All Registered Trainees</h4>\n" +
                 "                        <p class=\"card-description\"> Updated </p>\n" +
                 "                        <div class=\"table-responsive\">\n" +
-                                            traineeGrid((List<Trainee>) session.getAttribute("trainees")) +
+                                            traineeGrid((traineesList) +
                 "                        </div>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +
@@ -85,9 +98,6 @@ public class DisplayTraineesAction  extends HttpServlet {
     }
 
     public String traineeGrid(List<Trainee> trainees) {
-
-        if (trainees == null)
-            trainees = new ArrayList<Trainee>();
 
         String traineeGrid = "<table class=\"table table-striped\">\n" +
                 "<thead>\n" +

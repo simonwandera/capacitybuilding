@@ -67,7 +67,6 @@ public class LoginAction extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 
