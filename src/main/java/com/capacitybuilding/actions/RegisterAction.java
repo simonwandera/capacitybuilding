@@ -4,6 +4,7 @@ import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Login;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,11 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 @WebServlet("/register")
 public class RegisterAction extends HttpServlet {
 
+    ServletContext servletContext = getServletConfig().getServletContext();
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.getWriter().print(this.register(null));
     }
@@ -55,13 +58,15 @@ public class RegisterAction extends HttpServlet {
         if (actionError.equals("")) {
 
             try {
+                Connection connection = (Connection) servletContext.getAttribute("dbConnection");
                 Login login = new Login();
 
                 login.setUsername(email);
                 login.setPassword(password);
                 login.setUserType("USER");
 
-                login.getMySqlDB().save();
+                IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
+                loginCommonIMySQLDB.save();
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);

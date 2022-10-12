@@ -1,8 +1,11 @@
 package com.capacitybuilding.actions.TraineeActions;
 
+import com.capacitybuilding.Service.IMySQLDB;
+import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
 import com.capacitybuilding.model.Trainee;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +23,7 @@ import java.util.List;
 @WebServlet("/trainees")
 public class DisplayTraineesAction  extends HttpServlet {
 
+    ServletContext servletContext = getServletConfig().getServletContext();
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         try {
@@ -43,8 +49,13 @@ public class DisplayTraineesAction  extends HttpServlet {
 
     public String DisplayTrainees(String email, HttpSession session) throws SQLException {
 
+        Connection connection = (Connection) servletContext.getAttribute("dbConnection");
         Trainee trainee = new Trainee();
-        List<Trainee> traineesList = trainee.display();
+        IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(trainee, connection);
+
+        ResultSet resultSet = traineeMysqlDB.fetchAll();
+
+        List<Trainee> traineesList = trainee.generateList(resultSet);
 
         return Common.Header() +
                 "  <body>\n" +

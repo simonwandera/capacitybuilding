@@ -97,9 +97,4 @@ public class Trainee extends Entity implements Serializable {
         }
         return traineeList;
     }
-
-    public List<Trainee> display() throws SQLException {
-        resultSet = this.getAll();
-        return generateList(resultSet);
-    }
 }

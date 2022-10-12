@@ -1,5 +1,7 @@
 package com.capacitybuilding.actions.TraineeActions;
 
+import com.capacitybuilding.Service.IMySQLDB;
+import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
 import com.capacitybuilding.model.Trainee;
 import org.apache.commons.beanutils.BeanUtils;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +82,6 @@ public class UpdateTrainee extends HttpServlet {
             return;
         }
 
-        System.out.println("Trainees*************" + trainees);
-
         for (Trainee tr: trainees){
             if(tr.getId() == trainee.getId()) {
                 tr.setId(trainee.getId());
@@ -90,6 +91,8 @@ public class UpdateTrainee extends HttpServlet {
                 tr.setGender(trainee.getGender());
 
                 try{
+
+                    IMySQLDB<Trainee, Connection> traineeMysqlDB = MySQLDB<>(tr, );
                     tr.getMySqlDB().update();
                 }catch (SQLException ex){
                     System.out.println(ex.getMessage());

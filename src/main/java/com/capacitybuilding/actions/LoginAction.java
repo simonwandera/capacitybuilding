@@ -52,7 +52,20 @@ public class LoginAction extends HttpServlet {
             put("Password", password);
         }};;
 
-        
+        int n = 3;
+
+        Login login = this.login(criteria);
+
+        if (login == null) {
+            wr.print(this.loginPage("Invalid username & password combination<br/>"));
+            return;
+        }
+        HttpSession session = req.getSession(true);
+        session.setAttribute("username", login.getUsername());
+        session.setAttribute("userType", login.getUserType());
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("./home");
+        dispatcher.forward(req, res);
     }
 
     public Login login(Map<String, String> criteria) {
@@ -61,7 +74,7 @@ public class LoginAction extends HttpServlet {
 
         try {
             Connection connection = (Connection) servletContext.getAttribute("dbConnection");
-            Statement statement = connection.createStatement();
+
             IMySQLDB<Login, Connection> loginMysqlDb = new MySQLDB<>(login, connection);
 
             String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
@@ -69,6 +82,8 @@ public class LoginAction extends HttpServlet {
 
             while (resultSet.next()) {
                 login = new Login();
+
+                login.setId(resultSet.getInt("id"));
                 login.setUsername(resultSet.getString("userName"));
                 login.setUserType(resultSet.getString("userType"));
             }

@@ -18,7 +18,7 @@ public class Login extends Entity {
     private int Id;
     private String username;
     private String password;
-    private String userType;
+    private String userType = "USER";
 
     static ResultSet resultSet;
     private static final String tableName = "Login";
@@ -53,10 +53,6 @@ public class Login extends Entity {
     public void setUsername(String username) {
         entitiesMap.put("Username", username);
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {

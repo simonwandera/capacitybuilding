@@ -6,6 +6,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,9 @@ import java.util.List;
 
 @WebServlet("/addTrainee")
 public class TraineeAction extends HttpServlet {
-    List<Trainee> trainees;
+    private List<Trainee> trainees;
+
+    ServletContext servletContext = getServletConfig().getServletContext();
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("email");
