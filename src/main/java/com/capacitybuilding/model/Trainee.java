@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Trainee extends Entity implements Serializable {
-    static int maxId = 0;
     private int id;
     private String firstName;
     private String lastName;

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +27,22 @@ public class UpdateTrainee extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         sessionEmail = (String) session.getAttribute("email");
-        trainees = (List<Trainee>) session.getAttribute("trainees");
+
+        Trainee mytrainee = new Trainee();
+
+        try {
+            trainees = mytrainee.display();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         int id = Integer.parseInt(req.getParameter("id"));
 
         for (Trainee tr: trainees){
-            if(tr.getId() == id)
+            if(tr.getId() == id) {
                 trainee = tr;
+                System.out.println("*****************Trainee found********************");
+            }
         }
 
         System.out.println(trainee.getId() + "\t" + trainee.getFirstName() + "\t" + trainee.getEmail() + trainee.getGender());
@@ -69,15 +79,23 @@ public class UpdateTrainee extends HttpServlet {
             return;
         }
 
-        if (trainees == null)
-            trainees = new ArrayList<>();
+        System.out.println("Trainees*************" + trainees);
 
         for (Trainee tr: trainees){
             if(tr.getId() == trainee.getId()) {
+                tr.setId(trainee.getId());
                 tr.setEmail(trainee.getEmail());
                 tr.setFirstName(trainee.getFirstName());
                 tr.setLastName(trainee.getLastName());
                 tr.setGender(trainee.getGender());
+
+                try{
+                    tr.getMySqlDB().update();
+                }catch (SQLException ex){
+                    System.out.println(ex.getMessage());
+                }
+                break;
+
             }
         }
 

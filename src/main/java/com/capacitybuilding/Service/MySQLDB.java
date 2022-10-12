@@ -96,7 +96,7 @@ public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
             isFirst = false;
         }
 
-        updateQuery.append(" WHERE ").append("id =").append(entryMap.get("id"));
+        updateQuery.append(" WHERE ").append("id =").append(entryMap.get("Id"));
 
         return updateQuery.toString();
     }
@@ -138,6 +138,7 @@ public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
     @Override
     public void update() {
         String updateQuery = this.createUpdateQuery(t.getEntitiesMap());
+        System.out.println("Mysql query >>>>>>> "+ updateQuery);
         this.executeQuery(updateQuery);
     }
 
