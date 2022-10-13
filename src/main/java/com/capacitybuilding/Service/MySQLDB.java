@@ -14,15 +14,6 @@ public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB
         this.connection = i;
     }
 
-//    private boolean openConnection() throws SQLException {
-//        try {
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CapacityBuilding", "root", "");
-//            return true;
-//        }catch (SQLException e){
-//            throw e;
-//        }
-//    }
-
     @Override
     public String createSelectWithWhereClauseQuery(Map<String, String> criteria) {
         StringBuilder stringBuilder = new StringBuilder("SELECT * FROM ");
