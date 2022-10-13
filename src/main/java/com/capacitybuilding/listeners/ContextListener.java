@@ -1,5 +1,7 @@
 package com.capacitybuilding.listeners;
 
+import com.zaxxer.hikari.HikariDataSource;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -17,12 +19,17 @@ public class ContextListener implements ServletContextListener {
 
         try {
             System.out.print("Establishing connections....");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CapacityBuilding",
-                    "root", "");
+
+            HikariDataSource dataSource = new HikariDataSource();
+            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/CapacityBuilding");
+            dataSource.setPassword("");
+            dataSource.setUsername("root");
+
+            Connection connection = dataSource.getConnection();
             servletContext.setAttribute("dbConnection", connection);
             System.out.print("Connection Established....");
         } catch (Exception ex) {
-            System.out.println("Connection Note Established....: " + ex.getMessage());
+            System.out.println("Connection Not Established....: " + ex.getMessage());
 
         }
     }
