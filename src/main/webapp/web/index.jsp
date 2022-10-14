@@ -1,8 +1,10 @@
 <html>
 <body>
-    <form action="welcome.jsp">
+    <form action="example.jsp">
         <input type="text" name="uname">
         <input type="submit" value="go"><br/>
     </form>
+    <br/>
+    <%= "welcome to jsp" %>
 </body>
 </html>
