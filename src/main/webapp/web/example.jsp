@@ -9,10 +9,10 @@
 
         <%!
         int cube(int n){
-        return n*n*n*;
+        return n*n*n;
         }
         %>
-        <%= "Cube of 3 is:"+cube(3) %>
+        <%= "\nCube of 3 is:"+cube(3) %>
 
     </body>
 </html>
