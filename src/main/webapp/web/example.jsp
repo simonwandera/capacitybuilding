@@ -5,7 +5,7 @@
         out.print("welcome "+name);
         %>
 
-        Current Time: <%= java.util.Calendar.getInstance().getTime() %>
+        Welcome: <%= request.getParameter("uname") %>
 
     </body>
 </html>
