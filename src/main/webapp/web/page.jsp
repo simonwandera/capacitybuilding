@@ -1,3 +1,4 @@
+<%@ page isErrorPage="true" %>
 <html>
 <body>
     <%
@@ -7,6 +8,10 @@
         String newName=(String)pageContext.getAttribute("user",PageContext.SESSION_SCOPE);
 
         out.print("Hello hello "+ newName);
+
+        out.prim
     %>
+
+     Sorry following exception occurred:<%= exception %>
 </body>
 </html>
