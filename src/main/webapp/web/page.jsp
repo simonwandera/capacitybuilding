@@ -9,7 +9,7 @@
 
         out.print("Hello hello "+ newName);
 
-        out.print("An error occurred " + exception)
+        out.print("An error occurred " + exception);
     %>
 
 </body>
