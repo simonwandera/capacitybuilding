@@ -9,9 +9,8 @@
 
         out.print("Hello hello "+ newName);
 
-        out.prim
+        out.print("An error occurred " + exception)
     %>
 
-     Sorry following exception occurred:<%= exception %>
 </body>
 </html>
