@@ -1,18 +1,14 @@
 <html>
     <body>
         <%
-        String name=request.getParameter("uname");
-        out.print("welcome "+name);
-        %>
+           String name=request.getParameter("uname");
+           out.print("Welcome "+name);
 
-        Welcome: <%= request.getParameter("uname") %>
+           session.setAttribute("user",name);
 
-        <%!
-        int cube(int n){
-        return n*n*n;
-        }
+          response.sendRedirect("index.jsp");
+
         %>
-        <%= "\nCube of 3 is:"+cube(3) %>
 
     </body>
 </html>
