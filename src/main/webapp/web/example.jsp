@@ -6,7 +6,7 @@
 
            session.setAttribute("user",name);
 
-          response.sendRedirect("index.jsp");
+          response.sendRedirect("page.jsp");
 
         %>
 
