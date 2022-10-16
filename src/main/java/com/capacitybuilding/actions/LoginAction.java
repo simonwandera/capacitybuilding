@@ -3,14 +3,12 @@ package com.capacitybuilding.actions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Login;
-import com.mysql.cj.log.Log;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +18,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,12 +40,12 @@ public class LoginAction extends HttpServlet {
         String email = req.getParameter("email");
 
         if (email == null || email.equalsIgnoreCase("")){
-            wr.print(this.loginPage("Email is required<br/>"));
+            servletContext.setAttribute("loginError" , "Email is required<br/>");
             return;
         }
 
         if (password == null || password.equalsIgnoreCase("")) {
-            wr.print(this.loginPage("Password is required<br/>"));
+            servletContext.setAttribute("loginError" , "Password is required<br/>");
             return;
         }
 
@@ -61,7 +57,7 @@ public class LoginAction extends HttpServlet {
         Login login = this.login(criteria);
 
         if (login == null || login.getId() < 1) {
-            servletContext.setAttribute("loginError" , "Wrong Password is username & password combination<br/>");
+            servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
             res.sendRedirect("./web/login.jsp");
             return;
         }
@@ -97,54 +93,5 @@ public class LoginAction extends HttpServlet {
         }
 
         return login;
-
-    }
-
-
-    public String loginPage(String actionError){
-        return Common.Header() +
-                "<body>\n" +
-                "  <div class=\"container-scroller\">\n" +
-                "    <div class=\"container-fluid page-body-wrapper\">\n" +
-                "      <div class=\"main-panel\">\n" +
-                "        <div class=\"content-wrapper\">\n" +
-                "          <div class=\"page-header\">\n" +
-                "            <h3 class=\"page-title m-auto\">" +getServletContext().getAttribute("appName")+ "</h3>\n" +
-                "          </div>\n" +
-                "          <div class=\"row\">\n" +
-                "            <div class=\"col-md-6 grid-margin stretch-card m-auto\">\n" +
-                "              <div class=\"card\">\n" +
-                "                <div class=\"card-body\">\n" +
-                "                  <div class=\"mb-5\">\n" +
-                "                    <h4 class=\"card-title\">LogIn</h4>\n" +
-                "                  </div>\n" +
-                "                  <form action=\"./login\" class=\"forms-sample\" method=\"post\">\n" +
-                "                    <div class=\"form-group\">\n" +
-                "                      <label for=\"exampleInputEmail1\">Email address</label>\n" +
-                "                      <input type=\"email\" class=\"form-control\" name=\"email\" id=\"exampleInputEmail1\" placeholder=\"Email\" />\n" +
-                "                    </div>\n" +
-                "                    <div class=\"form-group\">\n" +
-                "                      <label for=\"exampleInputPassword1\">Password</label>\n" +
-                "                      <input type=\"password\" class=\"form-control\" name=\"password\" id=\"exampleInputPassword1\" placeholder=\"Password\" />\n" +
-                "                    </div>\n" +
-                "                    <div class=\"form-check form-check-flat form-check-primary\">\n" +
-                "                      <label class=\"form-check-label\">\n" +
-                "                        <input type=\"checkbox\" class=\"form-check-input\" /> Remember me </label>\n" +
-                "                    </div>\n" +
-                "                    <div class=\"my-3 py-2 text-center\">\n" +
-                "                      <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
-                "                    </div>\n" +
-                "                    <button type=\"submit\" class=\"btn btn-primary mr-2\"> Login </button>\n" +
-                "                    <a href=\"./register\">Register</a>\n"+
-                "                  </form>\n" +
-                "                </div>\n" +
-                "              </div>\n" +
-                "            </div>\n" +
-                "          </div>\n" +
-                "        </div>\n" +
-                "      </div>\n" +
-                "    </div>\n" +
-                "  </div>\n" +
-                Common.Footer();
     }
 }
