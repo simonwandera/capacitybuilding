@@ -41,11 +41,13 @@ public class LoginAction extends HttpServlet {
 
         if (email == null || email.equalsIgnoreCase("")){
             servletContext.setAttribute("loginError" , "Email is required<br/>");
+            res.sendRedirect("./web/login.jsp");
             return;
         }
 
         if (password == null || password.equalsIgnoreCase("")) {
             servletContext.setAttribute("loginError" , "Password is required<br/>");
+            res.sendRedirect("./web/login.jsp");
             return;
         }
 

@@ -72,9 +72,11 @@ public class RegisterAction extends HttpServlet {
             res.sendRedirect("./login.jsp");
         }
 
-
-        else
+        else {
             servletContext.setAttribute("signupError", signupError);
+            res.sendRedirect("../register.jsp");
+        }
+
     }
 
 }
