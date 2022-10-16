@@ -66,44 +66,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div class="row">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Email</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="email" class="form-control" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Password</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" class="form-control" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">Confirm password</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" class="form-control" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="my-3 py-2 text-center">
-                                            <span class="text-danger">Sign error messages here</span>
+                                             <%
+                                                  String signupError = (String) application.getAttribute("signupError");
+                                                  if (signupError != null && !signupError.equals("")) {
+                                                %>
+                                                  <span class="text-danger"> <%= application.getAttribute("signupError") %> </span>
+                                                <% } %>
                                         </div>
                                         <button type="submit" class="btn btn-primary mr-2"> Sign In </button>
-                                        <a href="./login">Login</a>
+                                        <a href="./login.jsp">Login</a>
                                     </form>
                                 </div>
                             </div>
