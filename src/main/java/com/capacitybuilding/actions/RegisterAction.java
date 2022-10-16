@@ -64,7 +64,7 @@ public class RegisterAction extends HttpServlet {
             res.sendRedirect("./web/register.jsp");
             return;
         }
-        
+
         try {
             Connection connection = (Connection) servletContext.getAttribute("dbConnection");
             Login login = new Login();

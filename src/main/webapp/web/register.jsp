@@ -40,7 +40,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label">First Name</label>
+                                                    <label class="col-sm-3 col-form-label">Email</label>
                                                     <div class="col-sm-9">
                                                         <input type="email" name="email" class="form-control" />
                                                     </div>
