@@ -35,47 +35,52 @@ public class RegisterAction extends HttpServlet {
         String lastName = req.getParameter("lastName");
         String email = req.getParameter("email");
 
-        String signupError = "";
         if (email == null || email.equalsIgnoreCase("")) {
-            signupError = "Email is required<br/>";
-        }
-
-        if (password == null || password.equalsIgnoreCase(""))
-            signupError += "Password is required<br/>";
-
-        if (confirmPassword == null || confirmPassword.equalsIgnoreCase(""))
-            signupError += "Confirm password is required<br/>";
-
-        if (firstName == null || firstName.equalsIgnoreCase(""))
-            signupError += "FirstName is required<br/>";
-
-        if (lastName == null || lastName.equalsIgnoreCase(""))
-            signupError += "LastName is required<br/>";
-
-        if (signupError.equals("")) {
-
-            try {
-                Connection connection = (Connection) servletContext.getAttribute("dbConnection");
-                Login login = new Login();
-
-                login.setUsername(email);
-                login.setPassword(DigestUtils.md5Hex(password));
-                login.setUserType("USER");
-
-                IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
-                loginCommonIMySQLDB.save();
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-
-            res.sendRedirect("./web/login.jsp");
-        }
-
-        else {
-            servletContext.setAttribute("signupError", signupError);
+            servletContext.setAttribute("signupError", "Email is required");
             res.sendRedirect("./web/register.jsp");
+            return;
         }
+
+        if (password == null || password.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Password is required!");
+            res.sendRedirect("./web/register.jsp");
+            return;
+        }
+
+        if (confirmPassword == null || confirmPassword.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Confirm password is required!");
+            res.sendRedirect("./web/register.jsp");
+            return;
+        }
+
+        if (firstName == null || firstName.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "FirstName is required!");
+            res.sendRedirect("./web/register.jsp");
+            return;
+        }
+
+        if (lastName == null || lastName.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "LastName is required!");
+            res.sendRedirect("./web/register.jsp");
+            return;
+        }
+        
+        try {
+            Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+            Login login = new Login();
+
+            login.setUsername(email);
+            login.setPassword(DigestUtils.md5Hex(password));
+            login.setUserType("USER");
+
+            IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
+            loginCommonIMySQLDB.save();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        res.sendRedirect("./web/login.jsp");
 
     }
 
