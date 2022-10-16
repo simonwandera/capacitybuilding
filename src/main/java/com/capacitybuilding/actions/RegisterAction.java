@@ -69,12 +69,12 @@ public class RegisterAction extends HttpServlet {
                 throw new RuntimeException(e);
             }
 
-            res.sendRedirect("./login.jsp");
+            res.sendRedirect("./web/login.jsp");
         }
 
         else {
             servletContext.setAttribute("signupError", signupError);
-            res.sendRedirect("../register.jsp");
+            res.sendRedirect("./web/register.jsp");
         }
 
     }
