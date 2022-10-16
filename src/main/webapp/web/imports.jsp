@@ -7,7 +7,7 @@
     Today is: <%= new Date() %>
 
     <div class="page-header">
-        <h3 class="page-title m-auto">App name </h3>
+        <h3 class="page-title m-auto"><% session.getAttribute("userName"); %></h3>
     </div>
 
 </body>
