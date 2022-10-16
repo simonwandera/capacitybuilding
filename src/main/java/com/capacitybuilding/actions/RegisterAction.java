@@ -40,24 +40,31 @@ public class RegisterAction extends HttpServlet {
         String email = req.getParameter("email");
 
         String actionError = "";
-        if (email == null || email.equalsIgnoreCase(""))
-            actionError = "Email is required<br/>";
+        if (email == null || email.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Email is required<br/>");
+            return;
+        }
 
-        if (password == null || password.equalsIgnoreCase(""))
-            actionError += "Password is required<br/>";
+        if (password == null || password.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Email is required<br/>");
+        }
 
-        if (confirmPassword == null || confirmPassword.equalsIgnoreCase(""))
-            actionError += "Confirm password is required<br/>";
+        if (confirmPassword == null || confirmPassword.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Email is required<br/>");
+        }
 
-        if (firstName == null || firstName.equalsIgnoreCase(""))
-            actionError += "FirstName is required<br/>";
+        if (firstName == null || firstName.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Email is required<br/>");
+        }
 
-        if (lastName == null || lastName.equalsIgnoreCase(""))
-            actionError += "LastName is required<br/>";
+        if (lastName == null || lastName.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Email is required<br/>");
+        }
 
 
-        if (password != null && confirmPassword != null && !password.equals(confirmPassword))
-            actionError += "Password & confirm password do not match<br/>";
+        if (password != null && confirmPassword != null && !password.equals(confirmPassword)) {
+            servletContext.setAttribute("signupError", "Email is required<br/>");
+        }
 
         if (actionError.equals("")) {
 
