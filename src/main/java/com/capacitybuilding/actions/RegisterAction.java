@@ -122,10 +122,6 @@ public class RegisterAction extends HttpServlet {
                 "                                            </div>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"row\">\n" +
-                "                                        </div>\n" +
-                "                                        <div class=\"row\">\n" +
-                "                                        </div>\n" +
-                "                                        <div class=\"row\">\n" +
                 "                                            <div class=\"col-md-6\">\n" +
                 "                                                <div class=\"form-group row\">\n" +
                 "                                                    <label class=\"col-sm-3 col-form-label\">Email</label>\n" +
@@ -133,8 +129,6 @@ public class RegisterAction extends HttpServlet {
                 "                                                        <input type=\"email\" name=\"email\" class=\"form-control\" />\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
-                "                                            </div>\n" +
-                "                                            <div class=\"col-md-6\">\n" +
                 "                                            </div>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"row\">\n" +
