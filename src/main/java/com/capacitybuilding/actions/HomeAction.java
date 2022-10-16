@@ -61,7 +61,7 @@ public class HomeAction extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        res.getWriter().print(HomeDashboard((String) session.getAttribute("email")));
+        res.getWriter().print(HomeDashboard((String) session.getAttribute("username")));
 
     }
 
