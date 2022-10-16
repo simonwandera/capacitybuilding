@@ -5,7 +5,9 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
-            <h3 class="page-title m-auto">Capacity buiding system</h3>
+            <h3 class="page-title m-auto">
+                <%= getServletContext().getAttribute("appName") %>
+            </h3>
           </div>
           <div class="row">
             <div class="col-md-6 grid-margin stretch-card m-auto">
