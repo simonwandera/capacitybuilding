@@ -65,6 +65,12 @@ public class RegisterAction extends HttpServlet {
             return;
         }
 
+        if (!password.equals(confirmPassword)){
+            servletContext.setAttribute("signupError", "Password mismatch!");
+            res.sendRedirect("./web/register.jsp");
+            return;
+        }
+
         try {
             Connection connection = (Connection) servletContext.getAttribute("dbConnection");
             Login login = new Login();
@@ -79,9 +85,7 @@ public class RegisterAction extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         res.sendRedirect("./web/login.jsp");
-
     }
 
 }
