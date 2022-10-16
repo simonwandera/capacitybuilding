@@ -36,10 +36,6 @@ public class LoginAction extends HttpServlet {
         servletContext = getServletConfig().getServletContext();
         connection = (Connection) servletContext.getAttribute("dbConnection");
     }
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        res.getWriter().print(this.loginPage(null));
-
-    }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
@@ -65,9 +61,11 @@ public class LoginAction extends HttpServlet {
         Login login = this.login(criteria);
 
         if (login == null || login.getId() < 1) {
-            wr.print(this.loginPage("Invalid username & password combination<br/>"));
+            servletContext.setAttribute("loginError" , "Wrong Password is username & password combination<br/>");
+            res.sendRedirect("./web/login.jsp");
             return;
         }
+
         HttpSession session = req.getSession(true);
         session.setAttribute("username", login.getUsername());
         session.setAttribute("userType", login.getUserType());
