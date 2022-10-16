@@ -40,3 +40,4 @@
       </div>
     </div>
   </div>
+  <%@ include file="./utils/footer.jsp"%>
