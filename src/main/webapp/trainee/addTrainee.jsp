@@ -27,7 +27,7 @@
                     <div class="page-header flex-wrap">
                         <h3 class="mb-0"> Trainee Registration </h3>
                         <div class="d-flex">
-                            <a href="./displayTrainees.jsp" class="btn btn-sm ml-3 btn-success"> All Trainees </a>
+                            <a href="./displayTrainees.jsp" class="btn btn-sm ml-3 btn-primary"> All Trainees </a>
                         </div>
                     </div>
                 </div>
