@@ -27,7 +27,7 @@
                     <div class="page-header flex-wrap">
                         <h3 class="mb-0"> All Trainees </h3>
                         <div class="d-flex">
-                            <a href="./addTrainee" class="btn btn-sm ml-3 btn-success"> Add Trainee </a>
+                            <a href="../addTrainee" class="btn btn-sm ml-3 btn-success"> Add Trainee </a>
                         </div>
                     </div>
                 </div>
