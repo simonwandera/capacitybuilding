@@ -33,6 +33,10 @@ public class LoginAction extends HttpServlet {
         connection = (Connection) servletContext.getAttribute("dbConnection");
     }
 
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        res.sendRedirect("./web/login.jsp");
+    }
+
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         PrintWriter wr = res.getWriter();
@@ -68,8 +72,10 @@ public class LoginAction extends HttpServlet {
         session.setAttribute("username", login.getUsername());
         session.setAttribute("userType", login.getUserType());
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("./home");
-        dispatcher.forward(req, res);
+        res.sendRedirect("./home");
+
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("./home");
+//        dispatcher.forward(req, res);
     }
 
     public Login login(Map<String, String> criteria) {

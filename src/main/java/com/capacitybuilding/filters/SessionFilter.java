@@ -24,6 +24,9 @@ public class SessionFilter implements Filter {
 
         String reqPath = httpReq.getServletPath();
 
+        System.out.println("Request path: "+ reqPath);
+        System.out.println("\n\nNew session: "+ session.isNew());
+
         if (reqPath == null) {
             session.invalidate();
             httpRes.sendRedirect("./");
