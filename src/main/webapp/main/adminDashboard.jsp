@@ -1,7 +1,7 @@
 <%@ include file="../utils/header.jsp"%>
 <body>
     <div class="container-scroller">
-    <%@ include file="./utils/sideNav.jsp"%>
+    <%@ include file="../utils/sideNav.jsp"%>
     <div class="container-fluid page-body-wrapper">
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close mdi mdi-close"></i>
@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <%@ include file="./utils/topNav.jsp"%>
+        <%@ include file="../utils/topNav.jsp"%>
 
         <div class="main-panel">
           <div class="content-wrapper pb-0">
@@ -650,5 +650,5 @@
             </div>
           </div>
         </div>
-        <%@ include file="./utils/footer.jsp"%>
+        <%@ include file="../utils/footer.jsp"%>
 
