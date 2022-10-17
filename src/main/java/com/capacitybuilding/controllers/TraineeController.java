@@ -14,7 +14,6 @@ public class TraineeController implements Serializable {
         if(trainee == null || StringUtils.isBlank(trainee.getLastName()) || StringUtils.isBlank(trainee.getFirstName()) || StringUtils.isBlank(trainee.getEmail()) || StringUtils.isBlank(trainee.getGender()) )
             return;
 
-
     }
 
     public void update(Trainee trainee) {
