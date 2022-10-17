@@ -1,3 +1,11 @@
+<%@ page import="com.capacitybuilding.controllers.*" %>
+<%@ page import="com.capacitybuilding.model.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+
+<%! TraineeController traineeController = new TraineeController(); %>
+
 <%@ include file="../utils/header.jsp"%>
 <body>
     <div class="container-scroller">
@@ -39,7 +47,43 @@
                         <p class="card-description"> Updated </p>
                         <div class="table-responsive">
 
-                        <table>
+                        <table class="table table-striped">
+                            <thead>
+                               <tr>
+                                <th>User</th>
+                                <th>First name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                               <%
+
+                               List<Trainee> trainees = traineeController.list((Connection) application.getAttribute("dbConnection"), new Trainee())
+
+                               for(Trainee trainee : trainees) {
+
+                                %>
+
+                                <td class="py-1">
+                                    <img src="./assets/images/faces-clipart/pic-1.png\" alt="image" />
+                                </td>
+                                <td><%= trainee.getFirstName() %></td>
+                                <td><%= trainee.getLastName()  %></td>
+                                <td><%= trainee.getEmail()  %></td>
+                                <td><%= trainee.getGender() %></td>
+                                <td><%= new Date() %></td>
+                                <td>
+                                    <a href="./updateTrainee?id="+ <%= trainee.getId() %> ><i class="mdi mdi-border-color mdi-24px"></i></a>
+                                    <a href="./deleteTrainee?id="+ <%= trainee.getId() %> ><i class="mdi mdi-delete md-24 mdi-24px text-danger"></i></a>
+                                </td>
+                                </tr>
+
+                            </tbody>
                         </table>
 
                         </div>
