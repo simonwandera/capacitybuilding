@@ -22,8 +22,8 @@ public class ContextListener implements ServletContextListener {
 
             HikariDataSource dataSource = new HikariDataSource();
             dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/CapacityBuilding");
-            dataSource.setUsername("magenta");
-            dataSource.setPassword("pwd123@@");
+            dataSource.setUsername("root");
+            dataSource.setPassword("");
             Connection connection = dataSource.getConnection();
             servletContext.setAttribute("dbConnection", connection);
             System.out.print("Connection Established....");

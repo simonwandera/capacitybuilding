@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/addTrainee")
@@ -59,7 +58,6 @@ public class TraineeAction extends HttpServlet {
             servletContext.setAttribute("addTraineeError", "Email is required");
             res.sendRedirect("./trainee/addTrainee.jsp");
             return;
-
         }
 
         if (StringUtils.isBlank(trainee.getLastName())) {

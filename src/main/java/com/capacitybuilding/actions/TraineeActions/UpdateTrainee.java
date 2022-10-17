@@ -63,13 +63,11 @@ public class UpdateTrainee extends HttpServlet {
             }
         }
 
-        System.out.println(trainee.getId() + "\t" + trainee.getFirstName() + "\t" + trainee.getEmail() + trainee.getGender());
-        res.getWriter().print(this.updateTrainee(null, trainee));
+        res.sendRedirect("./trainee/updateTrainee.jsp");
     }
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        PrintWriter wr = res.getWriter();
 
         try {
             BeanUtils.populate(trainee, req.getParameterMap());
@@ -78,22 +76,26 @@ public class UpdateTrainee extends HttpServlet {
         }
 
         if (StringUtils.isBlank(trainee.getFirstName())) {
-            wr.print(this.updateTrainee("First name is required<br/>", trainee));
+            servletContext.setAttribute("updateTraineeError", "First name is required");
+            res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
         if (StringUtils.isBlank(trainee.getLastName())) {
-            wr.print(this.updateTrainee("Last name is required<br/>", trainee));
+            servletContext.setAttribute("updateTraineeError", "Last name is required");
+            res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
         if (StringUtils.isBlank(trainee.getGender())) {
-            wr.print(this.updateTrainee("Gender is required<br/>", trainee));
+            servletContext.setAttribute("updateTraineeError", "Gender name is required");
+            res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
         if (StringUtils.isBlank(trainee.getEmail())) {
-            wr.print(this.updateTrainee("Email is required<br/>", trainee));
+            servletContext.setAttribute("updateTraineeError", "Email name is required");
+            res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
@@ -112,7 +114,6 @@ public class UpdateTrainee extends HttpServlet {
                     System.out.println(ex.getMessage());
                 }
                 break;
-
             }
         }
 
