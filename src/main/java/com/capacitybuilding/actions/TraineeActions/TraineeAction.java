@@ -1,5 +1,7 @@
 package com.capacitybuilding.actions.TraineeActions;
 
+import com.capacitybuilding.Service.IMySQLDB;
+import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
 import com.capacitybuilding.model.Trainee;
 import org.apache.commons.beanutils.BeanUtils;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,16 +71,14 @@ public class TraineeAction extends HttpServlet {
             return;
         }
 
-        trainees = (List<Trainee>) session.getAttribute("trainees");
+        try {
+            IMySQLDB<Trainee, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(trainee, connection);
+            traineeConnectionIMySQLDB.save();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-        if (trainees == null)
-            trainees = new ArrayList<>();
-
-        trainees.add(trainee);
-        session.setAttribute("trainees", trainees);
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("./trainees");
-        dispatcher.forward(req, res);
+        res.sendRedirect("./main/adminDashboard.jsp");
 
     }
 
