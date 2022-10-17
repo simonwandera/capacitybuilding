@@ -62,7 +62,13 @@
                           </div>
 
                           <div class= "py-1 text-center">
-                            <span class="text-danger"> <%= application.getAttribute("addTraineeError") %> </span>
+
+                            <%
+                              String addTraineeError = (String) application.getAttribute("addTraineeError");
+                              if (addTraineeError != null && !addTraineeError.equals("")) {
+                            %>
+                              <span class="text-danger"> <%= application.getAttribute("addTraineeError") %> </span>
+                            <% } %>
                           </div>
 
                           <button type="submit" class="btn btn-primary mr-2"> Submit </button>
