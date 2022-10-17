@@ -47,7 +47,6 @@ public class TraineeAction extends HttpServlet {
         HttpSession session = req.getSession();
         PrintWriter wr = res.getWriter();
         Trainee trainee = new Trainee();
-        String email = (String) session.getAttribute("email");
 
         try {
             BeanUtils.populate(trainee, req.getParameterMap());
@@ -57,17 +56,21 @@ public class TraineeAction extends HttpServlet {
         }
 
         if (StringUtils.isBlank(trainee.getEmail())) {
-            wr.print(this.addTrainee("Email is required<br/>", email));
+            servletContext.setAttribute("addTraineeError", "Email is required");
+            res.sendRedirect("./trainee/addTrainee.jsp");
             return;
+
         }
 
         if (StringUtils.isBlank(trainee.getLastName())) {
-            wr.print(this.addTrainee("Last name is required<br/>", email));
+            servletContext.setAttribute("addTraineeError", "Last name is required");
+            res.sendRedirect("./trainee/addTrainee.jsp");
             return;
         }
 
         if (StringUtils.isBlank(trainee.getGender())) {
-            wr.print(this.addTrainee("Gender No is required<br/>", email));
+            servletContext.setAttribute("addTraineeError", "Gender is required");
+            res.sendRedirect("./trainee/addTrainee.jsp");
             return;
         }
 
