@@ -31,7 +31,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="../trainee/displayTrainees.jsp" aria-expanded="false" aria-controls="ui-basic">
           <i class="mdi mdi-account-multiple menu-icon"></i>
           <span class="menu-title">Trainees</span>
         </a>
