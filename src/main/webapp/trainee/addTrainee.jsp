@@ -37,7 +37,7 @@
                       <div class="card-body">
                         <h4 class="card-title">New Trainee</h4>
                         <p class="card-description">Basic form layout</p>
-                        <form class="forms-sample" method="POST">
+                        <form class="forms-sample" method="POST" action="../addTrainee">
                           <div class="form-group">
                             <label for="exampleInputUsername1">First name</label>
                             <input type="text" class="form-control" name="firstName" id="exampleInputUsername1" placeholder="John" />
