@@ -43,8 +43,6 @@ public class TraineeAction extends HttpServlet {
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        PrintWriter wr = res.getWriter();
         Trainee trainee = new Trainee();
 
         try {
