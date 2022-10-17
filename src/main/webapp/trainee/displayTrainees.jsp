@@ -83,6 +83,7 @@
                                     <a href="./deleteTrainee?id="+ <%= trainee.getId() %> ><i class="mdi mdi-delete md-24 mdi-24px text-danger"></i></a>
                                 </td>
                                 </tr>
+                                <% } %>
 
                             </tbody>
                         </table>
