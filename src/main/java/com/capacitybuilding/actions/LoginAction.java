@@ -72,7 +72,11 @@ public class LoginAction extends HttpServlet {
         session.setAttribute("username", login.getUsername());
         session.setAttribute("userType", login.getUserType());
 
-        res.sendRedirect("./home");
+        if (login.getUserType().equals("ADMIN"))
+            res.sendRedirect("./home");
+        else if (login.getUserType().equals("USER")) {
+            res.sendRedirect("./home");
+        }
 
 //        RequestDispatcher dispatcher = req.getRequestDispatcher("./home");
 //        dispatcher.forward(req, res);

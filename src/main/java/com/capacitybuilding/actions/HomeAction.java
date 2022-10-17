@@ -44,7 +44,8 @@ public class HomeAction extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        res.getWriter().print(HomeDashboard((String) session.getAttribute("username")));
+
+        res.sendRedirect("./web/adminDashboard.jsp");
     }
 
     @SuppressWarnings("unchecked")

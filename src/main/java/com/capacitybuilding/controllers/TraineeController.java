@@ -1,4 +1,6 @@
 package com.capacitybuilding.controllers;
 
-public class TraineeController {
+import java.io.Serializable;
+
+public class TraineeController implements Serializable {
 }

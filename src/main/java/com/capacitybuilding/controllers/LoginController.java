@@ -1,4 +1,6 @@
 package com.capacitybuilding.controllers;
 
-public class LoginController {
+import java.io.Serializable;
+
+public class LoginController implements Serializable {
 }
