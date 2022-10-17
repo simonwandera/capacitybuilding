@@ -1,4 +1,4 @@
-<%@ include file="./utils/header.jsp"%>
+<%@ include file="../utils/header.jsp"%>
 <body>
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper">
@@ -49,4 +49,4 @@
       </div>
     </div>
   </div>
-  <%@ include file="./utils/footer.jsp"%>
+  <%@ include file="../utils/footer.jsp"%>

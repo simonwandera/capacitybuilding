@@ -45,7 +45,7 @@ public class HomeAction extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        res.sendRedirect("./web/adminDashboard.jsp");
+        res.sendRedirect("./main/adminDashboard.jsp");
     }
 
     @SuppressWarnings("unchecked")

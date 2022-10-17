@@ -34,7 +34,7 @@ public class LoginAction extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        res.sendRedirect("./web/login.jsp");
+        res.sendRedirect("./auth/login.jsp");
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -45,13 +45,13 @@ public class LoginAction extends HttpServlet {
 
         if (email == null || email.equalsIgnoreCase("")){
             servletContext.setAttribute("loginError" , "Email is required<br/>");
-            res.sendRedirect("./web/login.jsp");
+            res.sendRedirect("./auth/login.jsp");
             return;
         }
 
         if (password == null || password.equalsIgnoreCase("")) {
             servletContext.setAttribute("loginError" , "Password is required<br/>");
-            res.sendRedirect("./web/login.jsp");
+            res.sendRedirect("./auth/login.jsp");
             return;
         }
 
@@ -64,7 +64,7 @@ public class LoginAction extends HttpServlet {
 
         if (login == null || login.getId() < 1) {
             servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
-            res.sendRedirect("./web/login.jsp");
+            res.sendRedirect("./auth/login.jsp");
             return;
         }
 
@@ -73,9 +73,9 @@ public class LoginAction extends HttpServlet {
         session.setAttribute("userType", login.getUserType());
 
         if (login.getUserType().equals("ADMIN"))
-            res.sendRedirect("./home");
+            res.sendRedirect("./main/adminDashboard.jsp");
         else if (login.getUserType().equals("USER")) {
-            res.sendRedirect("./home");
+            res.sendRedirect("./main/adminDashboard.jsp");
         }
 
 //        RequestDispatcher dispatcher = req.getRequestDispatcher("./home");

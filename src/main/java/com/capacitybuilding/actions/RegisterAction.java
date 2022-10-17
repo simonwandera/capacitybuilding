@@ -37,25 +37,25 @@ public class RegisterAction extends HttpServlet {
 
         if (email == null || email.equalsIgnoreCase("")) {
             servletContext.setAttribute("signupError", "Email is required");
-            res.sendRedirect("./web/register.jsp");
+            res.sendRedirect("./auth/register.jsp");
             return;
         }
 
         if (password == null || password.equalsIgnoreCase("")) {
             servletContext.setAttribute("signupError", "Password is required!");
-            res.sendRedirect("./web/register.jsp");
+            res.sendRedirect("./auth/register.jsp");
             return;
         }
 
         if (confirmPassword == null || confirmPassword.equalsIgnoreCase("")) {
             servletContext.setAttribute("signupError", "Confirm password is required!");
-            res.sendRedirect("./web/register.jsp");
+            res.sendRedirect("./auth/register.jsp");
             return;
         }
 
         if (firstName == null || firstName.equalsIgnoreCase("")) {
             servletContext.setAttribute("signupError", "FirstName is required!");
-            res.sendRedirect("./web/register.jsp");
+            res.sendRedirect("./auth/register.jsp");
             return;
         }
 
@@ -67,7 +67,7 @@ public class RegisterAction extends HttpServlet {
 
         if (!password.equals(confirmPassword)){
             servletContext.setAttribute("signupError", "Password mismatch!");
-            res.sendRedirect("./web/register.jsp");
+            res.sendRedirect("./auth/register.jsp");
             return;
         }
 
@@ -85,7 +85,7 @@ public class RegisterAction extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        res.sendRedirect("./web/login.jsp");
+        res.sendRedirect("./auth/login.jsp");
     }
 
 }

@@ -1,4 +1,4 @@
-<%@ include file="./utils/header.jsp"%>
+<%@ include file="../utils/header.jsp"%>
 <body>
     <div class="container-scroller">
     <%@ include file="./utils/sideNav.jsp"%>
