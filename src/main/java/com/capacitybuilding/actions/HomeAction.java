@@ -44,7 +44,7 @@ public class HomeAction extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        res.getWriter().print(HomeDashboard((String) session.getAttribute("email")));
+        res.getWriter().print(HomeDashboard((String) session.getAttribute("username")));
     }
 
     @SuppressWarnings("unchecked")
@@ -65,10 +65,11 @@ public class HomeAction extends HttpServlet {
 
     }
 
-    public String HomeDashboard(String email){
+    public String HomeDashboard(String username){
 
         return
                 Common.Header() +
+
                 "  <body>\n" +
                 "    <div class=\"container-scroller\">\n" +
                 Common.SideNav() +
@@ -88,7 +89,7 @@ public class HomeAction extends HttpServlet {
                 "            <div class=\"tiles dark\"></div>\n" +
                 "          </div>\n" +
                 "        </div>\n" +
-                            Common.TopNav(email) +
+                            Common.TopNav(username) +
                 "        <div class=\"main-panel\">\n" +
                 "          <div class=\"content-wrapper pb-0\">\n" +
                 "            <div class=\"page-header flex-wrap\">\n" +
@@ -173,7 +174,7 @@ public class HomeAction extends HttpServlet {
                 "                      </div>\n" +
                 "                      <div class=\"col-sm-5 text-md-right\">\n" +
                 "                        <button type=\"button\" class=\"btn btn-icon-text mb-3 mb-sm-0 btn-inverse-primary font-weight-normal\">\n" +
-                "                          <i class=\"mdi mdi-email btn-icon-prepend\"></i>Download Report </button>\n" +
+                "                          <i class=\"mdi mdi-username btn-icon-prepend\"></i>Download Report </button>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +
                 "                    <div class=\"row\">\n" +
