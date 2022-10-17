@@ -36,8 +36,10 @@ public class SessionFilter implements Filter {
         //if user is accessing /home - (page accessed only by logged-in users),
         //with a new session creating in this filter (which mean the session was initially
         // null and was crated in this filter at line 21, the user will be redirected to login page
-        if ((reqPath.equalsIgnoreCase("/web/adminDashboard.jsp") || reqPath.equalsIgnoreCase("/web/home.jsp") || reqPath.equalsIgnoreCase("/home")) && session.isNew() /*checks if
-        // session was created in the filte*/) {
+        if ((reqPath.equalsIgnoreCase("/web/adminDashboard.jsp")
+                || reqPath.equalsIgnoreCase("/web/home.jsp")
+                || reqPath.equalsIgnoreCase("/home"))
+                && session.isNew() /*checks if // session was created in the filte*/) {
             httpRes.sendRedirect("../login");
             return;
         }
