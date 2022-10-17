@@ -36,7 +36,7 @@ public class TraineeAction extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = (String) session.getAttribute("email");
-        res.getWriter().print(this.addTrainee(null, email));
+        res.sendRedirect("./trainee/addTrainee.jsp");
     }
 
     @SuppressWarnings("unchecked")
