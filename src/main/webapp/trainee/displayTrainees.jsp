@@ -63,7 +63,7 @@
 
                                <%
 
-                               List<Trainee> trainees = traineeController.list((Connection) application.getAttribute("dbConnection"), new Trainee())
+                               List<Trainee> trainees = traineeController.list((Connection) application.getAttribute("dbConnection"), new Trainee());
 
                                for(Trainee trainee : trainees) {
 
