@@ -78,8 +78,6 @@ public class LoginAction extends HttpServlet {
             res.sendRedirect("./main/adminDashboard.jsp");
         }
 
-//        RequestDispatcher dispatcher = req.getRequestDispatcher("./home");
-//        dispatcher.forward(req, res);
     }
 
     public Login login(Map<String, String> criteria) {
