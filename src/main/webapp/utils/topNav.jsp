@@ -4,7 +4,7 @@
     <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
       <i class="mdi mdi-menu"></i>
     </button>
-    
+
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -85,7 +85,7 @@
           <span class="profile-name"><%= session.getAttribute("username") %></span>
         </a>
         <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="../logout">
             <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
         </div>
       </li>
