@@ -9,14 +9,15 @@ public interface IMySQLDB<T extends Entity, I extends Connection> {
 
     String createInsertQuery();
     String createUpdateQuery(Map<String, Object> entryMap);
-    public ResultSet fetchAll() throws SQLException;
-    public ResultSet fetchOne() throws SQLException;
-    public void update();
+    ResultSet fetchAll() throws SQLException;
+    ResultSet fetchOne() throws SQLException;
+    void update();
     String createSelectQuery();
-    public String createSelectWithWhereClauseQuery(Map<String, String> critetia);
+    String createSelectWithWhereClauseQuery(Map<String, String> critetia);
 
-    public String createSelectOneQuery();
+    String createSelectOneQuery();
     boolean executeQuery(String query);
-    public void save();
+    void save();
     ResultSet executeReadQuery(String query) throws SQLException;
+
 }

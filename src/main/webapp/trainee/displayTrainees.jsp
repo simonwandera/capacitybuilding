@@ -71,7 +71,7 @@
                                 %>
 
                                 <td class="py-1">
-                                    <img src="./assets/images/faces-clipart/pic-1.png\" alt="image" />
+                                    <img src="../assets/images/faces-clipart/pic-1.png" alt="image" />
                                 </td>
                                 <td><%= trainee.getFirstName() %></td>
                                 <td><%= trainee.getLastName()  %></td>
@@ -79,8 +79,8 @@
                                 <td><%= trainee.getGender() %></td>
                                 <td><%= new Date() %></td>
                                 <td>
-                                    <a href="./updateTrainee?id="+ <%= trainee.getId() %> ><i class="mdi mdi-border-color mdi-24px"></i></a>
-                                    <a href="./deleteTrainee?id="+ <%= trainee.getId() %> ><i class="mdi mdi-delete md-24 mdi-24px text-danger"></i></a>
+                                    <a href="./updateTrainee?id=<%= trainee.getId() %>"  ><i class="mdi mdi-border-color mdi-24px"></i></a>
+                                    <a href="./deleteTrainee?id=<%= trainee.getId() %>"  ><i class="mdi mdi-delete md-24 mdi-24px text-danger"></i></a>
                                 </td>
                                 </tr>
                                 <% } %>

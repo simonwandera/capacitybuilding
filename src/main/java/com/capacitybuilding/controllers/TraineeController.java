@@ -28,6 +28,7 @@ public class TraineeController implements Serializable {
 
     public void update(Trainee trainee) {
 
+
     }
 
     public void delete(Trainee trainee) {
