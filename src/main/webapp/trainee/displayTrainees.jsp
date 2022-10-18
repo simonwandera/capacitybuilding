@@ -1,11 +1,12 @@
-<%@ page import="com.capacitybuilding.controllers.*" %>
 <%@ page import="com.capacitybuilding.model.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 
-<%! TraineeController traineeController = new TraineeController(); %>
+
+<jsp:useBean id="traineeController" class="com.capacitybuilding.controllers.TraineeController" />
+
 
 <%@ include file="../utils/header.jsp"%>
 <body>
