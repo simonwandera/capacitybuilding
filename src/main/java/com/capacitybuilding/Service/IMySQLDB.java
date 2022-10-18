@@ -8,10 +8,12 @@ import java.util.Map;
 public interface IMySQLDB<T extends Entity, I extends Connection> {
 
     String createInsertQuery();
+    String createDeleteQuery();
     String createUpdateQuery(Map<String, Object> entryMap);
     ResultSet fetchAll() throws SQLException;
     ResultSet fetchOne() throws SQLException;
     void update();
+    void delete();
     String createSelectQuery();
     String createSelectWithWhereClauseQuery(Map<String, String> critetia);
 

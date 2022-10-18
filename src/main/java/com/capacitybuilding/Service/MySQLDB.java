@@ -76,6 +76,11 @@ public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB
         return stringBuilder.toString();
     }
 
+    public String createDeleteQuery(){
+        StringBuilder stringBuilder = new StringBuilder("DELETE FROM");
+        return stringBuilder.toString();
+    }
+
     public String createUpdateQuery(Map <String, Object> entryMap) {
         StringBuilder updateQuery = new StringBuilder("UPDATE ");
         updateQuery.append(t.getTableName()).append(" SET ");
@@ -110,6 +115,13 @@ public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB
         String insertQuery = this.createInsertQuery();
         System.out.println("Insert query>>>: " +insertQuery);
         this.executeQuery(insertQuery);
+    }
+
+    @Override
+    public void delete() {
+        String deleteQuery = this.createDeleteQuery();
+        System.out.println("Delete query>>>: " +deleteQuery);
+        this.executeQuery(deleteQuery);
     }
 
     @Override
