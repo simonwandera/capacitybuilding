@@ -5,7 +5,6 @@ import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Login;
 import org.apache.commons.codec.digest.DigestUtils;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -86,7 +85,6 @@ public class LoginAction extends HttpServlet {
     public Login login(Map<String, String> criteria) {
 
         Login login = new Login();
-        login.setId(12);
 
         try {
 
@@ -95,9 +93,6 @@ public class LoginAction extends HttpServlet {
             String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
             ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
 
-
-            System.out.println("\n\n\t\t ### \n\n");
-            System.out.println(loginMysqlDb.createDeleteQuery());
 
             while (resultSet.next()) {
                 login = new Login();
