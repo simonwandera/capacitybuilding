@@ -1,6 +1,4 @@
 package com.capacitybuilding.Service;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Map;
 
 public class Entity {
@@ -19,13 +17,5 @@ public class Entity {
         this.tableName = tableName;
         this.entitiesMap = entitiesMap;
     }
-
-//    public ResultSet getAll() throws SQLException {
-//        return this.getMySqlDB().fetchAll();
-//    }
-
-//    public ResultSet getOne() throws SQLException {
-//        return this.getMySqlDB().fetchOne();
-//    }
 
 }

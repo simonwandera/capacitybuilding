@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class Login extends Entity {
 
-    private int Id;
     private String username;
     private String password;
     private String userType = "USER";
@@ -37,13 +36,10 @@ public class Login extends Entity {
         return entitiesMap;
     }
 
-    public int getId() {
-        return Id;
-    }
 
     public void setId(int id) {
         entitiesMap.put("Id", id);
-        Id = id;
+        this.setId(id);
     }
 
     public String getUsername() {

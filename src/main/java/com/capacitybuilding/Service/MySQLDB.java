@@ -77,7 +77,8 @@ public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB
     }
 
     public String createDeleteQuery(){
-        StringBuilder stringBuilder = new StringBuilder("DELETE FROM");
+        StringBuilder stringBuilder = new StringBuilder("DELETE FROM ");
+        stringBuilder.append(t.getTableName()).append(" WHERE id =").append(t.getEntitiesMap().get("Id"));
         return stringBuilder.toString();
     }
 

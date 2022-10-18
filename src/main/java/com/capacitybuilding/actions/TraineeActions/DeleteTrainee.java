@@ -19,8 +19,6 @@ public class DeleteTrainee extends HttpServlet {
 
         int traineeId = Integer.parseInt(req.getParameter("id"));
 
-        System.out.println("Trainee id: " + traineeId);
-
         HttpSession session = req.getSession();
         List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
 
