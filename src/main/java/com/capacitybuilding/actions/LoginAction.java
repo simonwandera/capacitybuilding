@@ -62,6 +62,7 @@ public class LoginAction extends HttpServlet {
 
         Login login = this.login(criteria);
 
+
         if (login == null || login.getId() < 1) {
             servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
             res.sendRedirect("./auth/login.jsp");
@@ -92,6 +93,10 @@ public class LoginAction extends HttpServlet {
 
             String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
             ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
+
+
+            System.out.println("\n\n\t\t ### \n\n");
+            System.out.println(loginMysqlDb.createDeleteQuery());
 
             while (resultSet.next()) {
                 login = new Login();

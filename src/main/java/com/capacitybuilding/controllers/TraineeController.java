@@ -40,9 +40,12 @@ public class TraineeController implements Serializable {
         IMySQLDB<Trainee, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(trainee, connection);
         ResultSet resultSet = traineeConnectionIMySQLDB.fetchAll();
 
-        System.out.println("\n\nDelete query \n\n");
+        String deleteQuery = traineeConnectionIMySQLDB.createDeleteQuery();
 
-        System.out.println(traineeConnectionIMySQLDB.createDeleteQuery());
+        System.out.println("\n\n Delete Query\n\n");
+
+        System.out.println(deleteQuery);
+
 
         return trainee.generateList(resultSet);
     }
