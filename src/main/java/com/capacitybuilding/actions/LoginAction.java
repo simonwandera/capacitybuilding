@@ -86,6 +86,7 @@ public class LoginAction extends HttpServlet {
     public Login login(Map<String, String> criteria) {
 
         Login login = new Login();
+        login.setId(12);
 
         try {
 
