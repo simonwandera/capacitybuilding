@@ -67,6 +67,15 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Gender</label>
+                                            <select class="form-control" name="gender" id="exampleSelectGender">
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+
                                         <div class="my-3 py-2 text-center">
                                              <%
                                                   String signupError = (String) application.getAttribute("signupError");
