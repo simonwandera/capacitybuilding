@@ -1,5 +1,4 @@
 <%@ include file="../utils/header.jsp"%>
-<%@ page isELIgnored="false" %>
 <body>
     <div class="container-scroller">
 
@@ -65,10 +64,10 @@
                           <div class= "py-1 text-center">
 
                             <%
-                              String addTraineeError = (String) ${applicationScope.addTraineeError};
+                              String addTraineeError = (String) application.getAttribute("addTraineeError");
                               if (addTraineeError != null && !addTraineeError.equals("")) {
                             %>
-                              <span class="text-danger"> <%= addTraineeError %> </span>
+                              <span class="text-danger"> ${applicationScope.addTraineeError} </span>
                             <% } %>
                           </div>
 
