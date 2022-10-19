@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.model.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList" %>
@@ -6,7 +7,6 @@
 
 
 <jsp:useBean id="traineeController" class="com.capacitybuilding.controllers.TraineeController" />
-
 
 <%@ include file="../utils/header.jsp"%>
 <body>
@@ -74,7 +74,7 @@
                                 <td class="py-1">
                                     <img src="../assets/images/faces-clipart/pic-1.png" alt="image" />
                                 </td>
-                                <td><%= trainee.getFirstName() %></td>
+                                <td><%= trainee.getFirstName() </td>
                                 <td><%= trainee.getLastName()  %></td>
                                 <td><%= trainee.getEmail()  %></td>
                                 <td><%= trainee.getGender() %></td>
