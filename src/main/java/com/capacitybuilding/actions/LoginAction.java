@@ -75,10 +75,10 @@ public class LoginAction extends HttpServlet {
 
         if (login.getUserType().equals("ADMIN"))
             res.sendRedirect("./main/adminDashboard.jsp");
-        else if (login.getUserType().equals("USER")) {
-            res.sendRedirect("./main/adminDashboard.jsp");
-        }
-
+        else if (login.getUserType().equals("USER"))
+            res.sendRedirect("./main/traineeDashboard.jsp");
+        else if (login.getUserType().equals("TRAINER"))
+            res.sendRedirect("./main/trainerDashboard.jsp");
     }
 
     public Login login(Map<String, String> criteria) {
