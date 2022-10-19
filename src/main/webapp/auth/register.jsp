@@ -70,7 +70,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputPassword1">Gender</label>
+                                                    <label class="col-sm-3 col-form-label">Gender</label>
                                                     <select class="form-control" name="gender" id="exampleSelectGender">
                                                         <option>Male</option>
                                                         <option>Female</option>
