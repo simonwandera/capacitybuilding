@@ -33,6 +33,7 @@ public class RegisterAction extends HttpServlet {
         String confirmPassword = req.getParameter("confirmPassword");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
+        String gender = req.getParameter("gender");
         String email = req.getParameter("email");
 
         if (email == null || email.equalsIgnoreCase("")) {
@@ -71,12 +72,19 @@ public class RegisterAction extends HttpServlet {
             return;
         }
 
+        if (gender == null || gender.equalsIgnoreCase("")) {
+            servletContext.setAttribute("signupError", "Gender is required");
+            res.sendRedirect("./web/register.jsp");
+            return;
+        }
+
         try {
             Connection connection = (Connection) servletContext.getAttribute("dbConnection");
             Login login = new Login();
 
             login.setUsername(email);
             login.setPassword(DigestUtils.md5Hex(password));
+            login.set
             login.setUserType("USER");
 
             IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);

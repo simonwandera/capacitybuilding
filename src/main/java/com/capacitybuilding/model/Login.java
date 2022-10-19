@@ -16,7 +16,11 @@ import java.util.Map;
 public class Login extends Entity {
 
     private int Id;
+
     private String username;
+    private String firstName;
+    private String lastName;
+    private String gender;
     private String password;
     private String userType = "USER";
 
@@ -27,6 +31,9 @@ public class Login extends Entity {
         put("Id", null);
         put("Username", "");
         put("Password", "");
+        put("FirstName", "");
+        put("LastName", "");
+        put("Gender", "");
         put("UserType", "");
     }};;
 
@@ -68,11 +75,44 @@ public class Login extends Entity {
         entitiesMap.put("UserType", userType);
         this.userType = userType;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        entitiesMap.put("FirstName", firstName);
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        entitiesMap.put("LastName", lastName);
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        entitiesMap.put("Gender",gender);
+        this.gender = gender;
+    }
+
     public List<Login> generateList(ResultSet resultSet) throws SQLException {
         List<Login> loginList = new ArrayList<>();
         while (resultSet.next()){
             Login login = new Login();
             login.setId(resultSet.getInt("id"));
+
+            login.setFirstName(resultSet.getString("firstname"));
+            login.setLastName(resultSet.getString("lastname"));
+            login.setGender(resultSet.getString("gender"));
+
             login.setUsername(resultSet.getString("username"));
             login.setPassword(resultSet.getString("password"));
             login.setUserType(resultSet.getString("userType"));
