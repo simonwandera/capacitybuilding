@@ -37,6 +37,9 @@ public class SessionFilter implements Filter {
         //with a new session creating in this filter (which mean the session was initially
         // null and was crated in this filter at line 21, the user will be redirected to login page
 
+        System.out.println("\t\t Dashboard request");
+        System.out.println(reqPath.equalsIgnoreCase("/main/adminDashboard.jsp"));
+
 
         if(reqPath.equalsIgnoreCase("/main/adminDashboard.jsp") && session.isNew()){
             httpRes.sendRedirect("../login");
