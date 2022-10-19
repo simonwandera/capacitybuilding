@@ -1,3 +1,4 @@
+ <%@ page isELIgnored="false" %>
  <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
   <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
     <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -82,7 +83,7 @@
       <li class="nav-item nav-profile dropdown border-0">
         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
           <img class="nav-profile-img mr-2" alt="" src="../assets/images/faces/face1.jpg" />
-          <span class="profile-name"><%= session.getAttribute("username") %></span>
+          <span class="profile-name">${sessionScope.username}</span>
         </a>
         <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
           <a class="dropdown-item" href="../logout">
