@@ -20,7 +20,7 @@
                                         <p class="card-description">Personal info</p>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group row">
+                                                <div class="form-group">
                                                     <label class="col-sm-3 col-form-label">First Name</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="firstName" class="form-control" />
@@ -28,7 +28,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group row">
+                                                <div class="form-group">
                                                     <label class="col-sm-3 col-form-label">Last Name</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="lastName" class="form-control" />
@@ -39,7 +39,7 @@
 
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group row">
+                                                <div class="form-group">
                                                     <label class="col-sm-3 col-form-label">Email</label>
                                                     <div class="col-sm-9">
                                                         <input type="email" name="email" class="form-control" />
@@ -50,7 +50,7 @@
 
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group row">
+                                                <div class="form-group">
                                                     <label class="col-sm-3 col-form-label">Password</label>
                                                     <div class="col-sm-9">
                                                         <input type="password" name="password" class="form-control" />
@@ -58,7 +58,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group row">
+                                                <div class="form-group">
                                                     <label class="col-sm-3 col-form-label">Confirm Password</label>
                                                     <div class="col-sm-9">
                                                         <input type="password" name="confirmPassword" class="form-control" />
@@ -78,7 +78,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        <div>
+                                        </div>
 
                                         <div class="my-3 py-2 text-center">
                                              <%
