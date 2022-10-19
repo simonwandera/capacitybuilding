@@ -24,7 +24,7 @@
         <div class="main-panel">
           <div class="content-wrapper pb-0">
             <div class="page-header flex-wrap">
-              <h3 class="mb-0"> Hi, welcome <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">Capacity admin building dashboard.</span>
+              <h3 class="mb-0"> Hi, welcome <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">Capacity building trainee dashboard.</span>
               </h3>
               <div class="d-flex">
                 <button type="button" class="btn btn-sm ml-3 btn-success"> Add User </button>
