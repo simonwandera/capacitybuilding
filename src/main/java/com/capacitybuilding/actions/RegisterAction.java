@@ -82,9 +82,11 @@ public class RegisterAction extends HttpServlet {
             Connection connection = (Connection) servletContext.getAttribute("dbConnection");
             Login login = new Login();
 
+            login.setFirstName(firstName);
+            login.setLastName(lastName);
+            login.setGender(gender);
             login.setUsername(email);
             login.setPassword(DigestUtils.md5Hex(password));
-            login.set
             login.setUserType("USER");
 
             IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
