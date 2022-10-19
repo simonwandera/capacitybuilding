@@ -38,6 +38,16 @@ public class SessionFilter implements Filter {
         // null and was crated in this filter at line 21, the user will be redirected to login page
 
 
+        if(reqPath.equalsIgnoreCase("/main/adminDashboard.jsp") && session.isNew()){
+            httpRes.sendRedirect("../login");
+            return;
+        }
+
+//        if (!reqPath.contains("/auth/") && session.isNew() /*checks if // session was created in the filter*/) {
+//            httpRes.sendRedirect("../login");
+//            return;
+//        }
+
         //in case user is accessing login/register/index page, they should not have a session.. invalidate
         System.out.println(reqPath.contains("/auth"));
         if (reqPath.equalsIgnoreCase("/login")
@@ -45,12 +55,6 @@ public class SessionFilter implements Filter {
                 || reqPath.contains("/auth")
         )
             session.invalidate();
-
-
-        if ((!reqPath.contains("/auth") && session.isNew() /*checks if // session was created in the filter*/) {
-            httpRes.sendRedirect("../login");
-            return;
-        }
 
         //proceed to the resource/servlet requested
         filterChain.doFilter(servletRequest, servletResponse);

@@ -32,10 +32,6 @@ public class LoginAction extends HttpServlet {
         connection = (Connection) servletContext.getAttribute("dbConnection");
     }
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        res.sendRedirect("./auth/login.jsp");
-    }
-
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         PrintWriter wr = res.getWriter();
