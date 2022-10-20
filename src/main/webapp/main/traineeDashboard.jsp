@@ -1,7 +1,7 @@
 <%@ include file="../utils/header.jsp"%>
 <body>
     <div class="container-scroller">
-    <%@ include file="../utils/sideNav.jsp"%>
+    <%@ include file="../utils/traineeSideNav.jsp"%>
     <div class="container-fluid page-body-wrapper">
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close mdi mdi-close"></i>
@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <%@ include file="../utils/topNav.jsp"%>
+        <%@ include file="../utils/traineeTopNav.jsp"%>
 
         <div class="main-panel">
           <div class="content-wrapper pb-0">
