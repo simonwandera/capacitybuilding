@@ -89,6 +89,8 @@ public class RegisterAction extends HttpServlet {
             login.setPassword(DigestUtils.md5Hex(password));
             login.setUserType("USER");
 
+            System.out.println("Map to string" + login.getEntitiesMap().toString());
+
             IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
             loginCommonIMySQLDB.save();
 

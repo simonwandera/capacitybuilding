@@ -23,12 +23,48 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-          <span class="menu-title">Home</span>
-        </a>
+          <a class="nav-link" data-toggle="collapse" href="#trainings" aria-expanded="false" aria-controls="trainings">
+            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+            <span class="menu-title">Trainings</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="trainings">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="pages/ui-features/buttons.html">Add New</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/ui-features/dropdowns.html">Upcoming</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/ui-features/typography.html">Ongoing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/ui-features/typography.html">Completed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/ui-features/typography.html">Cancelled</a>
+              </li>
+            </ul>
+          </div>
       </li>
+
+
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+          </li>
+        </ul>
+      </div>
 
       <li class="nav-item">
         <a class="nav-link" href="../trainee/displayTrainees.jsp">
