@@ -1,13 +1,8 @@
 package com.capacitybuilding.model;
 
 import com.capacitybuilding.Service.Entity;
-import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
-
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
