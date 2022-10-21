@@ -110,12 +110,12 @@
        </li>
 
        <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
+        <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
           <i class="mdi mdi-crosshairs-gps menu-icon"></i>
           <span class="menu-title">Settings</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="report">
+        <div class="collapse" id="settings">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
               <a class="nav-link" href="pages/ui-features/buttons.html">Settings 1</a>
