@@ -22,7 +22,6 @@ public class UserController implements Serializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void update(User user) {
