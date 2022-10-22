@@ -37,9 +37,8 @@ public class LoginAction extends HttpServlet {
         res.sendRedirect("./auth/login.jsp");
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-        PrintWriter wr = res.getWriter();
         String password = req.getParameter("password");
         String email = req.getParameter("email");
 
@@ -60,24 +59,23 @@ public class LoginAction extends HttpServlet {
             put("Password", DigestUtils.md5Hex(password));
         }};;
 
-        User login = this.login(criteria);
+        User user = this.login(criteria);
 
-
-        if (login == null || login.getId() < 1) {
+        if (user == null || user.getId() < 1) {
             servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
             res.sendRedirect("./auth/login.jsp");
             return;
         }
 
         HttpSession session = req.getSession(true);
-        session.setAttribute("username", login.getUsername());
-        session.setAttribute("userType", login.getUserType());
+        session.setAttribute("username", user.getUsername());
+        session.setAttribute("userType", user.getUserType());
 
-        if (login.getUserType().equals("ADMIN"))
+        if (user.getUserType().equals("ADMIN"))
             res.sendRedirect("./main/adminDashboard.jsp");
-        else if (login.getUserType().equals("USER"))
+        else if (user.getUserType().equals("USER"))
             res.sendRedirect("./main/traineeDashboard.jsp");
-        else if (login.getUserType().equals("TRAINER"))
+        else if (user.getUserType().equals("TRAINER"))
             res.sendRedirect("./main/trainerDashboard.jsp");
     }
 
