@@ -26,7 +26,7 @@
 
       <li class="nav-item">
           <a class="nav-link" data-toggle="collapse" href="#trainings" aria-expanded="false" aria-controls="trainings">
-            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+            <i class="mdi mdi-book-open-page-variant menu-icon"></i>
             <span class="menu-title">Trainings</span>
             <i class="menu-arrow"></i>
           </a>
@@ -53,7 +53,7 @@
 
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#trainers" aria-expanded="false" aria-controls="trainers">
-          <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+          <i class=" mdi mdi-account-network menu-icon"></i>
           <span class="menu-title">Trainers</span>
           <i class="menu-arrow"></i>
         </a>
@@ -75,7 +75,7 @@
 
        <li class="nav-item">
           <a class="nav-link" data-toggle="collapse" href="#trainees" aria-expanded="false" aria-controls="trainees">
-            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+            <i class="mdi mdi-account-multiple menu-icon"></i>
             <span class="menu-title">Trainees</span>
             <i class="menu-arrow"></i>
           </a>
@@ -93,7 +93,7 @@
 
        <li class="nav-item">
          <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
-           <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+           <i class=" mdi mdi-file-document menu-icon"></i>
            <span class="menu-title">Reports</span>
            <i class="menu-arrow"></i>
          </a>
@@ -111,7 +111,7 @@
 
        <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
-          <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+          <i class="mdi mdi-settings menu-icon"></i>
           <span class="menu-title">Settings</span>
           <i class="menu-arrow"></i>
         </a>
