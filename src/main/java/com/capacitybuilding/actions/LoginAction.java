@@ -2,7 +2,7 @@ package com.capacitybuilding.actions;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.model.Login;
+import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.ServletConfig;
@@ -60,7 +60,7 @@ public class LoginAction extends HttpServlet {
             put("Password", DigestUtils.md5Hex(password));
         }};;
 
-        Login login = this.login(criteria);
+        User login = this.login(criteria);
 
 
         if (login == null || login.getId() < 1) {
@@ -81,20 +81,20 @@ public class LoginAction extends HttpServlet {
             res.sendRedirect("./main/trainerDashboard.jsp");
     }
 
-    public Login login(Map<String, String> criteria) {
+    public User login(Map<String, String> criteria) {
 
-        Login login = new Login();
+        User login = new User();
 
         try {
 
-            IMySQLDB<Login, Connection> loginMysqlDb = new MySQLDB<>(login, connection);
+            IMySQLDB<User, Connection> loginMysqlDb = new MySQLDB<>(login, connection);
 
             String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
             ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
 
 
             while (resultSet.next()) {
-                login = new Login();
+                login = new User();
                 login.setId(resultSet.getInt("id"));
                 login.setUsername(resultSet.getString("userName"));
                 login.setUserType(resultSet.getString("userType"));

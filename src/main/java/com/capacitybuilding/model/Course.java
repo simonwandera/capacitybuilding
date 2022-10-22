@@ -11,8 +11,8 @@ public class Course implements Serializable {
     private String duration;
     private LocalDate startDate;
     private LocalDate dateAdded;
-    private List<Login> trainees;
-    private List<Login> trainers;
+    private List<User> trainees;
+    private List<User> trainers;
 
     public int getId() {
         return Id;
@@ -62,19 +62,19 @@ public class Course implements Serializable {
         this.dateAdded = dateAdded;
     }
 
-    public List<Login> getTrainees() {
+    public List<User> getTrainees() {
         return trainees;
     }
 
-    public void setTrainees(List<Login> trainees) {
+    public void setTrainees(List<User> trainees) {
         this.trainees = trainees;
     }
 
-    public List<Login> getTrainers() {
+    public List<User> getTrainers() {
         return trainers;
     }
 
-    public void setTrainers(List<Login> trainers) {
+    public void setTrainers(List<User> trainers) {
         this.trainers = trainers;
     }
 }

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Login extends Entity {
+public class User extends Entity {
 
     private int Id;
 
@@ -20,7 +20,7 @@ public class Login extends Entity {
     private String userType = "USER";
 
     static ResultSet resultSet;
-    private static final String tableName = "Login";
+    private static final String tableName = "User";
 
     private static final Map<String, Object> entitiesMap = new HashMap<>(){{
         put("Id", null);
@@ -32,7 +32,7 @@ public class Login extends Entity {
         put("UserType", "");
     }};;
 
-    public Login(){
+    public User(){
         super(entitiesMap, tableName);
     }
     public static Map<String, Object> getEntities() {
@@ -98,10 +98,10 @@ public class Login extends Entity {
         this.gender = gender;
     }
 
-    public List<Login> generateList(ResultSet resultSet) throws SQLException {
-        List<Login> loginList = new ArrayList<>();
+    public List<User> generateList(ResultSet resultSet) throws SQLException {
+        List<User> loginList = new ArrayList<>();
         while (resultSet.next()){
-            Login login = new Login();
+            User login = new User();
             login.setId(resultSet.getInt("id"));
 
             login.setFirstName(resultSet.getString("firstname"));

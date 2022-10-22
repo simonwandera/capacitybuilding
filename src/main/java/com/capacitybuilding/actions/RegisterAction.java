@@ -2,7 +2,7 @@ package com.capacitybuilding.actions;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.model.Login;
+import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.ServletConfig;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -80,7 +79,7 @@ public class RegisterAction extends HttpServlet {
 
         try {
             Connection connection = (Connection) servletContext.getAttribute("dbConnection");
-            Login login = new Login();
+            User login = new User();
 
             login.setFirstName(firstName);
             login.setLastName(lastName);
@@ -91,7 +90,7 @@ public class RegisterAction extends HttpServlet {
 
             System.out.println("Map to string" + login.getEntitiesMap().toString());
 
-            IMySQLDB<Login, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
+            IMySQLDB<User, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
             loginCommonIMySQLDB.save();
 
         } catch (SQLException e) {
