@@ -2,11 +2,7 @@ package com.capacitybuilding.model;
 
 import com.capacitybuilding.Service.Entity;
 
-import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +27,7 @@ public class Training extends Entity {
         put("DateAdded", null);
     }};;
 
-    public Training(Map<String, Object> entitiesMap, String tableName) {
+    public Training() {
         super(entitiesMap, tableName);
     }
 

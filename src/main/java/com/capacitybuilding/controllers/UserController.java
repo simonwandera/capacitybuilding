@@ -34,9 +34,14 @@ public class UserController implements Serializable {
 
     }
 
-    public List<User> generateList(Connection connection, User user1) throws SQLException {
-        IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user1, connection);
+    public List<User> list(User user, Connection connection) throws SQLException {
+
+        IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user, connection);
         ResultSet resultSet = traineeConnectionIMySQLDB.fetchAll();
+        return this.generateList(resultSet);
+    }
+
+    public List<User> generateList(ResultSet resultSet) throws SQLException {
 
         List<User> userList = new ArrayList<>();
         while (resultSet.next()){
