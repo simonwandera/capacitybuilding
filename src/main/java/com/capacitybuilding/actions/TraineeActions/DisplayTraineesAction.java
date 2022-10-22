@@ -3,6 +3,7 @@ package com.capacitybuilding.actions.TraineeActions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
+import com.capacitybuilding.model.User;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -55,11 +56,11 @@ public class DisplayTraineesAction  extends HttpServlet {
     public String DisplayTrainees(String email, HttpSession session) throws SQLException {
 
         Connection connection = (Connection) servletContext.getAttribute("dbConnection");
-        Trainee trainee = new Trainee();
-        IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(trainee, connection);
+        User user = new User();
+        IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(user, connection);
         ResultSet resultSet = traineeMysqlDB.fetchAll();
 
-        List<Trainee> traineesList = trainee.generateList(resultSet);
+        List<User> traineesList = user.generateList(resultSet);
 
         return Common.Header() +
                 "  <body>\n" +
@@ -112,7 +113,7 @@ public class DisplayTraineesAction  extends HttpServlet {
                 Common.Footer();
     }
 
-    public String traineeGrid(List<Trainee> trainees) {
+    public String traineeGrid(List<User> users) {
 
         String traineeGrid = "<table class=\"table table-striped\">\n" +
                 "<thead>\n" +
@@ -128,19 +129,19 @@ public class DisplayTraineesAction  extends HttpServlet {
                 "</thead>\n" +
                 "<tbody>\n" ;
 
-        for (Trainee trainee : trainees)
+        for (User user : users)
             traineeGrid += "<tr>" +
                 "<td class=\"py-1\">\n" +
                 "<img src=\"./assets/images/faces-clipart/pic-1.png\" alt=\"image\" />\n" +
                 "</td>\n" +
-                "<td>" + trainee.getFirstName() + "</td>\n" +
-                "<td>" +trainee.getLastName() + "</td>\n" +
-                "<td>" +trainee.getEmail() + "</td>\n" +
-                "<td>"+trainee.getGender()+"</td>\n" +
+                "<td>" + user.getFirstName() + "</td>\n" +
+                "<td>" +user.getLastName() + "</td>\n" +
+                "<td>" +user.getUsername() + "</td>\n" +
+                "<td>"+user.getGender()+"</td>\n" +
                 "<td>" + new Date() + "</td>\n" +
                 "<td>\n" +
-                "<a href=\"./updateTrainee?id="+ trainee.getId() +"\"><i class=\"mdi mdi-border-color mdi-24px\"></i></a>\n" +
-                "<a href=\"./deleteTrainee?id="+ trainee.getId() +"\"><i class=\"mdi mdi-delete md-24 mdi-24px text-danger\"></i></a>\n" +
+                "<a href=\"./updateTrainee?id="+ user.getId() +"\"><i class=\"mdi mdi-border-color mdi-24px\"></i></a>\n" +
+                "<a href=\"./deleteTrainee?id="+ user.getId() +"\"><i class=\"mdi mdi-delete md-24 mdi-24px text-danger\"></i></a>\n" +
                 "</td>\n" +
                 "</tr>\n";
 

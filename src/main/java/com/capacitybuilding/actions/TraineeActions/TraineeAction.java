@@ -2,6 +2,7 @@ package com.capacitybuilding.actions.TraineeActions;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
+import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,7 +21,7 @@ import java.util.List;
 
 @WebServlet("/addTrainee")
 public class TraineeAction extends HttpServlet {
-    private List<Trainee> trainees;
+    private List<User> trainees;
 
     Connection connection;
     ServletContext servletContext;
@@ -39,35 +40,35 @@ public class TraineeAction extends HttpServlet {
 
     @SuppressWarnings("unchecked")
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        Trainee trainee = new Trainee();
+        User user = new User();
 
         try {
-            BeanUtils.populate(trainee, req.getParameterMap());
+            BeanUtils.populate(user, req.getParameterMap());
 
         } catch (Exception ex){
             System.out.println(ex.getMessage());
         }
 
-        if (StringUtils.isBlank(trainee.getEmail())) {
+        if (StringUtils.isBlank(user.getUsername())) {
             servletContext.setAttribute("addTraineeError", "Email is required");
             res.sendRedirect("./trainee/addTrainee.jsp");
             return;
         }
 
-        if (StringUtils.isBlank(trainee.getLastName())) {
+        if (StringUtils.isBlank(user.getLastName())) {
             servletContext.setAttribute("addTraineeError", "Last name is required");
             res.sendRedirect("./trainee/addTrainee.jsp");
             return;
         }
 
-        if (StringUtils.isBlank(trainee.getGender())) {
+        if (StringUtils.isBlank(user.getGender())) {
             servletContext.setAttribute("addTraineeError", "Gender is required");
             res.sendRedirect("./trainee/addTrainee.jsp");
             return;
         }
 
         try {
-            IMySQLDB<Trainee, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(trainee, connection);
+            IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user, connection);
             traineeConnectionIMySQLDB.save();
         } catch (SQLException e) {
             throw new RuntimeException(e);

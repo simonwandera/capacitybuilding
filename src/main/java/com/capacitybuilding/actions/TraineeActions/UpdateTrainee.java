@@ -3,6 +3,7 @@ package com.capacitybuilding.actions.TraineeActions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
+import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -24,8 +25,8 @@ import java.util.List;
 @WebServlet("/updateTrainee")
 public class UpdateTrainee extends HttpServlet {
     private String sessionEmail;
-    private Trainee trainee = null;
-    private List<Trainee> trainees;
+    private User user = null;
+    private List<User> users;
     Connection connection;
     ServletContext servletContext;
 
@@ -39,12 +40,12 @@ public class UpdateTrainee extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         sessionEmail = (String) session.getAttribute("email");
-        Trainee myTrainee = new Trainee();
+        User myUser = new User();
 
         try {
-            IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(myTrainee, connection);
+            IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(myUser, connection);
             ResultSet resultSet = traineeMysqlDB.fetchAll();
-            trainees = myTrainee.generateList(resultSet);
+            users = myUser.generateList(resultSet);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -53,9 +54,9 @@ public class UpdateTrainee extends HttpServlet {
 
         int id = Integer.parseInt(req.getParameter("id"));
 
-        for (Trainee tr: trainees){
+        for (User tr: users){
             if(tr.getId() == id) {
-                trainee = tr;
+                user = tr;
                 System.out.println("*****************Trainee found********************");
             }
         }
@@ -67,45 +68,45 @@ public class UpdateTrainee extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         try {
-            BeanUtils.populate(trainee, req.getParameterMap());
+            BeanUtils.populate(user, req.getParameterMap());
         } catch (Exception ex){
             System.out.println(ex.getMessage());
         }
 
-        if (StringUtils.isBlank(trainee.getFirstName())) {
+        if (StringUtils.isBlank(user.getFirstName())) {
             servletContext.setAttribute("updateTraineeError", "First name is required");
             res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
-        if (StringUtils.isBlank(trainee.getLastName())) {
+        if (StringUtils.isBlank(user.getLastName())) {
             servletContext.setAttribute("updateTraineeError", "Last name is required");
             res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
-        if (StringUtils.isBlank(trainee.getGender())) {
+        if (StringUtils.isBlank(user.getGender())) {
             servletContext.setAttribute("updateTraineeError", "Gender name is required");
             res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
-        if (StringUtils.isBlank(trainee.getEmail())) {
+        if (StringUtils.isBlank(user.getUsername())) {
             servletContext.setAttribute("updateTraineeError", "Email name is required");
             res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
         }
 
-        for (Trainee tr: trainees){
-            if(tr.getId() == trainee.getId()) {
-                tr.setId(trainee.getId());
-                tr.setEmail(trainee.getEmail());
-                tr.setFirstName(trainee.getFirstName());
-                tr.setLastName(trainee.getLastName());
-                tr.setGender(trainee.getGender());
+        for (User tr: users){
+            if(tr.getId() == user.getId()) {
+                tr.setId(user.getId());
+                tr.setUsername(user.getUsername());
+                tr.setFirstName(user.getFirstName());
+                tr.setLastName(user.getLastName());
+                tr.setGender(user.getGender());
 
                 try{
-                    IMySQLDB<Trainee, Connection> traineeMysqlDB = new MySQLDB<>(tr, connection);
+                    IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(tr, connection);
                     traineeMysqlDB.update();
                 }catch (SQLException ex){
                     System.out.println(ex.getMessage());
@@ -118,7 +119,7 @@ public class UpdateTrainee extends HttpServlet {
         dispatcher.forward(req, res);
     }
 
-    public String updateTrainee(String actionError, Trainee trainee){
+    public String updateTrainee(String actionError, User user){
 
         return Common.Header() +
                 "  <body>\n" +
@@ -157,21 +158,21 @@ public class UpdateTrainee extends HttpServlet {
                 "                        <h4 class=\"card-title\">Update Trainee</h4>\n" +
                 "                        <p class=\"card-description\">Basic form layout</p>\n" +
                 "                        <form class=\"forms-sample\" method=\"POST\"> \n" +
-                "                          <input type=\"hidden\" name=\"id\" id=\"id\" value=\"" + trainee.getId() + "\" placeholder=\"John\" />\n" +
+                "                          <input type=\"hidden\" name=\"id\" id=\"id\" value=\"" + user.getId() + "\" placeholder=\"John\" />\n" +
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"email\">First name</label>\n" +
-                "                            <input type=\"text\" class=\"form-control\" name=\"firstName\" id=\"firstName\" value=\"" + trainee.getFirstName() + "\" placeholder=\"John\" />\n" +
+                "                            <input type=\"text\" class=\"form-control\" name=\"firstName\" id=\"firstName\" value=\"" + user.getFirstName() + "\" placeholder=\"John\" />\n" +
                 "                          </div>\n" +
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"exampleInputEmail1\">Last Name</label>\n" +
-                "                            <input type=\"text\" class=\"form-control\" name=\"lastName\" id=\"lastName\" value=\"" + trainee.getLastName() + "\" placeholder=\"Doe\" />\n" +
+                "                            <input type=\"text\" class=\"form-control\" name=\"lastName\" id=\"lastName\" value=\"" + user.getLastName() + "\" placeholder=\"Doe\" />\n" +
                 "                          </div>\n" +
 
                 "                          <div class=\"form-group\">\n" +
                 "                            <label for=\"exampleInputEmail1\">Email</label>\n" +
-                "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" value=\"" + trainee.getEmail() + "\" placeholder=\"johndoe@example.com\" />\n" +
+                "                            <input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" value=\"" + user.getUsername() + "\" placeholder=\"johndoe@example.com\" />\n" +
                 "                          </div>\n" +
-                                            this.SelectGender(trainee) +
+                                            this.SelectGender(user) +
                 "                          <div class=\"py-1 text-center\">\n" +
                 "                               <span class=\"text-danger \">" + (actionError != null? actionError : "") + "</span>\n" +
                 "                          </div>\n" +
@@ -185,9 +186,9 @@ public class UpdateTrainee extends HttpServlet {
                 "    </div>" +
                 Common.Footer();
     }
-    public String SelectGender(Trainee trainee){
+    public String SelectGender(User user){
 
-        if(trainee.getGender().equalsIgnoreCase("Male")) {
+        if(user.getGender().equalsIgnoreCase("Male")) {
             return  "<div class=\"form-group\">\n" +
                     "  <label for=\"gender\">Gender</label>\n" +
                     "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
@@ -197,7 +198,7 @@ public class UpdateTrainee extends HttpServlet {
                     "  </select>\n" +
                     "</div>\n" ;
 
-        } else if (trainee.getGender().equalsIgnoreCase("Female")){
+        } else if (user.getGender().equalsIgnoreCase("Female")){
             return  "<div class=\"form-group\">\n" +
                     "  <label for=\"gender\">Gender</label>\n" +
                     "  <select class=\"form-control\" name=\"gender\" id=\"exampleSelectGender\">\n" +
@@ -206,7 +207,7 @@ public class UpdateTrainee extends HttpServlet {
                     "      <option>Other</option>\n" +
                     "  </select>\n" +
                     "</div>\n" ;
-        } else if (trainee.getGender().equalsIgnoreCase("other")){
+        } else if (user.getGender().equalsIgnoreCase("other")){
             return  "<div class=\"form-group\">\n" +
                     "  <label for=\"gender\">Gender</label>\n" +
                     "  <select class=\"form-control\" name=\"gender\" id=\"gender\">\n" +

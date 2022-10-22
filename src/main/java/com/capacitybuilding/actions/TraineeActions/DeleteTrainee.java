@@ -1,5 +1,7 @@
 package com.capacitybuilding.actions.TraineeActions;
 
+import com.capacitybuilding.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +20,11 @@ public class DeleteTrainee extends HttpServlet {
         int traineeId = Integer.parseInt(req.getParameter("id"));
 
         HttpSession session = req.getSession();
-        List<Trainee> trainees = (List<Trainee>) session.getAttribute("trainees");
+        List<User> trainees = (List<User>) session.getAttribute("trainees");
 
-        for (Trainee trainee: trainees){
-            if (trainee.getId() == traineeId) {
-                trainees.remove(trainee);
-                break;
-            }
-        }
+        //Perform Delete here
+
+
         res.sendRedirect("./trainees");
     }
 }
