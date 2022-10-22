@@ -1,13 +1,17 @@
 package com.capacitybuilding.model;
 
+import com.capacitybuilding.Service.Entity;
+
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Training implements Serializable {
+public class Training extends Entity {
     private int Id;
     private String title;
     private String description;
@@ -16,6 +20,20 @@ public class Training implements Serializable {
     private LocalDate dateAdded;
     private List<User> trainees;
     private List<User> trainers;
+    private static final String tableName = "Training";
+
+    private static final Map<String, Object> entitiesMap = new HashMap<>(){{
+        put("Id", null);
+        put("Title", "");
+        put("Description", "");
+        put("Duration", null);
+        put("StartDate", null);
+        put("DateAdded", null);
+    }};;
+
+    public Training(Map<String, Object> entitiesMap, String tableName) {
+        super(entitiesMap, tableName);
+    }
 
     public int getId() {
         return Id;
@@ -81,21 +99,5 @@ public class Training implements Serializable {
         this.trainers = trainers;
     }
 
-    public List<Training> generateList(ResultSet resultSet) throws SQLException {
-        List<Training> trainingList = new ArrayList<>();
-        while (resultSet.next()){
-            Training training = new Training();
-
-            training.setId(resultSet.getInt("id"));
-            training.setTitle(resultSet.getString("title"));
-            training.setDescription(resultSet.getString("Description"));
-            training.setDuration(resultSet.getString());
-            training.setDateAdded();
-            training.setStartDate();
-
-            trainingList.add(training);
-        }
-        return trainingList;
-    }
 }
 

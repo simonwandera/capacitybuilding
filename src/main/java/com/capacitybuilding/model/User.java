@@ -98,24 +98,6 @@ public class User extends Entity {
         this.gender = gender;
     }
 
-    public List<User> generateList(ResultSet resultSet) throws SQLException {
-        List<User> userList = new ArrayList<>();
-        while (resultSet.next()){
-            User user = new User();
-            user.setId(resultSet.getInt("id"));
-
-            user.setFirstName(resultSet.getString("firstname"));
-            user.setLastName(resultSet.getString("lastname"));
-            user.setGender(resultSet.getString("gender"));
-
-            user.setUsername(resultSet.getString("username"));
-            user.setPassword(resultSet.getString("password"));
-            user.setUserType(resultSet.getString("userType"));
-            userList.add(user);
-        }
-        return userList;
-    }
-
     @Override
     public String toString() {
         return "Login{" +
