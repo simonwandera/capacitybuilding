@@ -3,7 +3,6 @@ package com.capacitybuilding.actions.TraineeActions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
-import com.capacitybuilding.model.Trainee;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;

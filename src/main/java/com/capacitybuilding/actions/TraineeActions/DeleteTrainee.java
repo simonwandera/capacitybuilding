@@ -1,7 +1,5 @@
 package com.capacitybuilding.actions.TraineeActions;
 
-import com.capacitybuilding.model.Trainee;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
