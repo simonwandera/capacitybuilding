@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 @WebServlet("/trainees")
-public class DisplayTraineesAction  extends HttpServlet {
+public class DisplayTrainees extends HttpServlet {
     Connection connection;
     ServletContext servletContext;
 

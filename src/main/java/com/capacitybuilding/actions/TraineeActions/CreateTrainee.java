@@ -20,7 +20,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/addTrainee")
-public class TraineeAction extends HttpServlet {
+public class CreateTrainee extends HttpServlet {
     private List<User> trainees;
 
     Connection connection;
