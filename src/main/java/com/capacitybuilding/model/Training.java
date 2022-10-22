@@ -1,14 +1,17 @@
 package com.capacitybuilding.model;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Course implements Serializable {
+public class Training implements Serializable {
     private int Id;
     private String title;
     private String description;
-    private String duration;
+    private int duration;
     private LocalDate startDate;
     private LocalDate dateAdded;
     private List<User> trainees;
@@ -38,11 +41,11 @@ public class Course implements Serializable {
         this.description = description;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
@@ -76,6 +79,23 @@ public class Course implements Serializable {
 
     public void setTrainers(List<User> trainers) {
         this.trainers = trainers;
+    }
+
+    public List<Training> generateList(ResultSet resultSet) throws SQLException {
+        List<Training> trainingList = new ArrayList<>();
+        while (resultSet.next()){
+            Training training = new Training();
+
+            training.setId(resultSet.getInt("id"));
+            training.setTitle(resultSet.getString("title"));
+            training.setDescription(resultSet.getString("Description"));
+            training.setDuration(resultSet.getString());
+            training.setDateAdded();
+            training.setStartDate();
+
+            trainingList.add(training);
+        }
+        return trainingList;
     }
 }
 
