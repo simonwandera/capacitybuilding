@@ -18,53 +18,29 @@
         </a>
       </li>
       <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="mdi mdi-home menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#training" aria-expanded="false" aria-controls="training">
+            <i class=" mdi mdi-account-network menu-icon"></i>
+            <span class="menu-title">Trainers</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="training">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="pages/ui-features/buttons.html">My Trainings</a>
+              </li>
+            </ul>
+          </div>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="index.html">
           <i class="mdi mdi-home menu-icon"></i>
-          <span class="menu-title">Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-          <span class="menu-title">Home</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="../trainee/displayTrainees.jsp">
-          <i class="mdi mdi-account-multiple menu-icon"></i>
-          <span class="menu-title">Trainees</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="pages/icons/mdi.html">
-          <i class="mdi mdi-contacts menu-icon"></i>
           <span class="menu-title">Notifications</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
-          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-          <span class="menu-title">Report</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="pages/charts/chartjs.html">
-          <i class="mdi mdi-chart-bar menu-icon"></i>
-          <span class="menu-title">Trainings</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="pages/tables/basic-table.html">
-          <i class="mdi mdi-table-large menu-icon"></i>
-          <span class="menu-title">Graphs</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://www.bootstrapdash.com/demo/breeze-free/documentation/documentation.html">
-          <i class="mdi mdi-file-document-box menu-icon"></i>
-          <span class="menu-title">Documentation</span>
         </a>
       </li>
       <li class="nav-item sidebar-actions">
@@ -80,4 +56,4 @@
         </div>
       </li>
     </ul>
-    </nav>
+ </nav>
