@@ -25,7 +25,7 @@
                         <div class="main-panel">
                             <div class="content-wrapper pb-0">
                                 <div class="page-header flex-wrap">
-                                    <h3 class="mb-0"> My Trainings
+                                    <h3 class="mb-0"> New Training
                                     </h3>
                                 </div>
 
@@ -34,24 +34,24 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div>
-                                                    <h4 class="card-title">Sign Up</h4>
+                                                    <h4 class="card-title">Add training*</h4>
                                                 </div>
                                                 <form class="form-sample" action="../register" method="POST">
-                                                    <p class="card-description">Personal info</p>
+                                                    <p class="card-description">Training info</p>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">First Name</label>
+                                                                <label class="col-sm-3 col-form-label">Title</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" name="firstName" class="form-control" />
+                                                                    <input type="text" name="title" class="form-control" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Last Name</label>
+                                                                <label class="col-sm-3 col-form-label">Duration(Weeks)</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" name="lastName" class="form-control" />
+                                                                    <input type="number" name="duration" class="form-control" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -60,29 +60,22 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Email</label>
+                                                                <label class="col-sm-3 col-form-label">Start Date</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="email" name="email" class="form-control" />
+                                                                    <input type="date" name="startDate" class="form-control" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Password</label>
+                                                                <label class="col-sm-3 col-form-label">Start Date</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="password" name="password" class="form-control" />
+                                                                    <textarea class="form-control" name="description"></textarea>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Confirm Password</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="password" name="confirmPassword" class="form-control" />
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
