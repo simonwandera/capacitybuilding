@@ -25,8 +25,8 @@
       </li>
       <li class="nav-item">
           <a class="nav-link" data-toggle="collapse" href="#training" aria-expanded="false" aria-controls="training">
-            <i class=" mdi mdi-account-network menu-icon"></i>
-            <span class="menu-title">Trainers</span>
+            <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+            <span class="menu-title">Trainings</span>
             <i class="menu-arrow"></i>
           </a>
           <div class="collapse" id="training">

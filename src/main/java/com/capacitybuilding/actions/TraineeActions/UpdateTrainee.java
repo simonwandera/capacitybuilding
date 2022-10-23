@@ -54,7 +54,6 @@ public class UpdateTrainee extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-
         int id = Integer.parseInt(req.getParameter("id"));
 
         for (User tr: users){

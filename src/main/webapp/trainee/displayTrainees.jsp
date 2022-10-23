@@ -69,6 +69,7 @@
 
                                for(Trainee trainee : trainees) {
 
+
                                 %>
 
                                 <td class="py-1">
