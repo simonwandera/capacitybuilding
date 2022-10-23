@@ -36,6 +36,7 @@ public class Training extends Entity {
     }
 
     public void setId(int id) {
+        entitiesMap.put("Id", id);
         Id = id;
     }
 
@@ -44,6 +45,7 @@ public class Training extends Entity {
     }
 
     public void setTitle(String title) {
+        entitiesMap.put("Title", title);
         this.title = title;
     }
 
@@ -52,6 +54,7 @@ public class Training extends Entity {
     }
 
     public void setDescription(String description) {
+        entitiesMap.put("Description", description);
         this.description = description;
     }
 
@@ -60,6 +63,7 @@ public class Training extends Entity {
     }
 
     public void setDuration(int duration) {
+        entitiesMap.put("Duration", duration);
         this.duration = duration;
     }
 
@@ -68,6 +72,7 @@ public class Training extends Entity {
     }
 
     public void setStartDate(LocalDate startDate) {
+        entitiesMap.put("StartDate", startDate);
         this.startDate = startDate;
     }
 
@@ -76,6 +81,7 @@ public class Training extends Entity {
     }
 
     public void setDateAdded(LocalDate dateAdded) {
+        entitiesMap.put("DateAdded", dateAdded);
         this.dateAdded = dateAdded;
     }
 
