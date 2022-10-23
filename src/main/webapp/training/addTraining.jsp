@@ -71,38 +71,24 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Start Date</label>
+                                                                <label class="col-sm-3 col-form-label">Description</label>
                                                                 <div class="col-sm-9">
                                                                     <textarea class="form-control" name="description"></textarea>
                                                                 </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Gender</label>
-                                                                <select class="form-control" name="gender" id="exampleSelectGender">
-                                                                    <option>Male</option>
-                                                                    <option>Female</option>
-                                                                    <option>Other</option>
-                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="my-3 py-2 text-center">
                                                          <%
-                                                              String signupError = (String) application.getAttribute("signupError");
-                                                              if (signupError != null && !signupError.equals("")) {
+                                                              String trainingError = (String) application.getAttribute("trainingError");
+                                                              if (trainingError != null && !trainingError.equals("")) {
                                                             %>
-                                                              <span class="text-danger"> <%= application.getAttribute("signupError") %> </span>
+                                                              <span class="text-danger"> <%= application.getAttribute("trainingError") %> </span>
                                                             <% } %>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary mr-2"> Sign In </button>
-                                                    <a href="./login.jsp">Login</a>
+                                                    <button type="submit" class="btn btn-primary mr-2"> Add </button>
+
                                                 </form>
                                             </div>
                                         </div>
