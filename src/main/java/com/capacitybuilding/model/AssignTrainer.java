@@ -31,6 +31,7 @@ public class AssignTrainer extends Entity {
     }
 
     public void setId(int id) {
+        entitiesMap.put("Id", id);
         Id = id;
     }
 
@@ -39,6 +40,7 @@ public class AssignTrainer extends Entity {
     }
 
     public void setTrainingId(int trainingId) {
+        entitiesMap.put("TrainingId", trainingId);
         TrainingId = trainingId;
     }
 
@@ -47,6 +49,7 @@ public class AssignTrainer extends Entity {
     }
 
     public void setTrainerId(int trainerId) {
+        entitiesMap.put("TrainerId",trainerId);
         TrainerId = trainerId;
     }
 
@@ -55,6 +58,7 @@ public class AssignTrainer extends Entity {
     }
 
     public void setDateAssigned(LocalDate dateAssigned) {
+        entitiesMap.put("DateAssigned", dateAssigned);
         DateAssigned = dateAssigned;
     }
 
@@ -63,6 +67,7 @@ public class AssignTrainer extends Entity {
     }
 
     public void setStatus(String status) {
+        entitiesMap.put("Status", status);
         Status = status;
     }
 }
