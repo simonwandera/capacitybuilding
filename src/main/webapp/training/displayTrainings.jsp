@@ -58,7 +58,7 @@
                                  </div>
                              </div>
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                                 <img class="survey-img mb-lg-3" src="assets/images/dashboard/img_1.jpg" alt="" />
+                                 <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
                                      <h5 class="mb-0">Luxury villa in Hermo</h5>
                                      <p class="mb-0 text-muted">Glendale, CA</p>
@@ -66,7 +66,7 @@
                                  </div>
                              </div>
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                                 <img class="survey-img mb-lg-3" src="assets/images/dashboard/img_2.jpg" alt="" />
+                                 <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
                                      <h5 class="mb-0">House on the Clarita</h5>
                                      <p class="mb-0 text-muted">Business Survey</p>
@@ -95,6 +95,63 @@
                          </div>
                      </div>
                  </div>
+
+                 <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
+                  <div class="card">
+                      <div class="card-body">
+                          <div class="card-title font-weight-medium">
+                              <h3>Title</h3>
+                          </div>
+                          <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we
+                              find a new solution </p>
+                          <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
+                              <img class="survey-img mb-lg-3" src="assets/images/dashboard/img_3.jpg" alt="" />
+                              <div class="pt-2">
+                                  <h5 class="mb-0">Facilitator</h5>
+                                  <p class="mb-0 text-muted">Kevin Mugoye</p>
+                                  <h5 class="mb-0">$600/mo</h5>
+                              </div>
+                          </div>
+                          <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                              <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
+                              <div class="pt-2">
+                                  <h5 class="mb-0">Luxury villa in Hermo</h5>
+                                  <p class="mb-0 text-muted">Glendale, CA</p>
+                                  <h5 class="mb-0">$900/mo</h5>
+                              </div>
+                          </div>
+                          <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                              <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
+                              <div class="pt-2">
+                                  <h5 class="mb-0">House on the Clarita</h5>
+                                  <p class="mb-0 text-muted">Business Survey</p>
+                                  <h5 class="mb-0">$459/mo</h5>
+                              </div>
+                          </div>
+                          <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
+                              <div class="dropdown py-2">
+                                  <button class="btn btn-info dropdown-toggle" type="button" id="options"
+                                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Options
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="options">
+                                      <h6 class="dropdown-header">Options</h6>
+                                      <a class="dropdown-item" href="#">Enrolled trainees</a>
+                                      <a class="dropdown-item" href="#">Enrollment requests</a>
+                                      <a class="dropdown-item" href="#">Activate</a>
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item" href="#">Feedback</a>
+                                  </div>
+                              </div>
+                              <div>
+                                  <a class="text-success mt-3 d-block font-weight-regular h6" href="#">Trainees enrolled<i class="mdi mdi-chevron-right"></i></a>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
              </div>
 
 
