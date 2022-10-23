@@ -31,7 +31,8 @@
              <div class="dropdown py-3">
                 <button class="btn btn-warning btn-lg dropdown-toggle" type="button" id="dropdownMenuSizeButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Filter </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton1">
-                  <h6 class="dropdown-header">Upcoming</h6>
+                  <h6 class="dropdown-header">Filter</h6>
+                  <a class="dropdown-item" href="#">Upcoming</a>
                   <a class="dropdown-item" href="#">Ongoing</a>
                   <a class="dropdown-item" href="#">Completed</a>
                   <a class="dropdown-item" href="#">Cancelled</a>
@@ -50,7 +51,7 @@
                              <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we
                                  find a new solution </p>
                              <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
-                                 <img class="survey-img mb-lg-3" src="assets/images/dashboard/img_3.jpg" alt="" />
+                                 <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
                                      <h5 class="mb-0">Facilitator</h5>
                                      <p class="mb-0 text-muted">Kevin Mugoye</p>
@@ -105,7 +106,7 @@
                           <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we
                               find a new solution </p>
                           <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
-                              <img class="survey-img mb-lg-3" src="assets/images/dashboard/img_3.jpg" alt="" />
+                              <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                               <div class="pt-2">
                                   <h5 class="mb-0">Facilitator</h5>
                                   <p class="mb-0 text-muted">Kevin Mugoye</p>
