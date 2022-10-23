@@ -3,6 +3,7 @@ package com.capacitybuilding.actions.TraineeActions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
+import com.capacitybuilding.controllers.UserController;
 import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -41,11 +42,13 @@ public class UpdateTrainee extends HttpServlet {
         HttpSession session = req.getSession();
         sessionEmail = (String) session.getAttribute("email");
         User myUser = new User();
+        UserController userController = new UserController();
 
         try {
             IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(myUser, connection);
             ResultSet resultSet = traineeMysqlDB.fetchAll();
-            users = myUser.generateList(resultSet);
+
+            users = userController.generateList(resultSet);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
