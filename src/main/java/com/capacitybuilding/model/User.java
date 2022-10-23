@@ -18,8 +18,8 @@ public class User extends Entity {
     private String gender;
     private String password;
     private String userType = "USER";
-
-    static ResultSet resultSet;
+    private List<Training> enrolledTrainings;
+    private List<Training> assignedTrainings;
     private static final String tableName = "User";
 
     private static final Map<String, Object> entitiesMap = new HashMap<>(){{
@@ -98,12 +98,19 @@ public class User extends Entity {
         this.gender = gender;
     }
 
-    @Override
-    public String toString() {
-        return "Login{" +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", userType='" + userType + '\'' +
-                '}';
+    public List<Training> getEnrolledTrainings() {
+        return enrolledTrainings;
+    }
+
+    public void setEnrolledTrainings(List<Training> enrolledTrainings) {
+        this.enrolledTrainings = enrolledTrainings;
+    }
+
+    public List<Training> getAssignedTrainings() {
+        return assignedTrainings;
+    }
+
+    public void setAssignedTrainings(List<Training> assignedTrainings) {
+        this.assignedTrainings = assignedTrainings;
     }
 }
