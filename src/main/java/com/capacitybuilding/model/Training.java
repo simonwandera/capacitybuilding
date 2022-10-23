@@ -14,6 +14,7 @@ public class Training extends Entity {
     private int duration;
     private LocalDate startDate;
     private LocalDate dateAdded;
+    private String status;
     private List<User> trainees;
     private List<User> trainers;
     private static final String tableName = "Training";
@@ -25,6 +26,7 @@ public class Training extends Entity {
         put("Duration", null);
         put("StartDate", null);
         put("DateAdded", null);
+        put("Status", "");
     }};;
 
     public Training() {
@@ -83,6 +85,15 @@ public class Training extends Entity {
     public void setDateAdded(LocalDate dateAdded) {
         entitiesMap.put("DateAdded", dateAdded);
         this.dateAdded = dateAdded;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        entitiesMap.put("Status",status);
+        this.status = status;
     }
 
     public List<User> getTrainees() {

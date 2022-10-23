@@ -5,10 +5,8 @@ import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.Serializable;
-import java.lang.annotation.Target;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,11 +27,11 @@ public class TrainingController implements Serializable {
 
     }
     public List<Training> list(Connection connection, Training tr) throws SQLException {
-        IMySQLDB<Training, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(tr, connection);
+        IMySQLDB<Training, Connection> trainingConnectionIMySQLDB = new MySQLDB<>(tr, connection);
         IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(new User(), connection);
         IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), connection);
 
-        ResultSet resultSet = traineeConnectionIMySQLDB.fetchAll();
+        ResultSet resultSet = trainingConnectionIMySQLDB.fetchAll();
 
         List<Training> trainingList = new ArrayList<>();
         while (resultSet.next()){
