@@ -8,6 +8,7 @@ import java.util.Map;
 
 
 public class Enrollment extends Entity {
+    private int Id;
 
     static final String tableName = "Training";
 
