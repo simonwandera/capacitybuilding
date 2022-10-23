@@ -24,7 +24,7 @@
         <div class="main-panel">
           <div class="content-wrapper pb-0">
             <div class="page-header flex-wrap">
-              <h3 class="mb-0"> Hi, welcome <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">Trainings.</span>
+              <h3 class="mb-0"> My Trainings
               </h3>
             </div>
 
