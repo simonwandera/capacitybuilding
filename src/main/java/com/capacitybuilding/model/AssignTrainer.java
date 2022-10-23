@@ -8,14 +8,13 @@ import java.util.Map;
 public class AssignTrainer extends Entity {
     private int Id;
 
-    private static final String tableName = "Training";
+    private static final String tableName = "AssignTrainer";
     private static final Map<String, Object> entitiesMap = new HashMap<>(){{
         put("Id", null);
-        put("Title", "");
-        put("Description", "");
-        put("Duration", null);
-        put("StartDate", null);
-        put("DateAdded", null);
+        put("TrainingId", null);
+        put("TrainerId", null);
+        put("DateAssigned", null);
+        put("Status", "");
     }};;
     public AssignTrainer() {
         super(entitiesMap, tableName);
