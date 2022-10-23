@@ -2,6 +2,7 @@ package com.capacitybuilding.actions;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
+import com.capacitybuilding.controllers.UserController;
 import com.capacitybuilding.model.User;
 
 import javax.servlet.ServletConfig;
@@ -37,7 +38,7 @@ public class HomeAction extends HttpServlet {
         try {
             IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(user, connection);
             ResultSet resultSet = traineeMysqlDB.fetchAll();
-            trainees = user.generateList(resultSet);
+            trainees = new UserController().generateList(resultSet);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
