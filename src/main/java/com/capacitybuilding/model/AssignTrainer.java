@@ -8,10 +8,11 @@ import java.util.Map;
 
 public class AssignTrainer extends Entity {
     private int Id;
-    private int TrainingId;
-    private int TrainerId;
+    Training training;
+    User trainer;
     private LocalDate DateAssigned;
     private String Status;
+
 
     private static final String tableName = "AssignTrainer";
     private static final Map<String, Object> entitiesMap = new HashMap<>(){{
@@ -34,22 +35,22 @@ public class AssignTrainer extends Entity {
         Id = id;
     }
 
-    public int getTrainingId() {
-        return TrainingId;
+    public Training getTraining() {
+        return training;
     }
 
-    public void setTrainingId(int trainingId) {
-        entitiesMap.put("TrainingId", trainingId);
-        TrainingId = trainingId;
+    public void setTraining(Training training) {
+        entitiesMap.put("TrainingId", training.getId());
+        this.training = training;
     }
 
-    public int getTrainerId() {
-        return TrainerId;
+    public User getTrainer() {
+        return trainer;
     }
 
-    public void setTrainerId(int trainerId) {
-        entitiesMap.put("TrainerId",trainerId);
-        TrainerId = trainerId;
+    public void setTrainer(User trainer) {
+        entitiesMap.put("TrainerId", trainer.getId());
+        this.trainer = trainer;
     }
 
     public LocalDate getDateAssigned() {

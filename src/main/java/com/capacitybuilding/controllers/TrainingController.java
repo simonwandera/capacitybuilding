@@ -28,6 +28,7 @@ public class TrainingController implements Serializable {
     }
     public List<Training> list(Connection connection, Training tr) throws SQLException {
         IMySQLDB<Training, Connection> trainingConnectionIMySQLDB = new MySQLDB<>(tr, connection);
+
         IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(new User(), connection);
         IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), connection);
 
@@ -52,6 +53,7 @@ public class TrainingController implements Serializable {
             }};;
 
             String query = assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria);
+
             ResultSet resultSet1 = assignTrainerConnectionIMySQLDB.executeReadQuery(query);
             List<AssignTrainer> assignTrainers = assignTrainerController.list(resultSet1);
 
