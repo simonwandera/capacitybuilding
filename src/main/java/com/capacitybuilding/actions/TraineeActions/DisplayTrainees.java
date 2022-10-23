@@ -3,6 +3,7 @@ package com.capacitybuilding.actions.TraineeActions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.actions.Common;
+import com.capacitybuilding.controllers.UserController;
 import com.capacitybuilding.model.User;
 
 import javax.servlet.ServletConfig;
@@ -60,7 +61,7 @@ public class DisplayTrainees extends HttpServlet {
         IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(user, connection);
         ResultSet resultSet = traineeMysqlDB.fetchAll();
 
-        List<User> traineesList = user.generateList(resultSet);
+        List<User> traineesList = new UserController().generateList(resultSet);
 
         return Common.Header() +
                 "  <body>\n" +
