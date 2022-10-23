@@ -8,24 +8,24 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnrollmentController implements Serializable {
 
-    public void add(){
+    public void add(EnrollmentController enrollmentController){
 
     }
-    public void update(){
+    public void update(EnrollmentController enrollmentController){
 
     }
-    public void delete(){
+    public void delete(EnrollmentController enrollmentController){
 
     }
-    public List<AssignTrainer> list(){
+    public List<AssignTrainer> list(ResultSet resultSet){
         return new ArrayList<>();
-
     }
 
 }
