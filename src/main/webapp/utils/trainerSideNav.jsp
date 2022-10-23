@@ -32,7 +32,7 @@
           <div class="collapse" id="training">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/buttons.html">My Trainings</a>
+                <a class="nav-link" href="../training/displayTraining.jsp">My Trainings</a>
               </li>
             </ul>
           </div>
