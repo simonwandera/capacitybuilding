@@ -5,6 +5,6 @@
     <tag>
         <name>Header</name>
         <tag-class>com.capacitybuilding.customtags.HeaderTag</tag-class>
-        <body-content>empty</body-content>
+        <body-content>scriptless</body-content>
     </tag>
 </taglib>

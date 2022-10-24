@@ -6,7 +6,7 @@
 <%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
-<cht:Header> capacity building </cht:Header>
+<cht:Header />
 
 <body>
   <div class="container-scroller">
@@ -58,4 +58,4 @@
       </div>
     </div>
   </div>
-  <%@ include file="../utils/footer.jsp"%>
+  <cft:Footer />

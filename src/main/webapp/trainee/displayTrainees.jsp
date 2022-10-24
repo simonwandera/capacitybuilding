@@ -5,10 +5,17 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 
+<%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
+<%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
+
 
 <jsp:useBean id="traineeController" class="com.capacitybuilding.controllers.TraineeController" />
 
-<%@ include file="../utils/header.jsp"%>
+<cht:Header />
 <body>
     <div class="container-scroller">
 
@@ -98,5 +105,4 @@
               </div>
             </div>
 
-<%@ include file="../utils/footer.jsp"%>
-
+  <cft:Footer />

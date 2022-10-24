@@ -12,8 +12,8 @@
 
 <jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
 
+<cht:Header />
 
-<%@ include file="../utils/header.jsp"%>
 <body>
     <div class="container-scroller">
     <%@ include file="../utils/trainerSideNav.jsp"%>
@@ -126,5 +126,5 @@
 
           </div>
         </div>
-        <%@ include file="../utils/footer.jsp"%>
+        <cft:Footer />
 
