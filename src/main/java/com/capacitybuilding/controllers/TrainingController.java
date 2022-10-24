@@ -30,9 +30,9 @@ public class TrainingController implements Serializable {
     public List<Training> list(Connection connection) throws SQLException {
         IMySQLDB<Training, Connection> trainingConnectionIMySQLDB = new MySQLDB<>(new Training(), connection);
         ResultSet resultSet = trainingConnectionIMySQLDB.fetchAll();
-        return this.generateList(resultSet);
+        return this.generateList(resultSet, connection);
     }
-    public List<Training> generateList(ResultSet resultSet) throws SQLException {
+    public List<Training> generateList(ResultSet resultSet, Connection connection) throws SQLException {
 
         List<Training> trainingList = new ArrayList<>();
         while (resultSet.next()){
@@ -45,6 +45,9 @@ public class TrainingController implements Serializable {
             training.setDateAdded(resultSet.getDate("dateAdded").toLocalDate());
             training.setStartDate(resultSet.getDate("startDate").toLocalDate());
             training.setStatus(resultSet.getString("status"));
+
+            training.setTrainers(new AssignTrainerController().getTrainers(training, connection));
+
 
             trainingList.add(training);
         }
@@ -67,6 +70,7 @@ public class TrainingController implements Serializable {
             training.setDateAdded(resultSet.getDate("dateAdded").toLocalDate());
             training.setStartDate(resultSet.getDate("startDate").toLocalDate());
             training.setStatus(resultSet.getString("status"));
+
         }
         return training;
     }

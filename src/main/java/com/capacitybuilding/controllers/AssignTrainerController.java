@@ -11,7 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AssignTrainerController implements Serializable {
     public void add(AssignTrainer assignTrainer){
@@ -47,6 +49,36 @@ public class AssignTrainerController implements Serializable {
             assignTrainerList.add(assignTrainer);
         }
 
+        return assignTrainerList;
+    }
+
+    public List<User> getTrainers(Training training, Connection connection) throws SQLException {
+        Map<String, String> criteria = new HashMap<>(){{
+            put("trainingId", Integer.toString(training.getId()));
+        }};;
+        List<User> trainers = new ArrayList<>();
+
+        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), connection);
+        ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
+
+        while (resultSet.next()){
+            User trainer = new UserController().getUser(resultSet.getInt("trainerId"), connection);
+            trainers.add(trainer);
+        }
+
+        return trainers;
+    }
+
+    public List<User> getEnrolledTrainings(){
+
+        return new ArrayList<>();
+
+    }
+
+    public List<User> getAssignedTrainings(){
+
         return new ArrayList<>();
     }
+
+
 }
