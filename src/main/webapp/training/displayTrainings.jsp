@@ -1,3 +1,18 @@
+<%@ page isELIgnored="false" %>
+<%@ page import="com.capacitybuilding.model.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Date" %>
+
+<%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="jf" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="jfn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
+<jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
+
+
 <%@ include file="../utils/header.jsp"%>
 <body>
     <div class="container-scroller">
@@ -42,14 +57,21 @@
              </div>
 
              <div class="row">
+
+             <%
+
+                List<Training> trainings = trainingController.list((Connection) application.getAttribute("dbConnection"));
+                pageContext.setAttribute("trainings", trainings);
+
+             %>
+             <jc:forEach items="${trainings}" var="training">
                  <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
                      <div class="card">
                          <div class="card-body">
                              <div class="card-title font-weight-medium">
-                                 <h3>Title</h3>
+                                 <h3>${jfn:toUpperCase(training.title)}</h3>
                              </div>
-                             <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we
-                                 find a new solution </p>
+                             <p class="text-muted">${training.description}></p>
                              <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
                                  <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
@@ -89,68 +111,14 @@
                                      </div>
                                  </div>
                                  <div>
-                                     <a class="text-success mt-3 d-block font-weight-regular h6" href="#">Trainees enrolled<i class="mdi mdi-chevron-right"></i></a>
+                                     <a class="text-success mt-3 d-block font-weight-regular h6" href="#">${training.duration} Weeks<i class="mdi mdi-chevron-right"></i></a>
                                  </div>
 
                              </div>
                          </div>
                      </div>
                  </div>
-
-                 <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
-                  <div class="card">
-                      <div class="card-body">
-                          <div class="card-title font-weight-medium">
-                              <h3>Title</h3>
-                          </div>
-                          <p class="text-muted"> Lorem ipsum dolor sitadipiscing elit, sed amet do eiusmod tempor we
-                              find a new solution </p>
-                          <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
-                              <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
-                              <div class="pt-2">
-                                  <h5 class="mb-0">Facilitator</h5>
-                                  <p class="mb-0 text-muted">Kevin Mugoye</p>
-                                  <h5 class="mb-0">$600/mo</h5>
-                              </div>
-                          </div>
-                          <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                              <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
-                              <div class="pt-2">
-                                  <h5 class="mb-0">Luxury villa in Hermo</h5>
-                                  <p class="mb-0 text-muted">Glendale, CA</p>
-                                  <h5 class="mb-0">$900/mo</h5>
-                              </div>
-                          </div>
-                          <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                              <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
-                              <div class="pt-2">
-                                  <h5 class="mb-0">House on the Clarita</h5>
-                                  <p class="mb-0 text-muted">Business Survey</p>
-                                  <h5 class="mb-0">$459/mo</h5>
-                              </div>
-                          </div>
-                          <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                              <div class="dropdown py-2">
-                                  <button class="btn btn-info dropdown-toggle" type="button" id="options"
-                                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Options
-                                  </button>
-                                  <div class="dropdown-menu" aria-labelledby="options">
-                                      <h6 class="dropdown-header">Options</h6>
-                                      <a class="dropdown-item" href="#">Enrolled trainees</a>
-                                      <a class="dropdown-item" href="#">Enrollment requests</a>
-                                      <a class="dropdown-item" href="#">Activate</a>
-                                      <div class="dropdown-divider"></div>
-                                      <a class="dropdown-item" href="#">Feedback</a>
-                                  </div>
-                              </div>
-                              <div>
-                                  <a class="text-success mt-3 d-block font-weight-regular h6" href="#">Trainees enrolled<i class="mdi mdi-chevron-right"></i></a>
-                              </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                 </jc:forEach>
 
 
              </div>

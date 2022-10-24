@@ -45,7 +45,7 @@ public class AssignTrainerController implements Serializable {
             assignTrainer.setDateAssigned(resultSet.getDate("DateAssigned").toLocalDate());
 
             List<User> trainers = new UserController().generateList(userConnectionIMySQLDB.fetchAll());
-            List<Training> trainings = new TrainingController().generateList(connection, trainingConnectionIMySQLDB.fetchAll());
+            List<Training> trainings = new TrainingController().generateList(trainingConnectionIMySQLDB.fetchAll());
 
             for (User trainer : trainers){
                 if(trainer.getId() == Integer.parseInt(resultSet.getString("TrainerId"))){

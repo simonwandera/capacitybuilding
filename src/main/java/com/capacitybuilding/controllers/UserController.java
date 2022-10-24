@@ -59,4 +59,8 @@ public class UserController implements Serializable {
         }
         return userList;
     }
+
+    public User getUser(int id){
+        return new User();
+    }
 }

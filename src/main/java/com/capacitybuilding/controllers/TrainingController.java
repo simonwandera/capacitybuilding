@@ -24,7 +24,13 @@ public class TrainingController implements Serializable {
     public void delete(TrainingController trainingController){
 
     }
-    public List<Training> generateList(Connection connection, ResultSet resultSet) throws SQLException {
+
+    public List<Training> list(Connection connection) throws SQLException {
+        IMySQLDB<Training, Connection> trainingConnectionIMySQLDB = new MySQLDB<>(new Training(), connection);
+        ResultSet resultSet = trainingConnectionIMySQLDB.fetchAll();
+        return this.generateList(resultSet);
+    }
+    public List<Training> generateList(ResultSet resultSet) throws SQLException {
 
         List<Training> trainingList = new ArrayList<>();
         while (resultSet.next()){
