@@ -2,9 +2,7 @@ package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Training;
-import com.capacitybuilding.model.User;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -47,8 +45,6 @@ public class TrainingController implements Serializable {
             training.setStatus(resultSet.getString("status"));
 
             training.setTrainers(new AssignTrainerController().getTrainers(training, connection));
-
-
             trainingList.add(training);
         }
         return trainingList;

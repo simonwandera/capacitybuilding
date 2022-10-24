@@ -82,13 +82,18 @@ public class UserController implements Serializable {
         return user;
     }
 
-    public List<User> getEnrolledTrainings(){
+    public List<User> getEnrolledTrainings(User trainee, Connection connection) throws SQLException {
 
-        return new ArrayList<>();
+        IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(trainee, connection);
+
+        Map<String, String> criteria = new HashMap<>(){{
+            put("trainingId", Integer.toString(trainee.getId()));
+        }};;
+
 
     }
 
-    public List<User> getAssignedTrainings(){
+    public List<User> getAssignedTrainings(User trainer, Connection connection){
 
         return new ArrayList<>();
     }
