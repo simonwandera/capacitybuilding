@@ -10,7 +10,19 @@
 
     <body>
         <div class="container-scroller">
-            <%@ include file="../utils/trainerSideNav.jsp" %>
+
+        <jc:choose>
+            <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
+                <jsp:include page="../utils/adminSideNav.jsp" />
+            </jc:when>
+            <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
+                <jsp:include page="../utils/trainerSideNav.jsp" />
+             </jc:when>
+            <jc:when test="${sessionScope.userType.equals(\"USER\")}">
+                <jsp:include page="../utils/traineeSideNav.jsp" />
+            </jc:when>
+        </jc:choose>
+
                 <div class="container-fluid page-body-wrapper">
                     <div id="theme-settings" class="settings-panel">
                         <i class="settings-close mdi mdi-close"></i>
@@ -28,17 +40,14 @@
                         </div>
                     </div>
 
-
-
                     <%@ include file="../utils/trainerTopNav.jsp" %>
-
-                   <h1> ${sessionScope.userType} </h1>
 
                         <div class="main-panel">
                             <div class="content-wrapper pb-0">
                                 <div class="page-header flex-wrap">
                                     <h3 class="mb-0"> New Training
                                     </h3>
+
                                 </div>
 
                                 <div class="row">
@@ -61,7 +70,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Duration(Weeks)</label>
+                                                                <label class="col-sm-3 col-lg-6 col-form-label">Duration(Weeks)</label>
                                                                 <div class="col-sm-9">
                                                                     <input type="number" name="duration" class="form-control" />
                                                                 </div>
