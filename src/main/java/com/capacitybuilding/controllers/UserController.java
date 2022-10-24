@@ -3,6 +3,7 @@ package com.capacitybuilding.controllers;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
@@ -10,7 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserController implements Serializable {
     public void add(Connection connection, User user){
@@ -60,7 +63,21 @@ public class UserController implements Serializable {
         return userList;
     }
 
-    public User getUser(int id){
-        return new User();
+    public User getUser(int id, Connection connection) throws SQLException {
+        User user = new User();
+        Map<String, String> criteria = new HashMap<>(){{
+            put("Id", Integer.toString(id));
+        }};;
+        IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(new User(), connection);
+        ResultSet resultSet = userConnectionIMySQLDB.executeReadQuery(new MySQLDB<>(new User(), connection).createSelectWithWhereClauseQuery(criteria));
+        while (resultSet.next()){
+            user.setId(resultSet.getInt("id"));
+            user.setFirstName(resultSet.getString("firstname"));
+            user.setLastName(resultSet.getString("lastname"));
+            user.setGender(resultSet.getString("gender"));
+            user.setUsername(resultSet.getString("username"));
+            user.setUserType(resultSet.getString("userType"));
+        }
+        return user;
     }
 }

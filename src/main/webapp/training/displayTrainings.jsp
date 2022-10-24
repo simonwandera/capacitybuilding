@@ -71,7 +71,7 @@
                              <div class="card-title font-weight-medium">
                                  <h3>${jfn:toUpperCase(training.title)}</h3>
                              </div>
-                             <p class="text-muted">${training.description}></p>
+                             <p class="text-muted">${training.description}</p>
                              <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
                                  <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
