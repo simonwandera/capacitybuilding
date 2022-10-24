@@ -69,6 +69,5 @@ public class TrainingController implements Serializable {
             training.setStatus(resultSet.getString("status"));
         }
         return training;
-
     }
 }

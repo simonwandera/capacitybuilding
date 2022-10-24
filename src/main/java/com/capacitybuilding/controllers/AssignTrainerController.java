@@ -32,9 +32,6 @@ public class AssignTrainerController implements Serializable {
     }
     public List<AssignTrainer> generateList(ResultSet resultSet, Connection connection) throws SQLException {
 
-        IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(new User(), connection);
-        IMySQLDB<Training, Connection> trainingConnectionIMySQLDB = new MySQLDB<>(new Training(), connection);
-
         List<AssignTrainer> assignTrainerList = new ArrayList<>();
 
         while (resultSet.next()){
@@ -44,20 +41,8 @@ public class AssignTrainerController implements Serializable {
             assignTrainer.setStatus(resultSet.getString("status"));
             assignTrainer.setDateAssigned(resultSet.getDate("DateAssigned").toLocalDate());
 
-            List<User> trainers = new UserController().generateList(userConnectionIMySQLDB.fetchAll());
-            List<Training> trainings = new TrainingController().generateList(trainingConnectionIMySQLDB.fetchAll());
-
-            for (User trainer : trainers){
-                if(trainer.getId() == Integer.parseInt(resultSet.getString("TrainerId"))){
-                    assignTrainer.setTrainer(trainer);
-                }
-            }
-
-            for (Training training : trainings){
-                if(training.getId() == Integer.parseInt(resultSet.getString("TrainingId"))){
-                    assignTrainer.setTraining(training);
-                }
-            }
+            assignTrainer.setTrainer(new UserController().getUser(resultSet.getInt("trainerId"), connection));
+            assignTrainer.setTraining(new  TrainingController().getTraining(resultSet.getInt("trainingId "), connection));
 
             assignTrainerList.add(assignTrainer);
         }
