@@ -3,13 +3,10 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ taglib prefix="cht" uri="WEB-INF/tlds/header.tld" %>
-<%@ taglib prefix="cft" uri="WEB-INF/tlds/footer.tld" %>
+<%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
+<%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
-
-<%@ include file="../utils/header.jsp"%>
-
-<cht:Header></cht:Header>
+<cht:Header> capacity building </cht:Header>
 
 <body>
   <div class="container-scroller">
