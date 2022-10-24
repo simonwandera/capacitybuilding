@@ -2,6 +2,7 @@ package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
+import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -79,5 +80,16 @@ public class UserController implements Serializable {
             user.setUserType(resultSet.getString("userType"));
         }
         return user;
+    }
+
+    public List<User> getEnrolledTrainings(){
+
+        return new ArrayList<>();
+
+    }
+
+    public List<User> getAssignedTrainings(){
+
+        return new ArrayList<>();
     }
 }

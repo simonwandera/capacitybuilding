@@ -69,16 +69,4 @@ public class AssignTrainerController implements Serializable {
         return trainers;
     }
 
-    public List<User> getEnrolledTrainings(){
-
-        return new ArrayList<>();
-
-    }
-
-    public List<User> getAssignedTrainings(){
-
-        return new ArrayList<>();
-    }
-
-
 }
