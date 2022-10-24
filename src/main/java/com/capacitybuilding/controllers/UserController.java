@@ -82,19 +82,28 @@ public class UserController implements Serializable {
         return user;
     }
 
-    public List<User> getEnrolledTrainings(User trainee, Connection connection) throws SQLException {
+    public List<Training> getEnrolledTrainings(User trainee, Connection connection) throws SQLException {
 
-        IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(trainee, connection);
+        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(new Training(), connection);
 
         Map<String, String> criteria = new HashMap<>(){{
-            put("trainingId", Integer.toString(trainee.getId()));
+            put("TraineeId", Integer.toString(trainee.getId()));
         }};;
 
-
+        List<Training> enrolledTrainings = new ArrayList<>();
+        ResultSet resultSet = trainingConnectionMySQLDB.executeReadQuery(trainingConnectionMySQLDB.createSelectWithWhereClauseQuery(criteria));
+        while (resultSet.next()){
+            Training training = new TrainingController().getTraining(resultSet.getInt("id"), connection);
+            enrolledTrainings.add(training);
+        }
+        return enrolledTrainings;
     }
 
-    public List<User> getAssignedTrainings(User trainer, Connection connection){
+    public List<Training> getAssignedTrainings(User trainer, Connection connection){
 
+        Map<String, String> criteria = new HashMap<>(){{
+            put("TraineeId", Integer.toString(trainer.getId()));
+        }};;
         return new ArrayList<>();
     }
 }
