@@ -25,19 +25,17 @@ public class EnrollmentController implements Serializable {
     public void delete(EnrollmentController enrollmentController){
 
     }
-    public List<AssignTrainer> list(ResultSet resultSet) throws SQLException {
+    public List<AssignTrainer> list(ResultSet resultSet, Connection connection) throws SQLException {
         List<AssignTrainer> assignTrainers = new ArrayList<>();
         while (resultSet.next()){
             AssignTrainer assignTrainer = new AssignTrainer();
             assignTrainer.setId(resultSet.getInt("id"));
-            assignTrainer.se
+            assignTrainer.setDateAssigned(resultSet.getDate("dateAssigned").toLocalDate());
+            assignTrainer.setStatus(resultSet.getString("status"));
+            assignTrainer.setTrainer(new UserController().getUser(resultSet.getInt("trainerId"), connection));
+            assignTrainer.setTraining(new  TrainingController().getTraining(resultSet.getInt("trainingId "), connection));
+            assignTrainers.add(assignTrainer);
         }
         return assignTrainers;
     }
-
-    public List<User> getTrainer(Training training, Connection connection) throws SQLException {
-        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), connection);
-        List<AssignTrainer> assignTrainers = assignTrainerConnectionIMySQLDB.
-    }
-
 }
