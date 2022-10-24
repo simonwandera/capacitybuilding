@@ -1,4 +1,16 @@
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%@ taglib prefix="cht" uri="WEB-INF/tlds/header.tld" %>
+<%@ taglib prefix="cft" uri="WEB-INF/tlds/footer.tld" %>
+
+
 <%@ include file="../utils/header.jsp"%>
+
+<cht:Header></cht:Header>
+
 <body>
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper">
@@ -6,7 +18,7 @@
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title m-auto">
-                <%= getServletContext().getAttribute("appName") %>
+                ${applicationScope.appName}
             </h3>
           </div>
           <div class="row">
