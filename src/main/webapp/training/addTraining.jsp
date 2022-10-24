@@ -1,3 +1,11 @@
+<%@ page isELIgnored="false" %>
+
+
+<%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="jf" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="jfn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
 <%@ include file="../utils/header.jsp" %>
 
     <body>
@@ -20,7 +28,11 @@
                         </div>
                     </div>
 
+
+
                     <%@ include file="../utils/trainerTopNav.jsp" %>
+
+                   <h1> ${sessionScope.userType} </h1>
 
                         <div class="main-panel">
                             <div class="content-wrapper pb-0">
