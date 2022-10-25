@@ -21,7 +21,6 @@ import java.util.List;
 
 @WebServlet("/addTrainee")
 public class CreateTrainee extends HttpServlet {
-    private List<User> trainees;
 
     Connection connection;
     ServletContext servletContext;
@@ -34,7 +33,6 @@ public class CreateTrainee extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        String email = (String) session.getAttribute("email");
         res.sendRedirect("./trainee/addTrainee.jsp");
     }
 

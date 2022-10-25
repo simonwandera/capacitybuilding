@@ -9,6 +9,9 @@
 <%@ taglib prefix="jf" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="jfn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
+<%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
+
 
 <jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
 

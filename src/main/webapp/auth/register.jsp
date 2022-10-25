@@ -15,7 +15,7 @@
                 <div class="content-wrapper">
                     <div class="page-header">
                         <h3 class="page-title m-auto">
-                        <%= application.getAttribute("appName") %>
+                        ${applicationScope.appName}
                         </h3>
                     </div>
                     <div class="row">

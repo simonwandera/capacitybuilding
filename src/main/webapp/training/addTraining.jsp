@@ -57,7 +57,7 @@
                                                 <div>
                                                     <h4 class="card-title">Add training*</h4>
                                                 </div>
-                                                <form class="form-sample" action="../register" method="POST">
+                                                <form class="form-sample" action="../addTraining" method="POST">
                                                     <p class="card-description">Training info</p>
                                                     <div class="row">
                                                         <div class="col-md-6">
