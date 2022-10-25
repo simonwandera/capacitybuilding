@@ -6,7 +6,7 @@
 <%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
-<cht:Header />
+<cht:Header title="Login page | Capacity building" />
 
 <body>
   <div class="container-scroller">

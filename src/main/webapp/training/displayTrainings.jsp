@@ -15,7 +15,7 @@
 
 <jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
 
-<cht:Header />
+<cht:Header title="Display trainings | Capacity building" />
 
 <body>
     <div class="container-scroller">
@@ -72,15 +72,17 @@
                      <div class="card">
                          <div class="card-body">
                              <div class="card-title font-weight-medium">
-                                 <h3>${jfn:toUpperCase(training.title)}</h3>
+                                 <h5>${jfn:toUpperCase(training.title)}</h6>
                              </div>
-                             <p class="text-muted">${training.description}</p>
+                             <p class="text-muted">
+
+                                ${training.description.length() < 50 ? training.description : Str.description.substring(0, 50)}
+                             </p>
                              <div class="d-flex flex-wrap border-bottom py-2 border-top justify-content-between">
                                  <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
                                      <h5 class="mb-0">Facilitator</h5>
                                      <p class="mb-0 text-muted">Kevin Mugoye</p>
-                                     <h5 class="mb-0">$600/mo</h5>
                                  </div>
                              </div>
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
@@ -88,7 +90,6 @@
                                  <div class="pt-2">
                                      <h5 class="mb-0">Luxury villa in Hermo</h5>
                                      <p class="mb-0 text-muted">Glendale, CA</p>
-                                     <h5 class="mb-0">$900/mo</h5>
                                  </div>
                              </div>
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
@@ -96,7 +97,6 @@
                                  <div class="pt-2">
                                      <h5 class="mb-0">House on the Clarita</h5>
                                      <p class="mb-0 text-muted">Business Survey</p>
-                                     <h5 class="mb-0">$459/mo</h5>
                                  </div>
                              </div>
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">

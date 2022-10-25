@@ -15,7 +15,7 @@
 
 <jsp:useBean id="traineeController" class="com.capacitybuilding.controllers.TraineeController" />
 
-<cht:Header />
+<cht:Header title="Display dashboard | Capacity building" />
 <body>
     <div class="container-scroller">
 

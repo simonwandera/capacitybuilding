@@ -6,5 +6,10 @@
         <name>Header</name>
         <tag-class>com.capacitybuilding.customtags.HeaderTag</tag-class>
         <body-content>scriptless</body-content>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
 </taglib>
