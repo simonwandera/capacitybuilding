@@ -2,6 +2,7 @@ package com.capacitybuilding.actions.TrainingsActions;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
+import com.capacitybuilding.controllers.TrainingController;
 import com.capacitybuilding.model.Training;
 
 import javax.servlet.ServletConfig;
@@ -17,6 +18,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+@WebServlet("/updateTraining")
 public class UpdateTraining extends HttpServlet {
 
     Connection connection;
@@ -66,24 +68,23 @@ public class UpdateTraining extends HttpServlet {
             return;
         }
 
+        Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+        Training training = new Training();
+
+        training.setTitle(title);
+        training.setDescription(description);
+        training.setDuration(duration);
+
+        training.setStatus("UPCOMING");
+        training.setStartDate(startDate);
+        training.setDateAdded(dateAdded);
+
         try {
-            Connection connection = (Connection) servletContext.getAttribute("dbConnection");
-            Training training = new Training();
-
-            training.setTitle(title);
-            training.setDescription(description);
-            training.setDuration(duration);
-
-            training.setStatus("UPCOMING");
-            training.setStartDate(startDate);
-            training.setDateAdded(dateAdded);
-
-            IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(training, connection);
-            trainingConnectionMySQLDB.save();
-
+            new TrainingController().update(training, connection);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         res.sendRedirect("./training/displayTrainings.jsp");
 
 

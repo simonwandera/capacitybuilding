@@ -18,7 +18,10 @@ public class TrainingController implements Serializable {
     public void add(TrainingController trainingController){
 
     }
-    public void update(TrainingController trainingController){
+    public void update(Training training, Connection connection) throws SQLException {
+
+        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(training, connection);
+        trainingConnectionMySQLDB.update();
 
     }
     public void delete(TrainingController trainingController){
@@ -66,7 +69,6 @@ public class TrainingController implements Serializable {
             training.setDateAdded(resultSet.getDate("dateAdded").toLocalDate());
             training.setStartDate(resultSet.getDate("startDate").toLocalDate());
             training.setStatus(resultSet.getString("status"));
-
         }
         return training;
     }
