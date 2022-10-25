@@ -39,7 +39,7 @@ public class CreateTraining extends HttpServlet {
 
         String title = req.getParameter("title");
         int duration = req.getParameter("duration").isEmpty() ? 0 : Integer.parseInt(req.getParameter("duration"));
-        LocalDate startDate = req.getParameter("startDate").isEmpty() ? LocalDate.of(0, 1, 0) : LocalDate.parse(req.getParameter("startDate"));
+        LocalDate startDate = req.getParameter("startDate").isEmpty() ? LocalDate.of(0, 1, 1) : LocalDate.parse(req.getParameter("startDate"));
 
         String description = req.getParameter("description");
         LocalDate dateAdded = LocalDate.now();
@@ -56,8 +56,8 @@ public class CreateTraining extends HttpServlet {
             return;
         }
 
-        if(dateAdded.getYear() == 0){
-            servletContext.setAttribute("trainingError", "Date added id required");
+        if(startDate.getYear() == 0){
+            servletContext.setAttribute("trainingError", "Start date is required");
             res.sendRedirect("./training/addTraining.jsp");
             return;
         }
