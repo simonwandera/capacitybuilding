@@ -28,6 +28,7 @@ public class CreateTraining extends HttpServlet {
         super.init(config);
         servletContext = getServletConfig().getServletContext();
         connection = (Connection) servletContext.getAttribute("dbConnection");
+
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -58,6 +59,12 @@ public class CreateTraining extends HttpServlet {
 
         if(startDate.getYear() == 0){
             servletContext.setAttribute("trainingError", "Start date is required");
+            res.sendRedirect("./training/addTraining.jsp");
+            return;
+        }
+
+        if(startDate.isBefore(LocalDate.now())){
+            servletContext.setAttribute("trainingError", "Start date cannot be a past date");
             res.sendRedirect("./training/addTraining.jsp");
             return;
         }

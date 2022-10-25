@@ -62,10 +62,8 @@
              <div class="row">
 
              <%
-
                 List<Training> trainings = trainingController.list((Connection) application.getAttribute("dbConnection"));
                 pageContext.setAttribute("trainings", trainings);
-
              %>
              <jc:forEach items="${trainings}" var="training">
                  <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
