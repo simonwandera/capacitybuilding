@@ -38,7 +38,7 @@ public class CreateTraining extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         String title = req.getParameter("title");
-        int duration = Integer.parseInt(req.getParameter("duration"));
+        int duration = req.getParameter("duration").isEmpty() ? 0 : Integer.parseInt(req.getParameter("duration"));
         LocalDate startDate = LocalDate.parse(req.getParameter("startDate"));
         String description = req.getParameter("description");
         LocalDate dateAdded = LocalDate.now();
