@@ -39,13 +39,24 @@ public class CreateTraining extends HttpServlet {
 
         String title = req.getParameter("title");
         int duration = Integer.parseInt(req.getParameter("duration"));
-
         LocalDate startDate = LocalDate.parse(req.getParameter("startDate"));
         String description = req.getParameter("description");
         LocalDate dateAdded = LocalDate.now();
 
         if(title == null || title.equalsIgnoreCase("")){
             servletContext.setAttribute("trainingError", "Title is required");
+            res.sendRedirect("./training/addTraining.jsp");
+            return;
+        }
+
+        if(duration < 1 ){
+            servletContext.setAttribute("trainingError", "Please enter a valid duration");
+            res.sendRedirect("./training/addTraining.jsp");
+            return;
+        }
+
+        if(dateAdded.toString().isEmpty()){
+            servletContext.setAttribute("trainingError", "Date added id required");
             res.sendRedirect("./training/addTraining.jsp");
             return;
         }

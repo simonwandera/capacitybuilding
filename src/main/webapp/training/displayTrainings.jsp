@@ -123,9 +123,7 @@
                  </div>
                  </jc:forEach>
 
-
              </div>
-
 
           </div>
         </div>
