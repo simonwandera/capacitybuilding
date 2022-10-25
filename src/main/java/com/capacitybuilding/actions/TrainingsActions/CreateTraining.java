@@ -89,8 +89,5 @@ public class CreateTraining extends HttpServlet {
         }
         res.sendRedirect("./training/displayTrainings.jsp");
 
-
-
-
     }
  }

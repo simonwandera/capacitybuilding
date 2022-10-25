@@ -105,7 +105,7 @@
                                                             <div class="form-group">
                                                                 <label class="col-sm-3 col-form-label">Description</label>
                                                                 <div class="col-sm-9">
-                                                                    <textarea class="form-control" name="description">"${training.description}"</textarea>
+                                                                    <textarea class="form-control" name="description">${training.description}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,7 +119,7 @@
                                                               <span class="text-danger"> <%= application.getAttribute("trainingError") %> </span>
                                                             <% } %>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary mr-2"> Add </button>
+                                                    <button type="submit" class="btn btn-primary mr-2"> Update </button>
 
                                                 </form>
                                             </div>
