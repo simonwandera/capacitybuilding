@@ -50,7 +50,6 @@ public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB
         StringBuilder stringBuilder = new StringBuilder("INSERT INTO "); // insert into
         stringBuilder.append(t.getTableName()); // tbl_students or tbl_patients
         stringBuilder.append("(");
-        // (id, name, registrationNumber, idNumber) or (id, patientNumber)
         boolean isFirstColumn = true;
         for (String key : t.getEntitiesMap().keySet())
         {

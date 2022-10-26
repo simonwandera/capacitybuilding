@@ -17,5 +17,4 @@ public class Entity {
         this.tableName = tableName;
         this.entitiesMap = entitiesMap;
     }
-
 }

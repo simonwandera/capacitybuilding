@@ -29,6 +29,20 @@ public class Training extends Entity {
         put("Status", "");
     }};;
 
+    @Override
+    protected void finalize()
+    {
+        Map<String, Object> entitiesMap = new HashMap<>(){{
+            put("Id", null);
+            put("Title", "");
+            put("Description", "");
+            put("Duration", null);
+            put("StartDate", null);
+            put("DateAdded", null);
+            put("Status", "");
+        }};;
+    }
+
     public Training() {
         super(entitiesMap, tableName);
     }
