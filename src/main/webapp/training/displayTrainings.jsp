@@ -14,6 +14,8 @@
 
 
 <jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
+<jsp:useBean id="assignTrainerController" class="com.capacitybuilding.controllers.AssignTrainerController" />
+<jsp:useBean id="userController" class="com.capacitybuilding.controllers.UserController" />
 
 <cht:Header title="Display trainings | Capacity building" />
 
@@ -103,22 +105,33 @@
 
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                  <div class="pt-2">
-                                     <h6><p class="mb-0 text-muted">21 Enrolled trainees</p></h6>
+                                     <h6><p class="mb-0 text-info">21 Enrolled trainees</p></h6>
                                  </div>
                              </div>
+
+                             <%
+
+                                 List<User> trainersList = (List<User>) training.trainers;
+                                 pageContext.setAttribute("trainers", trainersList);
+
+                             %>
+
 
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                  <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
                                      <h5 class="mb-0">Trainer</h5>
-                                     <h5><p class="mb-0 text-muted">Kevin Mugoye</p></h5>
+
+                                     <jc:forEach items="${trainers}" var="trainer">
+                                        <h5><p class="mb-0 text-muted">${trainer.firstName}</p></h5>
+                                     </jc:forEach>
+
                                  </div>
                              </div>
 
-
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                  <div class="dropdown py-2">
-                                     <button class="btn btn-info dropdown-toggle" type="button" id="options"
+                                     <button class="btn btn-success dropdown-toggle" type="button" id="options"
                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Options
                                      </button>
                                      <div class="dropdown-menu" aria-labelledby="options">
