@@ -87,10 +87,12 @@
                              <div class="card-title font-weight-medium">
                                  <h5>${jfn:toUpperCase(training.title)}</h6>
                              </div>
-
-                             <p class="text-muted pb-2 mb-2 border-bottom">
-                                ${training.description.length() < 50 ? training.description : training.description.substring(0, 50).concat("...")}
-                             </p>
+                             
+                             <div class="pb-2 mb-2 border-bottom">
+                                 <p class="text-muted">
+                                    ${training.description.length() < 50 ? training.description : training.description.substring(0, 50).concat("...")}
+                                 </p>
+                             </div>
 
                             <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                 <div class="pt-2">
