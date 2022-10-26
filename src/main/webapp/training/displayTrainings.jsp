@@ -110,10 +110,8 @@
                              </div>
 
                              <%
-
-                                 List<User> trainersList = (List<User>) training.trainers;
+                                 List<User> trainersList = (List<User>) training.getTrainers();
                                  pageContext.setAttribute("trainers", trainersList);
-
                              %>
 
 
