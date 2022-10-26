@@ -19,7 +19,7 @@ public class Training extends Entity {
     private List<User> trainers;
     private static final String tableName = "Training";
 
-    private static final Map<String, Object> entitiesMap = new HashMap<>(){{
+    private final Map<String, Object> entitiesMap = new HashMap<>(){{
         put("Id", null);
         put("Title", "");
         put("Description", "");
@@ -30,7 +30,8 @@ public class Training extends Entity {
     }};;
 
     public Training() {
-        super(entitiesMap, tableName);
+        super(tableName);
+        super.setEntitiesMap(entitiesMap);
     }
 
     public int getId() {

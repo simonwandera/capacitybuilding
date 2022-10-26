@@ -12,8 +12,11 @@ public class Entity {
     public String getTableName() {
         return tableName;
     }
+    public void setEntitiesMap(Map<String, Object> entitiesMap){
+        this.entitiesMap = entitiesMap;
+    }
 
-    public Entity(Map<String, Object> entitiesMap, String tableName) {
+    public Entity( String tableName) {
         this.tableName = tableName;
         this.entitiesMap = entitiesMap;
     }

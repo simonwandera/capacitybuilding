@@ -27,7 +27,8 @@ public class Enrollment extends Entity {
     }};;
 
     public Enrollment() {
-        super(entitiesMap, tableName);
+        super(tableName);
+        super.setEntitiesMap(entitiesMap);
     }
 
     public int getId() {

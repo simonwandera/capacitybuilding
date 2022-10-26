@@ -30,8 +30,10 @@ public class User extends Entity {
     }};;
 
     public User(){
-        super(entitiesMap, tableName);
+        super(tableName);
+        super.setEntitiesMap(entitiesMap);
     }
+
     public static Map<String, Object> getEntities() {
         return entitiesMap;
     }

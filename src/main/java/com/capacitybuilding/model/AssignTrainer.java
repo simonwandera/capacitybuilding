@@ -23,7 +23,8 @@ public class AssignTrainer extends Entity {
         put("Status", "");
     }};;
     public AssignTrainer() {
-        super(entitiesMap, tableName);
+        super(tableName);
+        super.setEntitiesMap(entitiesMap);
     }
 
     public int getId() {
