@@ -15,7 +15,10 @@ import java.util.Map;
 
 public class TrainingController implements Serializable {
 
-    public void add(TrainingController trainingController){
+    public void add(Training training, Connection connection) throws SQLException {
+
+        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(training, connection);
+        trainingConnectionMySQLDB.save();
 
     }
     public void update(Training training, Connection connection) throws SQLException {
