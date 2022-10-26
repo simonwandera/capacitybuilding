@@ -48,7 +48,7 @@
           </div>
         </div>
 
-        <%@ include filehttp://127.0.0.1:8080/capacitybuilding/main/adminDashboard.jsp="../utils/trainerTopNav.jsp"%>
+        <%@ include file="../utils/trainerTopNav.jsp"%>
 
         <%
             List<Training> trainings = trainingController.list((Connection) application.getAttribute("dbConnection"));
