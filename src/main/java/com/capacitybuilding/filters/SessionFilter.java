@@ -39,15 +39,11 @@ public class SessionFilter implements Filter {
 
         if((reqPath.contains("/main/")
                 || reqPath.contains("/trainer")
+                || reqPath.contains("/training")
                 || reqPath.contains("/trainee")) && session.isNew()){
             httpRes.sendRedirect("../login");
             return;
         }
-
-//        if (!reqPath.contains("/auth/") && session.isNew() /*checks if // session was created in the filter*/) {
-//            httpRes.sendRedirect("../login");
-//            return;
-//        }
 
         //in case user is accessing login/register/index page, they should not have a session.. invalidate
         System.out.println(reqPath.contains("/auth"));

@@ -2,10 +2,12 @@ package com.capacitybuilding.listeners;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -20,10 +22,9 @@ public class ContextListener implements ServletContextListener {
         try {
             System.out.print("Establishing connections....");
 
-            HikariDataSource dataSource = new HikariDataSource();
-            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/CapacityBuilding");
-            dataSource.setUsername("root");
-            dataSource.setPassword("");
+            InitialContext ictx = new InitialContext();
+            DataSource dataSource = (DataSource) ictx.lookup("java:jboss/datasources/CapacityBuilding");
+
             Connection connection = dataSource.getConnection();
             servletContext.setAttribute("dbConnection", connection);
             System.out.print("Connection Established....");

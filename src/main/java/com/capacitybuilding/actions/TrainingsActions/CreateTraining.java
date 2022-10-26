@@ -3,8 +3,6 @@ package com.capacitybuilding.actions.TrainingsActions;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Training;
-import com.capacitybuilding.model.User;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
