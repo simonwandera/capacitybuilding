@@ -78,10 +78,10 @@ public class CreateTraining extends HttpServlet {
         training.setStatus("UPCOMING");
         training.setStartDate(startDate);
         training.setDateAdded(dateAdded);
+        training.setId(0);
 
         try {
             new TrainingController().add(training, connection);
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
