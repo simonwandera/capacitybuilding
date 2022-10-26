@@ -24,10 +24,18 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-          <span class="menu-title">Home</span>
+        <a class="nav-link" data-toggle="collapse" href="#training" aria-expanded="false" aria-controls="training">
+          <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+          <span class="menu-title">Trainings</span>
+          <i class="menu-arrow"></i>
         </a>
+        <div class="collapse" id="training">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../training/displayTrainings.jsp">My Trainings</a>
+            </li>
+          </ul>
+        </div>
       </li>
 
       <li class="nav-item">

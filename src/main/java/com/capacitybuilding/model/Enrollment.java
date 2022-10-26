@@ -14,11 +14,9 @@ public class Enrollment extends Entity {
     private String status;
     private User trainee;
     private Training training;
+    private static final String tableName = "Enrollment";
 
-
-    static final String tableName = "Enrollment";
-
-    static final Map<String, Object> entitiesMap = new HashMap<>(){{
+    private final Map<String, Object> entitiesMap = new HashMap<>(){{
         put("Id", null);
         put("TrainingId", null);
         put("TraineeId ", null);

@@ -87,8 +87,8 @@
                              <div class="card-title font-weight-medium">
                                  <h5>${jfn:toUpperCase(training.title)}</h6>
                              </div>
-                             
-                             <div class="pb-2 mb-2 border-bottom">
+
+                             <div class="mb-2 border-bottom">
                                  <p class="text-muted">
                                     ${training.description.length() < 50 ? training.description : training.description.substring(0, 50).concat("...")}
                                  </p>

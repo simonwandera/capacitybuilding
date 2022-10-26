@@ -13,9 +13,8 @@ public class AssignTrainer extends Entity {
     private LocalDate DateAssigned;
     private String Status;
 
-
     private static final String tableName = "AssignTrainer";
-    private static final Map<String, Object> entitiesMap = new HashMap<>(){{
+    private final Map<String, Object> entitiesMap = new HashMap<>(){{
         put("Id", null);
         put("TrainingId", null);
         put("TrainerId", null);
