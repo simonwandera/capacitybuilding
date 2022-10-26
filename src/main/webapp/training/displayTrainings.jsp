@@ -109,19 +109,14 @@
                                  </div>
                              </div>
 
-                             <%
-                                 List<User> trainersList = (List<User>) training.getTrainers();
-                                 pageContext.setAttribute("trainers", trainersList);
-                             %>
-
 
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                  <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
                                  <div class="pt-2">
                                      <h5 class="mb-0">Trainer</h5>
 
-                                     <jc:forEach items="${trainers}" var="trainer">
-                                        <h5><p class="mb-0 text-muted">${trainer.firstName}</p></h5>
+                                     <jc:forEach items="${training.trainers}" var="trainer">
+                                        <h5><p class="mb-0 text-muted">${trainer.firstName }  ${trainer.lastName}</p></h5>
                                      </jc:forEach>
 
                                  </div>
