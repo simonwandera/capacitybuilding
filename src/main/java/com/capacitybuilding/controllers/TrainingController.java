@@ -19,7 +19,7 @@ public class TrainingController implements Serializable {
 
         IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(training, connection);
         trainingConnectionMySQLDB.save();
-
+        training.getEntitiesMap().put("Id", null);
     }
     public void update(Training training, Connection connection) throws SQLException {
 
