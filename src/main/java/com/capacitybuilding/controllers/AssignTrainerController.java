@@ -56,8 +56,8 @@ public class AssignTrainerController implements Serializable {
             assignTrainer.setStatus(resultSet.getString("status"));
             assignTrainer.setDateAssigned(resultSet.getDate("DateAssigned").toLocalDate());
 
-            assignTrainer.setTrainer(new UserController().getUser(resultSet.getInt("trainerId")));
-            assignTrainer.setTraining(new  TrainingController().getTraining(resultSet.getInt("trainingId ")));
+            assignTrainer.setTrainer(userController.getUser(resultSet.getInt("trainerId")));
+            assignTrainer.setTraining(trainingController.getTraining(resultSet.getInt("trainingId ")));
 
             assignTrainerList.add(assignTrainer);
         }
