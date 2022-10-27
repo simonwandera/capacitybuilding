@@ -6,6 +6,9 @@ import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,6 +19,16 @@ import java.util.List;
 import java.util.Map;
 
 public class AssignTrainerController implements Serializable {
+
+    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
+    DataSource dataSource;
+
+    @Inject
+    TrainingController trainingController;
+
+    @Inject
+    UserController userController;
+
     public void add(AssignTrainer assignTrainer){
 
     }
@@ -26,13 +39,13 @@ public class AssignTrainerController implements Serializable {
 
     }
 
-    public List<AssignTrainer> list(AssignTrainer assignTrainer, Connection connection) throws SQLException {
+    public List<AssignTrainer> list(AssignTrainer assignTrainer) throws SQLException {
 
-        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(assignTrainer, connection);
+        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(assignTrainer, dataSource.getConnection());
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.fetchAll();
-        return this.generateList(resultSet, connection);
+        return this.generateList(resultSet);
     }
-    public List<AssignTrainer> generateList(ResultSet resultSet, Connection connection) throws SQLException {
+    public List<AssignTrainer> generateList(ResultSet resultSet) throws SQLException {
 
         List<AssignTrainer> assignTrainerList = new ArrayList<>();
 
@@ -43,8 +56,8 @@ public class AssignTrainerController implements Serializable {
             assignTrainer.setStatus(resultSet.getString("status"));
             assignTrainer.setDateAssigned(resultSet.getDate("DateAssigned").toLocalDate());
 
-            assignTrainer.setTrainer(new UserController().getUser(resultSet.getInt("trainerId"), connection));
-            assignTrainer.setTraining(new  TrainingController().getTraining(resultSet.getInt("trainingId "), connection));
+            assignTrainer.setTrainer(new UserController().getUser(resultSet.getInt("trainerId")));
+            assignTrainer.setTraining(new  TrainingController().getTraining(resultSet.getInt("trainingId ")));
 
             assignTrainerList.add(assignTrainer);
         }
@@ -52,17 +65,17 @@ public class AssignTrainerController implements Serializable {
         return assignTrainerList;
     }
 
-    public List<User> getTrainers(Training training, Connection connection) throws SQLException {
+    public List<User> getTrainers(Training training) throws SQLException {
         Map<String, String> criteria = new HashMap<>(){{
             put("trainingId", Integer.toString(training.getId()));
         }};;
         List<User> trainers = new ArrayList<>();
 
-        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), connection);
+        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), dataSource.getConnection());
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
-            User trainer = new UserController().getUser(resultSet.getInt("trainerId"), connection);
+            User trainer = new UserController().getUser(resultSet.getInt("trainerId"));
             trainers.add(trainer);
         }
 

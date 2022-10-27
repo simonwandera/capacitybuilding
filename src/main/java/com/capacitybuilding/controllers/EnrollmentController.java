@@ -3,7 +3,6 @@ package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Enrollment;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
@@ -39,7 +38,7 @@ public class EnrollmentController implements Serializable {
         ResultSet resultSet = enrollmentConnectionIMySQLDB.executeReadQuery(enrollmentConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
-            User trainee = new UserController().getUser(resultSet.getInt("traineeId"), connection);
+            User trainee = new UserController().getUser(resultSet.getInt("traineeId"));
             traineesEnrolled.add(trainee);
         }
 

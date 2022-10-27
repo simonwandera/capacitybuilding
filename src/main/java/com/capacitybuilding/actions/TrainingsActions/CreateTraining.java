@@ -81,7 +81,7 @@ public class CreateTraining extends HttpServlet {
         training.setId(0);
 
         try {
-            new TrainingController().add(training, connection);
+            new TrainingController().add(training);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -80,7 +80,7 @@ public class UpdateTraining extends HttpServlet {
         training.setDateAdded(dateAdded);
 
         try {
-            new TrainingController().update(training, connection);
+            new TrainingController().update(training);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
