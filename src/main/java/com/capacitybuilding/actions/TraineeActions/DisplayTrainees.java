@@ -2,7 +2,6 @@ package com.capacitybuilding.actions.TraineeActions;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.actions.Common;
 import com.capacitybuilding.controllers.UserController;
 import com.capacitybuilding.model.User;
 

@@ -5,6 +5,7 @@ import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Training;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -19,6 +20,9 @@ public class TrainingController implements Serializable {
 
     @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
     DataSource dataSource;
+
+    @Inject
+    AssignTrainerController assignTrainerController;
 
     public void add(Training training) throws SQLException {
 
@@ -54,7 +58,7 @@ public class TrainingController implements Serializable {
             training.setStartDate(resultSet.getDate("startDate").toLocalDate());
             training.setStatus(resultSet.getString("status"));
 
-            training.setTrainers(new AssignTrainerController().getTrainers(training));
+            training.setTrainers(assignTrainerController.getTrainers(training));
             trainingList.add(training);
         }
         return trainingList;

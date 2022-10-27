@@ -7,6 +7,7 @@ import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -21,6 +22,9 @@ public class UserController implements Serializable {
 
     @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
     DataSource dataSource;
+
+    @Inject
+    TrainingController trainingController;
 
     public void add(Connection connection, User user){
         if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
@@ -120,7 +124,7 @@ public class UserController implements Serializable {
         List<Training> enrolledTrainings = new ArrayList<>();
         ResultSet resultSet = trainingConnectionMySQLDB.executeReadQuery(trainingConnectionMySQLDB.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
-            Training training = new TrainingController().getTraining(resultSet.getInt("id"));
+            Training training = trainingController.getTraining(resultSet.getInt("id"));
             enrolledTrainings.add(training);
         }
         return enrolledTrainings;
