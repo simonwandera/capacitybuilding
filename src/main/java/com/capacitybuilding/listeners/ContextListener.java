@@ -2,6 +2,7 @@ package com.capacitybuilding.listeners;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import javax.annotation.Resource;
 import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -9,11 +10,12 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 
 @WebListener
 public class ContextListener implements ServletContextListener {
 
+    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
+    DataSource dataSource;
     public void contextInitialized(ServletContextEvent event){
         System.out.print("Capacity building system... initializing default attributes");
         ServletContext servletContext = event.getServletContext();
@@ -21,9 +23,6 @@ public class ContextListener implements ServletContextListener {
 
         try {
             System.out.print("Establishing connections....");
-
-            InitialContext ictx = new InitialContext();
-            DataSource dataSource = (DataSource) ictx.lookup("java:jboss/datasources/CapacityBuilding");
 
             Connection connection = dataSource.getConnection();
             servletContext.setAttribute("dbConnection", connection);
