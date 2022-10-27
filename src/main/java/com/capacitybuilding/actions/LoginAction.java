@@ -1,10 +1,11 @@
 package com.capacitybuilding.actions;
 
-import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
+import com.capacitybuilding.controllers.UserController;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,22 +14,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginAction extends HttpServlet {
 
+    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
+    DataSource dataSource;
+
+    @Inject
+    UserController userController;
+
     ServletContext servletContext;
-    Connection connection;
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
         servletContext = getServletConfig().getServletContext();
-        connection = (Connection) servletContext.getAttribute("dbConnection");
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -58,7 +62,7 @@ public class LoginAction extends HttpServlet {
             put("Password", DigestUtils.md5Hex(password));
         }};;
 
-        User user = this.login(criteria);
+        User user = userController.login(criteria);
 
         if (user == null || user.getId() < 1) {
             servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
@@ -76,31 +80,5 @@ public class LoginAction extends HttpServlet {
             res.sendRedirect("./main/traineeDashboard.jsp");
         else if (user.getUserType().equals("TRAINER"))
             res.sendRedirect("./main/trainerDashboard.jsp");
-    }
-
-    public User login(Map<String, String> criteria) {
-
-        User login = new User();
-
-        try {
-
-            IMySQLDB<User, Connection> loginMysqlDb = new MySQLDB<>(login, connection);
-
-            String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
-            ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
-
-
-            while (resultSet.next()) {
-                login = new User();
-                login.setId(resultSet.getInt("id"));
-                login.setUsername(resultSet.getString("userName"));
-                login.setUserType(resultSet.getString("userType"));
-            }
-
-        }catch (Exception ex) {
-            System.out.println("Log In Error: " + ex.getMessage());
-        }
-
-        return login;
     }
 }

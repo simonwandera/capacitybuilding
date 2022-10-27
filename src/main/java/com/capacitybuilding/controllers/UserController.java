@@ -6,6 +6,8 @@ import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,6 +18,10 @@ import java.util.List;
 import java.util.Map;
 
 public class UserController implements Serializable {
+
+    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
+    DataSource dataSource;
+
     public void add(Connection connection, User user){
         if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
             return;
@@ -35,6 +41,28 @@ public class UserController implements Serializable {
 
     public void delete(User user) {
 
+    }
+
+    public User login(Map<String, String> criteria) {
+        User login = new User();
+        try {
+
+            IMySQLDB<User, Connection> loginMysqlDb = new MySQLDB<>(login, dataSource.getConnection());
+            String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
+            ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
+
+            while (resultSet.next()) {
+                login = new User();
+                login.setId(resultSet.getInt("id"));
+                login.setUsername(resultSet.getString("userName"));
+                login.setUserType(resultSet.getString("userType"));
+            }
+
+        }catch (Exception ex) {
+            System.out.println("Log In Error: " + ex.getMessage());
+        }
+
+        return login;
     }
 
     public List<User> list(User user, Connection connection) throws SQLException {
