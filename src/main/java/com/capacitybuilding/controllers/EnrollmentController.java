@@ -7,6 +7,9 @@ import com.capacitybuilding.model.Enrollment;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,6 +21,12 @@ import java.util.Map;
 
 public class EnrollmentController implements Serializable {
 
+    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
+    DataSource dataSource;
+
+    @Inject
+    UserController userController;
+
     public void add(EnrollmentController enrollmentController){
 
     }
@@ -28,17 +37,17 @@ public class EnrollmentController implements Serializable {
 
     }
 
-    public List<User> getTrainees(Training training, Connection connection) throws SQLException {
+    public List<User> getTrainees(Training training) throws SQLException {
         Map<String, String> criteria = new HashMap<>(){{
             put("trainingId", Integer.toString(training.getId()));
         }};;
         List<User> traineesEnrolled = new ArrayList<>();
 
-        IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(new Enrollment(), connection);
+        IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(new Enrollment(), dataSource.getConnection());
         ResultSet resultSet = enrollmentConnectionIMySQLDB.executeReadQuery(enrollmentConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
-            User trainee = new UserController().getUser(resultSet.getInt("traineeId"));
+            User trainee = userController.getUser(resultSet.getInt("traineeId"));
             traineesEnrolled.add(trainee);
         }
 
