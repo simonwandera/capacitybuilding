@@ -40,11 +40,6 @@ public class TrainingController implements Serializable {
 
     }
 
-    public List<Training> list() throws SQLException {
-        IMySQLDB<Training, Connection> trainingConnectionIMySQLDB = new MySQLDB<>(new Training(), dataSource.getConnection());
-        ResultSet resultSet = trainingConnectionIMySQLDB.fetchAll();
-        return this.generateList(resultSet);
-    }
     public List<Training> generateList(ResultSet resultSet) throws SQLException {
 
         List<Training> trainingList = new ArrayList<>();
@@ -63,25 +58,5 @@ public class TrainingController implements Serializable {
             trainingList.add(training);
         }
         return trainingList;
-    }
-
-    public Training getTraining(int id) throws SQLException {
-        Training training = new Training();
-        Map<String, String> criteria = new HashMap<>(){{
-            put("Id", Integer.toString(id));
-        }};;
-        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(new Training(), dataSource.getConnection());
-
-        ResultSet resultSet = trainingConnectionMySQLDB.executeReadQuery(new MySQLDB<>(new Training(), dataSource.getConnection()).createSelectWithWhereClauseQuery(criteria));
-        while (resultSet.next()){
-            training.setId(resultSet.getInt("id"));
-            training.setTitle(resultSet.getString("title"));
-            training.setDescription(resultSet.getString("description"));
-            training.setDuration(resultSet.getInt("duration"));
-            training.setDateAdded(resultSet.getDate("dateAdded").toLocalDate());
-            training.setStartDate(resultSet.getDate("startDate").toLocalDate());
-            training.setStatus(resultSet.getString("status"));
-        }
-        return training;
     }
 }

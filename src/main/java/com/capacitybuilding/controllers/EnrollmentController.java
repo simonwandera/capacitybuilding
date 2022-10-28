@@ -25,7 +25,7 @@ public class EnrollmentController implements Serializable {
     DataSource dataSource;
 
     @Inject
-    UserController userController;
+    HelperController helperController;
 
     public void add(EnrollmentController enrollmentController){
 
@@ -47,7 +47,7 @@ public class EnrollmentController implements Serializable {
         ResultSet resultSet = enrollmentConnectionIMySQLDB.executeReadQuery(enrollmentConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
-            User trainee = userController.getUser(resultSet.getInt("traineeId"));
+            User trainee = helperController.getUser(resultSet.getInt("traineeId"));
             traineesEnrolled.add(trainee);
         }
 

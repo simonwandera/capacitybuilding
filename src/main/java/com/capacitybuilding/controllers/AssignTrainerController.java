@@ -23,11 +23,9 @@ public class AssignTrainerController implements Serializable {
     @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
     DataSource dataSource;
 
-//    @Inject
-//    TrainingController trainingController;
 
     @Inject
-    UserController userController;
+    HelperController helperController;
 
     public void add(AssignTrainer assignTrainer){
 
@@ -83,7 +81,7 @@ public class AssignTrainerController implements Serializable {
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
-            User trainer = userController.getUser(resultSet.getInt("trainerId"));
+            User trainer = helperController.getUser(resultSet.getInt("trainerId"));
             trainers.add(trainer);
         }
 

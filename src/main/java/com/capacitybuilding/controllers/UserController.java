@@ -95,23 +95,6 @@ public class UserController implements Serializable {
         return userList;
     }
 
-    public User getUser(int id) throws SQLException {
-        User user = new User();
-        Map<String, String> criteria = new HashMap<>(){{
-            put("Id", Integer.toString(id));
-        }};;
-        IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(new User(), dataSource.getConnection());
-        ResultSet resultSet = userConnectionIMySQLDB.executeReadQuery(new MySQLDB<>(new User(), dataSource.getConnection()).createSelectWithWhereClauseQuery(criteria));
-        while (resultSet.next()){
-            user.setId(resultSet.getInt("id"));
-            user.setFirstName(resultSet.getString("firstname"));
-            user.setLastName(resultSet.getString("lastname"));
-            user.setGender(resultSet.getString("gender"));
-            user.setUsername(resultSet.getString("username"));
-            user.setUserType(resultSet.getString("userType"));
-        }
-        return user;
-    }
 
     public List<Training> getEnrolledTrainings(User trainee, Connection connection) throws SQLException {
 
