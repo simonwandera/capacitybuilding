@@ -23,7 +23,6 @@ public class AssignTrainerController implements Serializable {
     @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
     DataSource dataSource;
 
-
     @Inject
     HelperController helperController;
 
@@ -37,9 +36,9 @@ public class AssignTrainerController implements Serializable {
 
     }
 
-    public List<AssignTrainer> list(AssignTrainer assignTrainer) throws SQLException {
+    public List<AssignTrainer> list() throws SQLException {
 
-        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(assignTrainer, dataSource.getConnection());
+        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), dataSource.getConnection());
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.fetchAll();
         return this.generateList(resultSet);
     }
@@ -55,15 +54,8 @@ public class AssignTrainerController implements Serializable {
             assignTrainer.setStatus(resultSet.getString("status"));
             assignTrainer.setDateAssigned(resultSet.getDate("DateAssigned").toLocalDate());
 
-            User trainer = new User();
-
-            trainer.setId(resultSet.getInt("trainerId"));
-            assignTrainer.setTrainer(trainer);
-
-            Training training = new Training();
-            training.setId(resultSet.getInt("trainingId "));
-
-            assignTrainer.setTraining(training);
+            assignTrainer.setTrainer(helperController.getUser(resultSet.getInt("trainerId")));
+            assignTrainer.setTraining(helperController.getTraining(resultSet.getInt("trainingId ")));
 
             assignTrainerList.add(assignTrainer);
         }
