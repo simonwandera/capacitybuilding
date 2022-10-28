@@ -109,7 +109,6 @@ public class UserController implements Serializable {
         while (resultSet.next()){
 
             Training training = helperController.getTraining(resultSet.getInt("id"));
-
             enrolledTrainings.add(training);
         }
         return enrolledTrainings;

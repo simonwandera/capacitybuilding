@@ -26,6 +26,9 @@ public class TrainingController implements Serializable {
     @Inject
     EnrollmentController enrollmentController;
 
+    @Inject
+    HelperController helperController;
+
     public void add(Training training) throws SQLException {
 
         IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(training, dataSource.getConnection());
@@ -39,6 +42,12 @@ public class TrainingController implements Serializable {
     }
     public void delete(TrainingController trainingController){
 
+    }
+
+    public List<Training> fetchAll() throws SQLException {
+        IMySQLDB<Training, Connection> connectionIMySQLDB = new MySQLDB<>(new Training(), dataSource.getConnection());
+        ResultSet resultSet = connectionIMySQLDB.fetchAll();
+        return this.generateList(resultSet);
     }
 
     public List<Training> generateList(ResultSet resultSet) throws SQLException {

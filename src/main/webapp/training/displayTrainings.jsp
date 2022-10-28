@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.model.*" %>
+<%@ page import="com.capacitybuilding.controllers.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
@@ -13,7 +14,6 @@
 <%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
-<jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
 <jsp:useBean id="assignTrainerController" class="com.capacitybuilding.controllers.AssignTrainerController" />
 <jsp:useBean id="userController" class="com.capacitybuilding.controllers.UserController" />
 
@@ -53,6 +53,7 @@
         <%@ include file="../utils/trainerTopNav.jsp"%>
 
         <%
+            TrainingController trainingController = new TrainingController();
             List<Training> trainings = trainingController.list();
             pageContext.setAttribute("trainings", trainings);
         %>
