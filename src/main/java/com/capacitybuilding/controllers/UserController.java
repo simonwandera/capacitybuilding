@@ -23,8 +23,8 @@ public class UserController implements Serializable {
     @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
     DataSource dataSource;
 
-    @Inject
-    TrainingController trainingController;
+//    @Inject
+//    TrainingController trainingController;
 
     public void add(Connection connection, User user){
         if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
@@ -124,7 +124,12 @@ public class UserController implements Serializable {
         List<Training> enrolledTrainings = new ArrayList<>();
         ResultSet resultSet = trainingConnectionMySQLDB.executeReadQuery(trainingConnectionMySQLDB.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
-            Training training = trainingController.getTraining(resultSet.getInt("id"));
+
+            Training training = new Training();
+            training.setId(resultSet.getInt("id"));
+
+//            Training training = trainingController.getTraining(resultSet.getInt("id"));
+
             enrolledTrainings.add(training);
         }
         return enrolledTrainings;

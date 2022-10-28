@@ -5,13 +5,13 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 
+
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jf" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="jfn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
-
 
 <jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
 <jsp:useBean id="assignTrainerController" class="com.capacitybuilding.controllers.AssignTrainerController" />
@@ -53,7 +53,7 @@
         <%@ include file="../utils/trainerTopNav.jsp"%>
 
         <%
-            List<Training> trainings = trainingController.list((Connection) application.getAttribute("dbConnection"));
+            List<Training> trainings = trainingController.list();
             pageContext.setAttribute("trainings", trainings);
         %>
 
@@ -82,7 +82,7 @@
 
              <div class="row">
 
-             <jc:forEach items="${trainings}" var="training">
+             <jc:forEach items="${trainingsList}" var="training">
                  <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
                      <div class="card">
                          <div class="card-body">

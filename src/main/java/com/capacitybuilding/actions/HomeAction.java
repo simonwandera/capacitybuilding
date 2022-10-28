@@ -41,10 +41,9 @@ public class HomeAction extends HttpServlet {
 
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-        User user = new User();
 
         try {
-            IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(user, dataSource.getConnection());
+            IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(new User(), dataSource.getConnection());
             ResultSet resultSet = traineeMysqlDB.fetchAll();
             trainees = userController.generateList(resultSet);
 

@@ -21,9 +21,9 @@ import java.util.Map;
 public class LoginAction extends HttpServlet {
 
     @Inject
-    UserController userController;
+    private UserController userController;
 
-    ServletContext servletContext;
+    private ServletContext servletContext;
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
@@ -57,7 +57,7 @@ public class LoginAction extends HttpServlet {
             put("Password", DigestUtils.md5Hex(password));
         }};;
 
-        User user = userController.login(criteria);
+        User user = this.userController.login(criteria);
 
         if (user == null || user.getId() < 1) {
             servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
