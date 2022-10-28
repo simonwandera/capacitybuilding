@@ -13,9 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TrainingController implements Serializable {
 
@@ -24,6 +22,9 @@ public class TrainingController implements Serializable {
 
     @Inject
     AssignTrainerController assignTrainerController;
+
+    @Inject
+    EnrollmentController enrollmentController;
 
     public void add(Training training) throws SQLException {
 
@@ -55,6 +56,7 @@ public class TrainingController implements Serializable {
             training.setStatus(resultSet.getString("status"));
 
             training.setTrainers(assignTrainerController.getTrainers(training));
+            training.setTrainees(enrollmentController.getTrainees(training));
             trainingList.add(training);
         }
         return trainingList;
