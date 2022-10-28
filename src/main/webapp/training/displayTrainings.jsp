@@ -54,7 +54,7 @@
 
         <%
             TrainingController trainingController = new TrainingController();
-            List<Training> trainings = trainingController.list();
+            List<Training> trainings = trainingController.fetchAll();
             pageContext.setAttribute("trainings", trainings);
         %>
 
