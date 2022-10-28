@@ -21,7 +21,7 @@ import java.util.Map;
 public class LoginAction extends HttpServlet {
 
     @Inject
-    private UserController userController;
+    UserController userController;
 
     private ServletContext servletContext;
 
