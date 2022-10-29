@@ -3,7 +3,6 @@ package com.capacitybuilding.controllers;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Training;
-import com.capacitybuilding.model.User;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -44,7 +43,7 @@ public class TrainingController implements Serializable {
 
     }
 
-    public List<Training> fetchAll() throws SQLException {
+    public List<Training> fetch() throws SQLException {
         IMySQLDB<Training, Connection> connectionIMySQLDB = new MySQLDB<>(new Training(), dataSource.getConnection());
         ResultSet resultSet = connectionIMySQLDB.fetchAll();
         return this.generateList(resultSet);

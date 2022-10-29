@@ -49,8 +49,8 @@ public class UserController implements Serializable {
 
     public User login(Map<String, String> criteria) {
         User login = new User();
-        try {
 
+        try {
             IMySQLDB<User, Connection> loginMysqlDb = new MySQLDB<>(login, dataSource.getConnection());
             String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
             ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
@@ -93,6 +93,8 @@ public class UserController implements Serializable {
             userList.add(user);
         }
         return userList;
+
+
     }
 
 

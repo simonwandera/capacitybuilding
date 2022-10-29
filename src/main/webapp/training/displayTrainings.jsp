@@ -14,10 +14,9 @@
 <%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
-<jsp:useBean id="assignTrainerController" class="com.capacitybuilding.controllers.AssignTrainerController" />
-<jsp:useBean id="userController" class="com.capacitybuilding.controllers.UserController" />
 
 <cht:Header title="Display trainings | Capacity building" />
+
 
 <body>
     <div class="container-scroller">
@@ -53,8 +52,10 @@
         <%@ include file="../utils/trainerTopNav.jsp"%>
 
         <%
+
             TrainingController trainingController = new TrainingController();
-            List<Training> trainings = trainingController.fetchAll();
+            List<Training> trainings = (List<Training>) trainingController.fetchAll();
+
             pageContext.setAttribute("trainings", trainings);
         %>
 
@@ -109,7 +110,6 @@
                                      <h6><p class="mb-0 text-info">21 Enrolled trainees</p></h6>
                                  </div>
                              </div>
-
 
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                  <img class="survey-img mb-lg-3" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />

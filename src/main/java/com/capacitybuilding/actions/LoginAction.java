@@ -1,6 +1,8 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.controllers.TrainingController;
 import com.capacitybuilding.controllers.UserController;
+import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -14,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(urlPatterns = "/login")
@@ -39,6 +43,10 @@ public class LoginAction extends HttpServlet {
 
         String password = req.getParameter("password");
         String email = req.getParameter("email");
+
+
+
+
 
         if (email == null || email.equalsIgnoreCase("")){
             servletContext.setAttribute("loginError" , "Email is required<br/>");
