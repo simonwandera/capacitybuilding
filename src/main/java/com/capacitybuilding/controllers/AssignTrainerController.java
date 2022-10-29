@@ -76,8 +76,11 @@ public class AssignTrainerController implements Serializable {
             User trainer = helperController.getUser(resultSet.getInt("trainerId"));
             trainers.add(trainer);
         }
-
         return trainers;
+    }
+
+    public List<Training> getTrainings(User trainee) throws SQLException{
+        return new ArrayList<>();
     }
 
 }

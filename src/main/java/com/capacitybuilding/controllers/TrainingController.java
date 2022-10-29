@@ -43,7 +43,7 @@ public class TrainingController implements Serializable {
 
     }
 
-    public List<Training> fetch() throws SQLException {
+    public List<Training> list() throws SQLException {
         IMySQLDB<Training, Connection> connectionIMySQLDB = new MySQLDB<>(new Training(), dataSource.getConnection());
         ResultSet resultSet = connectionIMySQLDB.fetchAll();
         return this.generateList(resultSet);

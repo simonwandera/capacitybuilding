@@ -26,6 +26,12 @@ public class UserController implements Serializable {
     @Inject
     HelperController helperController;
 
+    @Inject
+    AssignTrainerController assignTrainerController;
+
+    @Inject
+    EnrollmentController enrollmentController;
+
     public void add(User user){
         if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
             return;
@@ -82,11 +88,11 @@ public class UserController implements Serializable {
         while (resultSet.next()){
             User user = helperController.getUser(resultSet.getInt("id"));
             user.setEnrolledTrainings(this.getEnrolledTrainings(user));
+
+
             userList.add(user);
         }
         return userList;
-
-
     }
 
 

@@ -54,4 +54,8 @@ public class EnrollmentController implements Serializable {
         return traineesEnrolled;
     }
 
+    public List<Training> getTrainings(User user) throws SQLException{
+       return new ArrayList<>();
+    }
+
 }
