@@ -15,8 +15,8 @@ public class Training extends Entity {
     private LocalDate startDate;
     private LocalDate dateAdded;
     private String status;
-    private List<User> trainees;
-    private List<User> trainers;
+    private List<User> enrolledTrainees;
+    private List<User> assignedTrainers;
     private static final String tableName = "Training";
 
     private final Map<String, Object> entitiesMap = new HashMap<>(){{
@@ -97,20 +97,20 @@ public class Training extends Entity {
         this.status = status;
     }
 
-    public List<User> getTrainees() {
-        return trainees;
+    public List<User> getEnrolledTrainees() {
+        return enrolledTrainees;
     }
 
-    public void setTrainees(List<User> trainees) {
-        this.trainees = trainees;
+    public void setEnrolledTrainees(List<User> enrolledTrainees) {
+        this.enrolledTrainees = enrolledTrainees;
     }
 
-    public List<User> getTrainers() {
-        return trainers;
+    public List<User> getAssignedTrainers() {
+        return assignedTrainers;
     }
 
-    public void setTrainers(List<User> trainers) {
-        this.trainers = trainers;
+    public void setAssignedTrainers(List<User> assignedTrainers) {
+        this.assignedTrainers = assignedTrainers;
     }
 
 }

@@ -53,18 +53,10 @@ public class TrainingController implements Serializable {
 
         List<Training> trainingList = new ArrayList<>();
         while (resultSet.next()){
-            Training training = new Training();
 
-            training.setId(resultSet.getInt("id"));
-            training.setTitle(resultSet.getString("title"));
-            training.setDescription(resultSet.getString("description"));
-            training.setDuration(resultSet.getInt("duration"));
-            training.setDateAdded(resultSet.getDate("dateAdded").toLocalDate());
-            training.setStartDate(resultSet.getDate("startDate").toLocalDate());
-            training.setStatus(resultSet.getString("status"));
-
-            training.setTrainers(assignTrainerController.getTrainers(training));
-            training.setTrainees(enrollmentController.getTrainees(training));
+            Training training = helperController.getTraining(resultSet.getInt("id"));
+            training.setAssignedTrainers(assignTrainerController.getTrainers(training));
+            training.setEnrolledTrainees(enrollmentController.getTrainees(training));
             trainingList.add(training);
         }
         return trainingList;
