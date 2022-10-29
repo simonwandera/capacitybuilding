@@ -26,12 +26,12 @@ public class UserController implements Serializable {
     @Inject
     HelperController helperController;
 
-    public void add(Connection connection, User user){
+    public void add(User user){
         if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
             return;
 
         try {
-            IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user, connection);
+            IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user, dataSource.getConnection());
             traineeConnectionIMySQLDB.save();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -80,16 +80,8 @@ public class UserController implements Serializable {
 
         List<User> userList = new ArrayList<>();
         while (resultSet.next()){
-            User user = new User();
-            user.setId(resultSet.getInt("id"));
-
-            user.setFirstName(resultSet.getString("firstname"));
-            user.setLastName(resultSet.getString("lastname"));
-            user.setGender(resultSet.getString("gender"));
-
-            user.setUsername(resultSet.getString("username"));
-            user.setPassword(resultSet.getString("password"));
-            user.setUserType(resultSet.getString("userType"));
+            User user = helperController.getUser(resultSet.getInt("id"));
+            user.setEnrolledTrainings(this.getEnrolledTrainings(user));
             userList.add(user);
         }
         return userList;
@@ -98,18 +90,17 @@ public class UserController implements Serializable {
     }
 
 
-    public List<Training> getEnrolledTrainings(User trainee, Connection connection) throws SQLException {
+    public List<Training> getEnrolledTrainings(User trainee) throws SQLException {
 
-        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(new Training(), connection);
+        IMySQLDB<Training, Connection> trainingMySQLBD = new MySQLDB<>(new Training(), dataSource.getConnection());
 
         Map<String, String> criteria = new HashMap<>(){{
             put("TraineeId", Integer.toString(trainee.getId()));
         }};;
 
         List<Training> enrolledTrainings = new ArrayList<>();
-        ResultSet resultSet = trainingConnectionMySQLDB.executeReadQuery(trainingConnectionMySQLDB.createSelectWithWhereClauseQuery(criteria));
+        ResultSet resultSet = trainingMySQLBD.executeReadQuery(trainingMySQLBD.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
-
             Training training = helperController.getTraining(resultSet.getInt("id"));
             enrolledTrainings.add(training);
         }
