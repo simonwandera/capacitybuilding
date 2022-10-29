@@ -77,7 +77,7 @@
                       <div class="card-body px-3 py-4">
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
-                            <p class="mb-0 color-card-head">Orders</p>
+                            <p class="mb-0 color-card-head">Enrollments</p>
                             <h2 class="text-white"> $1,753.<span class="h5">00</span>
                             </h2>
                           </div>
@@ -92,7 +92,7 @@
                       <div class="card-body px-3 py-4">
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
-                            <p class="mb-0 color-card-head">Affiliate</p>
+                            <p class="mb-0 color-card-head">Competent Trainers</p>
                             <h2 class="text-white">2368</h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
@@ -176,7 +176,7 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
         <cft:Footer />
