@@ -25,6 +25,7 @@ public class TrainingController implements Serializable {
     @Inject
     EnrollmentController enrollmentController;
 
+
     @Inject
     HelperController helperController;
 

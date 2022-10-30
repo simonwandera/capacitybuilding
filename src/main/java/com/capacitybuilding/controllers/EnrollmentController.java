@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +28,14 @@ public class EnrollmentController implements Serializable {
     @Inject
     HelperController helperController;
 
-    public void add(EnrollmentController enrollmentController){
-
+    public void enroll(User trainee, Training training) throws SQLException {
+        Enrollment enrollment = new Enrollment();
+        enrollment.setStatus("PENDING");
+        enrollment.setDateEnrolled(LocalDate.now());
+        enrollment.setTrainee(trainee);
+        enrollment.setTraining(training);
+        IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(enrollment, dataSource.getConnection());
+        enrollmentConnectionIMySQLDB.save();
     }
     public void update(EnrollmentController enrollmentController){
 

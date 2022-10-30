@@ -2,6 +2,7 @@ package com.capacitybuilding.model;
 
 import com.capacitybuilding.Service.Entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 public class Enrollment extends Entity {
     private int Id;
-    private Date dateEnrolled;
+    private LocalDate dateEnrolled;
     private String status;
     private User trainee;
     private Training training;
@@ -38,11 +39,11 @@ public class Enrollment extends Entity {
         Id = id;
     }
 
-    public Date getDateEnrolled() {
+    public LocalDate getDateEnrolled() {
         return dateEnrolled;
     }
 
-    public void setDateEnrolled(Date dateEnrolled) {
+    public void setDateEnrolled(LocalDate dateEnrolled) {
         entitiesMap.put("DateEnrolled", dateEnrolled);
         this.dateEnrolled = dateEnrolled;
     }
