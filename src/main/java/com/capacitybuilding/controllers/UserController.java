@@ -2,6 +2,7 @@ package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
+import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -52,6 +53,7 @@ public class UserController implements Serializable {
     }
 
     public User login(Map<String, String> criteria) {
+
         User login = new User();
 
         try {

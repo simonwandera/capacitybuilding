@@ -45,9 +45,6 @@ public class LoginAction extends HttpServlet {
         String email = req.getParameter("email");
 
 
-
-
-
         if (email == null || email.equalsIgnoreCase("")){
             servletContext.setAttribute("loginError" , "Email is required<br/>");
             res.sendRedirect("./auth/login.jsp");
