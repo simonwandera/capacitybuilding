@@ -49,7 +49,6 @@ public class EnrollmentController implements Serializable {
             put("TrainingId", Integer.toString(training.getId()));
         }};;
         List<User> traineesEnrolled = new ArrayList<>();
-
         IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(new Enrollment(), dataSource.getConnection());
         ResultSet resultSet = enrollmentConnectionIMySQLDB.executeReadQuery(enrollmentConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 

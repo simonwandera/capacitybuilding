@@ -53,10 +53,8 @@ public class AssignTrainerController implements Serializable {
             assignTrainer.setId(resultSet.getInt("id"));
             assignTrainer.setStatus(resultSet.getString("status"));
             assignTrainer.setDateAssigned(resultSet.getDate("DateAssigned").toLocalDate());
-
             assignTrainer.setTrainer(helperController.getUser(resultSet.getInt("trainerId")));
             assignTrainer.setTraining(helperController.getTraining(resultSet.getInt("trainingId ")));
-
             assignTrainerList.add(assignTrainer);
         }
 
@@ -65,7 +63,7 @@ public class AssignTrainerController implements Serializable {
 
     public List<User> getTrainers(Training training) throws SQLException {
         Map<String, String> criteria = new HashMap<>(){{
-            put("trainingId", Integer.toString(training.getId()));
+            put("TrainingId", Integer.toString(training.getId()));
         }};;
         List<User> trainers = new ArrayList<>();
 
@@ -79,7 +77,19 @@ public class AssignTrainerController implements Serializable {
         return trainers;
     }
 
-    public List<Training> getTrainings(User trainee) throws SQLException{
+    public List<Training> getTrainings(User trainer) throws SQLException{
+        Map<String, String> criteria = new HashMap<>(){{
+            put("TrainerId", Integer.toString(trainer.getId()));
+        }};;
+
+        List<Training> trainingList = new ArrayList<>();
+
+        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), dataSource.getConnection());
+        ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
+        while (resultSet.next()){
+            Training training = helperController.getTraining(resultSet.getInt("TrainingId"));
+            trainingList.add(training);
+        }
         return new ArrayList<>();
     }
 
