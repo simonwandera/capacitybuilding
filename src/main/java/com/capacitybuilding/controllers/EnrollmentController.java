@@ -46,7 +46,7 @@ public class EnrollmentController implements Serializable {
 
     public List<User> getTrainees(Training training) throws SQLException {
         Map<String, String> criteria = new HashMap<>(){{
-            put("trainingId", Integer.toString(training.getId()));
+            put("TrainingId", Integer.toString(training.getId()));
         }};;
         List<User> traineesEnrolled = new ArrayList<>();
 
@@ -57,12 +57,22 @@ public class EnrollmentController implements Serializable {
             User trainee = helperController.getUser(resultSet.getInt("traineeId"));
             traineesEnrolled.add(trainee);
         }
-
         return traineesEnrolled;
     }
 
     public List<Training> getTrainings(User user) throws SQLException{
-       return new ArrayList<>();
+        Map<String, String> criteria = new HashMap<>(){{
+            put("TraineeId", Integer.toString(user.getId()));
+        }};;
+        List<Training> trainingList = new ArrayList<>();
+        IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(new Enrollment(), dataSource.getConnection());
+        ResultSet resultSet = enrollmentConnectionIMySQLDB.executeReadQuery(enrollmentConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
+
+        while (resultSet.next()){
+            Training training = helperController.getTraining(resultSet.getInt("trainingId"));
+            trainingList.add(training);
+        }
+        return trainingList;
     }
 
 }
