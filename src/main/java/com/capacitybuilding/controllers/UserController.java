@@ -75,9 +75,9 @@ public class UserController implements Serializable {
         return login;
     }
 
-    public List<User> list(User user, Connection connection) throws SQLException {
+    public List<User> list() throws SQLException {
 
-        IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user, connection);
+        IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(new User(), dataSource.getConnection());
         ResultSet resultSet = traineeConnectionIMySQLDB.fetchAll();
         return this.generateList(resultSet);
     }
