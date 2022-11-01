@@ -51,8 +51,6 @@ public class AssignTrainerController implements Serializable {
     public List<AssignTrainer> generateList(ResultSet resultSet) throws SQLException {
 
         List<AssignTrainer> assignTrainerList = new ArrayList<>();
-
-
         while (resultSet.next()){
             AssignTrainer assignTrainer = new AssignTrainer();
 

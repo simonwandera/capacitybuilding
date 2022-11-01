@@ -100,7 +100,7 @@
 
                              <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                  <div class="pt-2">
-                                     <h6><p class="mb-0 text-info">21 Enrolled trainees</p></h6>
+                                     <h6><p class="mb-0 text-info">Enrolled trainees: ${enrollmentController.getTrainees(training).size()}</p></h6>
                                  </div>
                              </div>
 
@@ -109,8 +109,6 @@
                                  <div class="pt-2">
 
                                      <h5 class="mb-0">Trainer</h5>
-
-
 
                                      <jc:forEach items="${assignTrainerController.getTrainers(training)}" var="trainer">
                                         <h5><p class="mb-0 text-muted">${trainer.firstName }  ${trainer.lastName}</p></h5>

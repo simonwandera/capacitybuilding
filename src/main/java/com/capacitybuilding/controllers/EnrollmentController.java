@@ -6,7 +6,9 @@ import com.capacitybuilding.model.Enrollment;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +18,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+@RequestScoped
+@Named("enrollmentController")
 public class EnrollmentController implements Serializable {
 
     @Inject
