@@ -5,6 +5,7 @@ import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -18,6 +19,9 @@ import java.sql.SQLException;
 
 @WebServlet("/register")
 public class RegisterAction extends HttpServlet {
+
+    @Inject
+    IMySQLDB<User> userIMySQLDB;
 
     ServletContext servletContext;
 
@@ -77,23 +81,17 @@ public class RegisterAction extends HttpServlet {
             return;
         }
 
-        try {
-            Connection connection = (Connection) servletContext.getAttribute("dbConnection");
-            User login = new User();
+        Connection connection = (Connection) servletContext.getAttribute("dbConnection");
+        User login = new User();
 
-            login.setFirstName(firstName);
-            login.setLastName(lastName);
-            login.setGender(gender);
-            login.setUsername(email);
-            login.setPassword(DigestUtils.md5Hex(password));
-            login.setUserType("USER");
+        login.setFirstName(firstName);
+        login.setLastName(lastName);
+        login.setGender(gender);
+        login.setUsername(email);
+        login.setPassword(DigestUtils.md5Hex(password));
+        login.setUserType("USER");
+        userIMySQLDB.save();
 
-            IMySQLDB<User, Connection> loginCommonIMySQLDB = new MySQLDB<>(login, connection);
-            loginCommonIMySQLDB.save();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
         res.sendRedirect("./auth/login.jsp");
     }
 

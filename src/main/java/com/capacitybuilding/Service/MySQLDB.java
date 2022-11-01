@@ -1,17 +1,22 @@
 package com.capacitybuilding.Service;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Map;
 
-public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB<T, I> {
+public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
+
+
+    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
+    DataSource dataSource;
     private Connection connection;
     static ResultSet resultSet;
     private Statement statement;
     private T t;
 
-    public MySQLDB(T t, I i) throws SQLException {
+    public void setEntity(T t){
         this.t = t;
-        this.connection = i;
     }
 
     @Override
@@ -100,7 +105,7 @@ public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB
     @Override
     public boolean executeQuery(String query) {
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = dataSource.getConnection().createStatement();
             statement.execute(query);
             System.out.println("Executed Successfully. ");
             return true;
@@ -147,7 +152,7 @@ public class MySQLDB<T extends Entity, I extends Connection> implements IMySQLDB
 
     @Override
     public ResultSet executeReadQuery(String query) throws SQLException {
-        statement = connection.createStatement();
+        statement = dataSource.getConnection().createStatement();
         resultSet = statement.executeQuery(query);
         return resultSet;
     }

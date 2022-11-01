@@ -6,6 +6,7 @@ import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,14 +19,19 @@ public class HelperController {
     @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
     DataSource dataSource;
 
+    @Inject
+    IMySQLDB<Training> trainingIMySQLDB;
+
+    @Inject
+    IMySQLDB<User> userIMySQLDB;
+
     public Training getTraining(int id) throws SQLException {
         Training training = new Training();
         Map<String, String> criteria = new HashMap<>(){{
             put("Id", Integer.toString(id));
         }};;
-        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(new Training(), dataSource.getConnection());
 
-        ResultSet resultSet = trainingConnectionMySQLDB.executeReadQuery(new MySQLDB<>(new Training(), dataSource.getConnection()).createSelectWithWhereClauseQuery(criteria));
+        ResultSet resultSet = trainingIMySQLDB.executeReadQuery(trainingIMySQLDB.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
             training.setId(resultSet.getInt("id"));
             training.setTitle(resultSet.getString("title"));
@@ -44,8 +50,7 @@ public class HelperController {
         Map<String, String> criteria = new HashMap<>(){{
             put("Id", Integer.toString(id));
         }};;
-        IMySQLDB<User, Connection> userConnectionIMySQLDB = new MySQLDB<>(new User(), dataSource.getConnection());
-        ResultSet resultSet = userConnectionIMySQLDB.executeReadQuery(new MySQLDB<>(new User(), dataSource.getConnection()).createSelectWithWhereClauseQuery(criteria));
+        ResultSet resultSet = userIMySQLDB.executeReadQuery(userIMySQLDB.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
             user.setId(resultSet.getInt("id"));
             user.setFirstName(resultSet.getString("firstname"));

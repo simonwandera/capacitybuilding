@@ -2,7 +2,6 @@ package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -31,16 +30,15 @@ public class UserController implements Serializable {
     @Inject
     EnrollmentController enrollmentController;
 
+    @Inject
+    IMySQLDB<User> userIMySQLDB;
+
+
     public void add(User user){
         if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
             return;
 
-        try {
-            IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user, dataSource.getConnection());
-            traineeConnectionIMySQLDB.save();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        userIMySQLDB.save();
     }
 
     public void update(User user) {
@@ -52,23 +50,23 @@ public class UserController implements Serializable {
 
     }
 
-    public User login(Map<String, String> criteria) {
+    public User login(Map<String, String> criteria) throws SQLException {
 
         User login = new User();
+        userIMySQLDB.setEntity(login);
 
         try {
-            IMySQLDB<User, Connection> loginMysqlDb = new MySQLDB<>(login, dataSource.getConnection());
-            String queryStatement = loginMysqlDb.createSelectWithWhereClauseQuery(criteria);
-            ResultSet resultSet = loginMysqlDb.executeReadQuery(queryStatement);
+            String queryStatement = userIMySQLDB.createSelectWithWhereClauseQuery(criteria);
+            ResultSet resultSet = userIMySQLDB.executeReadQuery(queryStatement);
 
-            while (resultSet.next()) {
+            while (resultSet.next()){
                 login = new User();
                 login.setId(resultSet.getInt("id"));
                 login.setUsername(resultSet.getString("userName"));
                 login.setUserType(resultSet.getString("userType"));
             }
 
-        }catch (Exception ex) {
+    }catch (Exception ex) {
             System.out.println("Log In Error: " + ex.getMessage());
         }
 
@@ -77,8 +75,7 @@ public class UserController implements Serializable {
 
     public List<User> list() throws SQLException {
 
-        IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(new User(), dataSource.getConnection());
-        ResultSet resultSet = traineeConnectionIMySQLDB.fetchAll();
+        ResultSet resultSet = userIMySQLDB.fetchAll();
         return this.generateList(resultSet);
     }
 

@@ -29,15 +29,20 @@ public class TrainingController implements Serializable {
     @Inject
     HelperController helperController;
 
+    @Inject
+    IMySQLDB<Training> trainingIMySQLDB;
+
+
     public void add(Training training) throws SQLException {
 
-        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(training, dataSource.getConnection());
-        trainingConnectionMySQLDB.save();
+
+        trainingIMySQLDB.setEntity(training);
+        trainingIMySQLDB.save();
     }
     public void update(Training training) throws SQLException {
 
-        IMySQLDB<Training, Connection> trainingConnectionMySQLDB = new MySQLDB<>(training, dataSource.getConnection());
-        trainingConnectionMySQLDB.update();
+        trainingIMySQLDB.setEntity(training);
+        trainingIMySQLDB.update();
 
     }
     public void delete(TrainingController trainingController){
@@ -45,8 +50,7 @@ public class TrainingController implements Serializable {
     }
 
     public List<Training> list() throws SQLException {
-        IMySQLDB<Training, Connection> connectionIMySQLDB = new MySQLDB<>(new Training(), dataSource.getConnection());
-        ResultSet resultSet = connectionIMySQLDB.fetchAll();
+        ResultSet resultSet = trainingIMySQLDB.fetchAll();
         return this.generateList(resultSet);
     }
 

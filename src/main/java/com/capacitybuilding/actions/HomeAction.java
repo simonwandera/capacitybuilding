@@ -31,6 +31,11 @@ public class HomeAction extends HttpServlet {
     @Inject
     UserController userController;
 
+
+    @Inject
+    IMySQLDB<User> userIMySQLDB;
+
+
     List<User> trainees;
     ServletContext servletContext;
 
@@ -43,8 +48,8 @@ public class HomeAction extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 
         try {
-            IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(new User(), dataSource.getConnection());
-            ResultSet resultSet = traineeMysqlDB.fetchAll();
+
+            ResultSet resultSet = userIMySQLDB.fetchAll();
             trainees = userController.generateList(resultSet);
 
         } catch (SQLException e) {

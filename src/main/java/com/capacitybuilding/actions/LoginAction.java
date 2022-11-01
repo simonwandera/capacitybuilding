@@ -62,7 +62,12 @@ public class LoginAction extends HttpServlet {
             put("Password", DigestUtils.md5Hex(password));
         }};;
 
-        User user = this.userController.login(criteria);
+        User user = null;
+        try {
+            user = this.userController.login(criteria);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         if (user == null || user.getId() < 1) {
             servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");

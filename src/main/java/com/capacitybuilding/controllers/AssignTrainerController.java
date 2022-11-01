@@ -26,6 +26,9 @@ public class AssignTrainerController implements Serializable {
     @Inject
     HelperController helperController;
 
+    @Inject
+    IMySQLDB<AssignTrainer> assignTrainerConnectionIMySQLDB;
+
     public void add(AssignTrainer assignTrainer){
 
     }
@@ -38,7 +41,6 @@ public class AssignTrainerController implements Serializable {
 
     public List<AssignTrainer> list() throws SQLException {
 
-        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), dataSource.getConnection());
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.fetchAll();
         return this.generateList(resultSet);
     }
@@ -67,7 +69,6 @@ public class AssignTrainerController implements Serializable {
         }};;
         List<User> trainers = new ArrayList<>();
 
-        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), dataSource.getConnection());
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
@@ -84,7 +85,6 @@ public class AssignTrainerController implements Serializable {
 
         List<Training> trainingList = new ArrayList<>();
 
-        IMySQLDB<AssignTrainer, Connection> assignTrainerConnectionIMySQLDB = new MySQLDB<>(new AssignTrainer(), dataSource.getConnection());
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
             Training training = helperController.getTraining(resultSet.getInt("TrainingId"));

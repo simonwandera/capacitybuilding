@@ -28,14 +28,16 @@ public class EnrollmentController implements Serializable {
     @Inject
     HelperController helperController;
 
+    @Inject
+    IMySQLDB<Enrollment> enrollmentIMySQLDB;
+
     public void enroll(User trainee, Training training) throws SQLException {
         Enrollment enrollment = new Enrollment();
         enrollment.setStatus("PENDING");
         enrollment.setDateEnrolled(LocalDate.now());
         enrollment.setTrainee(trainee);
         enrollment.setTraining(training);
-        IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(enrollment, dataSource.getConnection());
-        enrollmentConnectionIMySQLDB.save();
+        enrollmentIMySQLDB.save();
     }
     public void update(EnrollmentController enrollmentController){
 
@@ -49,8 +51,8 @@ public class EnrollmentController implements Serializable {
             put("TrainingId", Integer.toString(training.getId()));
         }};;
         List<User> traineesEnrolled = new ArrayList<>();
-        IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(new Enrollment(), dataSource.getConnection());
-        ResultSet resultSet = enrollmentConnectionIMySQLDB.executeReadQuery(enrollmentConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
+
+        ResultSet resultSet = enrollmentIMySQLDB.executeReadQuery(enrollmentIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
             User trainee = helperController.getUser(resultSet.getInt("traineeId"));
@@ -64,8 +66,7 @@ public class EnrollmentController implements Serializable {
             put("TraineeId", Integer.toString(user.getId()));
         }};;
         List<Training> trainingList = new ArrayList<>();
-        IMySQLDB<Enrollment, Connection> enrollmentConnectionIMySQLDB = new MySQLDB<>(new Enrollment(), dataSource.getConnection());
-        ResultSet resultSet = enrollmentConnectionIMySQLDB.executeReadQuery(enrollmentConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
+        ResultSet resultSet = enrollmentIMySQLDB.executeReadQuery(enrollmentIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
             Training training = helperController.getTraining(resultSet.getInt("trainingId"));

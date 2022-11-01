@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-public interface IMySQLDB<T extends Entity, I extends Connection> {
+public interface IMySQLDB<T extends Entity> {
 
     String createInsertQuery();
     String createDeleteQuery();
@@ -21,5 +21,7 @@ public interface IMySQLDB<T extends Entity, I extends Connection> {
     boolean executeQuery(String query);
     void save();
     ResultSet executeReadQuery(String query) throws SQLException;
+
+    void setEntity(T t);
 
 }

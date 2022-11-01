@@ -7,6 +7,7 @@ import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -30,6 +31,9 @@ public class UpdateTrainee extends HttpServlet {
     Connection connection;
     ServletContext servletContext;
 
+    @Inject
+    IMySQLDB<User> userIMySQLDB;
+
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
         servletContext = getServletConfig().getServletContext();
@@ -44,8 +48,8 @@ public class UpdateTrainee extends HttpServlet {
         UserController userController = new UserController();
 
         try {
-            IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(myUser, connection);
-            ResultSet resultSet = traineeMysqlDB.fetchAll();
+            userIMySQLDB.setEntity(myUser);
+            ResultSet resultSet = userIMySQLDB.fetchAll();
 
             users = userController.generateList(resultSet);
 
@@ -106,12 +110,9 @@ public class UpdateTrainee extends HttpServlet {
                 tr.setLastName(user.getLastName());
                 tr.setGender(user.getGender());
 
-                try{
-                    IMySQLDB<User, Connection> traineeMysqlDB = new MySQLDB<>(tr, connection);
-                    traineeMysqlDB.update();
-                }catch (SQLException ex){
-                    System.out.println(ex.getMessage());
-                }
+                userIMySQLDB.setEntity(tr);
+                userIMySQLDB.update();
+                userIMySQLDB.update();
                 break;
             }
         }

@@ -6,6 +6,7 @@ import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -23,6 +24,9 @@ public class CreateTrainee extends HttpServlet {
 
     Connection connection;
     ServletContext servletContext;
+
+    @Inject
+    IMySQLDB<User> userIMySQLDB;
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
@@ -64,12 +68,8 @@ public class CreateTrainee extends HttpServlet {
             return;
         }
 
-        try {
-            IMySQLDB<User, Connection> traineeConnectionIMySQLDB = new MySQLDB<>(user, connection);
-            traineeConnectionIMySQLDB.save();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        userIMySQLDB.setEntity(user);
+        userIMySQLDB.save();
         res.sendRedirect("./main/adminDashboard.jsp");
 
     }
