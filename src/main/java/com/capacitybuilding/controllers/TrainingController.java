@@ -9,7 +9,6 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,17 +66,7 @@ public class TrainingController implements Serializable {
 
             trainingList.add(training);
         }
-
-        List<Training> trList = new ArrayList<>();
-
-        for (Training tr: trainingList){
-            tr.setAssignedTrainers(assignTrainerController.getTrainers(tr));
-            tr.setEnrolledTrainees(enrollmentController.getTrainees(tr));
-            trList.add(tr);
-        }
-
-        return trList;
+        return trainingList;
     }
-
 
 }
