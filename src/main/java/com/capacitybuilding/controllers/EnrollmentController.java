@@ -2,14 +2,11 @@ package com.capacitybuilding.controllers;
 
 
 import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Enrollment;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;

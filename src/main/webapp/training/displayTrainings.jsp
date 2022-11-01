@@ -112,7 +112,7 @@
 
 
 
-                                     <jc:forEach items="${assignTrainerController.trainers}" var="trainer">
+                                     <jc:forEach items="${assignTrainerController.getTrainers(training)}" var="trainer">
                                         <h5><p class="mb-0 text-muted">${trainer.firstName }  ${trainer.lastName}</p></h5>
                                      </jc:forEach>
 
