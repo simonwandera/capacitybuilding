@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.io.Serializable;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -21,9 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 public class EnrollmentController implements Serializable {
-
-    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
-    DataSource dataSource;
 
     @Inject
     HelperController helperController;

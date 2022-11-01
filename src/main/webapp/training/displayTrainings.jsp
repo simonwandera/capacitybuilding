@@ -58,7 +58,7 @@
               <h3 class="mb-0"> My Trainings </h3>
             </div>
             <div>
-              <h5 class="text-muted">${trainingController.allTrainings.size()} Courses</h5>
+              <h5 class="text-muted">${trainingController.list.size()} Courses</h5>
             </div>
 
              <div class="dropdown py-2 d-flex justify-content-end">
@@ -77,7 +77,7 @@
 
              <div class="row">
 
-             <jc:forEach items="${trainingController.allTrainings}" var="training">
+             <jc:forEach items="${trainingController.list}" var="training">
                  <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
                      <div class="card">
                          <div class="card-body">
@@ -110,7 +110,9 @@
 
                                      <h5 class="mb-0">Trainer</h5>
 
-                                     <jc:forEach items="${training.assignedTrainers}" var="trainer">
+
+
+                                     <jc:forEach items="${assignTrainerController.trainers}" var="trainer">
                                         <h5><p class="mb-0 text-muted">${trainer.firstName }  ${trainer.lastName}</p></h5>
                                      </jc:forEach>
 
