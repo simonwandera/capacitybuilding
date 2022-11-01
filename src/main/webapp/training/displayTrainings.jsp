@@ -51,13 +51,6 @@
 
         <%@ include file="../utils/trainerTopNav.jsp"%>
 
-        <%
-
-            TrainingController trainingController = new TrainingController();
-            List<Training> trainings = new ArrayList<>();
-            trainings = trainingController.list();
-            pageContext.setAttribute("trainings", trainings);
-        %>
 
         <div class="main-panel">
           <div class="content-wrapper pb-0">
@@ -65,7 +58,7 @@
               <h3 class="mb-0"> My Trainings </h3>
             </div>
             <div>
-              <h5 class="text-muted">${trainings.size()} Courses</h5>
+              <h5 class="text-muted">${trainingController.list.size()} Courses</h5>
             </div>
 
              <div class="dropdown py-2 d-flex justify-content-end">
@@ -84,7 +77,7 @@
 
              <div class="row">
 
-             <jc:forEach items="${trainingsList}" var="training">
+             <jc:forEach items="${trainingController.list}" var="training">
                  <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
                      <div class="card">
                          <div class="card-body">
@@ -116,7 +109,7 @@
                                  <div class="pt-2">
                                      <h5 class="mb-0">Trainer</h5>
 
-                                     <jc:forEach items="${training.trainers}" var="trainer">
+                                     <jc:forEach items="${training.assignedTrainers}" var="trainer">
                                         <h5><p class="mb-0 text-muted">${trainer.firstName }  ${trainer.lastName}</p></h5>
                                      </jc:forEach>
 

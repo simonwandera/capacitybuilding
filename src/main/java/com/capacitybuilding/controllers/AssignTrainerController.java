@@ -69,6 +69,7 @@ public class AssignTrainerController implements Serializable {
         }};;
         List<User> trainers = new ArrayList<>();
 
+        assignTrainerConnectionIMySQLDB.setEntity(new AssignTrainer());
         ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){

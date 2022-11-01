@@ -10,7 +10,6 @@ public class MySQLDB<T extends Entity> implements IMySQLDB<T> {
 
     @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
     DataSource dataSource;
-    private Connection connection;
     static ResultSet resultSet;
     private Statement statement;
     private T t;

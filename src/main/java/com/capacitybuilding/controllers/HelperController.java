@@ -16,9 +16,6 @@ import java.util.Map;
 
 public class HelperController {
 
-    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
-    DataSource dataSource;
-
     @Inject
     IMySQLDB<Training> trainingIMySQLDB;
 
@@ -31,6 +28,7 @@ public class HelperController {
             put("Id", Integer.toString(id));
         }};;
 
+        trainingIMySQLDB.setEntity(new Training());
         ResultSet resultSet = trainingIMySQLDB.executeReadQuery(trainingIMySQLDB.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
             training.setId(resultSet.getInt("id"));
@@ -50,6 +48,8 @@ public class HelperController {
         Map<String, String> criteria = new HashMap<>(){{
             put("Id", Integer.toString(id));
         }};;
+
+        userIMySQLDB.setEntity(new User());
         ResultSet resultSet = userIMySQLDB.executeReadQuery(userIMySQLDB.createSelectWithWhereClauseQuery(criteria));
         while (resultSet.next()){
             user.setId(resultSet.getInt("id"));

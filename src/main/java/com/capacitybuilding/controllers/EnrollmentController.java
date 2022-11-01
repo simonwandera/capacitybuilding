@@ -52,6 +52,7 @@ public class EnrollmentController implements Serializable {
         }};;
         List<User> traineesEnrolled = new ArrayList<>();
 
+        enrollmentIMySQLDB.setEntity(new Enrollment());
         ResultSet resultSet = enrollmentIMySQLDB.executeReadQuery(enrollmentIMySQLDB.createSelectWithWhereClauseQuery(criteria));
 
         while (resultSet.next()){
