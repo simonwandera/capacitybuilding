@@ -25,7 +25,7 @@ public class LoginAction extends HttpServlet {
     private ServletContext servletContext;
 
     @Inject
-    public LoginAction(UserController userController) {
+    public void setUserController(UserController userController) {
         this.userController = userController;
     }
 
