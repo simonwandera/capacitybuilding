@@ -1,8 +1,6 @@
 package com.capacitybuilding.actions;
 
-import com.capacitybuilding.controllers.TrainingController;
 import com.capacitybuilding.controllers.UserController;
-import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -18,16 +16,18 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginAction extends HttpServlet {
-
-    @Inject
-    UserController userController;
+    private UserController userController;
 
     private ServletContext servletContext;
+
+    @Inject
+    public LoginAction(UserController userController) {
+        this.userController = userController;
+    }
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);

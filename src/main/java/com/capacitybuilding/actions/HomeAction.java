@@ -25,12 +25,8 @@ import java.util.List;
 @WebServlet("/home")
 public class HomeAction extends HttpServlet {
 
-    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
-    DataSource dataSource;
-
     @Inject
     UserController userController;
-
 
     @Inject
     IMySQLDB<User> userIMySQLDB;

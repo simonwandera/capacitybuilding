@@ -1,6 +1,8 @@
 package com.capacitybuilding.model;
 
 import com.capacitybuilding.Service.Entity;
+
+import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,7 @@ public class User extends Entity {
         put("Gender", "");
         put("UserType", "");
     }};;
+
 
     public User(){
         super(tableName);

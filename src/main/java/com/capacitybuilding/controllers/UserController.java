@@ -34,6 +34,7 @@ public class UserController implements Serializable {
     IMySQLDB<User> userIMySQLDB;
 
 
+
     public void add(User user){
         if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
             return;
@@ -60,10 +61,7 @@ public class UserController implements Serializable {
             ResultSet resultSet = userIMySQLDB.executeReadQuery(queryStatement);
 
             while (resultSet.next()){
-                login = new User();
-                login.setId(resultSet.getInt("id"));
-                login.setUsername(resultSet.getString("userName"));
-                login.setUserType(resultSet.getString("userType"));
+                login = helperController.getUser(resultSet.getInt("id"));
             }
 
     }catch (Exception ex) {
@@ -74,7 +72,6 @@ public class UserController implements Serializable {
     }
 
     public List<User> list() throws SQLException {
-
         ResultSet resultSet = userIMySQLDB.fetchAll();
         return this.generateList(resultSet);
     }

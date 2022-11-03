@@ -1,6 +1,7 @@
 package com.capacitybuilding.Service;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Map;
