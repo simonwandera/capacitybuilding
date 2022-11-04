@@ -23,7 +23,6 @@ public class AuthBean implements AuthBeanI{
     @Inject
     IMySQLDB<User> userIMySQLDB;
 
-
     @PostConstruct
     public void init(){
         System.out.println("Bean has bean created we can ..do stuff..");
