@@ -51,7 +51,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-3 col-form-label">Email</label>
                                                     <div class="col-sm-9">
-                                                        <input type="email" name="email" class="form-control" />
+                                                        <input type="email" name="username" class="form-control" />
                                                     </div>
                                                 </div>
                                             </div>
