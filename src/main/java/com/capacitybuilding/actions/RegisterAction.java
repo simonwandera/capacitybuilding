@@ -40,12 +40,6 @@ public class RegisterAction extends HttpServlet {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("\n\n\n\n ********* We got here ********* \n\n\n\n\n");
-        System.out.println("Usertype: " + user.getUserType());
-        System.out.println("First name: " + user.getFirstName());
-        System.out.println("Last name: " + user.getLastName());
-        System.out.println("Password: " + user.getPassword());
-        System.out.println("Username: " + user.getUsername());
 
         try {
             userBean.add(user);
