@@ -59,7 +59,7 @@ public class UserBean implements UserBeanI {
     @Override
     public User login(User user) throws Exception {
         if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
-            throw new Exception("Invalid password or username");
+            throw new Exception("Enter username and password to login");
 
         List<User> users = entityManager.createQuery("FROM User a WHERE a.username=:usrName " +
                         "and a.password=:pwd", User.class)
