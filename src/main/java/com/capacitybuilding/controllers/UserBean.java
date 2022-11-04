@@ -2,6 +2,7 @@ package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -28,14 +29,14 @@ public class UserBean implements UserBeanI {
         System.out.println("Username: " + user.getUsername());
 
 
-        if (user.getUsername() == null)
+        if (StringUtils.isBlank(user.getUsername()))
             throw new Exception("Email is required");
-        if (user.getGender() == null)
+        if (StringUtils.isBlank(user.getGender()))
             throw new Exception("Gender is required");
-        if(user.getFirstName() == null)
+        if(StringUtils.isBlank(user.getFirstName()))
             throw new Exception("First name is required");
 
-        if (user.getPassword() == null || user.getConfirmPassword() == null
+        if (StringUtils.isBlank(user.getPassword()) || StringUtils.isBlank(user.getConfirmPassword())
                 || !user.getPassword().equals(user.getConfirmPassword()))
             throw new Exception("Password & confirm password is required and must match");
 
