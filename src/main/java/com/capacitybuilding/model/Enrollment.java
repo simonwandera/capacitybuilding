@@ -1,15 +1,12 @@
 package com.capacitybuilding.model;
 
-import com.capacitybuilding.Service.Entity;
-
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 
 
-public class Enrollment extends Entity {
+public class Enrollment extends BaseEntity {
     private int Id;
     private LocalDate dateEnrolled;
     private String status;

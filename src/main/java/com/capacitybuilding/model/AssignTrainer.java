@@ -1,12 +1,10 @@
 package com.capacitybuilding.model;
 
-import com.capacitybuilding.Service.Entity;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AssignTrainer extends Entity {
+public class AssignTrainer extends BaseEntity {
     private int Id;
     Training training;
     User trainer;

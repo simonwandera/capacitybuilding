@@ -1,13 +1,11 @@
 package com.capacitybuilding.model;
 
-import com.capacitybuilding.Service.Entity;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Training extends Entity {
+public class Training extends BaseEntity {
     private int Id;
     private String title;
     private String description;

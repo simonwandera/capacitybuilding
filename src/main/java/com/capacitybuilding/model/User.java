@@ -1,13 +1,9 @@
 package com.capacitybuilding.model;
 
-import com.capacitybuilding.Service.Entity;
-
-import javax.inject.Inject;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class User extends Entity {
+public class User extends BaseEntity {
 
     private int Id;
 
@@ -19,17 +15,7 @@ public class User extends Entity {
     private String userType = "USER";
     private List<Training> enrolledTrainings;
     private List<Training> assignedTrainings;
-    private static final String tableName = "User";
 
-    private final Map<String, Object> entitiesMap = new HashMap<>(){{
-        put("Id", null);
-        put("Username", "");
-        put("Password", "");
-        put("FirstName", "");
-        put("LastName", "");
-        put("Gender", "");
-        put("UserType", "");
-    }};;
     public User(){
         super(tableName);
         super.setEntitiesMap(entitiesMap);
