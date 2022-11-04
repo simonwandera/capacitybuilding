@@ -1,6 +1,5 @@
 package com.capacitybuilding.actions;
 
-import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.controllers.UserBean;
 import com.capacitybuilding.model.User;
 
@@ -24,8 +23,6 @@ public class HomeAction extends HttpServlet {
     @EJB
     UserBean userBean;
 
-    @Inject
-    IMySQLDB<User> userIMySQLDB;
 
     List<User> trainees;
     ServletContext servletContext;
@@ -38,14 +35,6 @@ public class HomeAction extends HttpServlet {
     @SuppressWarnings("unchecked")
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 
-        try {
-
-            ResultSet resultSet = userIMySQLDB.fetchAll();
-            trainees = userBean.generateList(resultSet);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
         res.sendRedirect("./main/adminDashboard.jsp");
     }

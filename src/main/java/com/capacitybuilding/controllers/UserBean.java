@@ -1,6 +1,5 @@
 package com.capacitybuilding.controllers;
 
-import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Stateless
 @Remote
@@ -27,15 +25,11 @@ public class UserBean {
     @EJB
     EnrollmentBean enrollmentBean;
 
-    @Inject
-    IMySQLDB<User> userIMySQLDB;
-
 
     public void add(User user) {
         if (user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()))
             return;
 
-        userIMySQLDB.save();
     }
 
     public void update(User user) {
@@ -49,8 +43,7 @@ public class UserBean {
 
 
     public List<User> list() throws SQLException {
-        ResultSet resultSet = userIMySQLDB.fetchAll();
-        return this.generateList(resultSet);
+       return new ArrayList<>();
     }
 
     public List<User> generateList(ResultSet resultSet) throws SQLException {

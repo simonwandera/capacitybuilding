@@ -1,7 +1,5 @@
 package com.capacitybuilding.actions.TraineeActions;
 
-import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 @WebServlet("/addTrainee")
 public class CreateTrainee extends HttpServlet {
@@ -25,8 +22,6 @@ public class CreateTrainee extends HttpServlet {
     Connection connection;
     ServletContext servletContext;
 
-    @Inject
-    IMySQLDB<User> userIMySQLDB;
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
@@ -68,8 +63,6 @@ public class CreateTrainee extends HttpServlet {
             return;
         }
 
-        userIMySQLDB.setEntity(user);
-        userIMySQLDB.save();
         res.sendRedirect("./main/adminDashboard.jsp");
 
     }

@@ -1,6 +1,5 @@
 package com.capacitybuilding.controllers;
 
-import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
@@ -27,9 +26,6 @@ public class AssignTrainerBean implements Serializable {
     @EJB
     HelperBean helperController;
 
-    @Inject
-    IMySQLDB<AssignTrainer> assignTrainerConnectionIMySQLDB;
-
     public void add(AssignTrainer assignTrainer){
 
     }
@@ -42,8 +38,8 @@ public class AssignTrainerBean implements Serializable {
 
     public List<AssignTrainer> list() throws SQLException {
 
-        ResultSet resultSet = assignTrainerConnectionIMySQLDB.fetchAll();
-        return this.generateList(resultSet);
+        return new ArrayList<>();
+
     }
     public List<AssignTrainer> generateList(ResultSet resultSet) throws SQLException {
 
@@ -66,16 +62,8 @@ public class AssignTrainerBean implements Serializable {
         Map<String, String> criteria = new HashMap<>(){{
             put("TrainingId", Integer.toString(training.getId()));
         }};;
-        List<User> trainers = new ArrayList<>();
+       return new ArrayList<>();
 
-        assignTrainerConnectionIMySQLDB.setEntity(new AssignTrainer());
-        ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
-
-        while (resultSet.next()){
-            User trainer = helperController.getUser(resultSet.getInt("trainerId"));
-            trainers.add(trainer);
-        }
-        return trainers;
     }
 
     public List<Training> getTrainings(User trainer) throws SQLException{
@@ -85,11 +73,7 @@ public class AssignTrainerBean implements Serializable {
 
         List<Training> trainingList = new ArrayList<>();
 
-        ResultSet resultSet = assignTrainerConnectionIMySQLDB.executeReadQuery(assignTrainerConnectionIMySQLDB.createSelectWithWhereClauseQuery(criteria));
-        while (resultSet.next()){
-            Training training = helperController.getTraining(resultSet.getInt("TrainingId"));
-            trainingList.add(training);
-        }
+
         return new ArrayList<>();
     }
 

@@ -1,6 +1,5 @@
 package com.capacitybuilding.actions.TraineeActions;
 
-import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.controllers.UserBean;
 import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
@@ -19,23 +18,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet("/updateTrainee")
 public class UpdateTrainee extends HttpServlet {
     private String sessionEmail;
     private User user = null;
-    private List<User> users;
     Connection connection;
     ServletContext servletContext;
 
     @EJB
     UserBean userBean;
-
-    @Inject
-    IMySQLDB<User> userIMySQLDB;
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
@@ -49,24 +41,7 @@ public class UpdateTrainee extends HttpServlet {
         sessionEmail = (String) session.getAttribute("email");
         User myUser = new User();
 
-        try {
-            userIMySQLDB.setEntity(myUser);
-            ResultSet resultSet = userIMySQLDB.fetchAll();
-
-            users = userBean.generateList(resultSet);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
         int id = Integer.parseInt(req.getParameter("id"));
-
-        for (User tr: users){
-            if(tr.getId() == id) {
-                user = tr;
-                System.out.println("*****************Trainee found********************");
-            }
-        }
 
         res.sendRedirect("./trainee/updateTrainee.jsp");
     }
@@ -102,21 +77,6 @@ public class UpdateTrainee extends HttpServlet {
             servletContext.setAttribute("updateTraineeError", "Email name is required");
             res.sendRedirect("./trainee/updateTrainee.jsp");
             return;
-        }
-
-        for (User tr: users){
-            if(tr.getId() == user.getId()) {
-                tr.setId(user.getId());
-                tr.setUsername(user.getUsername());
-                tr.setFirstName(user.getFirstName());
-                tr.setLastName(user.getLastName());
-                tr.setGender(user.getGender());
-
-                userIMySQLDB.setEntity(tr);
-                userIMySQLDB.update();
-                userIMySQLDB.update();
-                break;
-            }
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("./trainees");

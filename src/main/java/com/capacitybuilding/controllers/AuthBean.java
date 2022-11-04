@@ -1,6 +1,5 @@
 package com.capacitybuilding.controllers;
 
-import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.model.User;
 
 import javax.annotation.PostConstruct;
@@ -20,9 +19,6 @@ public class AuthBean implements AuthBeanI{
     @EJB
     HelperBean helperBean;
 
-    @Inject
-    IMySQLDB<User> userIMySQLDB;
-
     @PostConstruct
     public void init(){
         System.out.println("Bean has bean created we can ..do stuff..");
@@ -36,19 +32,6 @@ public class AuthBean implements AuthBeanI{
     public User login(Map<String, String> criteria) {
 
         User login = new User();
-        userIMySQLDB.setEntity(login);
-
-        try {
-            String queryStatement = userIMySQLDB.createSelectWithWhereClauseQuery(criteria);
-            ResultSet resultSet = userIMySQLDB.executeReadQuery(queryStatement);
-
-            while (resultSet.next()) {
-                login = helperBean.getUser(resultSet.getInt("id"));
-            }
-
-        } catch (Exception ex) {
-            System.out.println("Log In Error: " + ex.getMessage());
-        }
 
         return login;
     }

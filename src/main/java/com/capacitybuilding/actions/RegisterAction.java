@@ -1,7 +1,5 @@
 package com.capacitybuilding.actions;
 
-import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -15,13 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 @WebServlet("/register")
 public class RegisterAction extends HttpServlet {
 
-    @Inject
-    IMySQLDB<User> userIMySQLDB;
 
     ServletContext servletContext;
 
@@ -81,7 +76,6 @@ public class RegisterAction extends HttpServlet {
             return;
         }
 
-        Connection connection = (Connection) servletContext.getAttribute("dbConnection");
         User login = new User();
 
         login.setFirstName(firstName);
@@ -90,7 +84,6 @@ public class RegisterAction extends HttpServlet {
         login.setUsername(email);
         login.setPassword(DigestUtils.md5Hex(password));
         login.setUserType("USER");
-        userIMySQLDB.save();
 
         res.sendRedirect("./auth/login.jsp");
     }
