@@ -1,12 +1,12 @@
 package com.capacitybuilding.actions.TraineeActions;
 
 import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.controllers.UserController;
+import com.capacitybuilding.controllers.UserBean;
 import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -31,6 +31,9 @@ public class UpdateTrainee extends HttpServlet {
     Connection connection;
     ServletContext servletContext;
 
+    @EJB
+    UserBean userBean;
+
     @Inject
     IMySQLDB<User> userIMySQLDB;
 
@@ -45,13 +48,12 @@ public class UpdateTrainee extends HttpServlet {
         HttpSession session = req.getSession();
         sessionEmail = (String) session.getAttribute("email");
         User myUser = new User();
-        UserController userController = new UserController();
 
         try {
             userIMySQLDB.setEntity(myUser);
             ResultSet resultSet = userIMySQLDB.fetchAll();
 
-            users = userController.generateList(resultSet);
+            users = userBean.generateList(resultSet);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

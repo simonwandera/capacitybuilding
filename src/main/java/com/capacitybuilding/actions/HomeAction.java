@@ -1,12 +1,10 @@
 package com.capacitybuilding.actions;
 
 import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.controllers.TrainingController;
-import com.capacitybuilding.controllers.UserController;
+import com.capacitybuilding.controllers.UserBean;
 import com.capacitybuilding.model.User;
 
-import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -15,9 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -25,8 +21,8 @@ import java.util.List;
 @WebServlet("/home")
 public class HomeAction extends HttpServlet {
 
-    @Inject
-    UserController userController;
+    @EJB
+    UserBean userBean;
 
     @Inject
     IMySQLDB<User> userIMySQLDB;
@@ -46,7 +42,7 @@ public class HomeAction extends HttpServlet {
         try {
 
             ResultSet resultSet = userIMySQLDB.fetchAll();
-            trainees = userController.generateList(resultSet);
+            trainees = userBean.generateList(resultSet);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,10 +1,10 @@
 package com.capacitybuilding.actions;
 
-import com.capacitybuilding.controllers.UserController;
+import com.capacitybuilding.controllers.UserBean;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,14 +20,11 @@ import java.util.Map;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginAction extends HttpServlet {
-    private UserController userController;
 
+    @EJB
+    UserBean userBean;
     private ServletContext servletContext;
 
-    @Inject
-    public void setUserController(UserController userController) {
-        this.userController = userController;
-    }
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
@@ -64,7 +61,7 @@ public class LoginAction extends HttpServlet {
 
         User user = null;
         try {
-            user = this.userController.login(criteria);
+            user = this.userBean.login(criteria);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

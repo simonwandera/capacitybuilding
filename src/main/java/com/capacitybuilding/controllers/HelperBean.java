@@ -1,20 +1,21 @@
 package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
-import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.sql.DataSource;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HelperController {
+@Stateless
+@Remote
+public class HelperBean {
 
     @Inject
     private IMySQLDB<Training> trainingIMySQLDB;

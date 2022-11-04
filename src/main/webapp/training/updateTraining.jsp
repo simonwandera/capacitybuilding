@@ -11,7 +11,7 @@
 <%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
-<jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingController" />
+<jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingBean" />
 
 <cht:Header title="Update Training | Capacity building" />
 

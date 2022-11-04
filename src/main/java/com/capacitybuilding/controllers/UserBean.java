@@ -1,42 +1,38 @@
 package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
 import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.sql.DataSource;
-import java.io.Serializable;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class UserController implements Serializable {
+@Stateless
+@Remote
+public class UserBean {
 
-    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
-    DataSource dataSource;
+    @EJB
+    HelperBean helperBean;
 
-    @Inject
-    HelperController helperController;
+    @EJB
+    AssignTrainerBean assignTrainerBean;
 
-    @Inject
-    AssignTrainerController assignTrainerController;
-
-    @Inject
-    EnrollmentController enrollmentController;
+    @EJB
+    EnrollmentBean enrollmentBean;
 
     @Inject
     IMySQLDB<User> userIMySQLDB;
 
 
-
-    public void add(User user){
-        if(user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()) )
+    public void add(User user) {
+        if (user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()))
             return;
 
         userIMySQLDB.save();
@@ -60,11 +56,11 @@ public class UserController implements Serializable {
             String queryStatement = userIMySQLDB.createSelectWithWhereClauseQuery(criteria);
             ResultSet resultSet = userIMySQLDB.executeReadQuery(queryStatement);
 
-            while (resultSet.next()){
-                login = helperController.getUser(resultSet.getInt("id"));
+            while (resultSet.next()) {
+                login = helperBean.getUser(resultSet.getInt("id"));
             }
 
-    }catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("Log In Error: " + ex.getMessage());
         }
 
@@ -79,10 +75,10 @@ public class UserController implements Serializable {
     public List<User> generateList(ResultSet resultSet) throws SQLException {
 
         List<User> userList = new ArrayList<>();
-        while (resultSet.next()){
-            User user = helperController.getUser(resultSet.getInt("id"));
-            user.setEnrolledTrainings(enrollmentController.getTrainings(user));
-            user.setAssignedTrainings(assignTrainerController.getTrainings(user));
+        while (resultSet.next()) {
+            User user = helperBean.getUser(resultSet.getInt("id"));
+            user.setEnrolledTrainings(enrollmentBean.getTrainings(user));
+            user.setAssignedTrainings(assignTrainerBean.getTrainings(user));
 
             userList.add(user);
         }

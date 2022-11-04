@@ -3,6 +3,9 @@ package com.capacitybuilding.controllers;
 import com.capacitybuilding.Service.IMySQLDB;
 import com.capacitybuilding.model.Training;
 
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -12,18 +15,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestScoped
+@Stateless
+@Remote
 @Named("trainingController")
-public class TrainingController implements Serializable {
-
-    @Inject
-    AssignTrainerController assignTrainerController;
-
-    @Inject
-    EnrollmentController enrollmentController;
-
-    @Inject
-    HelperController helperController;
+public class TrainingBean implements Serializable {
 
     @Inject
     IMySQLDB<Training> trainingIMySQLDB;
@@ -40,7 +35,7 @@ public class TrainingController implements Serializable {
         trainingIMySQLDB.update();
 
     }
-    public void delete(TrainingController trainingController){
+    public void delete(TrainingBean trainingController){
 
     }
 

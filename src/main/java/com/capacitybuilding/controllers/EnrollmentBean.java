@@ -6,6 +6,9 @@ import com.capacitybuilding.model.Enrollment;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,13 +21,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-@RequestScoped
+@Stateless
+@Remote
 @Named("enrollmentController")
-public class EnrollmentController implements Serializable {
+public class EnrollmentBean implements Serializable {
 
-    @Inject
-    HelperController helperController;
+    @EJB
+    HelperBean helperController;
 
     @Inject
     IMySQLDB<Enrollment> enrollmentIMySQLDB;
@@ -37,10 +40,10 @@ public class EnrollmentController implements Serializable {
         enrollment.setTraining(training);
         enrollmentIMySQLDB.save();
     }
-    public void update(EnrollmentController enrollmentController){
+    public void update(EnrollmentBean enrollmentController){
 
     }
-    public void delete(EnrollmentController enrollmentController){
+    public void delete(EnrollmentBean enrollmentController){
 
     }
 

@@ -1,8 +1,6 @@
 package com.capacitybuilding.actions.TrainingsActions;
 
-import com.capacitybuilding.Service.IMySQLDB;
-import com.capacitybuilding.Service.MySQLDB;
-import com.capacitybuilding.controllers.TrainingController;
+import com.capacitybuilding.controllers.TrainingBean;
 import com.capacitybuilding.model.Training;
 
 import javax.servlet.ServletConfig;
@@ -81,7 +79,7 @@ public class CreateTraining extends HttpServlet {
         training.setId(0);
 
         try {
-            new TrainingController().add(training);
+            new TrainingBean().add(training);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

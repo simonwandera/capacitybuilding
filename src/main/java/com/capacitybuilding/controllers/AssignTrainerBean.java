@@ -5,11 +5,11 @@ import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
-import javax.annotation.Resource;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,16 +19,13 @@ import java.util.List;
 import java.util.Map;
 
 
-
-@RequestScoped
+@Stateless
+@Remote
 @Named("assignTrainerController")
-public class AssignTrainerController implements Serializable {
+public class AssignTrainerBean implements Serializable {
 
-    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
-    DataSource dataSource;
-
-    @Inject
-    HelperController helperController;
+    @EJB
+    HelperBean helperController;
 
     @Inject
     IMySQLDB<AssignTrainer> assignTrainerConnectionIMySQLDB;
