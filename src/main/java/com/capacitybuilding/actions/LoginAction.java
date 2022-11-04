@@ -52,7 +52,12 @@ public class LoginAction extends HttpServlet {
             session.setAttribute("username", user.getUsername());
             session.setAttribute("userType", user.getUserType());
 
-            res.sendRedirect("./home.jsp");
+            if (user.getUserType().equals("ADMIN"))
+                res.sendRedirect("./main/adminDashboard.jsp");
+            else if (user.getUserType().equals("USER"))
+                res.sendRedirect("./main/traineeDashboard.jsp");
+            else if (user.getUserType().equals("TRAINER"))
+                res.sendRedirect("./main/trainerDashboard.jsp");
 
         } catch (Exception ex) {
             servletContext.setAttribute("loginError" , ex.getMessage());
@@ -60,24 +65,5 @@ public class LoginAction extends HttpServlet {
         }
 
 
-        User user = new User();
-
-
-        if (user == null || user.getId() < 1) {
-            servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
-            res.sendRedirect("./auth/login.jsp");
-            return;
-        }
-
-        HttpSession session = req.getSession(true);
-        session.setAttribute("username", user.getUsername());
-        session.setAttribute("userType", user.getUserType());
-
-        if (user.getUserType().equals("ADMIN"))
-            res.sendRedirect("./main/adminDashboard.jsp");
-        else if (user.getUserType().equals("USER"))
-            res.sendRedirect("./main/traineeDashboard.jsp");
-        else if (user.getUserType().equals("TRAINER"))
-            res.sendRedirect("./main/trainerDashboard.jsp");
     }
 }
