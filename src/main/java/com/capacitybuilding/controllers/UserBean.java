@@ -47,25 +47,6 @@ public class UserBean {
 
     }
 
-    public User login(Map<String, String> criteria) throws SQLException {
-
-        User login = new User();
-        userIMySQLDB.setEntity(login);
-
-        try {
-            String queryStatement = userIMySQLDB.createSelectWithWhereClauseQuery(criteria);
-            ResultSet resultSet = userIMySQLDB.executeReadQuery(queryStatement);
-
-            while (resultSet.next()) {
-                login = helperBean.getUser(resultSet.getInt("id"));
-            }
-
-        } catch (Exception ex) {
-            System.out.println("Log In Error: " + ex.getMessage());
-        }
-
-        return login;
-    }
 
     public List<User> list() throws SQLException {
         ResultSet resultSet = userIMySQLDB.fetchAll();

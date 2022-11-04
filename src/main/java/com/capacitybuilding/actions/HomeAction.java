@@ -27,7 +27,6 @@ public class HomeAction extends HttpServlet {
     @Inject
     IMySQLDB<User> userIMySQLDB;
 
-
     List<User> trainees;
     ServletContext servletContext;
 

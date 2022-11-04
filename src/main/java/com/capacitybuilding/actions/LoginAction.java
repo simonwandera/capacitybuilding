@@ -1,6 +1,6 @@
 package com.capacitybuilding.actions;
 
-import com.capacitybuilding.controllers.UserBean;
+import com.capacitybuilding.controllers.AuthBeanI;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +21,7 @@ import java.util.Map;
 public class LoginAction extends HttpServlet {
 
     @EJB
-    UserBean userBean;
+    AuthBeanI authBean;
     private ServletContext servletContext;
 
 
@@ -59,12 +58,7 @@ public class LoginAction extends HttpServlet {
             put("Password", DigestUtils.md5Hex(password));
         }};;
 
-        User user = null;
-        try {
-            user = this.userBean.login(criteria);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        User user = this.authBean.login(criteria);
 
         if (user == null || user.getId() < 1) {
             servletContext.setAttribute("loginError" , "Wrong username & password combination<br/>");
