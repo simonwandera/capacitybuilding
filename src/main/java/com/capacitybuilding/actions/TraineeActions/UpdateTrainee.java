@@ -1,6 +1,7 @@
 package com.capacitybuilding.actions.TraineeActions;
 
 import com.capacitybuilding.controllers.UserBean;
+import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +28,7 @@ public class UpdateTrainee extends HttpServlet {
     ServletContext servletContext;
 
     @EJB
-    UserBean userBean;
+    UserBeanI userBean;
 
     public void init(ServletConfig config) throws ServletException{
         super.init(config);

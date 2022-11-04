@@ -30,8 +30,6 @@ public class User extends Entity {
         put("Gender", "");
         put("UserType", "");
     }};;
-
-
     public User(){
         super(tableName);
         super.setEntitiesMap(entitiesMap);

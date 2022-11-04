@@ -14,21 +14,9 @@ import java.util.List;
 
 @Stateless
 @Remote
-public class UserBean {
-
-    @EJB
-    HelperBean helperBean;
-
-    @EJB
-    AssignTrainerBean assignTrainerBean;
-
-    @EJB
-    EnrollmentBean enrollmentBean;
-
+public class UserBean implements UserBeanI {
 
     public void add(User user) {
-        if (user == null || StringUtils.isBlank(user.getLastName()) || StringUtils.isBlank(user.getFirstName()) || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getGender()))
-            return;
 
     }
 
@@ -42,20 +30,13 @@ public class UserBean {
     }
 
 
-    public List<User> list() throws SQLException {
+    public List<User> list() {
        return new ArrayList<>();
     }
 
-    public List<User> generateList(ResultSet resultSet) throws SQLException {
+    public List<User> generateList(ResultSet resultSet) {
 
-        List<User> userList = new ArrayList<>();
-        while (resultSet.next()) {
-            User user = helperBean.getUser(resultSet.getInt("id"));
-            user.setEnrolledTrainings(enrollmentBean.getTrainings(user));
-            user.setAssignedTrainings(assignTrainerBean.getTrainings(user));
 
-            userList.add(user);
-        }
-        return userList;
+        return new ArrayList<>();
     }
 }

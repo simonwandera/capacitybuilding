@@ -4,14 +4,10 @@ import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
-import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +17,8 @@ import java.util.Map;
 @Stateless
 @Remote
 @Named("assignTrainerController")
-public class AssignTrainerBean implements Serializable {
+public class AssignTrainerBean implements AssignTrainerBeanI {
 
-    @EJB
-    HelperBean helperController;
 
     public void add(AssignTrainer assignTrainer){
 
@@ -36,29 +30,17 @@ public class AssignTrainerBean implements Serializable {
 
     }
 
-    public List<AssignTrainer> list() throws SQLException {
+    public List<AssignTrainer> list() {
 
         return new ArrayList<>();
 
     }
-    public List<AssignTrainer> generateList(ResultSet resultSet) throws SQLException {
+    public List<AssignTrainer> generateList(ResultSet resultSet) {
 
-        List<AssignTrainer> assignTrainerList = new ArrayList<>();
-        while (resultSet.next()){
-            AssignTrainer assignTrainer = new AssignTrainer();
-
-            assignTrainer.setId(resultSet.getInt("id"));
-            assignTrainer.setStatus(resultSet.getString("status"));
-            assignTrainer.setDateAssigned(resultSet.getDate("DateAssigned").toLocalDate());
-            assignTrainer.setTrainer(helperController.getUser(resultSet.getInt("trainerId")));
-            assignTrainer.setTraining(helperController.getTraining(resultSet.getInt("trainingId ")));
-            assignTrainerList.add(assignTrainer);
-        }
-
-        return assignTrainerList;
+        return new ArrayList<>();
     }
 
-    public List<User> getTrainers(Training training) throws SQLException {
+    public List<User> getTrainers(Training training) {
         Map<String, String> criteria = new HashMap<>(){{
             put("TrainingId", Integer.toString(training.getId()));
         }};;
@@ -66,7 +48,7 @@ public class AssignTrainerBean implements Serializable {
 
     }
 
-    public List<Training> getTrainings(User trainer) throws SQLException{
+    public List<Training> getTrainings(User trainer){
         Map<String, String> criteria = new HashMap<>(){{
             put("TrainerId", Integer.toString(trainer.getId()));
         }};;

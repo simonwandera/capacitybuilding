@@ -13,11 +13,9 @@ import java.util.Map;
 
 @Stateless
 @Remote
-public class HelperBean {
+public class HelperBean implements HelperBeanI{
 
-
-
-    public Training getTraining(int id) throws SQLException {
+    public Training getTraining(int id) {
         Training training = new Training();
         Map<String, String> criteria = new HashMap<>(){{
             put("Id", Integer.toString(id));
@@ -27,13 +25,11 @@ public class HelperBean {
     }
 
 
-    public User getUser(int id) throws SQLException {
+    public User getUser(int id) {
         User user = new User();
         Map<String, String> criteria = new HashMap<>(){{
             put("Id", Integer.toString(id));
         }};;
-
-
         return user;
     }
 }

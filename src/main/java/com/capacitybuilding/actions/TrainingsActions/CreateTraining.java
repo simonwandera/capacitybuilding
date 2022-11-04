@@ -1,8 +1,10 @@
 package com.capacitybuilding.actions.TrainingsActions;
 
 import com.capacitybuilding.controllers.TrainingBean;
+import com.capacitybuilding.controllers.TrainingBeanI;
 import com.capacitybuilding.model.Training;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,6 +22,9 @@ import java.time.LocalDate;
 public class CreateTraining extends HttpServlet {
     Connection connection;
     ServletContext servletContext;
+
+    @EJB
+    TrainingBeanI trainingBeanI;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -66,7 +71,6 @@ public class CreateTraining extends HttpServlet {
             return;
         }
 
-        Connection connection = (Connection) servletContext.getAttribute("dbConnection");
         Training training = new Training();
 
         training.setTitle(title);
@@ -78,11 +82,7 @@ public class CreateTraining extends HttpServlet {
         training.setDateAdded(dateAdded);
         training.setId(0);
 
-        try {
-            new TrainingBean().add(training);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        trainingBeanI.add(training);
         res.sendRedirect("./training/displayTrainings.jsp");
 
     }

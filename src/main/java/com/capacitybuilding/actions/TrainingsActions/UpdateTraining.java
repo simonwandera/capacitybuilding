@@ -1,8 +1,10 @@
 package com.capacitybuilding.actions.TrainingsActions;
 
 import com.capacitybuilding.controllers.TrainingBean;
+import com.capacitybuilding.controllers.TrainingBeanI;
 import com.capacitybuilding.model.Training;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,6 +23,9 @@ public class UpdateTraining extends HttpServlet {
 
     Connection connection;
     ServletContext servletContext;
+
+    @EJB
+    TrainingBeanI trainingBean;
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         servletContext = getServletConfig().getServletContext();
@@ -77,11 +82,7 @@ public class UpdateTraining extends HttpServlet {
         training.setStartDate(startDate);
         training.setDateAdded(dateAdded);
 
-        try {
-            new TrainingBean().update(training);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        trainingBean.update(training);
 
         res.sendRedirect("./training/displayTrainings.jsp");
 

@@ -1,6 +1,7 @@
 package com.capacitybuilding.actions;
 
 import com.capacitybuilding.controllers.UserBean;
+import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
 
 import javax.ejb.EJB;
@@ -21,8 +22,7 @@ import java.util.List;
 public class HomeAction extends HttpServlet {
 
     @EJB
-    UserBean userBean;
-
+    UserBeanI userBean;
 
     List<User> trainees;
     ServletContext servletContext;

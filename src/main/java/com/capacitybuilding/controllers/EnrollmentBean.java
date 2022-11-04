@@ -5,14 +5,9 @@ import com.capacitybuilding.model.Enrollment;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
 
-import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,12 +17,9 @@ import java.util.Map;
 @Stateless
 @Remote
 @Named("enrollmentController")
-public class EnrollmentBean implements Serializable {
+public class EnrollmentBean implements EnrollmentBeanI {
 
-    @EJB
-    HelperBean helperController;
-
-    public void enroll(User trainee, Training training) throws SQLException {
+    public void enroll(User trainee, Training training) {
         Enrollment enrollment = new Enrollment();
         enrollment.setStatus("PENDING");
         enrollment.setDateEnrolled(LocalDate.now());
@@ -41,7 +33,7 @@ public class EnrollmentBean implements Serializable {
 
     }
 
-    public List<User> getTrainees(Training training) throws SQLException {
+    public List<User> getTrainees(Training training) {
         Map<String, String> criteria = new HashMap<>(){{
             put("TrainingId", Integer.toString(training.getId()));
         }};;
@@ -51,7 +43,7 @@ public class EnrollmentBean implements Serializable {
         return traineesEnrolled;
     }
 
-    public List<Training> getTrainings(User user) throws SQLException{
+    public List<Training> getTrainings(User user){
         Map<String, String> criteria = new HashMap<>(){{
             put("TraineeId", Integer.toString(user.getId()));
         }};;
