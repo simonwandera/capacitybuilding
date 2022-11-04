@@ -1,60 +1,35 @@
 package com.capacitybuilding.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 import java.util.Map;
 
+
+@Entity
+@Table(name = "users")
 public class User extends BaseEntity {
 
-    private int Id;
-
+    @Column
     private String username;
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private String gender;
+    @Column
     private String password;
+    @Column
     private String userType = "USER";
-    private List<Training> enrolledTrainings;
-    private List<Training> assignedTrainings;
-
-    public User(){
-        super(tableName);
-        super.setEntitiesMap(entitiesMap);
-    }
-
-    public Map<String, Object> getEntities() {
-        return this.entitiesMap;
-    }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        entitiesMap.put("Id", id);
-        Id = id;
-    }
 
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
-        entitiesMap.put("Username", username);
         this.username = username;
-    }
-
-    public void setPassword(String password) {
-        entitiesMap.put("Password", password);
-        this.password = password;
-    }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        entitiesMap.put("UserType", userType);
-        this.userType = userType;
     }
 
     public String getFirstName() {
@@ -62,7 +37,6 @@ public class User extends BaseEntity {
     }
 
     public void setFirstName(String firstName) {
-        entitiesMap.put("FirstName", firstName);
         this.firstName = firstName;
     }
 
@@ -71,7 +45,6 @@ public class User extends BaseEntity {
     }
 
     public void setLastName(String lastName) {
-        entitiesMap.put("LastName", lastName);
         this.lastName = lastName;
     }
 
@@ -80,23 +53,22 @@ public class User extends BaseEntity {
     }
 
     public void setGender(String gender) {
-        entitiesMap.put("Gender",gender);
         this.gender = gender;
     }
 
-    public List<Training> getEnrolledTrainings() {
-        return enrolledTrainings;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEnrolledTrainings(List<Training> enrolledTrainings) {
-        this.enrolledTrainings = enrolledTrainings;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public List<Training> getAssignedTrainings() {
-        return assignedTrainings;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setAssignedTrainings(List<Training> assignedTrainings) {
-        this.assignedTrainings = assignedTrainings;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

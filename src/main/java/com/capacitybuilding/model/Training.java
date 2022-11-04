@@ -1,52 +1,34 @@
 package com.capacitybuilding.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+@Entity
+@Table(name = "trainings")
 public class Training extends BaseEntity {
-    private int Id;
+
+
+    @Column
     private String title;
+    @Column
     private String description;
+    @Column
     private int duration;
+    @Column
     private LocalDate startDate;
+    @Column
     private LocalDate dateAdded;
+    @Column
     private String status;
-    private List<User> enrolledTrainees;
-    private List<User> assignedTrainers;
-    private static final String tableName = "Training";
 
-    private final Map<String, Object> entitiesMap = new HashMap<>(){{
-        put("Id", null);
-        put("Title", "");
-        put("Description", "");
-        put("Duration", null);
-        put("StartDate", null);
-        put("DateAdded", null);
-        put("Status", "");
-    }};;
-
-    public Training() {
-        super(tableName);
-        super.setEntitiesMap(entitiesMap);
-    }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        entitiesMap.put("Id", id);
-        Id = id;
-    }
 
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
-        entitiesMap.put("Title", title);
         this.title = title;
     }
 
@@ -55,7 +37,6 @@ public class Training extends BaseEntity {
     }
 
     public void setDescription(String description) {
-        entitiesMap.put("Description", description);
         this.description = description;
     }
 
@@ -64,7 +45,6 @@ public class Training extends BaseEntity {
     }
 
     public void setDuration(int duration) {
-        entitiesMap.put("Duration", duration);
         this.duration = duration;
     }
 
@@ -73,7 +53,6 @@ public class Training extends BaseEntity {
     }
 
     public void setStartDate(LocalDate startDate) {
-        entitiesMap.put("StartDate", startDate);
         this.startDate = startDate;
     }
 
@@ -82,7 +61,6 @@ public class Training extends BaseEntity {
     }
 
     public void setDateAdded(LocalDate dateAdded) {
-        entitiesMap.put("DateAdded", dateAdded);
         this.dateAdded = dateAdded;
     }
 
@@ -91,25 +69,7 @@ public class Training extends BaseEntity {
     }
 
     public void setStatus(String status) {
-        entitiesMap.put("Status",status);
         this.status = status;
     }
-
-    public List<User> getEnrolledTrainees() {
-        return enrolledTrainees;
-    }
-
-    public void setEnrolledTrainees(List<User> enrolledTrainees) {
-        this.enrolledTrainees = enrolledTrainees;
-    }
-
-    public List<User> getAssignedTrainers() {
-        return assignedTrainers;
-    }
-
-    public void setAssignedTrainers(List<User> assignedTrainers) {
-        this.assignedTrainers = assignedTrainers;
-    }
-
 }
 
