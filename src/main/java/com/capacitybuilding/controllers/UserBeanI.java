@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserBeanI {
 
-    void add(User user);
+    void add(User user) throws Exception;
     void update(User user);
     void delete(User user);
     List<User> list();
