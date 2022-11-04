@@ -12,4 +12,6 @@ public interface UserBeanI {
     void delete(User user);
     List<User> list();
     List<User> generateList(ResultSet resultSet);
+
+    User login(User user) throws Exception;
 }

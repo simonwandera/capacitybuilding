@@ -1,7 +1,6 @@
 package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.model.User;
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
@@ -20,21 +19,14 @@ public class UserBean implements UserBeanI {
     EntityManager entityManager;
 
     public User add(User user) throws Exception {
-
-        System.out.println("\n\n\n\n ********* We got here ********* \n\n\n\n\n");
-        System.out.println("Usertype: " + user.getUserType());
-        System.out.println("First name: " + user.getFirstName());
-        System.out.println("Last name: " + user.getLastName());
-        System.out.println("Password: " + user.getPassword());
-        System.out.println("Username: " + user.getUsername());
-
-
+        if(StringUtils.isBlank(user.getFirstName()))
+            throw new Exception("First name is required");
+        if(StringUtils.isBlank(user.getLastName()))
+            throw new Exception("Last name is required");
         if (StringUtils.isBlank(user.getUsername()))
             throw new Exception("Email is required");
         if (StringUtils.isBlank(user.getGender()))
             throw new Exception("Gender is required");
-        if(StringUtils.isBlank(user.getFirstName()))
-            throw new Exception("First name is required");
 
         if (StringUtils.isBlank(user.getPassword()) || StringUtils.isBlank(user.getConfirmPassword())
                 || !user.getPassword().equals(user.getConfirmPassword()))
@@ -62,5 +54,23 @@ public class UserBean implements UserBeanI {
 
 
         return new ArrayList<>();
+    }
+
+    @Override
+    public User login(User user) throws Exception {
+        if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
+            throw new Exception("Invalid password or username");
+
+        List<User> users = entityManager.createQuery("FROM User a WHERE a.username=:usrName " +
+                        "and a.password=:pwd", User.class)
+
+                .setParameter("usrName", user.getUsername())
+                .setParameter("pwd", user.getPassword())
+                .getResultList();
+
+        if (users == null || users.isEmpty() || users.get(0) == null)
+            throw new Exception("Invalid username or password");
+
+        return users.get(0);
     }
 }

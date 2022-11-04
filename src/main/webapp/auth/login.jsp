@@ -28,7 +28,7 @@
                   <form class="forms-sample" action= "../login" method="post">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Email" />
+                      <input type="email" class="form-control" name="username" id="email" placeholder="Email" />
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>

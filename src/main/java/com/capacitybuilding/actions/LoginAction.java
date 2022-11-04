@@ -1,5 +1,6 @@
 package com.capacitybuilding.actions;
 
+import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -13,11 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginAction extends HttpServlet {
+
+    @EJB
+    UserBeanI userBean;
 
     private ServletContext servletContext;
 
@@ -35,25 +40,25 @@ public class LoginAction extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         String password = req.getParameter("password");
-        String email = req.getParameter("email");
+        String username = req.getParameter("username");
 
+        User user1 = new User();
+        user1.setPassword(password);
+        user1.setUsername(username);
 
-        if (email == null || email.equalsIgnoreCase("")){
-            servletContext.setAttribute("loginError" , "Email is required<br/>");
+        try {
+            User user = userBean.login(user1);
+            HttpSession session = req.getSession(true);
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("userType", user.getUserType());
+
+            res.sendRedirect("./home.jsp");
+
+        } catch (Exception ex) {
+            servletContext.setAttribute("loginError" , ex.getMessage());
             res.sendRedirect("./auth/login.jsp");
-            return;
         }
 
-        if (password == null || password.equalsIgnoreCase("")) {
-            servletContext.setAttribute("loginError" , "Password is required<br/>");
-            res.sendRedirect("./auth/login.jsp");
-            return;
-        }
-
-        Map<String, String> criteria = new HashMap<>(){{
-            put("Username", email);
-            put("Password", DigestUtils.md5Hex(password));
-        }};;
 
         User user = new User();
 
