@@ -3,6 +3,7 @@ package com.capacitybuilding.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,9 @@ public class User extends BaseEntity {
     private String gender;
     @Column
     private String password;
+
+    @Transient
+    private String confirmPassword;
     @Column
     private String userType = "USER";
 
@@ -70,5 +74,13 @@ public class User extends BaseEntity {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
