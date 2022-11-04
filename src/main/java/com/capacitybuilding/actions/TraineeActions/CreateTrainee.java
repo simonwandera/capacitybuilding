@@ -62,8 +62,6 @@ public class CreateTrainee extends HttpServlet {
             res.sendRedirect("./trainee/addTrainee.jsp");
             return;
         }
-
         res.sendRedirect("./main/adminDashboard.jsp");
-
     }
 }

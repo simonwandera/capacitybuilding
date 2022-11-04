@@ -91,10 +91,10 @@
 
                                         <div class="my-3 py-2 text-center">
                                              <%
-                                                  String signupError = (String) application.getAttribute("signupError");
+                                                  String signupError = (String) application.getAttribute("registerError");
                                                   if (signupError != null && !signupError.equals("")) {
                                                 %>
-                                                  <span class="text-danger"> <%= application.getAttribute("signupError") %> </span>
+                                                  <span class="text-danger"> <%= application.getAttribute("registerError") %> </span>
                                                 <% } %>
                                         </div>
                                         <button type="submit" class="btn btn-primary mr-2"> Sign In </button>

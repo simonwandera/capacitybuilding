@@ -31,7 +31,7 @@ public class RegisterAction extends HttpServlet {
         servletContext = getServletConfig().getServletContext();
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         User user = new User();
         try {
