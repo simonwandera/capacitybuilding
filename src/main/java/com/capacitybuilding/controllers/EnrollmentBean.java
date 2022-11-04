@@ -21,10 +21,7 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
     public void enroll(User trainee, Training training) {
         Enrollment enrollment = new Enrollment();
-        enrollment.setStatus("PENDING");
-        enrollment.setDateEnrolled(LocalDate.now());
-        enrollment.setTrainee(trainee);
-        enrollment.setTraining(training);
+
     }
     public void update(EnrollmentBean enrollmentController){
 
@@ -34,9 +31,7 @@ public class EnrollmentBean implements EnrollmentBeanI {
     }
 
     public List<User> getTrainees(Training training) {
-        Map<String, String> criteria = new HashMap<>(){{
-            put("TrainingId", Integer.toString(training.getId()));
-        }};;
+
         List<User> traineesEnrolled = new ArrayList<>();
 
 
@@ -44,9 +39,7 @@ public class EnrollmentBean implements EnrollmentBeanI {
     }
 
     public List<Training> getTrainings(User user){
-        Map<String, String> criteria = new HashMap<>(){{
-            put("TraineeId", Integer.toString(user.getId()));
-        }};;
+
         List<Training> trainingList = new ArrayList<>();
 
         return trainingList;

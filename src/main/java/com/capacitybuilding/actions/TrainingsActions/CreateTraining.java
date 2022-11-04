@@ -80,7 +80,6 @@ public class CreateTraining extends HttpServlet {
         training.setStatus("UPCOMING");
         training.setStartDate(startDate);
         training.setDateAdded(dateAdded);
-        training.setId(0);
 
         trainingBeanI.add(training);
         res.sendRedirect("./training/displayTrainings.jsp");

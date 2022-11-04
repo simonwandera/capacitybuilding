@@ -14,7 +14,6 @@ public class BaseEntity implements Serializable {
     private Long id;
 
     @Column(name = "time_created")
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate timeCreated = LocalDate.now();
 
     public Long getId() {

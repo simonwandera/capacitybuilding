@@ -41,17 +41,13 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
     }
 
     public List<User> getTrainers(Training training) {
-        Map<String, String> criteria = new HashMap<>(){{
-            put("TrainingId", Integer.toString(training.getId()));
-        }};;
+
        return new ArrayList<>();
 
     }
 
     public List<Training> getTrainings(User trainer){
-        Map<String, String> criteria = new HashMap<>(){{
-            put("TrainerId", Integer.toString(trainer.getId()));
-        }};;
+
 
         List<Training> trainingList = new ArrayList<>();
 

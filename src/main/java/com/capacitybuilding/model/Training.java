@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Table(name = "trainings")
 public class Training extends BaseEntity {
 
-
     @Column
     private String title;
     @Column
