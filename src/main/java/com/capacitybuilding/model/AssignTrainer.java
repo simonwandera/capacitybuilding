@@ -6,4 +6,9 @@ import java.util.Map;
 
 public class AssignTrainer extends BaseEntity {
 
+    private Training training;
+    private User trainer;
+    private LocalDate DateAssigned;
+    private String Status;
+
 }
