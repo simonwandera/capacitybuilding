@@ -22,7 +22,6 @@ public class LoginAction extends HttpServlet {
 
     private ServletContext servletContext;
 
-
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
         servletContext = getServletConfig().getServletContext();

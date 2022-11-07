@@ -123,13 +123,27 @@
                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Options
                                      </button>
                                      <div class="dropdown-menu" aria-labelledby="options">
+
                                          <h6 class="dropdown-header">Options</h6>
-                                         <a class="dropdown-item" href="#">Enroll</a>
-                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
-                                         <a class="dropdown-item" href="#">Enrollment requests</a>
-                                         <a class="dropdown-item" href="#">Activate</a>
+                                         <jc:choose>
+                                         <jc:when test="${sessionScope.userType.equals(\"USER\")}">
+                                             <a class="dropdown-item" href="#">Enroll</a>
+                                             <a class="dropdown-item" href="#">Enrolled trainees</a>
+                                         </jc:when>
+                                         <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
+                                             <a class="dropdown-item" href="#">Enroll</a>
+                                             <a class="dropdown-item" href="#">Enrolled trainees</a>
+                                             <a class="dropdown-item" href="#">Feedback</a>
+                                         </jc:when>
+                                         <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
+                                             <a class="dropdown-item" href="#">Enrollment requests</a>
+                                             <a class="dropdown-item" href="#">Enrolled trainees</a>
+                                             <a class="dropdown-item" href="#">Activate</a>
+                                         </jc:when>
+                                         </jc:choose>
+
                                          <div class="dropdown-divider"></div>
-                                         <a class="dropdown-item" href="#">Feedback</a>
+
                                      </div>
                                  </div>
 
