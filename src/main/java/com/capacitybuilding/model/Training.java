@@ -61,5 +61,17 @@ public class Training extends BaseEntity {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
+    @Override
+    public String toString() {
+        return "Training{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", duration=" + duration +
+                ", startDate=" + startDate +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
 

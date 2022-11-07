@@ -79,8 +79,6 @@ public class UpdateTraining extends HttpServlet {
         training.setDuration(duration);
 
         training.setStatus("UPCOMING");
-        training.setStartDate(startDate);
-        training.setDateAdded(dateAdded);
 
         trainingBean.update(training);
 

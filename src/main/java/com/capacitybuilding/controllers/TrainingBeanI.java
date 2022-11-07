@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TrainingBeanI {
 
-    void add(Training training);
+    Training add(Training training) throws Exception;
     void update(Training training);
     void delete(TrainingBean trainingController);
     List<Training> getList();
