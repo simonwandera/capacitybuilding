@@ -110,8 +110,8 @@
 
                                      <h5 class="mb-0">Trainer</h5>
 
-                                     <jc:forEach items="${assignTrainerController.getTrainers(training)}" var="trainer">
-                                        <h5><p class="mb-0 text-muted">${trainer.firstName }  ${trainer.lastName}</p></h5>
+                                     <jc:forEach items="${assignTrainerBean.getTrainers(training)}" var="trainer">
+                                        <h5><p class="mb-0 text-muted">${trainer.trainer.firstName }  ${trainer.trainer.lastName}</p></h5>
                                      </jc:forEach>
 
                                  </div>

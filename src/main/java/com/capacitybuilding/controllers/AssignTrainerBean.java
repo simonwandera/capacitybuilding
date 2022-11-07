@@ -44,7 +44,7 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
 
     public List<AssignTrainer> getTrainers(Training training) {
 
-        List<AssignTrainer> trainers = entityManager.createQuery("FROM AssigTrainer a WHERE a.training=:traningId ", AssignTrainer.class)
+        List<AssignTrainer> trainers = entityManager.createQuery("FROM AssignTrainer a WHERE a.training.id=:traningId ", AssignTrainer.class)
                 .setParameter("traningId", training.getId())
                 .getResultList();
 
