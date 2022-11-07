@@ -17,9 +17,7 @@ public class HelperBean implements HelperBeanI{
 
     public Training getTraining(int id) {
         Training training = new Training();
-        Map<String, String> criteria = new HashMap<>(){{
-            put("Id", Integer.toString(id));
-        }};;
+        
 
         return training;
     }

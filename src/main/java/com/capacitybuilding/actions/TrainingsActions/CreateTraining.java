@@ -40,7 +40,7 @@ public class CreateTraining extends HttpServlet {
         res.sendRedirect("./training/createTrainee.jsp");
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         String title = req.getParameter("title");
         int duration = req.getParameter("duration").isEmpty() ? 0 : Integer.parseInt(req.getParameter("duration"));

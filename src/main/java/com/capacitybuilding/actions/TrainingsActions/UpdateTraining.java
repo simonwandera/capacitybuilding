@@ -21,7 +21,6 @@ import java.time.LocalDate;
 @WebServlet("/updateTraining")
 public class UpdateTraining extends HttpServlet {
 
-    Connection connection;
     ServletContext servletContext;
 
     @EJB
@@ -29,7 +28,6 @@ public class UpdateTraining extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         servletContext = getServletConfig().getServletContext();
-        connection = (Connection) servletContext.getAttribute("dbConnection");
 
     }
 
@@ -71,7 +69,6 @@ public class UpdateTraining extends HttpServlet {
             return;
         }
 
-        Connection connection = (Connection) servletContext.getAttribute("dbConnection");
         Training training = new Training();
 
         training.setTitle(title);
