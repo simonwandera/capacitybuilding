@@ -1,8 +1,10 @@
 package com.capacitybuilding.actions.TrainingsActions;
 
+import com.capacitybuilding.controllers.EnrollmentBeanI;
 import com.capacitybuilding.controllers.TrainingBeanI;
 import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.Enrollment;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -19,9 +21,12 @@ public class Enroll extends HttpServlet {
 
     @EJB
     UserBeanI userBean;
-
     @EJB
     TrainingBeanI trainingBean;
+
+    @EJB
+    EnrollmentBeanI enrollmentBean;
+
     ServletContext servletContext;
 
     public void init(ServletConfig config) throws ServletException {
@@ -30,16 +35,23 @@ public class Enroll extends HttpServlet {
 
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse res) {
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-        String title = req.getParameter("title");
         String trainingId = req.getParameter("trainingId");
         String traineeId = req.getParameter("traineeId");
 
         Enrollment enrollment = new Enrollment();
         enrollment.setStatus("PENDING");
-        enrollment.setTrainee();
-        enrollment.setTraining();
+        enrollment.setTrainee(userBean.getUser(Integer.parseInt(traineeId)));
+        enrollment.setTraining(trainingBean.getTraining(Integer.parseInt(trainingId)));
+
+        try {
+            enrollmentBean.enroll(enrollment);
+            res.sendRedirect("./training/displayTrainings.jsp");
+        } catch (Exception e) {
+            servletContext.setAttribute("enrollmentError" , e.getMessage());
+            res.sendRedirect("/home");
+        }
 
     }
 }
