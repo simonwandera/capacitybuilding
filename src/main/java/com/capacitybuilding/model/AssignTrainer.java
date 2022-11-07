@@ -1,14 +1,20 @@
 package com.capacitybuilding.model;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "assignTrainers")
 public class AssignTrainer extends BaseEntity {
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "trainee_id", referencedColumnName = "id")
     private Training training;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "trainer_id", referencedColumnName = "id")
     private User trainer;
-    private LocalDate DateAssigned;
+
+    @Column(name = "status")
     private String Status;
 
 }

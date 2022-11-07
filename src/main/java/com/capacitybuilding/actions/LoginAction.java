@@ -2,7 +2,6 @@ package com.capacitybuilding.actions;
 
 import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -14,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginAction extends HttpServlet {

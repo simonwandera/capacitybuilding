@@ -2,9 +2,14 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
-   <persistence-unit name="CohortPu" transaction-type="JTA">
+   <persistence-unit name="capacityBuilding" transaction-type="JTA">
       <jta-data-source>java:jboss/datasources/CapacityBuilding</jta-data-source>
-      <properties>
+       <class>entities.AssignTrainers</class>
+       <class>entities.Enrollments</class>
+       <class>entities.Trainings</class>
+       <class>entities.Users</class>
+
+       <properties>
           
         <!-- Database connection settings -->
         <!--<property name="hibernate.dialect" value="com.fms.util.hibernate.CustomMySQLDialect" />-->
@@ -12,6 +17,7 @@
         <property name="hibernate.archive.autodetection" value="class, hbm" />
         <property name="hibernate.connection.max_allowed_packet" value="1073741824" />
         <property name="hibernate.connection.release_mode" value="after_statement"/>
+       <property name="hibernate.show_sql" value="true"/>
 
         <!-- Auto reconnect db on . -->
         <property name="connection.autoReconnect" value="true" />
@@ -33,8 +39,11 @@
 
         <!-- flush mysql to clear error connections -->
         <property name="hibernate.flushMode" value="FLUSH_AUTO" />
+           <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/CapacityBuilding"/>
+           <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+           <property name="hibernate.connection.username" value="root"/>
 
-        <!--<property name="hibernate.globally_quoted_identifiers" value="true"/>-->
+           <!--<property name="hibernate.globally_quoted_identifiers" value="true"/>-->
          
       </properties>
    </persistence-unit>
