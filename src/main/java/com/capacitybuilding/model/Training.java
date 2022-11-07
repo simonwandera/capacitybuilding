@@ -18,8 +18,6 @@ public class Training extends BaseEntity {
     @Column
     private LocalDate startDate;
     @Column
-    private LocalDate dateAdded;
-    @Column
     private String status;
 
 
@@ -55,13 +53,6 @@ public class Training extends BaseEntity {
         this.startDate = startDate;
     }
 
-    public LocalDate getDateAdded() {
-        return dateAdded;
-    }
-
-    public void setDateAdded(LocalDate dateAdded) {
-        this.dateAdded = dateAdded;
-    }
 
     public String getStatus() {
         return status;

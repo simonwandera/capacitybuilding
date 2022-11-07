@@ -12,6 +12,7 @@
             <property name="hibernate.archive.autodetection" value="class, hbm" />
             <property name="hibernate.connection.max_allowed_packet" value="1073741824" />
             <property name="hibernate.connection.release_mode" value="after_statement"/>
+            <property name="hibernate.show_sql" value="true"/>
 
             <!-- Auto reconnect db on . -->
             <property name="connection.autoReconnect" value="true" />
