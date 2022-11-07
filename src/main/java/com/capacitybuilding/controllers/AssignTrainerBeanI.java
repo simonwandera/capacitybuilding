@@ -13,6 +13,6 @@ public interface AssignTrainerBeanI {
     void delete(AssignTrainer assignTrainer);
     List<AssignTrainer> list();
     List<AssignTrainer> generateList(ResultSet resultSet);
-    List<User> getTrainers(Training training);
+    List<AssignTrainer> getTrainers(Training training);
     List<Training> getTrainings(User trainer);
 }

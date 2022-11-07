@@ -50,8 +50,6 @@ public class TrainingBean implements TrainingBeanI {
 
                 .getResultList();
 
-        System.out.println("**********priting from method ********" + trainings );
-
         return trainings;
     }
 

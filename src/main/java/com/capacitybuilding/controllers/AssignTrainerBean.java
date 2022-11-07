@@ -7,18 +7,20 @@ import com.capacitybuilding.model.User;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Stateless
 @Remote
-@Named("assignTrainerController")
+@Named("assignTrainerBean")
 public class AssignTrainerBean implements AssignTrainerBeanI {
 
+    @PersistenceContext
+    EntityManager entityManager;
 
     public void add(AssignTrainer assignTrainer){
 
@@ -40,9 +42,13 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
         return new ArrayList<>();
     }
 
-    public List<User> getTrainers(Training training) {
+    public List<AssignTrainer> getTrainers(Training training) {
 
-       return new ArrayList<>();
+        List<AssignTrainer> trainers = entityManager.createQuery("FROM AssigTrainer a WHERE a.training=:traningId ", AssignTrainer.class)
+                .setParameter("traningId", training.getId())
+                .getResultList();
+
+        return trainers;
 
     }
 
