@@ -1,7 +1,10 @@
 package com.capacitybuilding.actions.TrainingsActions;
 
+import com.capacitybuilding.controllers.TrainingBeanI;
+import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.Enrollment;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,6 +16,12 @@ import java.io.IOException;
 
 @WebServlet("/updateTraining")
 public class Enroll extends HttpServlet {
+
+    @EJB
+    UserBeanI userBean;
+
+    @EJB
+    TrainingBeanI trainingBean;
     ServletContext servletContext;
 
     public void init(ServletConfig config) throws ServletException {

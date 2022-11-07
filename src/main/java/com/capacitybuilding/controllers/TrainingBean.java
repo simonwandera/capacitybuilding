@@ -53,6 +53,13 @@ public class TrainingBean implements TrainingBeanI {
         return trainings;
     }
 
+    public Training getTraining(int id) {
+        Training training = entityManager.createQuery("FROM Training t WHERE t.id=:id", Training.class)
+                .setParameter("id", id)
+                .getResultList().get(0);
+        return training;
+    }
+
     public List<Training> generateList() {
 
       return new ArrayList<>();

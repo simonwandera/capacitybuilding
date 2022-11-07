@@ -45,6 +45,14 @@ public class UserBean implements UserBeanI {
 
     }
 
+    public User getUser(int id) {
+        User user = entityManager.createQuery("FROM User a WHERE a.id=:id" , User.class)
+                .setParameter("id", id)
+                .getResultList().get(0);
+
+        return user;
+    }
+
 
     public List<User> list() {
        return new ArrayList<>();
@@ -73,4 +81,6 @@ public class UserBean implements UserBeanI {
 
         return users.get(0);
     }
+
+
 }
