@@ -42,7 +42,7 @@ public class Enroll extends HttpServlet {
 
         Enrollment enrollment = new Enrollment();
         enrollment.setStatus("PENDING");
-        enrollment.setTrainee(userBean.getUser(Integer.parseInt(traineeId)));
+//        enrollment.setTrainee(res.);
         enrollment.setTraining(trainingBean.getTraining(Integer.parseInt(trainingId)));
 
         try {
