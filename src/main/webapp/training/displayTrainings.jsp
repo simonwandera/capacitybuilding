@@ -129,8 +129,8 @@
                                          <jc:when test="${sessionScope.userType.equals(\"USER\")}">
                                              <form class="dropdown-item" method="post" action="../enroll">
                                                  <input type="hidden" name="trainingId" value="${training.id}">
-                                                 <input type="hidden" name="traineeId" value="${sessionScope.activeUser}">
-                                                 <submit>Submit</submit>
+                                                 <input type="hidden" name="traineeId" value="${sessionScope.activeUser.id}">
+                                                 <button type="submit" >Enroll</button>
                                              </form>
                                              <a class="dropdown-item" href="#">Enrolled trainees</a>
                                          </jc:when>
