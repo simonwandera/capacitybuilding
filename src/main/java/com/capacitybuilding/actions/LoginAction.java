@@ -46,6 +46,7 @@ public class LoginAction extends HttpServlet {
             HttpSession session = req.getSession(true);
             session.setAttribute("username", user.getUsername());
             session.setAttribute("userType", user.getUserType());
+            session.setAttribute("activeUser", user);
 
             if (user.getUserType().equals("ADMIN"))
                 res.sendRedirect("./main/adminDashboard.jsp");

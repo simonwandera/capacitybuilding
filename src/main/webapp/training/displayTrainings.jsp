@@ -127,18 +127,15 @@
                                          <h6 class="dropdown-header">Options</h6>
                                          <jc:choose>
                                          <jc:when test="${sessionScope.userType.equals(\"USER\")}">
-                                             <a class="dropdown-item" href="#">Enroll</a>
+                                             <form class="dropdown-item" method="post" action="../enroll">
+                                                 <input type="hidden" name="trainingId" value="${training.id}">
+                                                 <input type="hidden" name="traineeId" value="${sessionScope.activeUser}">
+                                                 <submit>Submit</submit>
+                                             </form>
                                              <a class="dropdown-item" href="#">Enrolled trainees</a>
                                          </jc:when>
                                          <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
-                                             <a class="dropdown-item" href="#">
-                                                 <form method="post" action="../enroll">
-                                                     <input type="hidden" name="trainingId" value="${training.id}">
-                                                     <input type="hidden" name="traineeId" value="${sessionScope.userType}">
-                                                     <submit><a>Submit</a></submit>
-                                                 </form>
 
-                                             </a>
                                              <a class="dropdown-item" href="#">Enrolled trainees</a>
                                              <a class="dropdown-item" href="#">Feedback</a>
                                          </jc:when>
