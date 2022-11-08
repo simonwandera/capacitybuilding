@@ -1,4 +1,5 @@
 <%@ page isELIgnored="false" %>
+<%@ page import="com.capacitybuilding.model.*" %>
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -11,17 +12,17 @@
     <body>
         <div class="container-scroller">
 
-        <jc:choose>
-            <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
-                <jsp:include page="../utils/adminSideNav.jsp" />
+            <jc:choose>
+            <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
+                <jsp:include page="../utils/adminSideNav.jsp"/>
             </jc:when>
-            <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
-                <jsp:include page="../utils/trainerSideNav.jsp" />
-             </jc:when>
-            <jc:when test="${sessionScope.userType.equals(\"USER\")}">
-                <jsp:include page="../utils/traineeSideNav.jsp" />
+            <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
+                <jsp:include page="../utils/trainerSideNav.jsp"/>
             </jc:when>
-        </jc:choose>
+            <jc:when test="${sessionScope.userType == Usertype.USER}">
+                <jsp:include page="../utils/traineeSideNav.jsp"/>
+            </jc:when>
+            </jc:choose>
 
                 <div class="container-fluid page-body-wrapper">
                     <div id="theme-settings" class="settings-panel">
