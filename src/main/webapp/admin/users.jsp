@@ -73,7 +73,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/faces/face1.jpg" alt="image"/>
+                                                <img src="https://shorturl.at/koGIP" alt="image"/>
                                                 <div class="table-user-name ml-3">
                                                     <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
                                                     <small> Payment on hold</small>
@@ -89,7 +89,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/faces/face10.jpg" alt="image"/>
+                                                <img src="https://shorturl.at/koGIP" alt="image"/>
                                                 <div class="table-user-name ml-3">
                                                     <p class="mb-0 font-weight-medium"> Victor Watkins </p>
                                                     <small>Email verified</small>
@@ -105,7 +105,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/faces/face11.jpg" alt="image"/>
+                                                <img src="https://shorturl.at/koGIP" alt="image"/>
                                                 <div class="table-user-name ml-3">
                                                     <p class="mb-0 font-weight-medium"> Ada Burgess </p>
                                                     <small>Email verified</small>
@@ -121,7 +121,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/faces/face13.jpg" alt="image"/>
+                                                <img src="https://shorturl.at/koGIP" alt="image"/>
                                                 <div class="table-user-name ml-3">
                                                     <p class="mb-0 font-weight-medium"> Dollie Lynch </p>
                                                     <small>Email verified</small>
@@ -137,7 +137,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/faces/face16.jpg" alt="image"/>
+                                                <img src="https://shorturl.at/koGIP" alt="image"/>
                                                 <div class="table-user-name ml-3">
                                                     <p class="mb-0 font-weight-medium"> Harry Holloway </p>
                                                     <small>Payment on process</small>
