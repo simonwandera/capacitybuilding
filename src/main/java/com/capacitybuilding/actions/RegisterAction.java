@@ -2,6 +2,7 @@ package com.capacitybuilding.actions;
 
 import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
+import com.capacitybuilding.model.Usertype;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -37,10 +38,10 @@ public class RegisterAction extends HttpServlet {
 
         try {
             BeanUtils.populate(user, req.getParameterMap());
+            user.setUserType(Usertype.USER);
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
-
 
         try {
             userBean.add(user);

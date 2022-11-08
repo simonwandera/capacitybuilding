@@ -1,12 +1,12 @@
 package com.capacitybuilding.model;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.util.List;
-import java.util.Map;
-
 
 @Entity
 @Table(name = "users")
@@ -26,7 +26,8 @@ public class User extends BaseEntity {
     @Transient
     private String confirmPassword;
     @Column
-    private String userType = "USER";
+    @Enumerated(EnumType.STRING)
+    private Usertype userType;
 
     public String getUsername() {
         return username;
@@ -68,11 +69,11 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public String getUserType() {
+    public Usertype getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(Usertype userType) {
         this.userType = userType;
     }
 
