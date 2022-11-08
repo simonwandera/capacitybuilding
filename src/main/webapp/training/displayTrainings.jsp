@@ -62,6 +62,9 @@
         <jc:when test="${filter.equals(\"enrolled\") || filter == null}">
             <jc:set value="${enrollmentBean.getTrainings(activeUser)}" var="trainings"/>
         </jc:when>
+        <jc:when test="${filter.equals(\"completed\") || filter == null}">
+            <jc:set value="${enrollmentBean.getCompletedTrainings(activeUser)}" var="trainings"/>
+        </jc:when>
 
         </jc:choose>x
 
@@ -72,7 +75,6 @@
                     <h3 class="mb-0"> My Trainings </h3>
                 </div>
                 <div>
-                    <h3>${filter} sp</h3>
                     <h5 class="text-muted">${trainings.size()} Courses</h5>
                 </div>
 
