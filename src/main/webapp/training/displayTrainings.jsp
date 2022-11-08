@@ -50,6 +50,10 @@
 
         <%@ include file="../utils/trainerTopNav.jsp" %>
 
+            <% String filter = request.getParameter("filter");
+                pageContext.setAttribute("filter", filter);
+            %>
+
         <jc:choose>
 
         <jc:when test="${requestScope.filter == null || requestScope.filter.equals(\"all\")}">
@@ -68,7 +72,7 @@
                     <h3 class="mb-0"> My Trainings </h3>
                 </div>
                 <div>
-                    <h3>${requestScope.getParameter(\"filter\")} sp</h3>
+                    <h3>${filter} sp</h3>
                     <h5 class="text-muted">${trainings.size()} Courses</h5>
                 </div>
 
