@@ -34,13 +34,19 @@ public class EnrollmentBean implements EnrollmentBeanI {
         return entityManager.merge(enrollment);
 
     }
-    public void update(EnrollmentBean enrollmentController){
+    public void update(Enrollment enrollment) throws Exception{
+
+        if (enrollment == null || enrollment.getId() == null)
+            throw new Exception("Invalid enrollment details");
+        entityManager.merge(enrollment);
+
+
 
     }
     public void delete(Enrollment enrollment) throws Exception{
-        if (enrollment == null){
+        if (enrollment == null)
             throw new Exception("Invalid enrollment details");
-        }
+
         entityManager.remove(entityManager.find(Enrollment.class, enrollment.getId()));
 
     }
@@ -60,14 +66,6 @@ public class EnrollmentBean implements EnrollmentBeanI {
                 .setParameter("traineeId", trainee.getId())
                 .getResultList();
         return trainingsEnrolled;
-    }
-
-    public Boolean isEnrolled(Training training, User trainee){
-        return entityManager.createQuery("FROM Enrollment e WHERE e.training.trainingId=:id AND e.trainee.id=:traineeId", Enrollment.class)
-                .setParameter("trainingId", training.getId())
-                .setParameter("traineeId", trainee.getId())
-                .getResultList()
-                .size() > 0;
     }
 
 

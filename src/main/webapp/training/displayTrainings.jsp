@@ -20,6 +20,10 @@
 
 <body>
 <div class="container-scroller">
+
+    <jc:set value="${sessionScope.getAttribute(\"activeUser\")}" var="activeUser" />
+    <jc:out value="${activeUser.username}"/>
+
     <jc:choose>
     <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
         <jsp:include page="../utils/adminSideNav.jsp"/>
@@ -137,6 +141,11 @@
                                                 <h6 class="dropdown-header">Options</h6>
                                                 <jc:choose>
                                                     <jc:when test="${sessionScope.userType.equals(\"USER\")}">
+
+                                                        <jc:if test="${enrollmentBean.getTrainings()}">
+                                                            <p>My income is: <c:out value="${income}"/><p>
+                                                        </jc:if>
+
                                                         <form class="dropdown-item" method="post" action="../enroll">
                                                             <input type="hidden" name="trainingId"
                                                                    value="${training.id}">
