@@ -50,11 +50,13 @@ public class EnrollmentBean implements EnrollmentBeanI {
         return traineesEnrolled;
     }
 
-    public List<Training> getTrainings(User user){
+    public List<Enrollment> getTrainings(User trainee){
 
-        List<Training> trainingList = new ArrayList<>();
+        List <Enrollment> enrollmentList = entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId", Enrollment.class)
+                .setParameter("traineeId", trainee.getId())
+                .getResultList();
 
-        return trainingList;
+        return enrollmentList;
     }
 
     public Boolean isEnrolled(Training training, User trainee){

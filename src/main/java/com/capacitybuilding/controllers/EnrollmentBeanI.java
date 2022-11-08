@@ -11,6 +11,6 @@ public interface EnrollmentBeanI {
     void update(EnrollmentBean enrollmentController);
     void delete(EnrollmentBean enrollmentController);
     List<Enrollment> getTrainees(Training training);
-    List<Training> getTrainings(User user);
+    List<Enrollment> getTrainings(User trainee);
     Boolean isEnrolled(Training training, User trainee);
 }
