@@ -54,7 +54,7 @@
               <a class="nav-link" href="pages/ui-features/buttons.html">Add New</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/dropdowns.html">View Users</a>
+              <a class="nav-link" href="../admin/users.jsp">View Users</a>
             </li>
           </ul>
         </div>
