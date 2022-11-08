@@ -1,6 +1,7 @@
 package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.model.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
@@ -31,6 +32,7 @@ public class UserBean implements UserBeanI {
         if (StringUtils.isBlank(user.getPassword()) || StringUtils.isBlank(user.getConfirmPassword())
                 || !user.getPassword().equals(user.getConfirmPassword()))
             throw new Exception("Password & confirm password is required and must match");
+        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
 
         return entityManager.merge(user);
 

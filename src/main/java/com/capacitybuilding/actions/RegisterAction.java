@@ -41,8 +41,6 @@ public class RegisterAction extends HttpServlet {
             System.out.println(ex.getMessage());
         }
 
-        user.setPassword((DigestUtils.md5Hex(user.getPassword())));
-
 
         try {
             userBean.add(user);

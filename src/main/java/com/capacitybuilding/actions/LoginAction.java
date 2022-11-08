@@ -2,6 +2,7 @@ package com.capacitybuilding.actions;
 
 import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -38,7 +39,7 @@ public class LoginAction extends HttpServlet {
         String username = req.getParameter("username");
 
         User user1 = new User();
-        user1.setPassword(password);
+        user1.setPassword(DigestUtils.md5Hex(password));
         user1.setUsername(username);
 
         try {
