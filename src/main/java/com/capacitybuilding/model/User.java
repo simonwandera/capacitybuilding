@@ -25,8 +25,8 @@ public class User extends BaseEntity {
 
     @Transient
     private String confirmPassword;
-    @Column
     @Enumerated(EnumType.STRING)
+    @Column(name = "usertype")
     private Usertype userType;
 
     public String getUsername() {
