@@ -21,8 +21,7 @@
 <body>
 <div class="container-scroller">
 
-    <jc:set value="${sessionScope.getAttribute(\"activeUser\")}" var="activeUser" />
-    <jc:out value="${activeUser.username}"/>
+    <jc:set value="${sessionScope.activeUser}" var="activeUser"/>
 
     <jc:choose>
     <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
@@ -142,16 +141,15 @@
                                                 <jc:choose>
                                                     <jc:when test="${sessionScope.userType.equals(\"USER\")}">
 
-                                                        <jc:if test="${enrollmentBean.getTrainings()}">
-                                                            <p>My income is: <c:out value="${income}"/><p>
+                                                        <jc:if test="${enrollmentBean.getTrainings(activeUser).size() < 1}">
+                                                            <form class="dropdown-item" method="post"
+                                                                  action="../enroll">
+                                                                <input type="hidden" name="trainingId"
+                                                                       value="${training.id}">
+                                                                <button type="submit" class="btn btn-link btn-fw">Enroll
+                                                                </button>
+                                                            </form>
                                                         </jc:if>
-
-                                                        <form class="dropdown-item" method="post" action="../enroll">
-                                                            <input type="hidden" name="trainingId"
-                                                                   value="${training.id}">
-                                                            <button type="submit" class="btn btn-link btn-fw">Enroll
-                                                            </button>
-                                                        </form>
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
