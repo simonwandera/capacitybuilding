@@ -45,7 +45,7 @@ public class UserBean implements UserBeanI {
 
     }
 
-    public User getUser(int id) {
+    public User getUser(Long id) {
         User user = entityManager.createQuery("FROM User a WHERE a.id=:id" , User.class)
                 .setParameter("id", id)
                 .getResultList().get(0);

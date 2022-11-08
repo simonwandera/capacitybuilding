@@ -12,5 +12,5 @@ public interface TrainingBeanI {
     List<Training> getList();
     List<Training> generateList();
 
-    Training getTraining(int id);
+    Training getTraining(Long id);
 }

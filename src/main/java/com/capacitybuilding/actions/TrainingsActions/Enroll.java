@@ -42,14 +42,12 @@ public class Enroll extends HttpServlet {
         HttpSession session = req.getSession();
 
         String trainingId = req.getParameter("trainingId");
-
         User trainee = (User) session.getAttribute("activeUser");
-
 
         Enrollment enrollment = new Enrollment();
         enrollment.setStatus("PENDING");
         enrollment.setTrainee(trainee);
-        enrollment.setTraining(trainingBean.getTraining(Integer.parseInt(trainingId)));
+        enrollment.setTraining(trainingBean.getTraining(Long.parseLong(trainingId)));
 
         try {
             enrollmentBean.enroll(enrollment);
