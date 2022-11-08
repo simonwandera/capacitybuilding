@@ -56,10 +56,10 @@
 
         <jc:choose>
 
-        <jc:when test="${requestScope.filter == null || requestScope.filter.equals(\"all\")}">
+        <jc:when test="${filter == null || filter.equals(\"all\")}">
             <jc:set value="${trainingBean.list}" var="trainings"/>
         </jc:when>
-        <jc:when test="${requestScope.filter.equals(\"enrolled\") || requestScope.filter == null}">
+        <jc:when test="${filter.equals(\"enrolled\") || filter == null}">
             <jc:set value="${enrollmentBean.getTrainings(activeUser)}" var="trainings"/>
         </jc:when>
 
