@@ -130,8 +130,7 @@
 
                                             <h5 class="mb-0">Trainer</h5>
 
-                                            <jc:forEach items="${assignTrainerBean.getTrainers(training)}"
-                                                        var="trainer">
+                                            <jc:forEach items="${assignTrainerBean.getTrainers(training)}" var="trainer">
                                                 <h5>
                                                     <p class="mb-0 text-muted">${trainer.trainer.firstName } ${trainer.trainer.lastName}</p>
                                                 </h5>
@@ -150,7 +149,7 @@
 
                                                 <h6 class="dropdown-header">Options</h6>
                                                 <jc:choose>
-                                                    <jc:when test="${sessionScope.userType.equals(\"USER\")}">
+                                                    <jc:when test="${sessionScope.userType == Usertype.USER}">
 
                                                         <jc:if test="${!enrollmentBean.isEnrolled(training,activeUser)}">
                                                             <form class="dropdown-item" method="post"
@@ -163,12 +162,12 @@
                                                         </jc:if>
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                     </jc:when>
-                                                    <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
+                                                    <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
 
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                         <a class="dropdown-item" href="#">Feedback</a>
                                                     </jc:when>
-                                                    <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
+                                                    <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
                                                         <a class="dropdown-item" href="#">Enrollment requests</a>
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                         <a class="dropdown-item" href="#">Activate</a>

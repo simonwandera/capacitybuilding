@@ -36,7 +36,7 @@
                 <a class="nav-link" href="../training/addTraining.jsp">Add New</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/dropdowns.html">View Trainings</a>
+                <a class="nav-link" href="../training/displayTrainings.jsp">View Trainings</a>
               </li>
             </ul>
           </div>
