@@ -11,16 +11,19 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
 @Remote
-@Named("enrollmentController")
+@Named("enrollmentBean")
 public class EnrollmentBean implements EnrollmentBeanI {
 
     @PersistenceContext
     EntityManager entityManager;
+
+
 
     public Enrollment enroll(Enrollment enrollment) throws Exception {
         if (StringUtils.isBlank(enrollment.getTrainee().getId().toString()))
@@ -38,10 +41,11 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
     }
 
-    public List<User> getTrainees(Training training) {
+    public List<Enrollment> getTrainees(Training training) {
 
-        List<User> traineesEnrolled = new ArrayList<>();
-
+        List<Enrollment> traineesEnrolled = entityManager.createQuery("FROM Enrollment e WHERE e.training.id=:id", Enrollment.class)
+                .setParameter("id", training.getId())
+                .getResultList();
 
         return traineesEnrolled;
     }
@@ -52,5 +56,14 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         return trainingList;
     }
+
+    public Boolean isEnrolled(Training training, User trainee){
+        return entityManager.createQuery("FROM Enrollment e WHERE e.training.trainingId=:id AND e.trainee.id=:traineeId", Enrollment.class)
+                .setParameter("trainingId", training.getId())
+                .setParameter("traineeId", trainee.getId())
+                .getResultList()
+                .size() > 0;
+    }
+
 
 }

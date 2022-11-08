@@ -13,7 +13,7 @@ import java.util.List;
 
 @Stateless
 @Remote
-@Named("trainingController")
+@Named("trainingBean")
 public class TrainingBean implements TrainingBeanI {
 
     @PersistenceContext

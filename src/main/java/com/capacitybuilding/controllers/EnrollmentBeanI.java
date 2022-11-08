@@ -10,6 +10,7 @@ public interface EnrollmentBeanI {
     Enrollment enroll(Enrollment enrollment) throws Exception;
     void update(EnrollmentBean enrollmentController);
     void delete(EnrollmentBean enrollmentController);
-    List<User> getTrainees(Training training);
+    List<Enrollment> getTrainees(Training training);
     List<Training> getTrainings(User user);
+    Boolean isEnrolled(Training training, User trainee);
 }
