@@ -34,11 +34,14 @@ public class RegisterAction extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         User user = new User();
+
         try {
             BeanUtils.populate(user, req.getParameterMap());
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
+
+        user.setPassword((DigestUtils.md5Hex(user.getPassword())));
 
 
         try {
