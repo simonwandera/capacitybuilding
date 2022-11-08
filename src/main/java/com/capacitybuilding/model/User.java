@@ -26,7 +26,6 @@ public class User extends BaseEntity {
     @Transient
     private String confirmPassword;
     @Enumerated(EnumType.STRING)
-    @Column(name = "usertype")
     private Usertype userType;
 
     public String getUsername() {
@@ -83,5 +82,18 @@ public class User extends BaseEntity {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", userType=" + userType +
+                '}';
     }
 }
