@@ -1,7 +1,6 @@
 <%@ page isELIgnored="false" %>
 
 
-
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jf" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="jfn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -56,7 +55,7 @@
         <jc:when test="${requestScope.filter == null || requestScope.filter.equals(\"all\")}">
             <jc:set value="${trainingBean.list}" var="trainings"/>
         </jc:when>
-        <jc:when test="${requestScope.filter.equals(\"enrolled\") || !requestScope.filter == null}">
+        <jc:when test="${requestScope.filter.equals(\"enrolled\") || requestScope.filter == null}">
             <jc:set value="${enrollmentBean.getTrainings(activeUser)}" var="trainings"/>
         </jc:when>
 
@@ -69,6 +68,7 @@
                     <h3 class="mb-0"> My Trainings </h3>
                 </div>
                 <div>
+                    <h3>${requestScope.getParameter(\"filter\")} sp</h3>
                     <h5 class="text-muted">${trainings.size()} Courses</h5>
                 </div>
 
