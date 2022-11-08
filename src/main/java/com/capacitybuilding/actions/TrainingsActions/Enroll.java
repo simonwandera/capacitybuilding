@@ -4,6 +4,7 @@ import com.capacitybuilding.controllers.EnrollmentBeanI;
 import com.capacitybuilding.controllers.TrainingBeanI;
 import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.Enrollment;
+import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.EJB;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/enroll")
@@ -37,12 +39,16 @@ public class Enroll extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
+        HttpSession session = req.getSession();
+
         String trainingId = req.getParameter("trainingId");
-        String traineeId = req.getParameter("traineeId");
+
+        User trainee = (User) session.getAttribute("activeUser");
+
 
         Enrollment enrollment = new Enrollment();
         enrollment.setStatus("PENDING");
-//        enrollment.setTrainee(res.);
+        enrollment.setTrainee(trainee);
         enrollment.setTraining(trainingBean.getTraining(Integer.parseInt(trainingId)));
 
         try {
