@@ -102,7 +102,7 @@
                                         <h5>${jfn:toUpperCase(training.title)}</h5>
                                     </div>
 
-                                    <div class="mb-2 border-bottom">
+                                    <div class="mb-2 border-dark border-bottom">
                                         <p class="text-muted">
                                                 ${training.description.length() < 50 ? training.description : training.description.substring(0, 50).concat("...")}
                                         </p>
