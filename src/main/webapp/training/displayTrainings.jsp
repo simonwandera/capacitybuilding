@@ -1,5 +1,5 @@
 <%@ page isELIgnored="false" %>
-
+<%@ page import="com.capacitybuilding.model.*" %>
 
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jf" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -18,13 +18,13 @@
     <jc:set value="${sessionScope.activeUser}" var="activeUser"/>
 
     <jc:choose>
-    <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
+    <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
         <jsp:include page="../utils/adminSideNav.jsp"/>
     </jc:when>
-    <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
+    <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
         <jsp:include page="../utils/trainerSideNav.jsp"/>
     </jc:when>
-    <jc:when test="${sessionScope.userType.equals(\"USER\")}">
+    <jc:when test="${sessionScope.userType == Usertype.USER}">
         <jsp:include page="../utils/traineeSideNav.jsp"/>
     </jc:when>
     </jc:choose>

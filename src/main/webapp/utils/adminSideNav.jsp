@@ -36,16 +36,7 @@
                 <a class="nav-link" href="../training/addTraining.jsp">Add New</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/dropdowns.html">Upcoming</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/typography.html">Ongoing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/typography.html">Completed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/typography.html">Cancelled</a>
+                <a class="nav-link" href="pages/ui-features/dropdowns.html">View Trainings</a>
               </li>
             </ul>
           </div>
@@ -54,7 +45,7 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#trainers" aria-expanded="false" aria-controls="trainers">
           <i class=" mdi mdi-account-network menu-icon"></i>
-          <span class="menu-title">Trainers</span>
+          <span class="menu-title">Users</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="trainers">
@@ -63,33 +54,11 @@
               <a class="nav-link" href="pages/ui-features/buttons.html">Add New</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/dropdowns.html">Trainers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/typography.html">Blocked</a>
+              <a class="nav-link" href="pages/ui-features/dropdowns.html">View Users</a>
             </li>
           </ul>
         </div>
       </li>
-
-
-       <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#trainees" aria-expanded="false" aria-controls="trainees">
-            <i class="mdi mdi-account-multiple menu-icon"></i>
-            <span class="menu-title">Trainees</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="trainees">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/buttons.html">Active</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/dropdowns.html">Terminated</a>
-              </li>
-            </ul>
-          </div>
-       </li>
 
        <li class="nav-item">
          <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
