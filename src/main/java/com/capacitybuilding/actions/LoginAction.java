@@ -2,6 +2,7 @@ package com.capacitybuilding.actions;
 
 import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
+import com.capacitybuilding.model.Usertype;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.EJB;
@@ -49,14 +50,12 @@ public class LoginAction extends HttpServlet {
             session.setAttribute("userType", user.getUserType());
             session.setAttribute("activeUser", user);
 
-            System.out.println("\n\n******Logged in User\n\n");
-            System.out.println(user);
 
-            if (user.getUserType().equals("ADMIN"))
+            if (user.getUserType() == Usertype.ADMIN)
                 res.sendRedirect("./main/adminDashboard.jsp");
-            else if (user.getUserType().equals("USER"))
+            else if (user.getUserType() == Usertype.USER)
                 res.sendRedirect("./main/traineeDashboard.jsp");
-            else if (user.getUserType().equals("TRAINER"))
+            else if (user.getUserType() == Usertype.TRAINER)
                 res.sendRedirect("./main/trainerDashboard.jsp");
 
         } catch (Exception ex) {
