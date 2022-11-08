@@ -3,6 +3,7 @@ package com.capacitybuilding.actions.TrainingsActions;
 import com.capacitybuilding.controllers.TrainingBean;
 import com.capacitybuilding.controllers.TrainingBeanI;
 import com.capacitybuilding.model.Training;
+import com.capacitybuilding.model.TrainingStatus;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -74,8 +75,7 @@ public class UpdateTraining extends HttpServlet {
         training.setTitle(title);
         training.setDescription(description);
         training.setDuration(duration);
-
-        training.setStatus("UPCOMING");
+        training.setStatus(TrainingStatus.UPCOMING);
 
         trainingBean.update(training);
 

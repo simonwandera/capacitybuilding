@@ -85,7 +85,7 @@
                         <a class="dropdown-item" href="./displayTrainings.jsp?filter=enrolled">Enrolled</a>
                         <a class="dropdown-item" href="./displayTrainings.jsp?filter=completed">Completed</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">All</a>
+                        <a class="dropdown-item" href="./displayTrainings.jsp?filter=all">All</a>
                     </div>
                 </div>
 

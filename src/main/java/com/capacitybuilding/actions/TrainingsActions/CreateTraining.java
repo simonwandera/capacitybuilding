@@ -3,6 +3,7 @@ package com.capacitybuilding.actions.TrainingsActions;
 import com.capacitybuilding.controllers.TrainingBean;
 import com.capacitybuilding.controllers.TrainingBeanI;
 import com.capacitybuilding.model.Training;
+import com.capacitybuilding.model.TrainingStatus;
 import com.capacitybuilding.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -47,7 +48,7 @@ public class CreateTraining extends HttpServlet {
 
         Training training = new Training();
         training.setTitle(title);
-        training.setStatus("UPCOMING");
+        training.setStatus(TrainingStatus.UPCOMING);
         training.setTimeCreated(LocalDate.now());
         training.setDuration(duration);
         training.setStartDate(startDate);
@@ -60,6 +61,5 @@ public class CreateTraining extends HttpServlet {
             servletContext.setAttribute("trainingError" , ex.getMessage());
             res.sendRedirect("./training/addTraining.jsp");
         }
-
     }
  }

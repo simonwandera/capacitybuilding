@@ -25,7 +25,7 @@ public class TrainingBean implements TrainingBeanI {
             throw new Exception("Title is required");
         if(StringUtils.isBlank(training.getDescription()))
             throw new Exception("Description is required");
-        if(StringUtils.isBlank(training.getStatus()))
+        if(StringUtils.isBlank(training.getStatus().toString()))
             throw new Exception("Status is required");
         if (StringUtils.isBlank(Integer.toString(training.getDuration())))
             throw new Exception("Gender is required");

@@ -1,5 +1,8 @@
 package com.capacitybuilding.model;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -18,8 +21,8 @@ public class Training extends BaseEntity {
     @Column
     private LocalDate startDate;
     @Column
-    private String status;
-
+    @Enumerated(EnumType.STRING)
+    private TrainingStatus status;
 
     public String getTitle() {
         return title;
@@ -54,14 +57,13 @@ public class Training extends BaseEntity {
     }
 
 
-    public String getStatus() {
+    public TrainingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TrainingStatus status) {
         this.status = status;
     }
-
 
     @Override
     public String toString() {
