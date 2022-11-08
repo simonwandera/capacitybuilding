@@ -11,7 +11,6 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,27 +22,26 @@ public class EnrollmentBean implements EnrollmentBeanI {
     @PersistenceContext
     EntityManager entityManager;
 
-
-
     public Enrollment enroll(Enrollment enrollment) throws Exception {
         if (StringUtils.isBlank(enrollment.getTrainee().getId().toString()))
             throw new Exception("Invalid User to enroll");
-        if(StringUtils.isBlank(enrollment.getTraining().getId().toString()))
+        if (StringUtils.isBlank(enrollment.getTraining().getId().toString()))
             throw new Exception("Invalid training");
 
         return entityManager.merge(enrollment);
 
     }
-    public void update(Enrollment enrollment) throws Exception{
+
+    public void update(Enrollment enrollment) throws Exception {
 
         if (enrollment == null || enrollment.getId() == null)
             throw new Exception("Invalid enrollment details");
         entityManager.merge(enrollment);
 
 
-
     }
-    public void delete(Enrollment enrollment) throws Exception{
+
+    public void delete(Enrollment enrollment) throws Exception {
         if (enrollment == null)
             throw new Exception("Invalid enrollment details");
 
@@ -60,12 +58,25 @@ public class EnrollmentBean implements EnrollmentBeanI {
         return traineesEnrolled;
     }
 
-    public List<Enrollment> getTrainings(User trainee){
+    public List<Training> getTrainings(User trainee) {
 
-        List <Enrollment> trainingsEnrolled = entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId", Enrollment.class)
+        List<Training> training = new ArrayList<>();
+
+        entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId", Enrollment.class)
+                .setParameter("traineeId", trainee.getId())
+                .getResultList()
+                .forEach((enrollment) -> training.add(enrollment.getTraining())
+                );
+
+        return training;
+    }
+
+    public Boolean isEnrolled(Training training, User trainee) {
+        List<Enrollment> enrollmentList = entityManager.createQuery("FROM Enrollment e WHERE e.training.id=:trainingId AND e.trainee.id=:traineeId", Enrollment.class)
+                .setParameter("trainingId", training.getId())
                 .setParameter("traineeId", trainee.getId())
                 .getResultList();
-        return trainingsEnrolled;
+        return enrollmentList.size() > 0;
     }
 
 

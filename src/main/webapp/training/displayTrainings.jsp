@@ -1,10 +1,5 @@
 <%@ page isELIgnored="false" %>
-<%@ page import="com.capacitybuilding.model.*" %>
-<%@ page import="com.capacitybuilding.controllers.*" %>
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Date" %>
+
 
 
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -56,6 +51,17 @@
 
         <%@ include file="../utils/trainerTopNav.jsp" %>
 
+        <jc:choose>
+
+        <jc:when test="${requestScope.filter == null || requestScope.filter.equals(\"all\")}">
+            <jc:set value="${trainingBean.list}" var="trainings"/>
+        </jc:when>
+        <jc:when test="${requestScope.filter.equals(\"enrolled\") || !requestScope.filter == null}">
+            <jc:set value="${enrollmentBean.getTrainings(activeUser)}" var="trainings"/>
+        </jc:when>
+
+        </jc:choose>
+
 
         <div class="main-panel">
             <div class="content-wrapper pb-0">
@@ -63,7 +69,7 @@
                     <h3 class="mb-0"> My Trainings </h3>
                 </div>
                 <div>
-                    <h5 class="text-muted">${trainingBean.list.size()} Courses</h5>
+                    <h5 class="text-muted">${trainings.size()} Courses</h5>
                 </div>
 
                 <div class="dropdown py-2 d-flex justify-content-end">
@@ -72,24 +78,22 @@
                     </button>
                     <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuSizeButton1">
                         <h6 class="dropdown-header">Filter</h6>
-                        <a class="dropdown-item" href="#">Upcoming</a>
-                        <a class="dropdown-item" href="#">Ongoing</a>
-                        <a class="dropdown-item" href="#">Completed</a>
-                        <a class="dropdown-item" href="#">Cancelled</a>
+                        <a class="dropdown-item" href="./displayTrainings.jsp?filter=enrolled">Enrolled</a>
+                        <a class="dropdown-item" href="./displayTrainings.jsp?filter=completed">Completed</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">All</a>
                     </div>
                 </div>
 
-
                 <div class="row">
 
-                    <jc:forEach items="${trainingBean.list}" var="training">
+                    <jc:forEach items="${trainings}" var="training">
                         <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="card-title font-weight-medium">
-                                        <h5>${jfn:toUpperCase(training.title)}</h6>
+
+                                    <div class="card-title font-weight-medium text-center">
+                                        <h5>${jfn:toUpperCase(training.title)}</h5>
                                     </div>
 
                                     <div class="mb-2 border-bottom">
@@ -97,6 +101,7 @@
                                                 ${training.description.length() < 50 ? training.description : training.description.substring(0, 50).concat("...")}
                                         </p>
                                     </div>
+
 
                                     <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
                                         <div class="pt-2">
@@ -141,7 +146,7 @@
                                                 <jc:choose>
                                                     <jc:when test="${sessionScope.userType.equals(\"USER\")}">
 
-                                                        <jc:if test="${enrollmentBean.getTrainings(activeUser).size() < 1}">
+                                                        <jc:if test="${!enrollmentBean.isEnrolled(training,activeUser)}">
                                                             <form class="dropdown-item" method="post"
                                                                   action="../enroll">
                                                                 <input type="hidden" name="trainingId"
