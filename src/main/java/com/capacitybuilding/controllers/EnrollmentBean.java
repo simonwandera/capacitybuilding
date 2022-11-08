@@ -37,7 +37,11 @@ public class EnrollmentBean implements EnrollmentBeanI {
     public void update(EnrollmentBean enrollmentController){
 
     }
-    public void delete(EnrollmentBean enrollmentController){
+    public void delete(Enrollment enrollment) throws Exception{
+        if (enrollment == null){
+            throw new Exception("Invalid enrollment details");
+        }
+        entityManager.remove(entityManager.find(Enrollment.class, enrollment.getId()));
 
     }
 
@@ -52,11 +56,10 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
     public List<Enrollment> getTrainings(User trainee){
 
-        List <Enrollment> enrollmentList = entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId", Enrollment.class)
+        List <Enrollment> trainingsEnrolled = entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId", Enrollment.class)
                 .setParameter("traineeId", trainee.getId())
                 .getResultList();
-
-        return enrollmentList;
+        return trainingsEnrolled;
     }
 
     public Boolean isEnrolled(Training training, User trainee){

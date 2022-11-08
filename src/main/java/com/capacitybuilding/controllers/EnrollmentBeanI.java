@@ -9,7 +9,7 @@ import java.util.List;
 public interface EnrollmentBeanI {
     Enrollment enroll(Enrollment enrollment) throws Exception;
     void update(EnrollmentBean enrollmentController);
-    void delete(EnrollmentBean enrollmentController);
+    void delete(Enrollment enrollment) throws Exception;
     List<Enrollment> getTrainees(Training training);
     List<Enrollment> getTrainings(User trainee);
     Boolean isEnrolled(Training training, User trainee);
