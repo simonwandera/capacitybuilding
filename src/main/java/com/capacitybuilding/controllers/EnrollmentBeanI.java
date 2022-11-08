@@ -12,5 +12,6 @@ public interface EnrollmentBeanI {
     void delete(Enrollment enrollment) throws Exception;
     List<Enrollment> getTrainees(Training training);
     List<Training> getTrainings(User trainee);
+    List<Training> getCompletedTrainings(User trainee);
     Boolean isEnrolled(Training training, User trainee);
 }

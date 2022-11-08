@@ -3,6 +3,7 @@ package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.model.Enrollment;
 import com.capacitybuilding.model.Training;
+import com.capacitybuilding.model.TrainingStatus;
 import com.capacitybuilding.model.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -64,6 +65,19 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId", Enrollment.class)
                 .setParameter("traineeId", trainee.getId())
+                .getResultList()
+                .forEach((enrollment) -> training.add(enrollment.getTraining())
+                );
+
+        return training;
+    }
+
+    public List<Training> getCompletedTrainings(User trainee) {
+
+        List<Training> training = new ArrayList<>();
+        entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId AND e.training.status=:status", Enrollment.class)
+                .setParameter("traineeId", trainee.getId())
+                .setParameter("status", TrainingStatus.COMPLETED)
                 .getResultList()
                 .forEach((enrollment) -> training.add(enrollment.getTraining())
                 );

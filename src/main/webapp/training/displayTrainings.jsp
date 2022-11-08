@@ -63,7 +63,7 @@
             <jc:set value="${enrollmentBean.getTrainings(activeUser)}" var="trainings"/>
         </jc:when>
 
-        </jc:choose>
+        </jc:choose>x
 
 
         <div class="main-panel">
