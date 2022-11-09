@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Update user</h4>
                                 <p class="card-description">Fill the user details</p>
-                                <form class="forms-sample">
+                                <form class="forms-sample" action="../register" method="POST">
                                     <input type="hidden" name="id" value="${user.id}">
                                     <input type="hidden" name="password" value="${user.password}">
                                     <div class="form-group">
