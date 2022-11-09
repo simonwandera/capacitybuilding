@@ -87,7 +87,7 @@
                                         <td>${user.timeCreated}</td>
 
                                         <td>
-                                            <a href=\"./updateUser.jsp?id=" + user.id + "\"><i class=\"mdi mdi-border-color mdi-24px\"></i></a>
+                                            <a href="./updateUser.jsp?id=user.id" ><i class="mdi mdi-border-color mdi-24px"></i></a>
                                         </td>
 
                                         <td>
@@ -95,7 +95,7 @@
                                                 <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="mdi mdi-security"></i>
                                                 </button>
-                                                <div class="dropdown-menu" aria-labelledby="drop6">
+                                                <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
                                                     <h6 class="dropdown-header">Settings</h6>
                                                     <a class="dropdown-item" href="#">Make Admin</a>
                                                     <a class="dropdown-item" href="#">ResetPassword</a>
