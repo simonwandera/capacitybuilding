@@ -35,9 +35,6 @@ public class UserBean implements UserBeanI {
                 || !user.getPassword().equals(user.getConfirmPassword()))
             throw new Exception("Password & confirm password is required and must match");
 
-
-        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
-
         return entityManager.merge(user);
 
     }

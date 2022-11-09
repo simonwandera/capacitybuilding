@@ -2,7 +2,6 @@
 
 <%@ page import="com.capacitybuilding.model.*" %>
 
-
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -11,7 +10,7 @@
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
 
-<cht:Header title="Update Training | Capacity building"/>
+<cht:Header title="Update User | Capacity building"/>
 
 <body>
 <div class="container-scroller">
@@ -72,6 +71,7 @@
                                 <form class="forms-sample" action="../register" method="POST">
                                     <input type="hidden" name="id" value="${user.id}">
                                     <input type="hidden" name="password" value="${user.password}">
+                                    <input type="hidden" name="userType" value="${user.userType}">
                                     <div class="form-group">
                                         <label for="firstName">First Name</label>
                                         <input type="text" class="form-control" id="firstName" placeholder="Username" value="${user.firstname}" />

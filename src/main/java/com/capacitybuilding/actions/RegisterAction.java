@@ -36,11 +36,27 @@ public class RegisterAction extends HttpServlet {
 
         User user = new User();
 
-        try {
-            BeanUtils.populate(user, req.getParameterMap());
-            user.setUserType(Usertype.USER);
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
+        if(req.getParameter("id").isEmpty() || req.getParameter("id") == ""){
+
+            try {
+                BeanUtils.populate(user, req.getParameterMap());
+                user.setUserType(Usertype.USER);
+                user.setPassword(DigestUtils.md5Hex(req.getParameter("password")));
+                user.setConfirmPassword(DigestUtils.md5Hex(req.getParameter("confirmPassword")));
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
+
+        }else {
+            try {
+                BeanUtils.populate(user, req.getParameterMap());
+                user.setId(Long.valueOf(req.getParameter("id")));
+                user.setPassword(DigestUtils.md5Hex(req.getParameter("password")));
+                user.setConfirmPassword(DigestUtils.md5Hex(user.getPassword()));
+                user.setUserType(Usertype.valueOf(req.getParameter("userType")));
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
         }
 
         try {
