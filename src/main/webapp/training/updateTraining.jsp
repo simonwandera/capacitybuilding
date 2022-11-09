@@ -11,123 +11,134 @@
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
 
-<cht:Header title="Update Training | Capacity building" />
+<cht:Header title="Update Training | Capacity building"/>
 
-    <body>
-        <div class="container-scroller">
+<body>
+<div class="container-scroller">
 
-        <jc:choose>
-            <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
-                <jsp:include page="../utils/adminSideNav.jsp"/>
-            </jc:when>
-            <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
-                <jsp:include page="../utils/trainerSideNav.jsp"/>
-            </jc:when>
-            <jc:when test="${sessionScope.userType == Usertype.USER}">
-                <jsp:include page="../utils/traineeSideNav.jsp"/>
-            </jc:when>
-            </jc:choose>
+    <jc:choose>
+    <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
+        <jsp:include page="../utils/adminSideNav.jsp"/>
+    </jc:when>
+    <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
+        <jsp:include page="../utils/trainerSideNav.jsp"/>
+    </jc:when>
+    <jc:when test="${sessionScope.userType == Usertype.USER}">
+        <jsp:include page="../utils/traineeSideNav.jsp"/>
+    </jc:when>
+    </jc:choose>
 
-                <div class="container-fluid page-body-wrapper">
-                    <div id="theme-settings" class="settings-panel">
-                        <i class="settings-close mdi mdi-close"></i>
-                        <p class="settings-heading">SIDEBAR SKINS</p>
-                        <div class="sidebar-bg-options selected" id="sidebar-default-theme">
-                            <div class="img-ss rounded-circle bg-light border mr-3"></div> Default
-                        </div>
-                        <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                            <div class="img-ss rounded-circle bg-dark border mr-3"></div> Dark
-                        </div>
-                        <p class="settings-heading mt-2">HEADER SKINS</p>
-                        <div class="color-tiles mx-0 px-4">
-                            <div class="tiles light"></div>
-                            <div class="tiles dark"></div>
-                        </div>
-                    </div>
+    <div class="container-fluid page-body-wrapper">
+        <div id="theme-settings" class="settings-panel">
+            <i class="settings-close mdi mdi-close"></i>
+            <p class="settings-heading">SIDEBAR SKINS</p>
+            <div class="sidebar-bg-options selected" id="sidebar-default-theme">
+                <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                Default
+            </div>
+            <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                Dark
+            </div>
+            <p class="settings-heading mt-2">HEADER SKINS</p>
+            <div class="color-tiles mx-0 px-4">
+                <div class="tiles light"></div>
+                <div class="tiles dark"></div>
+            </div>
+        </div>
 
-                    <%@ include file="../utils/trainerTopNav.jsp" %>
+            <% String trainingId = request.getParameter("id");
+                pageContext.setAttribute("trainingId", trainingId);
+            %>
 
-<%--                    <jc:set value="${trainingBean.getTraining()}" var="trainings"/>--%>
+        <%@ include file="../utils/trainerTopNav.jsp" %>
 
-                    <h1>${requestScope.test}</h1>
-                    <h1>fh</h1>
+        <jc:set value="${trainingBean.getTraining(Long.valueOf(trainingId))}" var="training"/>
+
+        <h1>${requestScope.test}</h1>
+        <h1>fh</h1>
 
 
-                        <div class="main-panel">
-                            <div class="content-wrapper pb-0">
-                                <div class="page-header flex-wrap">
-                                    <h3 class="mb-0"> Update Training
-                                    </h3>
+        <div class="main-panel">
+            <div class="content-wrapper pb-0">
+                <div class="page-header flex-wrap">
+                    <h3 class="mb-0"> Update Training
+                    </h3>
 
+                </div>
+
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <h4 class="card-title">Update training*</h4>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-12 grid-margin">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div>
-                                                    <h4 class="card-title">Update training*</h4>
+                                <form class="form-sample" action="../updateTraining" method="POST">
+                                    <p class="card-description">Training info</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-form-label">Title</label>
+                                                <div class="col-sm-9">
+                                                    <input type="hidden" name="id" value="${training.id}">
+                                                    <input type="text" name="title" class="form-control"
+                                                           value="${training.title}"/>
                                                 </div>
-                                                <form class="form-sample" action="../updateTraining" method="POST">
-                                                    <p class="card-description">Training info</p>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Title</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="text" name="title" class="form-control" value="${training.title}" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 col-lg-6 col-form-label">Duration(Weeks)</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="number" name="duration" class="form-control" value="${training.duration}"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Start Date</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="date" name="startDate" class="form-control" value="${training.startDate}"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label class="col-sm-3 col-form-label">Description</label>
-                                                                <div class="col-sm-9">
-                                                                    <textarea class="form-control" name="description">${training.description}</textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="my-3 py-2 text-center">
-                                                         <%
-                                                              String trainingError = (String) application.getAttribute("trainingError");
-                                                              if (trainingError != null && !trainingError.equals("")) {
-                                                            %>
-                                                              <span class="text-danger"> <%= application.getAttribute("trainingError") %> </span>
-                                                            <% } %>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary mr-2"> Update </button>
-
-                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-lg-6 col-form-label">Duration(Weeks)</label>
+                                                <div class="col-sm-9">
+                                                    <input type="number" name="duration" class="form-control"
+                                                           value="${training.duration}"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-form-label">Start Date</label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" name="startDate" class="form-control"
+                                                           value="${training.startDate}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-form-label">Description</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control"
+                                                              name="description">${training.description}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="my-3 py-2 text-center">
+                                        <%
+                                            String trainingError = (String) application.getAttribute("trainingError");
+                                            if (trainingError != null && !trainingError.equals("")) {
+                                        %>
+                                        <span class="text-danger"> <%= application.getAttribute("trainingError") %> </span>
+                                        <% } %>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2"> Update</button>
+
+                                </form>
                             </div>
                         </div>
-                          <cft:Footer />
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+<cft:Footer/>
