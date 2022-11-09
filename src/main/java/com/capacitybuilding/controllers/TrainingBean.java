@@ -15,7 +15,6 @@ import java.util.List;
 @Remote
 @Named("trainingBean")
 public class TrainingBean implements TrainingBeanI {
-
     @PersistenceContext
     EntityManager entityManager;
 

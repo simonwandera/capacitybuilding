@@ -87,7 +87,7 @@
                                         <td>${user.timeCreated}</td>
 
                                         <td>
-                                            <a href="./updateUser.jsp?id=user.id" ><i class="mdi mdi-border-color mdi-24px"></i></a>
+                                            <a href="./updateUser.jsp?id=${user.id}" ><i class="mdi mdi-border-color mdi-24px"></i></a>
                                         </td>
 
                                         <td>

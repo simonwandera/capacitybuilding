@@ -50,8 +50,6 @@ public class RegisterAction extends HttpServlet {
             servletContext.setAttribute("registerError" , ex.getMessage());
             res.sendRedirect("./auth/register.jsp");
         }
-
-
     }
 
 }

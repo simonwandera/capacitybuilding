@@ -2,7 +2,6 @@
 
 <%@ page import="com.capacitybuilding.model.*" %>
 
-<%@ page import="java.sql.*" %>
 
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -11,28 +10,23 @@
 <%@ taglib prefix="cht" uri="../WEB-INF/tlds/header.tld" %>
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
-<jsp:useBean id="trainingController" class="com.capacitybuilding.controllers.TrainingBean" />
 
 <cht:Header title="Update Training | Capacity building" />
 
     <body>
         <div class="container-scroller">
-        <%
-            Training training = trainingController.getTraining(Integer.parseInt(request.getParameter("id")), (Connection) application.getAttribute("dbConnection"));
-            pageContext.setAttribute("training", training);
-        %>
 
         <jc:choose>
-            <jc:when test="${sessionScope.userType.equals(\"ADMIN\")}">
-                <jsp:include page="../utils/adminSideNav.jsp" />
+            <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
+                <jsp:include page="../utils/adminSideNav.jsp"/>
             </jc:when>
-            <jc:when test="${sessionScope.userType.equals(\"TRAINER\")}">
-                <jsp:include page="../utils/trainerSideNav.jsp" />
-             </jc:when>
-            <jc:when test="${sessionScope.userType.equals(\"USER\")}">
-                <jsp:include page="../utils/traineeSideNav.jsp" />
+            <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
+                <jsp:include page="../utils/trainerSideNav.jsp"/>
             </jc:when>
-        </jc:choose>
+            <jc:when test="${sessionScope.userType == Usertype.USER}">
+                <jsp:include page="../utils/traineeSideNav.jsp"/>
+            </jc:when>
+            </jc:choose>
 
                 <div class="container-fluid page-body-wrapper">
                     <div id="theme-settings" class="settings-panel">
@@ -52,6 +46,12 @@
                     </div>
 
                     <%@ include file="../utils/trainerTopNav.jsp" %>
+
+<%--                    <jc:set value="${trainingBean.getTraining()}" var="trainings"/>--%>
+
+                    <h1>${requestScope.test}</h1>
+                    <h1>fh</h1>
+
 
                         <div class="main-panel">
                             <div class="content-wrapper pb-0">
