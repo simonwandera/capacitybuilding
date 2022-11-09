@@ -57,13 +57,9 @@ public class UserBean implements UserBeanI {
 
 
     public List<User> list() {
-       return new ArrayList<>();
-    }
-
-    public List<User> generateList(ResultSet resultSet) {
-
-
-        return new ArrayList<>();
+        List<User> users = entityManager.createQuery("FROM User a " , User.class)
+                .getResultList();
+        return users;
     }
 
     @Override

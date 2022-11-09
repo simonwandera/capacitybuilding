@@ -63,10 +63,11 @@
                                     <thead>
                                     <tr>
                                         <th>User</th>
-                                        <th>First name</th>
-                                        <th>Progress</th>
-                                        <th>Amount</th>
-                                        <th>Deadline</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Gender</th>
+                                        <th>Usertype</th>
+                                        <th>Date Created</th>
                                     </tr>
                                     </thead>
                                     <tbody>

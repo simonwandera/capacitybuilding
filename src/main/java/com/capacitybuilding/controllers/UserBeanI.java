@@ -11,7 +11,6 @@ public interface UserBeanI {
     void update(User user);
     void delete(User user);
     List<User> list();
-    List<User> generateList(ResultSet resultSet);
     User getUser(Long id);
     User login(User user) throws Exception;
 }
