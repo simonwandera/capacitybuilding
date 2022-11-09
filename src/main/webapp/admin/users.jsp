@@ -86,6 +86,27 @@
                                         <td>${user.userType}</td>
                                         <td>${user.timeCreated}</td>
 
+                                        <td>
+                                            <a href=\"./updateUser.jsp?id=" + user.id + "\"><i class=\"mdi mdi-border-color mdi-24px\"></i></a>
+                                        </td>
+
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="mdi mdi-security"></i>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="drop6">
+                                                    <h6 class="dropdown-header">Settings</h6>
+                                                    <a class="dropdown-item" href="#">Make Admin</a>
+                                                    <a class="dropdown-item" href="#">ResetPassword</a>
+                                                    <a class="dropdown-item" href="#">Make Trainer</a>
+                                                    <a class="dropdown-item" href="#">Make User</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item text-danger" href="#">Deactivate</a>
+                                                </div>
+                                            </div>
+                                        </td>
+
                                     </tr>
                                     </jc:forEach>
 
