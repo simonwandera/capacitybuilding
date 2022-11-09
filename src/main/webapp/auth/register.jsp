@@ -81,6 +81,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 col-form-label">Gender</label>
                                                 <select class="form-control" name="gender" id="exampleSelectGender">
+                                                    <option>--Select Gender--</option>
                                                     <option>Male</option>
                                                     <option>Female</option>
                                                     <option>Other</option>
