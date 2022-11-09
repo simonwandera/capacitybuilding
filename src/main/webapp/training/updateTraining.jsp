@@ -55,10 +55,6 @@
 
         <jc:set value="${trainingBean.getTraining(Long.valueOf(trainingId))}" var="training"/>
 
-        <h1>${requestScope.test}</h1>
-        <h1>fh</h1>
-
-
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
@@ -74,7 +70,7 @@
                                 <div>
                                     <h4 class="card-title">Update training*</h4>
                                 </div>
-                                <form class="form-sample" action="../updateTraining" method="POST">
+                                <form class="form-sample" action="../addTraining" method="POST">
                                     <p class="card-description">Training info</p>
                                     <div class="row">
                                         <div class="col-md-6">
