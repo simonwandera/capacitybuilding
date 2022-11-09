@@ -170,6 +170,7 @@
                                                     <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
                                                         <a class="dropdown-item" href="#">Enrollment requests</a>
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
+                                                        <a class="dropdown-item" href="#">View Assessments</a>
                                                         <a class="dropdown-item" href="#">Activate</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" href="./updateTraining.jsp?id=${training.id}">Edit</a>
