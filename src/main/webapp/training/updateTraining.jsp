@@ -78,6 +78,7 @@
                                                 <label class="col-sm-3 col-form-label">Title</label>
                                                 <div class="col-sm-9">
                                                     <input type="hidden" name="id" value="${training.id}">
+                                                    <input type="hidden" name="status" value="${training.status}">
                                                     <input type="text" name="title" class="form-control"
                                                            value="${training.title}"/>
                                                 </div>
