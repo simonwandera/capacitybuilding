@@ -55,9 +55,8 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Striped Table</h4>
-                            <p class="card-description"> Add class <code>.table-striped</code>
-                            </p>
+                            <h4 class="card-title">Users</h4>
+                            <p class="card-description"> User details </p>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
@@ -68,16 +67,18 @@
                                         <th>Gender</th>
                                         <th>Usertype</th>
                                         <th>Date Created</th>
+                                        <th>Edit</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${userBean.list}" var="user">
+                                    <jc:forEach items="${userBean.list()}" var="user">
                                     <tr>
                                         <td class="py-1">
                                             <img src="https://shorturl.at/qrCQ9" alt="image"/>
                                         </td>
-                                        <td>${user.firstNmae} ${user.lastName}</td>
+                                        <td>${user.firstName} ${user.lastName}</td>
                                         <td>
                                            ${user.username}
                                         </td>
