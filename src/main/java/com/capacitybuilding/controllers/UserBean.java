@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Stateless
 @Remote
+@Named("userBean")
 public class UserBean implements UserBeanI {
 
     @PersistenceContext

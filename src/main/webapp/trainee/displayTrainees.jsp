@@ -1,8 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.model.*" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
