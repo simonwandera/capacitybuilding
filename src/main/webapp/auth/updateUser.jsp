@@ -74,7 +74,7 @@
                                     <input type="hidden" name="userType" value="${user.userType}">
                                     <div class="form-group">
                                         <label for="firstName">First Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Username" value="${user.firstname}" />
+                                        <input type="text" class="form-control" id="firstName" placeholder="Username" value="${user.firstName}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="lastName">Last Name</label>
