@@ -1,12 +1,6 @@
 package com.capacitybuilding.model;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")

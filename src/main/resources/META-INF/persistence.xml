@@ -4,10 +4,13 @@
              version="2.0">
     <persistence-unit name="capacityBuilding" transaction-type="JTA">
         <jta-data-source>java:jboss/datasources/CapacityBuilding</jta-data-source>
+
         <properties>
 
             <!-- Database connection settings -->
             <!--<property name="hibernate.dialect" value="com.fms.util.hibernate.CustomMySQLDialect" />-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+
             <property name="hibernate.integration.envers.enabled" value="false"/>
             <property name="hibernate.archive.autodetection" value="class, hbm" />
             <property name="hibernate.connection.max_allowed_packet" value="1073741824" />

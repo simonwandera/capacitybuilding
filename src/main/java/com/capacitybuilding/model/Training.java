@@ -1,11 +1,7 @@
 package com.capacitybuilding.model;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
