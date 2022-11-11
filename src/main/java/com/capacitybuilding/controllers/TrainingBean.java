@@ -61,9 +61,4 @@ public class TrainingBean implements TrainingBeanI {
         return training;
     }
 
-    public List<Training> generateList() {
-
-      return new ArrayList<>();
-    }
-
 }

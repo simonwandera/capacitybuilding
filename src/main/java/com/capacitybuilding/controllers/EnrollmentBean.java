@@ -12,6 +12,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,12 +64,10 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         List<Training> training = new ArrayList<>();
 
-        entityManager.createQuery("FROM Enrollment e WHERE  e.trainee.id=:traineeId", Enrollment.class)
-                .setParameter("traineeId", trainee.getId())
-                .getResultList()
-                .forEach((enrollment) -> training.add(enrollment.getTraining())
-                );
-
+        TypedQuery<Enrollment> query = entityManager.createQuery("SELECT e FROM Enrollment e INNER JOIN e.trainee WHERE e.trainee.id=:traineeId", Enrollment.class)
+                .setParameter("traineeId", trainee.getId());
+        List<Enrollment> resultList = query.getResultList();
+        resultList.forEach((enrollment) -> training.add(enrollment.getTraining()));
         return training;
     }
 
