@@ -10,7 +10,5 @@ public interface TrainingBeanI {
     void update(Training training);
     void delete(TrainingBean trainingController);
     List<Training> getList();
-    List<Training> generateList();
-
     Training getTraining(Long id);
 }

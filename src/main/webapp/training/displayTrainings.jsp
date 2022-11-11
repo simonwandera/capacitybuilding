@@ -145,12 +145,11 @@
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Options
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="options">
 
+                                            <div class="dropdown-menu" aria-labelledby="options">
                                                 <h6 class="dropdown-header">Options</h6>
                                                 <jc:choose>
                                                     <jc:when test="${sessionScope.userType == Usertype.USER}">
-
                                                         <jc:if test="${!enrollmentBean.isEnrolled(training,activeUser)}">
                                                             <form class="dropdown-item" method="post"
                                                                   action="../enroll">
@@ -163,11 +162,13 @@
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
-
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                         <a class="dropdown-item" href="#">Feedback</a>
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
+                                                        <jc:if test="${assignTrainerBean.getTrainers(training).size() == 0}">
+                                                            <a class="dropdown-item" href="#">Assign trainer</a>
+                                                        </jc:if>
                                                         <a class="dropdown-item" href="#">Enrollment requests</a>
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                         <a class="dropdown-item" href="#">View Assessments</a>
@@ -176,9 +177,6 @@
                                                         <a class="dropdown-item" href="./updateTraining.jsp?id=${training.id}">Edit</a>
                                                     </jc:when>
                                                 </jc:choose>
-
-
-
                                             </div>
                                         </div>
 
