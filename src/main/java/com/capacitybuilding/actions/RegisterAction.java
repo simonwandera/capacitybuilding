@@ -36,7 +36,7 @@ public class RegisterAction extends HttpServlet {
 
         User user = new User();
 
-        if(req.getParameter("id").isEmpty() || req.getParameter("id") == ""){
+        if(req.getParameter("id") == null || req.getParameter("id").isEmpty() || req.getParameter("id") == ""){
 
             try {
                 BeanUtils.populate(user, req.getParameterMap());
