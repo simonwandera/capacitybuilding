@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public interface AssignTrainerBeanI {
-    void add(AssignTrainer assignTrainer);
+    AssignTrainer assign(AssignTrainer assignTrainer) throws Exception;
     void update(AssignTrainer assignTrainer);
     void delete(AssignTrainer assignTrainer);
     List<AssignTrainer> list();

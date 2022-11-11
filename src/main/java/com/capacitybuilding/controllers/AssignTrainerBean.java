@@ -3,6 +3,7 @@ package com.capacitybuilding.controllers;
 import com.capacitybuilding.model.AssignTrainer;
 import com.capacitybuilding.model.Training;
 import com.capacitybuilding.model.User;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -22,7 +23,13 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void add(AssignTrainer assignTrainer){
+    public AssignTrainer assign(AssignTrainer assignTrainer) throws Exception {
+        if (StringUtils.isBlank(assignTrainer.getTrainer().getId().toString()))
+            throw new Exception("The trainer you tried assigning is not recognized");
+        if (StringUtils.isBlank(assignTrainer.getTraining().getId().toString()))
+            throw new Exception("The training you entered for assignment is invalid");
+
+        return entityManager.merge(assignTrainer);
 
     }
     public void update(AssignTrainer assignTrainer){
