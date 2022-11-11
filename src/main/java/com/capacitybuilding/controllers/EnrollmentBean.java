@@ -64,10 +64,10 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         List<Training> training = new ArrayList<>();
 
-        TypedQuery<Enrollment> query = entityManager.createQuery("FROM Enrollment e INNER JOIN e.trainee ", Enrollment.class);
+        TypedQuery<Enrollment> query = entityManager.createQuery("SELECT e FROM Enrollment e INNER JOIN e.trainee WHERE trainee.id=:traineeId", Enrollment.class)
+                .setParameter("traineeId", trainee.getId());
         List<Enrollment> resultList = query.getResultList();
         resultList.forEach((enrollment) -> training.add(enrollment.getTraining()));
-
         return training;
     }
 
