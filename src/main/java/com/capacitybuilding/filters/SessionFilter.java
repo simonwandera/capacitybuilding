@@ -41,6 +41,7 @@ public class SessionFilter implements Filter {
                 || reqPath.contains("/trainer")
                 || reqPath.contains("/training")
                 || reqPath.contains("/admin")
+                || reqPath.contains("/enrollment")
                 || reqPath.contains("/trainee")) && session.isNew()){
             httpRes.sendRedirect("../login");
             return;
