@@ -58,6 +58,9 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         List<Enrollment> enrollments = entityManager.createQuery("FROM Enrollment e ", Enrollment.class)
                 .getResultList();
+
+        System.out.println("\n\n");
+        System.out.println(enrollments.size());
         return enrollments;
     }
 
