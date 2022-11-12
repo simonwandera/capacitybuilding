@@ -43,6 +43,21 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#enrollments" aria-expanded="false" aria-controls="enrollments">
+          <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+          <span class="menu-title">Enrollments</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="enrollments">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../training/addTraining.jsp">View enrollments</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#trainers" aria-expanded="false" aria-controls="trainers">
           <i class=" mdi mdi-account-network menu-icon"></i>
           <span class="menu-title">Users</span>
