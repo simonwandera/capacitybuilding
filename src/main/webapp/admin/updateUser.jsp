@@ -93,7 +93,7 @@
 
                                     <jc:choose>
                                         <jc:when test="${applicationScope.updateError != null || applicationScope.updateError != \"\"}">
-                                            <span class="text-danger">${applicationScope.updateError}</span>
+                                            <span class="text-danger">${applicationScope.updateError}</span><br>
                                         </jc:when>
                                     </jc:choose>
 
