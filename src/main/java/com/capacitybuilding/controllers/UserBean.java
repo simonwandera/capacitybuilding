@@ -1,7 +1,6 @@
 package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.model.User;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
@@ -9,8 +8,6 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -39,7 +36,7 @@ public class UserBean implements UserBeanI {
 
     }
 
-    public void update(User user) throws Exception {
+    public User update(User user) throws Exception {
 
         User findUser = entityManager.find(User.class, user.getId());
         user.setPassword(findUser.getPassword());
@@ -53,6 +50,8 @@ public class UserBean implements UserBeanI {
             throw new Exception("Email is required");
         if (StringUtils.isBlank(user.getGender()) || user.getGender().equals("--Select gender--"))
             throw new Exception("Gender is required");
+
+        return entityManager.merge(user);
 
     }
 

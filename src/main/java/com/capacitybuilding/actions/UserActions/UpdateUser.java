@@ -41,7 +41,7 @@ public class UpdateUser extends HttpServlet {
 
         try {
             BeanUtils.populate(user, req.getParameterMap());
-            user.setId(Long.valueOf(req.getParameter("id")));
+            user.setId(Long.valueOf(usrId));
             user.setUserType(Usertype.valueOf(req.getParameter("userType")));
         }catch (Exception ex){
             servletContext.setAttribute("updateError" , ex.getMessage());
