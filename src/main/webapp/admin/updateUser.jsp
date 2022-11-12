@@ -84,10 +84,33 @@
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control form-control-lg" name="gender" id="gender">
-                                            <option>--Select gender--</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                            <option>Other</option>
+                                            <jc:choose>
+                                                <jc:when test="${user.gender.equalsIgnoreCase(\"Male\")}">
+                                                    <option>--Select gender--</option>
+                                                    <option selected>Male</option>
+                                                    <option>Female</option>
+                                                    <option>Other</option>
+                                                </jc:when>
+                                                <jc:when test="${user.gender.equalsIgnoreCase(\"Female\")}">
+                                                    <option>--Select gender--</option>
+                                                    <option>Male</option>
+                                                    <option selected>Female</option>
+                                                    <option>Other</option>
+                                                </jc:when>
+                                                <jc:when test="${user.gender.equalsIgnoreCase(\"Other\")}">
+                                                    <option>--Select gender--</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                    <option selected>Other</option>
+                                                </jc:when>
+                                                <jc:otherwise>
+                                                    <option>--Select gender--</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                    <option>Other</option>
+                                                </jc:otherwise>
+                                            </jc:choose>
+
                                         </select>
                                     </div>
 
