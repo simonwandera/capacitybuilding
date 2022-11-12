@@ -62,7 +62,6 @@
                                     <thead>
                                     <tr>
                                         <th>Trainee Name</th>
-                                        <th>Trainee Email</th>
                                         <th>Title</th>
                                         <th>Duration</th>
                                         <th>Start Date</th>
@@ -77,7 +76,6 @@
                                         <tr>
 
                                             <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
-                                            <td>${enrollment.trainee.username}</td>
                                             <td>${enrollment.training.title}</td>
                                             <td>${enrollment.training.duration}</td>
                                             <td>${enrollment.training.startDate}</td>
