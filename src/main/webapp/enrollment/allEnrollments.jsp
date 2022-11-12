@@ -72,8 +72,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    <jc:forEach items="${EnrollmentsBean.Enrollments}" var="enrollment">
+                                    S
+                                    <jc:forEach items="${enrollmentBean.getEnrollments()}" var="enrollment">
                                         <tr>
 
                                             <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
