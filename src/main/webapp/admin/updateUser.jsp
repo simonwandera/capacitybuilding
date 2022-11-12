@@ -71,15 +71,15 @@
                                     <input type="hidden" name="id" value="${user.id}">
                                     <div class="form-group">
                                         <label for="firstName">First Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Username" value="${user.firstName}" />
+                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Username" value="${user.firstName}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="lastName">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="Last name" value="${user.lastName}" />
+                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" value="${user.lastName}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="username">Email</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Email" value="${user.username}" />
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Email" value="${user.username}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
