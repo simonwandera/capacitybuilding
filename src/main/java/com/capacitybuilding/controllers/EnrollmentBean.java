@@ -25,10 +25,15 @@ public class EnrollmentBean implements EnrollmentBeanI {
     EntityManager entityManager;
 
     public Enrollment enroll(Enrollment enrollment) throws Exception {
+
+        if(this.isEnrolled(enrollment.getTraining(), enrollment.getTrainee()))
+            throw new Exception("Enrollment exists");
+
         if (StringUtils.isBlank(enrollment.getTrainee().getId().toString()))
             throw new Exception("Invalid User to enroll");
         if (StringUtils.isBlank(enrollment.getTraining().getId().toString()))
             throw new Exception("Invalid training");
+
 
         return entityManager.merge(enrollment);
 
@@ -91,6 +96,5 @@ public class EnrollmentBean implements EnrollmentBeanI {
                 .getResultList();
         return enrollmentList.size() > 0;
     }
-
 
 }
