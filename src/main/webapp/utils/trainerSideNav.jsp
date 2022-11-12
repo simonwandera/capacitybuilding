@@ -11,8 +11,8 @@
             <span class="login-status online"></span>
           </div>
           <div class="nav-profile-text d-flex flex-column pr-3">
-            <span class="font-weight-medium mb-2">User</span>
-            <span class="font-weight-normal">Admin</span>
+            <span class="font-weight-medium mb-2">Usertype</span>
+            <span class="font-weight-normal">Trainer</span>
           </div>
           <span class="badge badge-danger text-white ml-3 rounded">3</span>
         </a>

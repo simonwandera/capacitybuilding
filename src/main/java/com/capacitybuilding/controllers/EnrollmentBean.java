@@ -34,7 +34,6 @@ public class EnrollmentBean implements EnrollmentBeanI {
         if (StringUtils.isBlank(enrollment.getTraining().getId().toString()))
             throw new Exception("Invalid training");
 
-
         return entityManager.merge(enrollment);
 
     }
