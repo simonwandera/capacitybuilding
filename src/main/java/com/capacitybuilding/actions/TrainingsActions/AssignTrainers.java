@@ -36,8 +36,6 @@ public class AssignTrainers extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-        HttpSession session = req.getSession();
-
         String trainingId = req.getParameter("trainingId");
         String trainerId = req.getParameter("trainerId");
 

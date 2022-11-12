@@ -58,7 +58,7 @@ public class UserBean implements UserBeanI {
 
 
     public List<User> list() {
-        List<User> users = entityManager.createQuery("FROM User a " , User.class)
+        List<User> users = entityManager.createQuery("FROM User a ORDER BY a.userType" , User.class)
                 .getResultList();
         return users;
     }
