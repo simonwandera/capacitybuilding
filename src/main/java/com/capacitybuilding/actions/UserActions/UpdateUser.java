@@ -31,10 +31,12 @@ public class UpdateUser extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         User user = new User();
+        String usrId = req.getParameter("id");
 
-        if(req.getParameter("gender").equals("--Select Gender--")) {
+        if(req.getParameter("gender").equals("--Select gender--")) {
             servletContext.setAttribute("updateError", "Select a valid gender");
-            res.sendRedirect("./admin/updateUser.jsp");
+            res.sendRedirect("./admin/updateUser.jsp?id="+usrId);
+            return;
         }
 
         try {
@@ -43,7 +45,7 @@ public class UpdateUser extends HttpServlet {
             user.setUserType(Usertype.valueOf(req.getParameter("userType")));
         }catch (Exception ex){
             servletContext.setAttribute("updateError" , ex.getMessage());
-            res.sendRedirect("./admin/updateUser.jsp");
+            res.sendRedirect("./admin/updateUser.jsp?id="+usrId);
         }
 
         try {
@@ -51,7 +53,7 @@ public class UpdateUser extends HttpServlet {
             res.sendRedirect("./admin/users.jsp");
         } catch (Exception ex) {
             servletContext.setAttribute("updateError" , ex.getMessage());
-            res.sendRedirect("./admin/updateUsers.jsp");
+            res.sendRedirect("./admin/updateUser.jsp?id="+usrId);
         }
     }
 }

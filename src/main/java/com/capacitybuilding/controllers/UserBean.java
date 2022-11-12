@@ -51,7 +51,7 @@ public class UserBean implements UserBeanI {
             throw new Exception("Last name is required");
         if (StringUtils.isBlank(user.getUsername()))
             throw new Exception("Email is required");
-        if (StringUtils.isBlank(user.getGender()) || user.getGender().equals("--Select Gender--"))
+        if (StringUtils.isBlank(user.getGender()) || user.getGender().equals("--Select gender--"))
             throw new Exception("Gender is required");
 
     }

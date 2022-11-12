@@ -83,13 +83,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select class="form-control form-control-lg" id="gender">
+                                        <select class="form-control form-control-lg" name="gender" id="gender">
                                             <option>--Select gender--</option>
                                             <option>Male</option>
                                             <option>Female</option>
                                             <option>Other</option>
                                         </select>
                                     </div>
+
+                                    <jc:choose>
+                                        <jc:when test="${applicationScope.updateError != null || applicationScope.updateError != \"\"}">
+                                            <span class="text-danger">${applicationScope.updateError}</span>
+                                        </jc:when>
+                                    </jc:choose>
 
                                     <button type="submit" class="btn btn-primary mr-2"> Submit </button>
                                     <button class="btn btn-light">Cancel</button>
