@@ -72,7 +72,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    S
+
                                     <jc:forEach items="${enrollmentBean.getEnrollments()}" var="enrollment">
                                         <tr>
 
