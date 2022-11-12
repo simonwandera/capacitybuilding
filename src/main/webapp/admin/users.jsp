@@ -1,5 +1,5 @@
 <%@ page isELIgnored="false" %>
-<%@ page import="com.capacitybuilding.model.*" %>
+<%@ page import="com.capacitybuilding.model.Usertype" %>
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
