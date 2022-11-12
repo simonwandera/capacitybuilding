@@ -54,7 +54,7 @@
               <a class="nav-link" href="../enrollment/enrollmentByTrainees.jsp">Grouped by Trainees</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../enrollment/enrollmentByTraining.jsp">Grouped by trainings</a>
+              <a class="nav-link" href="../enrollment/enrollmentByTraining.jsp">Grouped by Trainings</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../enrollment/allEnrollments.jsp">All enrollments</a>

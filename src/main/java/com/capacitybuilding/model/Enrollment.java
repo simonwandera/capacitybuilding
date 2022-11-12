@@ -17,7 +17,7 @@ public class Enrollment extends BaseEntity {
     private Training training;
 
     @Column(name = "status")
-    private String Status;
+    private String status;
 
     public User getTrainee() {
         return trainee;
@@ -36,10 +36,10 @@ public class Enrollment extends BaseEntity {
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        this.Status = status;
+        this.status = status;
     }
 }

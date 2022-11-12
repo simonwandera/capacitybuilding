@@ -54,13 +54,18 @@ public class EnrollmentBean implements EnrollmentBeanI {
         entityManager.remove(entityManager.find(Enrollment.class, enrollment.getId()));
 
     }
+    public List<Enrollment> getEnrollments() {
+
+        List<Enrollment> enrollments = entityManager.createQuery("FROM Enrollment e ", Enrollment.class)
+                .getResultList();
+        return enrollments;
+    }
 
     public List<Enrollment> getTrainees(Training training) {
 
         List<Enrollment> traineesEnrolled = entityManager.createQuery("FROM Enrollment e WHERE e.training.id=:id", Enrollment.class)
                 .setParameter("id", training.getId())
                 .getResultList();
-
         return traineesEnrolled;
     }
 
