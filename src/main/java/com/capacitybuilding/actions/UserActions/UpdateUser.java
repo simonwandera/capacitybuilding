@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/register")
+@WebServlet("/updateUser")
 public class UpdateUser extends HttpServlet {
     ServletContext servletContext;
 
@@ -36,7 +36,7 @@ public class UpdateUser extends HttpServlet {
             servletContext.setAttribute("updateError", "Select a valid gender");
             res.sendRedirect("./admin/updateUser.jsp");
         }
-        
+
         try {
             BeanUtils.populate(user, req.getParameterMap());
             user.setId(Long.valueOf(req.getParameter("id")));

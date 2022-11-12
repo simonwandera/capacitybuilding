@@ -67,10 +67,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">Update user</h4>
                                 <p class="card-description">Fill the user details</p>
-                                <form class="forms-sample" action="../register" method="POST">
+                                <form class="forms-sample" action="../updateUser" method="POST">
                                     <input type="hidden" name="id" value="${user.id}">
-                                    <input type="hidden" name="password" value="${user.password}">
-                                    <input type="hidden" name="userType" value="${user.userType}">
                                     <div class="form-group">
                                         <label for="firstName">First Name</label>
                                         <input type="text" class="form-control" id="firstName" placeholder="Username" value="${user.firstName}" />
