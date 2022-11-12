@@ -4,7 +4,6 @@ import com.capacitybuilding.controllers.UserBeanI;
 import com.capacitybuilding.model.User;
 import com.capacitybuilding.model.Usertype;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -42,7 +41,6 @@ public class UpdateUser extends HttpServlet {
         try {
             BeanUtils.populate(user, req.getParameterMap());
             user.setId(Long.valueOf(usrId));
-            user.setUserType(Usertype.valueOf(req.getParameter("userType")));
         }catch (Exception ex){
             servletContext.setAttribute("updateError" , ex.getMessage());
             res.sendRedirect("./admin/updateUser.jsp?id="+usrId);

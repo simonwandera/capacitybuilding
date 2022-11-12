@@ -42,6 +42,9 @@ public class UserBean implements UserBeanI {
         user.setPassword(findUser.getPassword());
         user.setConfirmPassword(findUser.getPassword());
 
+        user.setUserType(findUser.getUserType());
+        user.setTimeCreated(findUser.getTimeCreated());
+
         if(StringUtils.isBlank(user.getFirstName()))
             throw new Exception("First name is required");
         if(StringUtils.isBlank(user.getLastName()))

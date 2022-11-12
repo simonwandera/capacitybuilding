@@ -9,7 +9,7 @@
 <cht:Header title="Login page | Capacity building" />
 
 <body>
-  <div class="container-scroller">
+  <div class="container-scroller bg-secondary">
     <div class="container-fluid page-body-wrapper">
       <div class="main-panel">
         <div class="content-wrapper">
@@ -27,11 +27,11 @@
                   </div>
                   <form class="forms-sample" action= "../login" method="post">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
+                      <label for="email">Email address</label>
                       <input type="email" class="form-control" name="username" id="email" placeholder="Email" />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
+                      <label for="password">Password</label>
                       <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
                     </div>
                     <div class="form-check form-check-flat form-check-primary">
