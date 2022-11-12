@@ -51,13 +51,13 @@
         <div class="collapse" id="enrollments">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="../training/addTraining.jsp">View enrollments</a>
+              <a class="nav-link" href="../enrollment/enrollmentByTrainees.jsp">Grouped by Trainees</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../training/addTraining.jsp">Grouped by users</a>
+              <a class="nav-link" href="../enrollment/enrollmentByTraining.jsp">Grouped by trainings</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../training/addTraining.jsp">Grouped by trainings</a>
+              <a class="nav-link" href="../enrollment/allEnrollments.jsp">All enrollments</a>
             </li>
           </ul>
         </div>
