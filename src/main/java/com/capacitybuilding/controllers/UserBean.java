@@ -39,8 +39,20 @@ public class UserBean implements UserBeanI {
 
     }
 
-    public void update(User user) {
+    public void update(User user) throws Exception {
 
+        User findUser = entityManager.find(User.class, user.getId());
+        user.setPassword(findUser.getPassword());
+        user.setConfirmPassword(findUser.getPassword());
+
+        if(StringUtils.isBlank(user.getFirstName()))
+            throw new Exception("First name is required");
+        if(StringUtils.isBlank(user.getLastName()))
+            throw new Exception("Last name is required");
+        if (StringUtils.isBlank(user.getUsername()))
+            throw new Exception("Email is required");
+        if (StringUtils.isBlank(user.getGender()) || user.getGender().equals("--Select Gender--"))
+            throw new Exception("Gender is required");
 
     }
 
