@@ -21,8 +21,6 @@ public class TrainingRestApi extends BaseRestApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response add(Training training) {
-        System.out.println("\n>>>>>>>>>>>> vv v  v v  v v v >>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(training);
         try {
             trainingBean.add(training);
             return Response.status(Response.Status.OK).entity(new ResponseWrapper()).build();
@@ -39,6 +37,13 @@ public class TrainingRestApi extends BaseRestApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
         return Response.status(Response.Status.OK).entity(trainingBean.getList()).build();
+    }
+
+    @Path("/getTraining/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getTraining(@PathParam("id") Long id) {
+        return Response.status(Response.Status.OK).entity(trainingBean.getTraining(id)).build();
     }
 
 }

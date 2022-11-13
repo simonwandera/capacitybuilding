@@ -35,7 +35,6 @@ public class TrainingBean implements TrainingBeanI {
             throw new Exception("Start date is required");
         if (training.getDescription().length() > 250)
             throw new Exception("Description too long");
-
         return entityManager.merge(training);
 
     }
