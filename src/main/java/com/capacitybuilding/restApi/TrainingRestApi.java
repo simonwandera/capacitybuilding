@@ -39,11 +39,10 @@ public class TrainingRestApi extends BaseRestApi {
         return Response.status(Response.Status.OK).entity(trainingBean.getList()).build();
     }
 
-    @Path("/getTraining/{id}")
+    @Path("/get/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTraining(@PathParam("id") Long id) {
         return Response.status(Response.Status.OK).entity(trainingBean.getTraining(id)).build();
     }
-
 }
