@@ -64,7 +64,7 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
     public List<Enrollment> getTesting() {
 
-        List<Enrollment> enrollments = entityManager.createQuery("SELECT new Enrollment(e.status, e.trainee) FROM Enrollment e ", Enrollment.class)
+        List<Enrollment> enrollments = entityManager.createQuery("SELECT new Enrollment(count(e.status), e.status, e.trainee) FROM Enrollment e group by e.trainee", Enrollment.class)
                 .getResultList();
 
         return enrollments;

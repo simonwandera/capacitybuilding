@@ -68,6 +68,7 @@
                                         <th>Date Enrolled</th>
                                         <th>Status</th>
                                         <th>Actions</th>
+                                        <th>Counts</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -96,6 +97,8 @@
                                                     </div>
                                                 </div>
                                             </td>
+
+                                            <td>${enrollment.counts}</td>
 
                                         </tr>
                                     </jc:forEach>

@@ -21,6 +21,9 @@ public class Enrollment extends BaseEntity {
     @Column(name = "status")
     private String status;
 
+    @Transient
+    private Long counts;
+
     public User getTrainee() {
         return trainee;
     }
@@ -28,10 +31,13 @@ public class Enrollment extends BaseEntity {
     public Enrollment() {
     }
 
-    public Enrollment(String status, User trainee) {
+    public Enrollment(Long counts, String status, User trainee) {
         this.trainee = trainee;
         this.status = status;
+        this.counts = counts;
     }
+
+
 
     public void setTrainee(User trainee) {
         this.trainee = trainee;
@@ -53,4 +59,11 @@ public class Enrollment extends BaseEntity {
         this.status = status;
     }
 
+    public Long getCounts() {
+        return counts;
+    }
+
+    public void setCounts(Long counts) {
+        this.counts = counts;
+    }
 }
