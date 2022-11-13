@@ -37,7 +37,15 @@ public class Enrollment extends BaseEntity {
         this.counts = counts;
     }
 
+    public Enrollment(User trainee, Long counts) {
+        this.trainee = trainee;
+        this.counts = counts;
+    }
 
+    public Enrollment(Training training, Long counts) {
+        this.training = training;
+        this.counts = counts;
+    }
 
     public void setTrainee(User trainee) {
         this.trainee = trainee;

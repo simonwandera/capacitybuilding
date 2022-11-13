@@ -13,6 +13,8 @@ public interface EnrollmentBeanI {
     List<Enrollment> getTrainees(Training training);
     List<Training> getTrainings(User trainee);
     List<Training> getCompletedTrainings(User trainee);
+    List<Enrollment> getEnrollmentsByUsers();
+    List<Enrollment> getEnrollmentsByTrainings();
     List<Enrollment> getEnrollments();
     Boolean isEnrolled(Training training, User trainee);
 

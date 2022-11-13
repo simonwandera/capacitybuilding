@@ -61,34 +61,24 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>User</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Gender</th>
-                                        <th>Usertype</th>
-                                        <th>Date Created</th>
-                                        <th>Edit</th>
-                                        <th>Actions</th>
+                                        <th>Trainee Name</th>
+                                        <th>Trainee Gender</th>
+                                        <th>Trainee Email</th>
+                                        <th>Trainee Usertype</th>
+                                        <th>Number of Trainings</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${userBean.list()}" var="user">
+                                    <jc:forEach items="${enrollmentBean.getEnrollments()}" var="enrollment">
                                         <tr>
-                                            <td class="py-1">
-                                                <img src="https://shorturl.at/qrCQ9" alt="image"/>
-                                            </td>
-                                            <td>${user.firstName} ${user.lastName}</td>
-                                            <td>
-                                                    ${user.username}
-                                            </td>
-                                            <td>${user.gender}</td>
-                                            <td>${user.userType}</td>
-                                            <td>${user.timeCreated}</td>
 
-                                            <td>
-                                                <a href="updateUser.jsp?id=${user.id}" ><i class="mdi mdi-border-color mdi-24px"></i></a>
-                                            </td>
+                                            <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
+                                            <td>${enrollment.training.title}</td>
+                                            <td>${enrollment.training.duration}</td>
+                                            <td>${enrollment.training.startDate}</td>
+                                            <td>${enrollment.timeCreated}</td>
+                                            <td>${enrollment.status}</td>
 
                                             <td>
                                                 <div class="dropdown">
@@ -97,16 +87,13 @@
                                                     </button>
                                                     <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
                                                         <h6 class="dropdown-header">Settings</h6>
-                                                        <a class="dropdown-item" href="#">Make Admin</a>
-                                                        <a class="dropdown-item" href="#">ResetPassword</a>
-                                                        <a class="dropdown-item" href="#">Make Trainer</a>
-                                                        <a class="dropdown-item" href="#">Make User</a>
+                                                        <a class="dropdown-item" href="#">Approve</a>
+                                                        <a class="dropdown-item" href="#">Reject</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="#">Deactivate</a>
+                                                        <a class="dropdown-item text-danger" href="#">Delete</a>
                                                     </div>
                                                 </div>
                                             </td>
-
                                         </tr>
                                     </jc:forEach>
 
