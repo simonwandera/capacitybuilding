@@ -78,20 +78,6 @@
                                             <td>${enrollment.trainee.username}</td>
                                             <td>${enrollment.trainee.userType}</td>
                                             <td>${enrollment.counts}</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="mdi mdi-security"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
-                                                        <h6 class="dropdown-header">Settings</h6>
-                                                        <a class="dropdown-item" href="#">Approve</a>
-                                                        <a class="dropdown-item" href="#">Reject</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
                                         </tr>
                                     </jc:forEach>
 

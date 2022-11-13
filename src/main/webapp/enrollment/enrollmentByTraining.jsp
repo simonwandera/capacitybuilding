@@ -61,54 +61,24 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>User</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Gender</th>
-                                        <th>Usertype</th>
-                                        <th>Date Created</th>
-                                        <th>Edit</th>
-                                        <th>Actions</th>
+                                        <th>Training Title</th>
+                                        <th>Duration (Weeks)</th>
+                                        <th>Training Status</th>
+                                        <th>Number of Trainees</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${userBean.list()}" var="user">
+                                    <jc:forEach items="${enrollmentBean.getEnrollmentsByTrainings()}" var="enrollment">
                                         <tr>
-                                            <td class="py-1">
-                                                <img src="https://shorturl.at/qrCQ9" alt="image"/>
-                                            </td>
-                                            <td>${user.firstName} ${user.lastName}</td>
-                                            <td>
-                                                    ${user.username}
-                                            </td>
-                                            <td>${user.gender}</td>
-                                            <td>${user.userType}</td>
-                                            <td>${user.timeCreated}</td>
 
-                                            <td>
-                                                <a href="updateUser.jsp?id=${user.id}" ><i class="mdi mdi-border-color mdi-24px"></i></a>
-                                            </td>
-
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="mdi mdi-security"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
-                                                        <h6 class="dropdown-header">Settings</h6>
-                                                        <a class="dropdown-item" href="#">Make Admin</a>
-                                                        <a class="dropdown-item" href="#">ResetPassword</a>
-                                                        <a class="dropdown-item" href="#">Make Trainer</a>
-                                                        <a class="dropdown-item" href="#">Make User</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="#">Deactivate</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-
+                                            <td>${enrollment.training.title}</td>
+                                            <td>${enrollment.training.duration}</td>
+                                            <td>${enrollment.training.status}</td>
+                                            <td>${enrollment.counts}</td>
                                         </tr>
                                     </jc:forEach>
+
 
                                     </tbody>
                                 </table>
