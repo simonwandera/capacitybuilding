@@ -58,7 +58,6 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         List<Enrollment> enrollments = entityManager.createQuery("SELECT e FROM Enrollment e ", Enrollment.class)
                 .getResultList();
-
         return enrollments;
     }
 
@@ -66,7 +65,6 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         List<Enrollment> enrollments = entityManager.createQuery("SELECT new Enrollment(count(e.status), e.status, e.trainee) FROM Enrollment e group by e.trainee", Enrollment.class)
                 .getResultList();
-
         return enrollments;
     }
 

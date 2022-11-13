@@ -1,6 +1,7 @@
 package com.capacitybuilding.controllers;
 
 import com.capacitybuilding.model.Training;
+import com.capacitybuilding.model.TrainingStatus;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
@@ -19,6 +20,8 @@ public class TrainingBean implements TrainingBeanI {
     EntityManager entityManager;
 
     public Training add(Training training) throws Exception {
+
+        training.setStatus(TrainingStatus.UPCOMING);
 
         if (StringUtils.isBlank(training.getTitle()))
             throw new Exception("Title is required");

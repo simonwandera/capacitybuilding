@@ -63,17 +63,16 @@
                                     <tr>
                                         <th>Trainee Name</th>
                                         <th>Title</th>
-                                        <th>Duration</th>
+                                        <th>Duration(Weeks)</th>
                                         <th>Start Date</th>
                                         <th>Date Enrolled</th>
                                         <th>Status</th>
                                         <th>Actions</th>
-                                        <th>Counts</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${enrollmentBean.getTesting()}" var="enrollment">
+                                    <jc:forEach items="${enrollmentBean.getEnrollments()}" var="enrollment">
                                         <tr>
 
                                             <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
@@ -97,9 +96,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-
-                                            <td>${enrollment.counts}</td>
-
                                         </tr>
                                     </jc:forEach>
 
