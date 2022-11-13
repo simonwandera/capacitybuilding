@@ -70,16 +70,14 @@
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${enrollmentBean.getEnrollments()}" var="enrollment">
+                                    <jc:forEach items="${enrollmentBean.getEnrollmentsByTrainees()}" var="enrollment">
                                         <tr>
 
                                             <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
-                                            <td>${enrollment.training.title}</td>
-                                            <td>${enrollment.training.duration}</td>
-                                            <td>${enrollment.training.startDate}</td>
-                                            <td>${enrollment.timeCreated}</td>
-                                            <td>${enrollment.status}</td>
-
+                                            <td>${enrollment.trainee.gender}</td>
+                                            <td>${enrollment.trainee.username}</td>
+                                            <td>${enrollment.trainee.userType}</td>
+                                            <td>${enrollment.counts}</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

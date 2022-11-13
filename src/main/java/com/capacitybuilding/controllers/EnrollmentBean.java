@@ -68,7 +68,7 @@ public class EnrollmentBean implements EnrollmentBeanI {
         return enrollments;
     }
 
-    public List<Enrollment> getEnrollmentsByUsers() {
+    public List<Enrollment> getEnrollmentsByTrainees() {
         List<Enrollment> enrollments = entityManager.createQuery("SELECT new Enrollment(e.trainee, count(e.trainee)) FROM Enrollment e group by e.trainee", Enrollment.class)
                 .getResultList();
         return enrollments;
