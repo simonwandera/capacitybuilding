@@ -62,6 +62,14 @@ public class EnrollmentBean implements EnrollmentBeanI {
         return enrollments;
     }
 
+    public List<Enrollment> getTesting() {
+
+        List<Enrollment> enrollments = entityManager.createQuery("SELECT new Enrollment(e.status, e.trainee) FROM Enrollment e ", Enrollment.class)
+                .getResultList();
+
+        return enrollments;
+    }
+
     public List<Enrollment> getTrainees(Training training) {
 
         List<Enrollment> traineesEnrolled = entityManager.createQuery("FROM Enrollment e WHERE e.training.id=:id", Enrollment.class)

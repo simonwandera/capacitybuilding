@@ -1,6 +1,8 @@
 package com.capacitybuilding.model;
 
 
+import org.hibernate.annotations.Formula;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,6 +25,14 @@ public class Enrollment extends BaseEntity {
         return trainee;
     }
 
+    public Enrollment() {
+    }
+
+    public Enrollment(String status, User trainee) {
+        this.trainee = trainee;
+        this.status = status;
+    }
+
     public void setTrainee(User trainee) {
         this.trainee = trainee;
     }
@@ -42,4 +52,5 @@ public class Enrollment extends BaseEntity {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

@@ -72,7 +72,7 @@
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${enrollmentBean.getEnrollments()}" var="enrollment">
+                                    <jc:forEach items="${enrollmentBean.getTesting()}" var="enrollment">
                                         <tr>
 
                                             <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
