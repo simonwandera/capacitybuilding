@@ -22,7 +22,7 @@ import java.util.List;
 public class EnrollmentBean implements EnrollmentBeanI {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public Enrollment enroll(Enrollment enrollment) throws Exception {
 
@@ -43,8 +43,6 @@ public class EnrollmentBean implements EnrollmentBeanI {
         if (enrollment == null || enrollment.getId() == null)
             throw new Exception("Invalid enrollment details");
         entityManager.merge(enrollment);
-
-
     }
 
     public void delete(Enrollment enrollment) throws Exception {

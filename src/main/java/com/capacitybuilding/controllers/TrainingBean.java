@@ -21,8 +21,6 @@ public class TrainingBean implements TrainingBeanI {
 
     public Training add(Training training) throws Exception {
 
-        training.setStatus(TrainingStatus.UPCOMING);
-
         if (StringUtils.isBlank(training.getTitle()))
             throw new Exception("Title is required");
         if(StringUtils.isBlank(training.getDescription()))
@@ -35,6 +33,8 @@ public class TrainingBean implements TrainingBeanI {
             throw new Exception("Start date is required");
         if (training.getDescription().length() > 250)
             throw new Exception("Description too long");
+        if (StringUtils.isBlank(training.getStatus().toString()))
+            throw new Exception("Status is required");
         return entityManager.merge(training);
 
     }
