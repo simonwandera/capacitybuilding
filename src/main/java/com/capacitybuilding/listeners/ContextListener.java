@@ -14,9 +14,9 @@ import java.sql.SQLException;
 
 @WebListener
 public class ContextListener implements ServletContextListener {
-    @Resource(lookup = "java:jboss/datasources/CapacityBuilding")
-    DataSource dataSource;
     public void contextInitialized(ServletContextEvent event){
+
+
         System.out.print("Capacity building system... initializing default attributes");
         ServletContext servletContext = event.getServletContext();
         servletContext.setAttribute("appName", "Capacity building system | Made in Kenya");
@@ -25,4 +25,6 @@ public class ContextListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
     }
+
+
 }
