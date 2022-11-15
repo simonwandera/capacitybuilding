@@ -97,9 +97,9 @@
                                                 </button>
                                                 <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
                                                     <h6 class="dropdown-header">Settings</h6>
-                                                    <a class="btn-link" href="#">ResetPassword</a>
+                                                    <a class="dropdown-item" href="#">ResetPassword</a>
 
-                                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modal${user.id}">
+                                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal${user.id}">
                                                         Edit privileges
                                                     </button>
 
