@@ -1,5 +1,5 @@
 <%@ page isELIgnored="false" %>
-<%@ page import="com.capacitybuilding.util.model.*" %>
+<%@ page import="com.capacitybuilding.user.model.Usertype" %>
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -8,7 +8,6 @@
 <%@ taglib prefix="cft" uri="../WEB-INF/tlds/footer.tld" %>
 
 <cht:Header title="Add Training | Capacity building" />
-
     <body>
         <div class="container-scroller">
 
