@@ -79,7 +79,7 @@
                                                 <div class="col-sm-9">
                                                     <input type="hidden" name="id" value="${training.id}">
                                                     <input type="hidden" name="status" value="${training.status}">
-                                                    <input type="text" name="title" class="form-control"
+                                                    <input type="text" name="title" class="form-control border border-primary"
                                                            value="${training.title}"/>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 col-lg-6 col-form-label">Duration(Weeks)</label>
                                                 <div class="col-sm-9">
-                                                    <input type="number" name="duration" class="form-control"
+                                                    <input type="number" name="duration" class="form-control border border-primary"
                                                            value="${training.duration}"/>
                                                 </div>
                                             </div>
@@ -100,7 +100,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 col-form-label">Start Date</label>
                                                 <div class="col-sm-9">
-                                                    <input type="date" name="startDate" class="form-control"
+                                                    <input type="date" name="startDate" class="form-control border border-primary"
                                                            value="${training.startDate}"/>
                                                 </div>
                                             </div>
@@ -112,7 +112,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 col-form-label">Description</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control"
+                                                    <textarea class="form-control border border-primary"
                                                               name="description">${training.description}</textarea>
                                                 </div>
                                             </div>
@@ -124,7 +124,7 @@
                                             String trainingError = (String) application.getAttribute("trainingError");
                                             if (trainingError != null && !trainingError.equals("")) {
                                         %>
-                                        <span class="text-danger"> <%= application.getAttribute("trainingError") %> </span>
+                                        <span class="text-danger border border-danger"> <%= application.getAttribute("trainingError") %> </span>
                                         <% } %>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2"> Update</button>

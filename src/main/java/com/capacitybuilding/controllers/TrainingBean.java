@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,8 @@ public class TrainingBean implements TrainingBeanI {
             throw new Exception("Description too long");
         if (StringUtils.isBlank(training.getStatus().toString()))
             throw new Exception("Status is required");
+        if (training.getStartDate().isBefore(LocalDate.now()))
+            throw new Exception("Start date cannot be before today ");
         return entityManager.merge(training);
 
     }
