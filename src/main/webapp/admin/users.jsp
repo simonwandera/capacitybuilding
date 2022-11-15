@@ -126,7 +126,7 @@
                                                             <h4 class="card-title">Change Usertype</h4>
                                                             <p class="card-description">Select Usertype</p>
 
-                                                            <form method="post" action="../changeUsertype">
+                                                            <form method="POST" action="../changeUsertype">
                                                                 <div class="form-group row">
                                                                     <div class="col">
                                                                         <input type="hidden" name="id" value="${user.id}">
@@ -149,15 +149,14 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                                </div>
                                                             </form>
 
                                                         </div>
-                                                    </div>
-
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
 
                                                 </div>

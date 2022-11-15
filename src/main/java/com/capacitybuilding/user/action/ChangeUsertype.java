@@ -3,7 +3,6 @@ package com.capacitybuilding.user.action;
 import com.capacitybuilding.user.bean.UserBeanI;
 import com.capacitybuilding.user.model.User;
 import com.capacitybuilding.user.model.Usertype;
-import org.apache.commons.beanutils.BeanUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
@@ -44,6 +43,7 @@ public class ChangeUsertype extends HttpServlet {
 
         try {
             userBean.changeUserType(user);
+            System.out.println("Usertype changed");
         } catch (Exception ex) {
             servletContext.setAttribute("updateError" , ex.getMessage());
         }finally {
