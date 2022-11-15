@@ -70,7 +70,7 @@
                                 <div>
                                     <h4 class="card-title">Update training*</h4>
                                 </div>
-                                <form class="form-sample" action="../addTraining" method="POST">
+                                <form class="form-sample" action="../updateTraining" method="POST">
                                     <p class="card-description">Training info</p>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -124,7 +124,7 @@
                                             String trainingError = (String) application.getAttribute("trainingError");
                                             if (trainingError != null && !trainingError.equals("")) {
                                         %>
-                                        <span class="text-danger border border-danger"> <%= application.getAttribute("trainingError") %> </span>
+                                        <span class="text-danger m-4 p-2 border border-danger rounded"> <%= application.getAttribute("trainingError") %> </span>
                                         <% } %>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2"> Update</button>
