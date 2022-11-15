@@ -133,7 +133,7 @@
                                                                         <label>Name</label>
                                                                         <div id="the-basics">
                                                                             <input class="typeahead border border-success" type="text"
-                                                                                   placeholder="Your name" disabled value="${user.username}"/>
+                                                                                   placeholder="Your name" disabled value="${user.firstName} ${user.lastName}"/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col">
