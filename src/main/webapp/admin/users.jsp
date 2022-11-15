@@ -97,10 +97,8 @@
                                                 </button>
                                                 <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
                                                     <h6 class="dropdown-header">Settings</h6>
-                                                    <a class="dropdown-item" href="#">Make Admin</a>
                                                     <a class="dropdown-item" href="#">ResetPassword</a>
-                                                    <a class="dropdown-item" href="#">Make Trainer</a>
-                                                    <a class="dropdown-item" href="#">Make User</a>
+                                                    <a class="dropdown-item" href="#">Edit privileges</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item text-danger" href="#">Deactivate</a>
                                                 </div>
