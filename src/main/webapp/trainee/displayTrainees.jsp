@@ -1,5 +1,5 @@
 <%@ page isELIgnored="false" %>
-<%@ page import="com.capacitybuilding.model.*" %>
+<%@ page import="com.capacitybuilding.util.model.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.Date" %>
 

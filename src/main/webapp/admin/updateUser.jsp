@@ -1,6 +1,6 @@
 <%@ page isELIgnored="false" %>
 
-<%@ page import="com.capacitybuilding.model.*" %>
+<%@ page import="com.capacitybuilding.util.model.*" %>
 
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -57,7 +57,7 @@
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
-                    <h3 class="mb-0"> Update Training
+                    <h3 class="mb-0"> Update User
                     </h3>
 
                 </div>

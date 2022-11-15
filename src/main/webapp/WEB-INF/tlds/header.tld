@@ -4,7 +4,7 @@
     <short-name>header</short-name>
     <tag>
         <name>Header</name>
-        <tag-class>com.capacitybuilding.customtags.HeaderTag</tag-class>
+        <tag-class>com.capacitybuilding.util.customtags.HeaderTag</tag-class>
         <body-content>scriptless</body-content>
         <attribute>
             <name>title</name>
