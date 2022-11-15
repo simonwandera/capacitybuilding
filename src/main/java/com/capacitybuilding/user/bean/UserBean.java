@@ -95,5 +95,14 @@ public class UserBean implements UserBeanI {
         return users.get(0);
     }
 
+    public User changeUserType(User user) throws Exception {
+        if(StringUtils.isBlank(user.getUserType().toString()))
+            throw new Exception("Invalid usertype");
+        if(StringUtils.isBlank(user.getId().toString()))
+            throw new Exception("Invalid user");
 
+        User newUser = entityManager.find(User.class, user.getId());
+        newUser.setUserType(user.getUserType());
+        return entityManager.merge(newUser);
+    }
 }

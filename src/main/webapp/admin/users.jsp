@@ -140,7 +140,7 @@
                                                                         <label>Usertype</label>
                                                                         <div id="bloodhound">
 
-                                                                            <select class="form-control border border-success" name="usertype" id="exampleSelectGender">
+                                                                            <select class="form-control border border-success" name="userType" id="exampleSelectGender">
                                                                                 <option>USER</option>
                                                                                 <option>TRAINER</option>
                                                                                 <option>ADMIN</option>

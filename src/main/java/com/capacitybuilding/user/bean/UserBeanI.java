@@ -12,4 +12,6 @@ public interface UserBeanI {
     List<User> list();
     User getUser(Long id);
     User login(User user) throws Exception;
+
+    User changeUserType(User user) throws Exception;
 }
