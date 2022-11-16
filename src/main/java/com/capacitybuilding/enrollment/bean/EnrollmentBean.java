@@ -39,7 +39,6 @@ public class EnrollmentBean implements EnrollmentBeanI {
     }
 
     public void update(Enrollment enrollment) throws Exception {
-
         if (enrollment == null || enrollment.getId() == null)
             throw new Exception("Invalid enrollment details");
         entityManager.merge(enrollment);
@@ -48,8 +47,18 @@ public class EnrollmentBean implements EnrollmentBeanI {
     public void delete(Enrollment enrollment) throws Exception {
         if (enrollment == null)
             throw new Exception("Invalid enrollment details");
-
         entityManager.remove(entityManager.find(Enrollment.class, enrollment.getId()));
+    }
+
+    public Enrollment approveEnrollment(Enrollment enrollment) throws Exception{
+        if(StringUtils.isBlank(enrollment.getId().toString()))
+            throw new Exception("Invalid enrollment");
+        if(StringUtils.isBlank(enrollment.getStatus().toString()))
+            throw new Exception("Invalid enrollment status");
+
+        Enrollment newEnrollment = entityManager.find(Enrollment.class, enrollment.getId());
+        newEnrollment.setStatus(enrollment.getStatus());
+        return entityManager.merge(newEnrollment);
 
     }
     public List<Enrollment> getEnrollments() {
