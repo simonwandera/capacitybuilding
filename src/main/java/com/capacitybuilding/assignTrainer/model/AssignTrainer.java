@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Table(name = "assignTrainers")
 public class AssignTrainer extends BaseEntity {
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "training_id", referencedColumnName = "id")
     private Training training;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trainer_id", referencedColumnName = "id")
     private User trainer;
 

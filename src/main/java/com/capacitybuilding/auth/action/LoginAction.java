@@ -50,7 +50,6 @@ public class LoginAction extends HttpServlet {
             session.setAttribute("userType", user.getUserType());
             session.setAttribute("activeUser", user);
 
-
             if (user.getUserType() == Usertype.ADMIN)
                 res.sendRedirect("./main/adminDashboard.jsp");
             else if (user.getUserType() == Usertype.USER)

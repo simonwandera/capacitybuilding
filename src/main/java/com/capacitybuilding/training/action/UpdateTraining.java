@@ -36,7 +36,6 @@ public class UpdateTraining extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         res.sendRedirect("./training/createTrainee.jsp");
     }
 

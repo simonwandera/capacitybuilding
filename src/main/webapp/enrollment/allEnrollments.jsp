@@ -189,7 +189,7 @@
                                                                         <div class="col">
                                                                             <input type="hidden" name="id"
                                                                                    value="${enrollment.id}">
-                                                                            <label>Name</label>
+                                                                            <label>Trainee name</label>
                                                                             <div id="username">
                                                                                 <input class="typeahead border border-success"
                                                                                        type="text"
@@ -200,7 +200,7 @@
 
                                                                         </div>
                                                                         <div class="col">
-                                                                            <label>Title</label>
+                                                                            <label>Training title</label>
                                                                             <input class="typeahead border border-success"
                                                                                    type="text"
                                                                                    placeholder="Your name" disabled

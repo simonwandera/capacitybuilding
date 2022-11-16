@@ -12,7 +12,7 @@ public class Assessment extends BaseEntity {
     @Column(name = "marks")
     private int marks;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "enrollment_id", referencedColumnName = "id")
     private Enrollment enrollment;
 
