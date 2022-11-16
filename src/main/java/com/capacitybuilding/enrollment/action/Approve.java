@@ -37,6 +37,7 @@ public class Approve extends HttpServlet {
         enrollment.setId(Long.parseLong(id));
         try {
             enrollmentBean.approveEnrollment(enrollment);
+            res.sendRedirect("./enrollment/allEnrollments.jsp");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

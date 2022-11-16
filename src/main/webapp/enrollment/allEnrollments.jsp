@@ -120,16 +120,24 @@
                                                                 <form method="POST" action="../approveEnrollment">
                                                                     <div class="form-group row">
                                                                         <div class="col">
-                                                                            <input type="hidden" name="id" value="${enrollment.id}">
+                                                                            <input type="hidden" name="id"
+                                                                                   value="${enrollment.id}">
                                                                             <label>Name</label>
                                                                             <div id="the-basics">
-                                                                                <input class="typeahead border border-success" type="text"
-                                                                                       placeholder="Your name" disabled value="${enrollment.trainee.firstName} ${enrollment.trainee.lastName}"/>
-                                                                                <br>
-                                                                                <input class="typeahead border border-success" type="text"
-                                                                                       placeholder="Your name" disabled value="${enrollment.training.title}"/>
+                                                                                <input class="typeahead border border-success"
+                                                                                       type="text"
+                                                                                       placeholder="Your name" disabled
+                                                                                       value="${enrollment.trainee.firstName} ${enrollment.trainee.lastName}"/>
 
                                                                             </div>
+                                                                            <label>Training</label>
+                                                                            <div id="training">
+                                                                                <input class="typeahead border border-success"
+                                                                                       type="text"
+                                                                                       placeholder="Your name" disabled
+                                                                                       value="${enrollment.training.title}"/>
+                                                                            </div>
+
                                                                         </div>
                                                                         <div class="col">
                                                                             <label>Status</label>
