@@ -9,6 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,6 +21,7 @@ import java.util.List;
 @Stateless
 @Remote
 @Named("enrollmentBean")
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class EnrollmentBean implements EnrollmentBeanI {
 
     @PersistenceContext
