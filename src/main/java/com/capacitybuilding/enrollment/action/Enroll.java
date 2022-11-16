@@ -1,6 +1,7 @@
 package com.capacitybuilding.enrollment.action;
 
 import com.capacitybuilding.enrollment.bean.EnrollmentBeanI;
+import com.capacitybuilding.enrollment.model.EnrollmentStatus;
 import com.capacitybuilding.training.bean.TrainingBeanI;
 import com.capacitybuilding.user.bean.UserBeanI;
 import com.capacitybuilding.enrollment.model.Enrollment;
@@ -19,9 +20,6 @@ import java.io.IOException;
 
 @WebServlet("/enroll")
 public class Enroll extends HttpServlet {
-
-    @EJB
-    UserBeanI userBean;
     @EJB
     TrainingBeanI trainingBean;
 
@@ -44,7 +42,7 @@ public class Enroll extends HttpServlet {
         User trainee = (User) session.getAttribute("activeUser");
 
         Enrollment enrollment = new Enrollment();
-        enrollment.setStatus("PENDING");
+        enrollment.setStatus(EnrollmentStatus.PENDING);
         enrollment.setTrainee(trainee);
         enrollment.setTraining(trainingBean.getTraining(Long.parseLong(trainingId)));
 

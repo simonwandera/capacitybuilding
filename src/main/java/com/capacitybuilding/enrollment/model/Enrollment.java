@@ -20,8 +20,8 @@ public class Enrollment extends BaseEntity {
     @JoinColumn(name = "training_id", referencedColumnName = "id")
     private Training training;
 
-    @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private EnrollmentStatus status;
 
     @Transient
     private Long counts;
@@ -33,7 +33,7 @@ public class Enrollment extends BaseEntity {
     public Enrollment() {
     }
 
-    public Enrollment(Long counts, String status, User trainee) {
+    public Enrollment(Long counts, EnrollmentStatus status, User trainee) {
         this.trainee = trainee;
         this.status = status;
         this.counts = counts;
@@ -61,12 +61,12 @@ public class Enrollment extends BaseEntity {
         this.training = training;
     }
 
-    public String getStatus() {
+    public EnrollmentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(EnrollmentStatus enrollmentStatus) {
+        this.status = enrollmentStatus;
     }
 
     public Long getCounts() {
