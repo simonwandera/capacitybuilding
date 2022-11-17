@@ -45,8 +45,7 @@
                         <div class="main-panel">
                             <div class="content-wrapper pb-0">
                                 <div class="page-header flex-wrap">
-                                    <h3 class="mb-0"> New Training
-                                    </h3>
+                                    <h3 class="mb-0"> New Training </h3>
 
                                 </div>
 

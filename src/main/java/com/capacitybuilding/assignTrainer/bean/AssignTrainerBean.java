@@ -64,6 +64,14 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
 
     }
 
+    public User getTrainer(Training training) {
+        User trainer = new User();
+       for(AssignTrainer assignTrainer : this.getTrainers(training)){
+           trainer = assignTrainer.getTrainer();
+       }
+       return trainer;
+    }
+
     public List<Training> getTrainings(User trainer){
 
 
