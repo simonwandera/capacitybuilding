@@ -12,6 +12,8 @@
 <body>
 <div class="container-scroller">
 
+    <jc:set value="${sessionScope.activeUser}" var="activeUser"/>
+
     <jc:choose>
     <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
         <jsp:include page="../utils/adminSideNav.jsp"/>
@@ -80,7 +82,10 @@
                                                 <th>Start Date</th>
                                                 <th>Date Enrolled</th>
                                                 <th>Status</th>
-                                                <th>Assessment</th>
+                                                <jc:if test="${activeUser.userType == Usertype.TRAINER}">
+                                                    <th>Assessment</th>
+                                                </jc:if>
+
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -95,6 +100,7 @@
                                                     <td>${enrollment.timeCreated}</td>
                                                     <td>${enrollment.status}</td>
 
+                                                    <jc:if test="${activeUser.userType == Usertype.TRAINER}">
                                                     <td>
                                                         <div class="dropdown">
                                                             <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,6 +115,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    </jc:if>
 
                                                     <%@ include file="./modals.jsp" %>
 
