@@ -147,7 +147,7 @@
                                                 Options
                                             </button>
 
-                                            <div class="dropdown-menu" aria-labelledby="options">
+                                            <div class="dropdown-menu bg-secondary" aria-labelledby="options">
                                                 <h6 class="dropdown-header">Options</h6>
                                                 <jc:choose>
                                                     <jc:when test="${sessionScope.userType == Usertype.USER}">
