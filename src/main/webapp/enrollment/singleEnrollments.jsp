@@ -103,7 +103,7 @@
                                                     <jc:if test="${activeUser.userType == Usertype.TRAINER}">
                                                     <td>
                                                         <div class="dropdown">
-                                                            <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 <i class="mdi mdi-security"></i>
                                                             </button>
                                                             <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
