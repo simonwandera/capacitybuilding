@@ -54,7 +54,6 @@ public class Training extends BaseEntity {
         this.startDate = startDate;
     }
 
-
     public TrainingStatus getStatus() {
         return status;
     }

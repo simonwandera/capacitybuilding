@@ -184,19 +184,12 @@
 
                                         <div class="py-1">
                                             <jc:choose>
-                                                <jc:when test="${training.status == TrainingStatus.UPCOMING}">
-                                                    <label class="badge badge-inverse-success">upcoming</label>
-                                                </jc:when>
                                                 <jc:when test="${training.status == TrainingStatus.ONGOING}">
                                                     <label class="badge badge-primary">ongoing</label>
                                                 </jc:when>
                                                 <jc:when test="${training.status == TrainingStatus.COMPLETED}">
                                                     <label class="badge badge-info">completed</label>
                                                 </jc:when>
-                                                <jc:when test="${training.status == TrainingStatus.CANCELLED}">
-                                                    <label class="badge badge-danger">cancelled</label>
-                                                </jc:when>
-
                                             </jc:choose>
                                         </div>
                                     </div>

@@ -50,7 +50,7 @@ public class CreateTraining extends HttpServlet {
             training.setId(Long.valueOf(id));
             training.setStatus(TrainingStatus.valueOf(status));
         }else {
-            training.setStatus(TrainingStatus.UPCOMING);
+            training.setStatus(TrainingStatus.ONGOING);
         }
 
         training.setTitle(title);
