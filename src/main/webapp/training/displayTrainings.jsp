@@ -181,8 +181,10 @@
                                                 </jc:choose>
                                             </div>
                                         </div>
-
                                     </div>
+
+                                    <%@ include file="./modals.jsp" %>
+
                                 </div>
                             </div>
                         </div>

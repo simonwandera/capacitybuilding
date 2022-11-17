@@ -20,8 +20,8 @@
           </div>
           <div class="row">
             <div class="col-md-6 grid-margin stretch-card m-auto">
-              <div class="card">
-                <div class="card-body">
+              <div class="card border">
+                <div class="card-body border border-success">
                   <div class="mb-5">
                     <h4 class="card-title">LogIn</h4>
                   </div>
