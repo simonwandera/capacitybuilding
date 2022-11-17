@@ -47,17 +47,20 @@ public class TrainingBean implements TrainingBeanI {
             throw new Exception("Title is required");
         if(StringUtils.isBlank(training.getDescription()))
             throw new Exception("Description is required");
-        if(StringUtils.isBlank(training.getStatus().toString()))
-            throw new Exception("Status is required");
         if (StringUtils.isBlank(Integer.toString(training.getDuration())))
             throw new Exception("Duration is required");
         if (StringUtils.isBlank(training.getStartDate().toString()))
             throw new Exception("Start date is required");
         if (training.getDescription().length() > 250)
             throw new Exception("Description too long");
-        if (StringUtils.isBlank(training.getStatus().toString()))
-            throw new Exception("Status is required");
-        return entityManager.merge(training);
+
+        Training newTraining = entityManager.find(Training.class, training.getId());
+        newTraining.setDuration(training.getDuration());
+        newTraining.setDescription(training.getDescription());
+        newTraining.setTitle(training.getTitle());
+        newTraining.setStartDate(training.getStartDate());
+
+        return entityManager.merge(newTraining);
     }
 
     public void delete(TrainingBean trainingController){

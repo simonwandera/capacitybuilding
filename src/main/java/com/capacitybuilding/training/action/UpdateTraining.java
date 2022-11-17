@@ -57,7 +57,7 @@ public class UpdateTraining extends HttpServlet {
         training.setDescription(description);
 
         try {
-            trainingBean.add(training);
+            trainingBean.update(training);
             res.sendRedirect("./training/displayTrainings.jsp");
         } catch (Exception ex) {
             servletContext.setAttribute("trainingError" , ex.getMessage());
