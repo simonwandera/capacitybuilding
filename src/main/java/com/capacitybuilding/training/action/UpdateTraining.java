@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Table;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -42,25 +43,15 @@ public class UpdateTraining extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         String id = req.getParameter("id");
-        String status = req.getParameter("status");
         String title = req.getParameter("title");
         int duration = req.getParameter("duration").isEmpty() ? 0 : Integer.parseInt(req.getParameter("duration"));
         LocalDate startDate = req.getParameter("startDate").isEmpty() ? LocalDate.of(0, 1, 1) : LocalDate.parse(req.getParameter("startDate"));
         String description = req.getParameter("description");
 
-        Training training = entityManager.find(Training.class, Long.valueOf(id));
-
-
-
-        if (!StringUtils.isBlank(id)) {
-            training.setId(Long.valueOf(id));
-            training.setStatus(TrainingStatus.valueOf(status));
-        }else {
-            training.setStatus(TrainingStatus.UPCOMING);
-        }
+        Training training = new Training();
+        training.setId(Long.parseLong(id));
 
         training.setTitle(title);
-        training.setTimeCreated(LocalDate.now());
         training.setDuration(duration);
         training.setStartDate(startDate);
         training.setDescription(description);
