@@ -48,11 +48,10 @@ public class EnrollmentBean implements EnrollmentBeanI {
     }
 
     public void delete(Enrollment enrollment) throws Exception {
-        if (enrollment == null)
+        if (enrollment == null || enrollment.getId() == null)
             throw new Exception("Invalid enrollment details");
-        entityManager.remove(enrollment);
+        entityManager.remove(entityManager.find(Enrollment.class, enrollment.getId()));
     }
-
     public Enrollment approveEnrollment(Enrollment enrollment) throws Exception{
         if(StringUtils.isBlank(enrollment.getId().toString()))
             throw new Exception("Invalid enrollment");
