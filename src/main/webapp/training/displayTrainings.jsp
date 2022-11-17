@@ -167,7 +167,9 @@
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
                                                         <jc:if test="${assignTrainerBean.getTrainers(training).size() == 0}">
-                                                            <a class="dropdown-item" href="#">Assign trainer</a>
+                                                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assignModal${training.id}">
+                                                                Assign Trainer
+                                                            </button>
                                                         </jc:if>
                                                         <a class="dropdown-item" href="#">Enrollment requests</a>
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
