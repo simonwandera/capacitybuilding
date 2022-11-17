@@ -36,8 +36,9 @@
                                 <div id="bloodhound">
 
                                     <select class="form-control border border-success" name="status" id="exampleSelectGender">
-                                        <option>APPROVED</option>
-                                        <option>DECLINED</option>
+                                        <jc:forEach items="${userBean.getTrainers()}" var="trainer">
+                                            <option>${trainer.firstName}</option>
+                                        </jc:forEach>
                                     </select>
 
                                 </div>
@@ -46,7 +47,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Assign</button>
                         </div>
                     </form>
 

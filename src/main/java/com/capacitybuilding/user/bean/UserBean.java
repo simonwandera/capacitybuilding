@@ -1,6 +1,7 @@
 package com.capacitybuilding.user.bean;
 
 import com.capacitybuilding.user.model.User;
+import com.capacitybuilding.user.model.Usertype;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
@@ -73,9 +74,15 @@ public class UserBean implements UserBeanI {
         return user;
     }
 
-
     public List<User> list() {
         List<User> users = entityManager.createQuery("FROM User a ORDER BY a.userType" , User.class)
+                .getResultList();
+        return users;
+    }
+
+    public List<User> getTrainers() {
+        List<User> users = entityManager.createQuery("FROM User a WHERE a.userType=:userType" , User.class)
+                .setParameter("userType", Usertype.TRAINER)
                 .getResultList();
         return users;
     }

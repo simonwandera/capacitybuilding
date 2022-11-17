@@ -14,4 +14,6 @@ public interface UserBeanI {
     User login(User user) throws Exception;
 
     User changeUserType(User user) throws Exception;
+
+    List<User> getTrainers();
 }
