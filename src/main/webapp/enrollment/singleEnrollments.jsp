@@ -49,7 +49,8 @@
                 pageContext.setAttribute("trainingId", trainingId);
             %>
 
-        <jc:set value="${enrollmentBean.getEnrollments(trainingBean.getTraining(Long.valueOf(trainingId)))}" var="enrollments"/>
+        <jc:set value="${enrollmentBean.getEnrollments(trainingBean.getTraining(Long.valueOf(trainingId)))}"
+                var="enrollments"/>
 
         <div class="main-panel">
             <div class="content-wrapper pb-0">
@@ -61,60 +62,75 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Enrollments</h4>
-                            <p class="card-description"> Record details </p>
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Trainee Name</th>
-                                        <th>Title</th>
-                                        <th>Duration(Weeks)</th>
-                                        <th>Start Date</th>
-                                        <th>Date Enrolled</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                            <jc:choose>
+                                <jc:when test="${enrollments.size() < 1}">
+                                    <h4 class="mb-1">No records to display</h4>
+                                </jc:when>
+                                <jc:otherwise>
 
-                                    <jc:forEach items="${enrollments}" var="enrollment">
-                                        <tr>
+                                    <h4 class="card-title">Enrollments</h4>
+                                    <p class="card-description"> Record details </p>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Trainee Name</th>
+                                                <th>Title</th>
+                                                <th>Duration(Weeks)</th>
+                                                <th>Start Date</th>
+                                                <th>Date Enrolled</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
 
-                                            <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
-                                            <td>${enrollment.training.title}</td>
-                                            <td>${enrollment.training.duration}</td>
-                                            <td>${enrollment.training.startDate}</td>
-                                            <td>${enrollment.timeCreated}</td>
-                                            <td>${enrollment.status}</td>
+                                            <jc:forEach items="${enrollments}" var="enrollment">
+                                                <tr>
 
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="mdi mdi-security"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
-                                                        <h6 class="dropdown-header">Settings</h6>
-                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal${enrollment.id}">
-                                                            Approve
-                                                        </button>
-                                                        <div class="dropdown-divider"></div>
-                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal_delete${enrollment.id}">
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                                    <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
+                                                    <td>${enrollment.training.title}</td>
+                                                    <td>${enrollment.training.duration}</td>
+                                                    <td>${enrollment.training.startDate}</td>
+                                                    <td>${enrollment.timeCreated}</td>
+                                                    <td>${enrollment.status}</td>
 
-                                            <%@ include file="./modals.jsp" %>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-primary dropdown-toggle"
+                                                                    type="button" id="drop6" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                <i class="mdi mdi-security"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu bg-secondary"
+                                                                 aria-labelledby="drop6">
+                                                                <h6 class="dropdown-header">Settings</h6>
+                                                                <button type="button" class="dropdown-item"
+                                                                        data-toggle="modal"
+                                                                        data-target="#modal${enrollment.id}">
+                                                                    Approve
+                                                                </button>
+                                                                <div class="dropdown-divider"></div>
+                                                                <button type="button" class="dropdown-item"
+                                                                        data-toggle="modal"
+                                                                        data-target="#modal_delete${enrollment.id}">
+                                                                    Delete
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </td>
 
-                                        </tr>
-                                    </jc:forEach>
+                                                    <%@ include file="./modals.jsp" %>
+
+                                                </tr>
+                                            </jc:forEach>
 
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </jc:otherwise>
+                            </jc:choose>
 
                         </div>
                     </div>
