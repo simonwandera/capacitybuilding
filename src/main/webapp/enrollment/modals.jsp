@@ -149,7 +149,7 @@
                     <h4 class="card-title">Assessment form</h4>
                     <p class="card-description">Fill the form and submit</p>
 
-                    <form method="POST" action="../approveEnrollment">
+                    <form method="POST" action="../addAssessment">
                         <div class="form-group row">
                             <div class="col-12">
                                 <input type="hidden" name="id"
@@ -176,6 +176,7 @@
                                 <div id="score3" class="mb-2 pb-2">
                                     <input class="typeahead border border-success"
                                            type="number"
+                                           name="score"
                                            max="99"
                                            min="1"
                                            placeholder="Score"/>
@@ -183,7 +184,7 @@
 
                                 <label>Comment</label>
                                 <div id="comment" class="mb-2">
-                                    <textarea class="typeahead border border-primary" maxlength="35" required>
+                                    <textarea class="typeahead border border-primary" name="comment" maxlength="35" required>
 
                                     </textarea>
                                 </div>
