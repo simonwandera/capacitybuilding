@@ -45,7 +45,7 @@
 
         <%@ include file="../utils/trainerTopNav.jsp" %>
 
-            <% String trainingId = request.getParameter("id");
+            <% String trainingId = request.getParameter("trainingId");
                 pageContext.setAttribute("trainingId", trainingId);
             %>
 
