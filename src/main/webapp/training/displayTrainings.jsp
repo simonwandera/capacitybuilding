@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.user.model.Usertype" %>
+<%@ page import="com.capacitybuilding.training.model.TrainingStatus" %>
 
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jf" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -183,7 +184,6 @@
 
                                         <div class="py-1">
                                             <jc:choose>
-
                                                 <jc:when test="${training.status == TrainingStatus.UPCOMING}">
                                                     <label class="badge badge-success">upcoming</label>
                                                 </jc:when>
@@ -198,7 +198,6 @@
                                                 </jc:when>
 
                                             </jc:choose>
-                                            <label class="badge badge-success">Active</label>
                                         </div>
                                     </div>
 
