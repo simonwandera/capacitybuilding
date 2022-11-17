@@ -140,7 +140,7 @@
                                     </div>
 
                                     <div class="d-flex flex-wrap border-bottom py-2 justify-content-between">
-                                        <div class="dropdown py-2">
+                                        <div class="dropdown py-1">
                                             <button class="btn btn-success dropdown-toggle" type="button" id="options"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Options
@@ -179,6 +179,26 @@
                                                     </jc:when>
                                                 </jc:choose>
                                             </div>
+                                        </div>
+
+                                        <div class="py-1">
+                                            <jc:choose>
+
+                                                <jc:when test="${training.status == TrainingStatus.UPCOMING}">
+                                                    <label class="badge badge-success">upcoming</label>
+                                                </jc:when>
+                                                <jc:when test="${training.status == TrainingStatus.ONGOING}">
+                                                    <label class="badge badge-primary">ongoing</label>
+                                                </jc:when>
+                                                <jc:when test="${training.status == TrainingStatus.COMPLETED}">
+                                                    <label class="badge badge-info">completed</label>
+                                                </jc:when>
+                                                <jc:when test="${training.status == TrainingStatus.CANCELLED}">
+                                                    <label class="badge badge-danger">cancelled</label>
+                                                </jc:when>
+
+                                            </jc:choose>
+                                            <label class="badge badge-success">Active</label>
                                         </div>
                                     </div>
 
