@@ -111,7 +111,6 @@
                                                                 <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal${enrollment.id}">
                                                                     Assessment
                                                                 </button>
-
                                                             </div>
                                                         </div>
                                                     </td>

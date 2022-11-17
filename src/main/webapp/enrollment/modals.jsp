@@ -50,7 +50,8 @@
                                 <label>Status</label>
                                 <div id="bloodhound">
 
-                                    <select class="form-control border border-success" name="status" id="exampleSelectGender">
+                                    <select class="form-control border border-success" name="status"
+                                            id="exampleSelectGender">
                                         <option>APPROVED</option>
                                         <option>DECLINED</option>
                                     </select>
@@ -119,6 +120,79 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Delete</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<%--Assessment form modal--%>
+<div class="modal fade" id="assessment${enrollment.id}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Approve enrollment</h4>
+                    <p class="card-description">Select status</p>
+
+                    <form method="POST" action="../approveEnrollment">
+                        <div class="form-group row">
+                            <div class="col">
+                                <input type="hidden" name="id"
+                                       value="${enrollment.id}">
+                                <label>Name</label>
+                                <div id="the-basics">
+                                    <input class="typeahead border border-success"
+                                           type="text"
+                                           placeholder="Your name" disabled
+                                           value="${enrollment.trainee.firstName} ${enrollment.trainee.lastName}"/>
+
+                                </div>
+                                <label>Training</label>
+                                <div id="training">
+                                    <input class="typeahead border border-success"
+                                           type="text"
+                                           placeholder="Your name" disabled
+                                           value="${enrollment.training.title}"/>
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <label>Score (out of 100)</label>
+                                <div id="score">
+                                    <input class="typeahead border border-success"
+                                           type="number"
+                                           max="99"
+                                           min="1"
+                                           placeholder="Score" />
+                                </div>
+
+                                <label>Comment</label>
+                                <div id="score">
+                                    <textarea class="typeahead border border-danger" maxlength="35" required>
+
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
 
