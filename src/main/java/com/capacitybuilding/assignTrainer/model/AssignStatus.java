@@ -2,9 +2,7 @@ package com.capacitybuilding.assignTrainer.model;
 
 public enum AssignStatus {
 
-    PENDING("PENDING"),
-    APPROVED("APPROVED"),
-    DECLINED("DECLINED");
+    APPROVED("APPROVED");
 
     AssignStatus(String status) {
     }

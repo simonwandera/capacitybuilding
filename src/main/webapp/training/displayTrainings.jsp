@@ -162,7 +162,7 @@
                                                         <a class="dropdown-item" href="#">Enrolled trainees</a>
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
-                                                        <a class="dropdown-item" href="#">Enrolled trainees</a>
+                                                        <a class="dropdown-item" href="#">Enrollments</a>
                                                         <a class="dropdown-item" href="#">Feedback</a>
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
@@ -171,8 +171,7 @@
                                                                 Assign Trainer
                                                             </button>
                                                         </jc:if>
-                                                        <a class="dropdown-item" href="#">Enrollment requests</a>
-                                                        <a class="dropdown-item" href="#">Enrolled trainees</a>
+                                                        <a class="dropdown-item" href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
                                                         <a class="dropdown-item" href="#">View Assessments</a>
                                                         <a class="dropdown-item" href="#">Activate</a>
                                                         <div class="dropdown-divider"></div>

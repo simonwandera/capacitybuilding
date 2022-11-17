@@ -32,7 +32,7 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
             throw new Exception("The trainer you tried assigning is not recognized");
         if (StringUtils.isBlank(assignTrainer.getTraining().getId().toString()))
             throw new Exception("The training you entered for assignment is invalid");
-        assignTrainer.setStatus(AssignStatus.PENDING);
+        assignTrainer.setStatus(AssignStatus.APPROVED);
 
         return entityManager.merge(assignTrainer);
 
@@ -68,7 +68,6 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
 
 
         List<Training> trainingList = new ArrayList<>();
-
 
         return new ArrayList<>();
     }
