@@ -108,7 +108,7 @@
                                                             </button>
                                                             <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
                                                                 <h6 class="dropdown-header">Test</h6>
-                                                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal${enrollment.id}">
+                                                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assessment${enrollment.id}">
                                                                     Assessment
                                                                 </button>
                                                             </div>

@@ -146,25 +146,25 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Approve enrollment</h4>
-                    <p class="card-description">Select status</p>
+                    <h4 class="card-title">Assessment form</h4>
+                    <p class="card-description">Fill the form and submit</p>
 
                     <form method="POST" action="../approveEnrollment">
                         <div class="form-group row">
-                            <div class="col">
+                            <div class="col-12">
                                 <input type="hidden" name="id"
                                        value="${enrollment.id}">
                                 <label>Name</label>
-                                <div id="the-basics">
-                                    <input class="typeahead border border-success"
+                                <div id="the-basics1" class="mb-2 pb-2">
+                                    <input class="typeahead border border-secondary"
                                            type="text"
                                            placeholder="Your name" disabled
                                            value="${enrollment.trainee.firstName} ${enrollment.trainee.lastName}"/>
 
                                 </div>
-                                <label>Training</label>
-                                <div id="training">
-                                    <input class="typeahead border border-success"
+                                <label>Training Title</label>
+                                <div id="trainingTitle" class="pb-2 mb-2">
+                                    <input class="typeahead border border-secondary"
                                            type="text"
                                            placeholder="Your name" disabled
                                            value="${enrollment.training.title}"/>
@@ -173,17 +173,17 @@
                             </div>
                             <div class="col-12">
                                 <label>Score (out of 100)</label>
-                                <div id="score">
+                                <div id="score3" class="mb-2 pb-2">
                                     <input class="typeahead border border-success"
                                            type="number"
                                            max="99"
                                            min="1"
-                                           placeholder="Score" />
+                                           placeholder="Score"/>
                                 </div>
 
                                 <label>Comment</label>
-                                <div id="score">
-                                    <textarea class="typeahead border border-danger" maxlength="35" required>
+                                <div id="comment" class="mb-2">
+                                    <textarea class="typeahead border border-primary" maxlength="35" required>
 
                                     </textarea>
                                 </div>
