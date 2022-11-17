@@ -28,11 +28,11 @@
                   <form class="forms-sample" action= "../login" method="post">
                     <div class="form-group">
                       <label for="email">Email address</label>
-                      <input type="email" class="form-control" name="username" id="email" placeholder="Email" />
+                      <input type="email" class="form-control border border-success" name="username" id="email" placeholder="Email" />
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
+                      <input type="password" class="form-control border border-success" name="password" id="password" placeholder="Password" />
                     </div>
                     <div class="form-check form-check-flat form-check-primary">
                       <label class="form-check-label">
