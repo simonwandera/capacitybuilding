@@ -9,22 +9,22 @@ import javax.persistence.*;
 @Table(name = "assessment")
 public class Assessment extends BaseEntity {
 
-    @Column(name = "marks")
-    private int marks;
+    @Column(name = "score")
+    private int score;
+
+    @Column(name = "remarks")
+    private String remarks;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "enrollment_id", referencedColumnName = "id")
     private Enrollment enrollment;
 
-    @Column(name = "remarks")
-    private String remarks;
-
-    public int getMarks() {
-        return marks;
+    public int getScore() {
+        return score;
     }
 
-    public void setMarks(int marks) {
-        this.marks = marks;
+    public void setScore(int marks) {
+        this.score = marks;
     }
 
     public Enrollment getEnrollment() {

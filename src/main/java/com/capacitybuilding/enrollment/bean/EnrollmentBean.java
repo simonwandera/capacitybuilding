@@ -52,6 +52,10 @@ public class EnrollmentBean implements EnrollmentBeanI {
             throw new Exception("Invalid enrollment details");
         entityManager.remove(entityManager.find(Enrollment.class, enrollment.getId()));
     }
+    public Enrollment getEnrollment(Long id){
+        return entityManager.find(Enrollment.class, id);
+    }
+
     public Enrollment approveEnrollment(Enrollment enrollment) throws Exception{
         if(StringUtils.isBlank(enrollment.getId().toString()))
             throw new Exception("Invalid enrollment");
