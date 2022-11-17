@@ -12,7 +12,6 @@ public interface AssignTrainerBeanI {
     void update(AssignTrainer assignTrainer);
     void delete(AssignTrainer assignTrainer);
     List<AssignTrainer> list();
-    List<AssignTrainer> generateList(ResultSet resultSet);
     List<AssignTrainer> getTrainers(Training training);
     List<Training> getTrainings(User trainer);
     User getTrainer(Training training);

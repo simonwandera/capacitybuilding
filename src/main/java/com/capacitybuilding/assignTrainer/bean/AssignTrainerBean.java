@@ -49,10 +49,6 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
         return new ArrayList<>();
 
     }
-    public List<AssignTrainer> generateList(ResultSet resultSet) {
-
-        return new ArrayList<>();
-    }
 
     public List<AssignTrainer> getTrainers(Training training) {
 
