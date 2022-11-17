@@ -1,5 +1,6 @@
 package com.capacitybuilding.assessment.action;
 
+import com.capacitybuilding.assessment.bean.AssessmentBeanI;
 import com.capacitybuilding.assessment.model.Assessment;
 import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.enrollment.bean.EnrollmentBeanI;
@@ -21,6 +22,9 @@ public class MakeAssessment extends HttpServlet {
     @EJB
     EnrollmentBeanI enrollmentBean;
 
+    @EJB
+    AssessmentBeanI assessmentBean;
+
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         servletContext = getServletConfig().getServletContext();
@@ -39,10 +43,10 @@ public class MakeAssessment extends HttpServlet {
         assessment.setEnrollment(enrollment);
 
         try {
-            assignTrainerBean.assign(assignTrainer);
-            res.sendRedirect("./training/displayTrainings.jsp");
+            assessmentBean.add(assessment);
+            res.sendRedirect("./enrollment/singleEnrollments.jsp");
         } catch (Exception e) {
-            servletContext.setAttribute("assignmentError" , e.getMessage());
+            servletContext.setAttribute("assessmentError" , e.getMessage());
             res.sendRedirect("/home");
         }
 
