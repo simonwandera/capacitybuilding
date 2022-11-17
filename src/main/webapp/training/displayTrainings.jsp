@@ -185,7 +185,7 @@
                                         <div class="py-1">
                                             <jc:choose>
                                                 <jc:when test="${training.status == TrainingStatus.UPCOMING}">
-                                                    <label class="badge badge-success">upcoming</label>
+                                                    <label class="badge badge-inverse-success">upcoming</label>
                                                 </jc:when>
                                                 <jc:when test="${training.status == TrainingStatus.ONGOING}">
                                                     <label class="badge badge-primary">ongoing</label>
