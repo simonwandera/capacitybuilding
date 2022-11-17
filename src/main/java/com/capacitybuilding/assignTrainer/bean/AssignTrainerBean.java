@@ -1,5 +1,6 @@
 package com.capacitybuilding.assignTrainer.bean;
 
+import com.capacitybuilding.assignTrainer.model.AssignStatus;
 import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
@@ -31,6 +32,7 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
             throw new Exception("The trainer you tried assigning is not recognized");
         if (StringUtils.isBlank(assignTrainer.getTraining().getId().toString()))
             throw new Exception("The training you entered for assignment is invalid");
+        assignTrainer.setStatus(AssignStatus.PENDING);
 
         return entityManager.merge(assignTrainer);
 

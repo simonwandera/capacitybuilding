@@ -39,8 +39,8 @@ public class AssignTrainers extends HttpServlet {
         String trainerId = req.getParameter("trainerId");
 
         AssignTrainer assignTrainer = new AssignTrainer();
+
         assignTrainer.setTrainer(userBean.getUser(Long.parseLong(trainerId)));
-        assignTrainer.setStatus("APPROVED");
         assignTrainer.setTraining(trainingBean.getTraining(Long.parseLong(trainingId)));
 
         try {

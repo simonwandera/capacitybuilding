@@ -18,8 +18,8 @@ public class AssignTrainer extends BaseEntity {
     @JoinColumn(name = "trainer_id", referencedColumnName = "id")
     private User trainer;
 
-    @Column(name = "status")
-    private String Status;
+    @Enumerated(EnumType.STRING)
+    private AssignStatus status;
 
     public Training getTraining() {
         return training;
@@ -38,11 +38,11 @@ public class AssignTrainer extends BaseEntity {
         this.trainer = trainer;
     }
 
-    public String getStatus() {
-        return Status;
+    public AssignStatus getStatus() {
+        return status;
     }
 
-    public void setStatus(String status) {
-        Status = status;
+    public void setStatus(AssignStatus status) {
+        this.status = status;
     }
 }

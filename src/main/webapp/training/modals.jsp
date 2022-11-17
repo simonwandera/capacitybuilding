@@ -19,7 +19,7 @@
                     <form method="POST" action="../assignTrainer">
                         <div class="form-group row">
                             <div class="col">
-                                <input type="hidden" name="id"
+                                <input type="hidden" name="trainingId"
                                        value="${training.id}">
                                 <label>Training Title</label>
                                 <div id="the-basics mb-2 pb-2">
@@ -35,9 +35,9 @@
                                 <label>Status</label>
                                 <div id="bloodhound">
 
-                                    <select class="form-control border border-success" name="status" id="exampleSelectGender">
+                                    <select class="form-control border border-success" name="trainerId" id="exampleSelectGender">
                                         <jc:forEach items="${userBean.getTrainers()}" var="trainer">
-                                            <option>${trainer.firstName}</option>
+                                            <option value="${trainer.id}">${trainer.firstName} ${trainer.lastName}</option>
                                         </jc:forEach>
                                     </select>
 
