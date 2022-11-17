@@ -89,7 +89,7 @@
                                                 <label class="col-sm-3 col-lg-6 col-form-label">Duration(Weeks)</label>
                                                 <div class="col-sm-9">
                                                     <input type="number" name="duration" class="form-control border border-primary"
-                                                           value="${training.duration}"/>
+                                                           value="${training.duration}" min="1" max="50" required/>
                                                 </div>
                                             </div>
                                         </div>
