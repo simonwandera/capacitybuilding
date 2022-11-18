@@ -131,7 +131,8 @@
 
                                             <h5 class="mb-0">Trainer</h5>
 
-                                            <jc:forEach items="${assignTrainerBean.getTrainers(training)}" var="trainer">
+                                            <jc:forEach items="${assignTrainerBean.getTrainers(training)}"
+                                                        var="trainer">
                                                 <h5>
                                                     <p class="mb-0 text-muted">${trainer.trainer.firstName } ${trainer.trainer.lastName}</p>
                                                 </h5>
@@ -160,25 +161,34 @@
                                                                 </button>
                                                             </form>
                                                         </jc:if>
-                                                        <a class="dropdown-item" href="#">Enrolled trainees</a>
+
+                                                        <jc:if test="${enrollmentBean.isEnrolled(training,activeUser)}">
+                                                            <a class="dropdown-item"
+                                                               href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
+                                                        </jc:if>
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
                                                         <jc:if test="${assignTrainerBean.getTrainer(training).id == activeUser.id}">
-                                                            <a class="dropdown-item" href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
+                                                            <a class="dropdown-item"
+                                                               href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
                                                         </jc:if>
                                                         <a class="dropdown-item" href="#">Feedback</a>
                                                     </jc:when>
                                                     <jc:when test="${sessionScope.userType == Usertype.ADMIN}">
                                                         <jc:if test="${assignTrainerBean.getTrainers(training).size() == 0}">
-                                                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assignModal${training.id}">
+                                                            <button type="button" class="dropdown-item"
+                                                                    data-toggle="modal"
+                                                                    data-target="#assignModal${training.id}">
                                                                 Assign Trainer
                                                             </button>
                                                         </jc:if>
-                                                        <a class="dropdown-item" href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
+                                                        <a class="dropdown-item"
+                                                           href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
                                                         <a class="dropdown-item" href="#">View Assessments</a>
                                                         <a class="dropdown-item" href="#">Activate</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="./updateTraining.jsp?id=${training.id}">Edit</a>
+                                                        <a class="dropdown-item"
+                                                           href="./updateTraining.jsp?id=${training.id}">Edit</a>
                                                     </jc:when>
                                                 </jc:choose>
                                             </div>
