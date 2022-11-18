@@ -4,7 +4,6 @@ import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 public interface AssignTrainerBeanI {

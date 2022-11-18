@@ -4,17 +4,24 @@ import com.capacitybuilding.assessment.model.Assessment;
 import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 
-
+@Stateless
+@Remote
+@Named("assessmentBean")
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class AssessmentBean implements AssessmentBeanI{
 
     @PersistenceContext
     EntityManager entityManager;
-    @Override
     public Assessment add(Assessment assessment) throws Exception {
         if(StringUtils.isBlank(assessment.getRemarks()))
             throw new Exception("Remarks cannot be null");
@@ -27,22 +34,18 @@ public class AssessmentBean implements AssessmentBeanI{
 
     }
 
-    @Override
     public void update(Assessment assessment) {
 
     }
 
-    @Override
     public void delete(Assessment assessment) {
 
     }
 
-    @Override
     public User getAssessment(Long id) {
         return null;
     }
 
-    @Override
     public List<Assessment> list() {
         return null;
     }

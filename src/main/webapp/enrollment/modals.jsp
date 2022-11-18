@@ -184,7 +184,7 @@
 
                                 <label>Comment</label>
                                 <div id="comment" class="mb-2">
-                                    <textarea class="typeahead border border-primary" name="remarks" maxlength="35" required>
+                                    <textarea class="typeahead border border-primary" name="remarks" required>
 
                                     </textarea>
                                 </div>
