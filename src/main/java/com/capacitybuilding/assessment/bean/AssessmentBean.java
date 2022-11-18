@@ -1,6 +1,7 @@
 package com.capacitybuilding.assessment.bean;
 
 import com.capacitybuilding.assessment.model.Assessment;
+import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -48,6 +49,12 @@ public class AssessmentBean implements AssessmentBeanI{
 
     public List<Assessment> list() {
         return entityManager.createNamedQuery(Assessment.FIND_ALL, Assessment.class)
+                .getResultList();
+    }
+
+    public List<Assessment> listByTrainings(Training training) {
+        return entityManager.createQuery("FROM Assessment a WHERE a.enrollment.training.id=:id")
+                .setParameter("id", training.getId())
                 .getResultList();
     }
 }

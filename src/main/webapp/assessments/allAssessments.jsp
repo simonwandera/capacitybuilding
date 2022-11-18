@@ -62,7 +62,7 @@
                                     <tr>
                                         <th>Trainee Name</th>
                                         <th>Training Title</th>
-                                        <th>Date Enrolled</th>
+                                        <th>Date</th>
                                         <th>Score</th>
                                         <th>Remarks</th>
                                     </tr>
@@ -74,7 +74,7 @@
 
                                             <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
                                             <td>${assessment.enrollment.training.title}</td>
-                                            <td>${assessment.enrollment.timeCreated}</td>
+                                            <td>${assessment.timeCreated}</td>
                                             <td>${assessment.score}</td>
                                             <td>${assessment.remarks}</td>
 

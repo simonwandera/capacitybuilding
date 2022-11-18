@@ -14,4 +14,5 @@ public interface AssessmentBeanI {
     void delete(Assessment assessment);
     User getAssessment(Long id);
     List<Assessment> list();
+    List<Assessment> listByTrainings(Training training);
 }
