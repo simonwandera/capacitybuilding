@@ -64,6 +64,27 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#assessments" aria-expanded="false" aria-controls="assessments">
+          <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+          <span class="menu-title">Assessments</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="assessments">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../assessments/enrollmentByTrainees.jsp">Grouped by Trainees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../assessments/enrollmentByTraining.jsp">Grouped by Trainings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../assessments/allAssessments.jsp">All assessments</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#trainers" aria-expanded="false" aria-controls="trainers">
           <i class=" mdi mdi-account-network menu-icon"></i>
           <span class="menu-title">Users</span>

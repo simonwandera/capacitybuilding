@@ -32,7 +32,7 @@ public class Enrollment extends BaseEntity {
     @Transient
     private Long counts;
 
-    @OneToMany(mappedBy = "enrollment", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "enrollment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Assessment> assessments = new ArrayList<>();
 
     public User getTrainee() {
