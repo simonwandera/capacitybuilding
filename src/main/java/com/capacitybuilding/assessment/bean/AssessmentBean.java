@@ -47,6 +47,7 @@ public class AssessmentBean implements AssessmentBeanI{
     }
 
     public List<Assessment> list() {
-        return null;
+        return entityManager.createNamedQuery(Assessment.FIND_ALL, Assessment.class)
+                .getResultList();
     }
 }

@@ -7,7 +7,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "assessment")
+@NamedQueries({
+        @NamedQuery(name = Assessment.FIND_ALL, query = "select a from Assessment a")
+})
 public class Assessment extends BaseEntity {
+
+    public static final String FIND_ALL = "Assessment.findAll";
 
     @Column(name = "score")
     private int score;
