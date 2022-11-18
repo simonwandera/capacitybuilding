@@ -39,6 +39,7 @@ public class SessionFilter implements Filter {
         if((reqPath.contains("/main/")
                 || reqPath.contains("/trainer")
                 || reqPath.contains("/training")
+                || reqPath.contains("/assessments")
                 || reqPath.contains("/admin")
                 || reqPath.contains("/enrollment")
                 || reqPath.contains("/trainee")) && session.isNew()){

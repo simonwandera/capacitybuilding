@@ -95,7 +95,7 @@
                                                     <td>${assessment.score}</td>
                                                     <td>${assessment.remarks}</td>
 
-                                                    <jc:if test="${activeUser.userType == Usertype.TRAINER || activeUser.userType == Usertype.ADMIN} ">
+                                                    <jc:if test="${activeUser.userType == Usertype.TRAINER || activeUser.userType == UserType.ADMIN} ">
                                                         <td>
                                                             <div class="dropdown">
                                                                 <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
