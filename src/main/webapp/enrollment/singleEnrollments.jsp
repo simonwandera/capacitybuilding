@@ -82,8 +82,9 @@
                                                 <th>Start Date</th>
                                                 <th>Date Enrolled</th>
                                                 <th>Status</th>
+                                                <th>Assessments</th>
                                                 <jc:if test="${activeUser.userType == Usertype.TRAINER}">
-                                                    <th>Assessment</th>
+                                                    <th>Test</th>
                                                 </jc:if>
 
                                             </tr>
@@ -99,6 +100,7 @@
                                                     <td>${enrollment.training.startDate}</td>
                                                     <td>${enrollment.timeCreated}</td>
                                                     <td>${enrollment.status}</td>
+                                                    <td>${enrollment.assessments.size()}</td>
 
                                                     <jc:if test="${activeUser.userType == Usertype.TRAINER}">
                                                     <td>

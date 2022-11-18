@@ -1,14 +1,20 @@
 package com.capacitybuilding.enrollment.model;
 
 
+import com.capacitybuilding.assessment.model.Assessment;
 import com.capacitybuilding.util.model.BaseEntity;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "enrollments")
+@NamedQueries({
+        @NamedQuery(name = "Enrollment.findAll", query = "select e from Enrollment e"),
+})
 public class Enrollment extends BaseEntity {
 
 
@@ -25,6 +31,9 @@ public class Enrollment extends BaseEntity {
 
     @Transient
     private Long counts;
+
+    @OneToMany(mappedBy = "enrollment", cascade = CascadeType.ALL)
+    private List<Assessment> assessments = new ArrayList<>();
 
     public User getTrainee() {
         return trainee;
@@ -47,6 +56,14 @@ public class Enrollment extends BaseEntity {
     public Enrollment(Training training, Long counts) {
         this.training = training;
         this.counts = counts;
+    }
+
+    public List<Assessment> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(List<Assessment> assessments) {
+        this.assessments = assessments;
     }
 
     public void setTrainee(User trainee) {

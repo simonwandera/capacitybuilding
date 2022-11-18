@@ -45,7 +45,7 @@ public class MakeAssessment extends HttpServlet {
 
         try {
             assessmentBean.add(assessment);
-            res.sendRedirect("./enrollment/singleEnrollments.jsp");
+            res.sendRedirect("./enrollment/singleEnrollments.jsp?trainingId="+enrollment.getTraining().getId());
         } catch (Exception e) {
             servletContext.setAttribute("assessmentError" , e.getMessage());
             res.sendRedirect("/home");
