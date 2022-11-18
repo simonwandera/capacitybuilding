@@ -171,6 +171,8 @@
                                                         <jc:if test="${assignTrainerBean.getTrainer(training).id == activeUser.id}">
                                                             <a class="dropdown-item"
                                                                href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
+                                                            <a class="dropdown-item"
+                                                               href="../assessments/singleTraining.jsp?trainingId=${training.id}">View Assessments</a>
                                                         </jc:if>
                                                         <a class="dropdown-item" href="#">Feedback</a>
                                                     </jc:when>

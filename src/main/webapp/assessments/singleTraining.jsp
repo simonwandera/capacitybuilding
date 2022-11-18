@@ -87,7 +87,7 @@
                                             <tbody>
 
                                             <jc:forEach items="${assessments}" var="assessment">
-                                                <tr>
+                                                <c>
 
                                                     <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
                                                     <td>${assessment.enrollment.training.title}</td>
@@ -95,7 +95,9 @@
                                                     <td>${assessment.score}</td>
                                                     <td>${assessment.remarks}</td>
 
-                                                    <jc:if test="${activeUser.userType == Usertype.TRAINER || activeUser.userType == UserType.ADMIN} ">
+                                                    <jc:choose>
+                                                    <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
+
                                                         <td>
                                                             <div class="dropdown">
                                                                 <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,7 +114,8 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                    </jc:if>
+                                                    </jc:when>
+                                                    </jc:choose>
 
                                                     <%@ include file="./modals.jsp" %>
 
