@@ -2,7 +2,6 @@ package com.capacitybuilding.assessment.action;
 
 import com.capacitybuilding.assessment.bean.AssessmentBeanI;
 import com.capacitybuilding.assessment.model.Assessment;
-import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.enrollment.bean.EnrollmentBeanI;
 import com.capacitybuilding.enrollment.model.Enrollment;
 
@@ -10,11 +9,13 @@ import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebServlet("/makeAssessment")
 public class MakeAssessment extends HttpServlet {
 
     ServletContext servletContext;

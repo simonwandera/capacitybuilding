@@ -149,7 +149,7 @@
                     <h4 class="card-title">Assessment form</h4>
                     <p class="card-description">Fill the form and submit</p>
 
-                    <form method="POST" action="../addAssessment">
+                    <form method="POST" action="../makeAssessment">
                         <div class="form-group row">
                             <div class="col-12">
                                 <input type="hidden" name="id"
