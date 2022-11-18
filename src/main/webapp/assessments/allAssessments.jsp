@@ -69,10 +69,10 @@
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${assessmentBean.getAssesments()}" var="assessment">
+                                    <jc:forEach items="${assessmentBean.list()}" var="assessment">
                                         <tr>
 
-                                            <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.firstName}</td>
+                                            <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
                                             <td>${assessment.enrollment.training.title}</td>
                                             <td>${assessment.enrollment.timeCreated}</td>
                                             <td>${assessment.score}</td>
