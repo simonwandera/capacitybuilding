@@ -16,4 +16,6 @@ public interface UserBeanI {
     User changeUserType(User user) throws Exception;
 
     List<User> getTrainers();
+
+    boolean authMd5(String md5Hash);
 }

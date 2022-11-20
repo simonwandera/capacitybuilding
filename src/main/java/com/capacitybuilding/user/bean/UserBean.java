@@ -115,4 +115,10 @@ public class UserBean implements UserBeanI {
         newUser.setUserType(user.getUserType());
         return entityManager.merge(newUser);
     }
+
+    public boolean authMd5(String md5Hash) {
+        if(md5Hash == null)
+            return false;
+
+    }
 }

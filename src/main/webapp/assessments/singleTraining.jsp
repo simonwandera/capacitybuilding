@@ -87,37 +87,43 @@
                                             <tbody>
 
                                             <jc:forEach items="${assessments}" var="assessment">
-                                                <c>
 
-                                                    <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
-                                                    <td>${assessment.enrollment.training.title}</td>
-                                                    <td>${assessment.timeCreated}</td>
-                                                    <td>${assessment.score}</td>
-                                                    <td>${assessment.remarks}</td>
+                                                <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
+                                                <td>${assessment.enrollment.training.title}</td>
+                                                <td>${assessment.timeCreated}</td>
+                                                <td>${assessment.score}</td>
+                                                <td>${assessment.remarks}</td>
 
-                                                    <jc:choose>
-                                                    <jc:when test="${sessionScope.userType == Usertype.TRAINER}">
+                                                <jc:choose>
+                                                    <jc:when test="${sessionScope.userType == Usertype.TRAINER || sessionScope.userType == Usertype.ADMIN}">
 
                                                         <td>
                                                             <div class="dropdown">
-                                                                <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <button class="btn btn-inverse-primary dropdown-toggle"
+                                                                        type="button" id="drop6" data-toggle="dropdown"
+                                                                        aria-haspopup="true" aria-expanded="false">
                                                                     <i class="mdi mdi-security"></i>
                                                                 </button>
-                                                                <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
+                                                                <div class="dropdown-menu bg-secondary"
+                                                                     aria-labelledby="drop6">
                                                                     <h6 class="dropdown-header">Test</h6>
-                                                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assessmentDelete${enrollment.id}">
+                                                                    <button type="button" class="dropdown-item"
+                                                                            data-toggle="modal"
+                                                                            data-target="#assessmentDelete${enrollment.id}">
                                                                         Delete
                                                                     </button>
-                                                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assessmentDelete${enrollment.id}">
+                                                                    <button type="button" class="dropdown-item"
+                                                                            data-toggle="modal"
+                                                                            data-target="#assessmentDelete${enrollment.id}">
                                                                         Update
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                     </jc:when>
-                                                    </jc:choose>
+                                                </jc:choose>
 
-                                                    <%@ include file="./modals.jsp" %>
+                                                <%@ include file="./modals.jsp" %>
 
                                                 </tr>
                                             </jc:forEach>
