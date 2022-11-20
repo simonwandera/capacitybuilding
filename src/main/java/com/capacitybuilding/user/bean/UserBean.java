@@ -103,7 +103,7 @@ public class UserBean implements UserBeanI {
         if (users == null || users.isEmpty() || users.get(0) == null)
             throw new Exception("Invalid username or password");
 
-
+        users.get(0).setBearerToken(DigestUtils.md5Hex(user.getUsername() + user.getPassword()));
 
         return users.get(0);
     }
