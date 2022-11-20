@@ -2,6 +2,7 @@ package com.capacitybuilding.user.bean;
 
 import com.capacitybuilding.user.model.User;
 import com.capacitybuilding.user.model.Usertype;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
@@ -102,6 +103,8 @@ public class UserBean implements UserBeanI {
         if (users == null || users.isEmpty() || users.get(0) == null)
             throw new Exception("Invalid username or password");
 
+
+
         return users.get(0);
     }
 
@@ -120,5 +123,19 @@ public class UserBean implements UserBeanI {
         if(md5Hash == null)
             return false;
 
+        List<User> users = entityManager.createQuery("FROM User u", User.class)
+                .getResultList();
+
+        if (users == null || users.isEmpty())
+            return false;
+
+        boolean isAuthenticated = false;
+        for (User user: users){
+            if (DigestUtils.md5Hex(user.getUsername() + user.getPassword()).equals(md5Hash)) {
+                isAuthenticated = true;
+                break;
+            }
+        }
+        return isAuthenticated;
     }
 }
