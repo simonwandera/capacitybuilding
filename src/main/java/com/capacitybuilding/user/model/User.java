@@ -24,6 +24,9 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Usertype userType;
 
+    @Transient
+    private String bearerToken;
+
     public String getUsername() {
         return username;
     }
@@ -78,6 +81,14 @@ public class User extends BaseEntity {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getBearerToken() {
+        return bearerToken;
+    }
+
+    public void setBearerToken(String bearerToken) {
+        this.bearerToken = bearerToken;
     }
 
     @Override
