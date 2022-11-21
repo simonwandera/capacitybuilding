@@ -50,7 +50,7 @@
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
-                    <h3 class="mb-0"> Assessments for ${activeUser.firstName} </h3>
+                    <h3 class="mb-0"> Average assessments for ${activeUser.firstName} </h3>
                 </div>
 
                 <div class="col-lg-12 grid-margin stretch-card">
@@ -64,20 +64,18 @@
                                     <tr>
                                         <th>Trainee Name</th>
                                         <th>Training Title</th>
-                                        <th>Date</th>
-                                        <th>Score</th>
-                                        <th>Remarks</th>
+                                        <th>Duration</th>
+                                        <th>AVG Score</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${assessmentBean.getAssessments(activeUser)}" var="assessment">
+                                    <jc:forEach items="${assessmentBean.getAvgAssessments(activeUser)}" var="assessment">
                                         <tr>
                                             <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
                                             <td>${assessment.enrollment.training.title}</td>
-                                            <td>${assessment.timeCreated}</td>
-                                            <td>${assessment.score}</td>
-                                            <td>${assessment.remarks}</td>
+                                            <td>${assessment.enrollment.training.duration}</td>
+                                            <td>${assessment.average}</td>
 
                                             <td>
                                                 <div class="dropdown">

@@ -60,13 +60,16 @@ public class AssessmentBean implements AssessmentBeanI{
     }
 
     public List<Assessment> getAssessments(User trainee) {
-        List<Assessment> assessmentList = entityManager.createQuery("FROM Assessment a WHERE a.enrollment.trainee.id:=traineeId ORDER BY a.enrollment.training.id")
+        List<Assessment> assessmentList = entityManager.createQuery("FROM Assessment a WHERE a.enrollment.trainee.id=:traineeId ORDER BY a.enrollment.training.id")
                 .setParameter("traineeId", trainee.getId())
                 .getResultList();
         return assessmentList;
     }
 
     public List<Assessment> getAvgAssessments(User trainee) {
-        return null;
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT a.enrollment, AVG(a.score) FROM Assessment a WHERE a.enrollment.trainee.id=:traineeId GROUP BY a.enrollment.training.id")
+                .setParameter("traineeId", trainee.getId())
+                .getResultList();
+        return assessmentList;
     }
 }

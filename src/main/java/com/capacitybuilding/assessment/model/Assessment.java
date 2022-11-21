@@ -24,6 +24,16 @@ public class Assessment extends BaseEntity {
     @JoinColumn(name = "enrollment_id", referencedColumnName = "id")
     private Enrollment enrollment;
 
+    private long average;
+
+    public Assessment() {
+    }
+
+    public Assessment(Enrollment enrollment, long average) {
+        this.enrollment = enrollment;
+        this.average = average;
+    }
+
     public int getScore() {
         return score;
     }
@@ -46,5 +56,13 @@ public class Assessment extends BaseEntity {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public long getAverage() {
+        return average;
+    }
+
+    public void setAverage(long average) {
+        this.average = average;
     }
 }
