@@ -46,10 +46,23 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="pages/icons/mdi.html">
-          <i class="mdi mdi-contacts menu-icon"></i>
+        <a class="nav-link" data-toggle="collapse" href="#assessments" aria-expanded="false" aria-controls="assessments">
+          <i class="mdi mdi-book-open-page-variant menu-icon"></i>
           <span class="menu-title">Assessments</span>
+          <i class="menu-arrow"></i>
         </a>
+
+        <div class="collapse" id="assessments">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../assessments/userAssessments.jsp">All assessments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../assessments/userGroupedAverage.jsp">Grouped averages</a>
+            </li>
+          </ul>
+        </div>
+
       </li>
       <li class="nav-item">
         <a class="nav-link" href="pages/charts/chartjs.html">

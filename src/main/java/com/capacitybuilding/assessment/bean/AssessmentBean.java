@@ -12,6 +12,7 @@ import javax.ejb.TransactionManagementType;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -56,5 +57,16 @@ public class AssessmentBean implements AssessmentBeanI{
         return entityManager.createQuery("FROM Assessment a WHERE a.enrollment.training.id=:id")
                 .setParameter("id", training.getId())
                 .getResultList();
+    }
+
+    public List<Assessment> getAssessments(User trainee) {
+        List<Assessment> assessmentList = entityManager.createQuery("FROM Assessment a WHERE a.enrollment.trainee.id:=traineeId ORDER BY a.enrollment.training.id")
+                .setParameter("traineeId", trainee.getId())
+                .getResultList();
+        return assessmentList;
+    }
+
+    public List<Assessment> getAvgAssessments(User trainee) {
+        return null;
     }
 }
