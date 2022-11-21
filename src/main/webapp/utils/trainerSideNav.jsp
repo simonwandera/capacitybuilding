@@ -44,10 +44,25 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="mdi mdi-home menu-icon"></i>
-          <span class="menu-title">Assessments</span>
+
+        <a class="nav-link" data-toggle="collapse" href="#assessment" aria-expanded="false" aria-controls="assessment">
+          <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+          <span class="menu-title">Assessment</span>
+          <i class="menu-arrow"></i>
         </a>
+        <div class="collapse" id="assessment">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../training/displayTrainings.jsp">Grouped By Trainees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../training/displayTrainings.jsp">Grouped By Trainings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../training/displayTrainings.jsp">All assessments</a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item sidebar-actions">
         <div class="nav-link">

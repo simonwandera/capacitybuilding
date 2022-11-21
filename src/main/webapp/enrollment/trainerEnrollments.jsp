@@ -52,7 +52,7 @@
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
-                    <h3 class="mb-0"> Trainer Enrollments for ${activeUser.firstName}</h3>
+                    <h3 class="mb-0"> Trainer Enrollments for <u>${activeUser.firstName}</u></h3>
 
                 </div>
 
@@ -78,7 +78,8 @@
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${enrollmentBean.getEnrollmentsForTrainer(activeUser)}" var="enrollment">
+                                    <jc:forEach items="${enrollmentBean.getEnrollmentsForTrainer(activeUser)}"
+                                                var="enrollment">
                                         <tr>
 
                                             <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
@@ -91,17 +92,21 @@
 
                                             <td>
                                                 <jc:if test="${enrollment.status == EnrollmentStatus.APPROVED}">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="mdi mdi-security"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
-                                                        <h6 class="dropdown-header">Test</h6>
-                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assessment${enrollment.id}">
-                                                            Assessment
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-inverse-primary dropdown-toggle"
+                                                                type="button" id="drop6" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <i class="mdi mdi-security"></i>
                                                         </button>
+                                                        <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
+                                                            <h6 class="dropdown-header">Test</h6>
+                                                            <button type="button" class="dropdown-item"
+                                                                    data-toggle="modal"
+                                                                    data-target="#assessment${enrollment.id}">
+                                                                Assessment
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </jc:if>
                                             </td>
 
@@ -110,7 +115,6 @@
                                         </tr>
                                     </jc:forEach>
 
-
                                     </tbody>
                                 </table>
                             </div>
@@ -118,7 +122,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </div>
         </div>
