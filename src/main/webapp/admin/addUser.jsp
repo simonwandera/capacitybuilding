@@ -86,11 +86,11 @@
 
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name = "password"/>
+                                    <input type="password" class="form-control" id="password" name = "password" required/>
                                 </div>
                                 <div class="form-group">
                                     <label for="confirmPassword">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" />
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required/>
                                 </div>
 
                                 <div class="my-1 py-2 text-center">

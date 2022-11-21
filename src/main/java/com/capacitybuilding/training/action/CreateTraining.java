@@ -61,7 +61,7 @@ public class CreateTraining extends HttpServlet {
 
         try {
             trainingBean.add(training);
-            res.sendRedirect("./training/displayTrainings.jsp");
+            res.sendRedirect("./training/e.jsp");
         } catch (Exception ex) {
             servletContext.setAttribute("trainingError" , ex.getMessage());
             res.sendRedirect("./training/addTraining.jsp");

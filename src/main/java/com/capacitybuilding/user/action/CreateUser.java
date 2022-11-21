@@ -37,7 +37,7 @@ public class CreateUser extends HttpServlet {
         user.setUserType(Usertype.USER);
         user.setPassword(DigestUtils.md5Hex(user.getPassword()));
         user.setConfirmPassword(DigestUtils.md5Hex(user.getConfirmPassword()));
-        
+
         try {
             userBean.add(user);
             res.sendRedirect("./admin/users.jsp");
