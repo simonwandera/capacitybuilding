@@ -24,12 +24,12 @@ public class Assessment extends BaseEntity {
     @JoinColumn(name = "enrollment_id", referencedColumnName = "id")
     private Enrollment enrollment;
 
-    private long average;
+    private Double average;
 
     public Assessment() {
     }
 
-    public Assessment(Enrollment enrollment, long average) {
+    public Assessment(Enrollment enrollment, Double average) {
         this.enrollment = enrollment;
         this.average = average;
     }
@@ -58,11 +58,11 @@ public class Assessment extends BaseEntity {
         this.remarks = remarks;
     }
 
-    public long getAverage() {
+    public Double getAverage() {
         return average;
     }
 
-    public void setAverage(long average) {
+    public void setAverage(Double average) {
         this.average = average;
     }
 }

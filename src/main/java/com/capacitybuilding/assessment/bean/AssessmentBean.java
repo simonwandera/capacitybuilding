@@ -12,7 +12,6 @@ import javax.ejb.TransactionManagementType;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -67,7 +66,7 @@ public class AssessmentBean implements AssessmentBeanI{
     }
 
     public List<Assessment> getAvgAssessments(User trainee) {
-        List<Assessment> assessmentList = entityManager.createQuery("SELECT a.enrollment, AVG(a.score) FROM Assessment a WHERE a.enrollment.trainee.id=:traineeId GROUP BY a.enrollment.training.id")
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a WHERE a.enrollment.trainee.id=:traineeId GROUP BY a.enrollment.training.id")
                 .setParameter("traineeId", trainee.getId())
                 .getResultList();
         return assessmentList;
