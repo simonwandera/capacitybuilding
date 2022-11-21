@@ -51,7 +51,7 @@
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
-                    <h3 class="mb-0"> Active Enrollments for ${activeUser.firstName}</h3>
+                    <h3 class="mb-0"> Trainer Enrollments for ${activeUser.firstName}</h3>
 
                 </div>
 
@@ -75,7 +75,7 @@
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${enrollmentBean.getEnrollments(activeUser)}" var="enrollment">
+                                    <jc:forEach items="${enrollmentBean.getEnrollmentsForTrainer(activeUser)}" var="enrollment">
                                         <tr>
 
                                             <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
