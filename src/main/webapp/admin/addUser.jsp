@@ -98,7 +98,7 @@
                                         String addUserError = (String) application.getAttribute("addUserError");
                                         if (addUserError != null && !addUserError.equals("")) {
                                     %>
-                                    <span class="text-danger"> <%= application.getAttribute("trainingError") %> </span>
+                                    <span class="text-danger"> <%= application.getAttribute("addUserError") %> </span>
                                     <% } %>
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2"> Submit </button>

@@ -28,7 +28,7 @@ public class CreateUser extends HttpServlet {
         super.init(config);
         servletContext = getServletConfig().getServletContext();
     }
-    
+
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         User user = new User();
@@ -51,7 +51,7 @@ public class CreateUser extends HttpServlet {
             res.sendRedirect("./admin/users.jsp");
         } catch (Exception ex) {
             servletContext.setAttribute("addUserError", ex.getMessage());
-            res.sendRedirect("./addUser.jsp");
+            res.sendRedirect("./admin/addUser.jsp");
         }
 
     }
