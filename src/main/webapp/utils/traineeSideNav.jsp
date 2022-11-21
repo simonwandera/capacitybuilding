@@ -39,7 +39,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="../trainee/displayTrainees.jsp">
+        <a class="nav-link" href="../enrollment/userEnrollments.jsp">
           <i class="mdi mdi-account-multiple menu-icon"></i>
           <span class="menu-title">My Enrollments</span>
         </a>
