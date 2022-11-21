@@ -93,7 +93,7 @@
         <div class="collapse" id="trainers">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/buttons.html">Add New</a>
+              <a class="nav-link" href="../admin/addUser.jsp">Add New</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../admin/users.jsp">View Users</a>
