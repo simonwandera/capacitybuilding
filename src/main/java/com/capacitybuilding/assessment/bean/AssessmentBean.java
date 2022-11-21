@@ -71,4 +71,16 @@ public class AssessmentBean implements AssessmentBeanI{
                 .getResultList();
         return assessmentList;
     }
+
+    public List<Assessment> getAvgAssessmentsByTraining() {
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a GROUP BY a.enrollment.training.id")
+                .getResultList();
+        return assessmentList;
+    }
+
+    public List<Assessment> getAvgAssessmentsByUser() {
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a GROUP BY a.enrollment.trainee.id")
+                .getResultList();
+        return assessmentList;
+    }
 }
