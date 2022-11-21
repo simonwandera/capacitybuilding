@@ -15,7 +15,6 @@ public class TrainingRestApi extends BaseRestApi {
 
     @EJB
     private TrainingBeanI trainingBean;
-
     @Path("/add")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
