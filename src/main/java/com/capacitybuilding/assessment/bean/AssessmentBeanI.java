@@ -20,12 +20,12 @@ public interface AssessmentBeanI {
 
     List<Assessment> getAvgAssessmentsByUser(Training training);
 
-    List<Assessment> getAvgAssessments(Training training);
+    List<Assessment> getAvgAssessmentsByTraining(Training training);
 
     List<Assessment> getAvgAssessmentsByTraining();
 
     List<Assessment> getAvgAssessmentsByUser();
 
-    List<Assessment> TrainerAvgAssessmentsByTraining();
-    List<Assessment> TrainerAvgAssessmentsByUser();
+    List<Assessment> TrainerAvgAssessmentsByTraining(User trainer);
+    List<Assessment> TrainerAvgAssessmentsByUser(User trainer);
 }

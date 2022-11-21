@@ -68,14 +68,14 @@ public class AssessmentBean implements AssessmentBeanI{
     }
 
     public List<Assessment> getAvgAssessmentsByUser(Training training) {
-        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a WHERE a.enrollment.training.id=:trainingId GROUP BY a.enrollment.trainee.id")
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a WHERE a.enrollment.training.id=:trainingId GROUP BY a.enrollment.trainee.id", Assessment.class)
                 .setParameter("trainingId", training.getId())
                 .getResultList();
         return assessmentList;
     }
 
-    public List<Assessment> getAvgAssessments(Training training) {
-        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a WHERE a.enrollment.training.id=:trainingId GROUP BY a.enrollment.training.id")
+    public List<Assessment> getAvgAssessmentsByTraining(Training training) {
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a WHERE a.enrollment.training.id=:trainingId GROUP BY a.enrollment.training.id", Assessment.class)
                 .setParameter("trainingId", training.getId())
                 .getResultList();
         return assessmentList;
@@ -83,13 +83,13 @@ public class AssessmentBean implements AssessmentBeanI{
 
 
     public List<Assessment> getAvgAssessmentsByTraining() {
-        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a GROUP BY a.enrollment.training.id")
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a GROUP BY a.enrollment.training.id", Assessment.class)
                 .getResultList();
         return assessmentList;
     }
 
     public List<Assessment> getAvgAssessmentsByUser() {
-        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a GROUP BY a.enrollment.trainee.id")
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a GROUP BY a.enrollment.trainee.id", Assessment.class)
                 .getResultList();
         return assessmentList;
     }
@@ -98,17 +98,20 @@ public class AssessmentBean implements AssessmentBeanI{
 
         List<Assessment> trainerAssessment = new ArrayList<>();
         for (Training training : assignTrainerBean.getTrainings(trainer)){
-            List<Assessment> assessments = this.getAvgAssessments(training);
+            List<Assessment> assessments = this.getAvgAssessmentsByTraining(training);
             trainerAssessment.addAll(assessments);
         }
-
-        return null;
+        return trainerAssessment;
     }
 
     public List<Assessment> TrainerAvgAssessmentsByUser(User trainer) {
 
-
-        return null;
+        List<Assessment> trainerAssessment = new ArrayList<>();
+        for (Training training : assignTrainerBean.getTrainings(trainer)){
+            List<Assessment> assessments = this.getAvgAssessmentsByUser(training);
+            trainerAssessment.addAll(assessments);
+        }
+        return  trainerAssessment;
     }
 
 
