@@ -1,6 +1,9 @@
 package com.capacitybuilding.training.bean;
 
+import com.capacitybuilding.assessment.model.Assessment;
 import com.capacitybuilding.training.model.Training;
+import com.capacitybuilding.training.model.TrainingStatus;
+import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.Remote;
@@ -80,6 +83,14 @@ public class TrainingBean implements TrainingBeanI {
                 .setParameter("id", id)
                 .getResultList().get(0);
         return training;
+    }
+
+    public List<Assessment> getCompletedTrainings(User trainee) {
+        List<Assessment> assessmentList = entityManager.createQuery("SELECT new Assessment(a.enrollment, AVG(a.score)) FROM Assessment a WHERE a.enrollment.trainee.id=:traineeId AND a.enrollment.training.status=:trainingStatus GROUP BY a.enrollment.training.id")
+                .setParameter("traineeId", trainee.getId())
+                .setParameter("trainingStatus", TrainingStatus.COMPLETED)
+                .getResultList();
+        return assessmentList;
     }
 
 }

@@ -50,6 +50,5 @@ public class AssignTrainers extends HttpServlet {
             servletContext.setAttribute("assignmentError" , e.getMessage());
             res.sendRedirect("/home");
         }
-
     }
 }

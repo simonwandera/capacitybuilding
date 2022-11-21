@@ -95,7 +95,7 @@
                                                 </div>
                                             </td>
 
-                                            <%@ include file="./modals.jsp" %>
+                                            <%@ include file="../assessments/modals.jsp" %>
 
                                         </tr>
                                     </jc:forEach>
