@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.user.model.Usertype" %>
+<%@ page import="java.time.LocalDate" %>>
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -47,9 +48,9 @@
 
         <%@ include file="../utils/trainerTopNav.jsp" %>
 
-            <% String trainingId = request.getParameter("trainingId");
-                pageContext.setAttribute("trainingId", trainingId);
-            %>
+        <% String trainingId = request.getParameter("trainingId");
+            pageContext.setAttribute("trainingId", trainingId);
+        %>
 
         <jc:set value="${assessmentBean.listByTrainings(trainingBean.getTraining(Long.valueOf(trainingId)))}"
                 var="assessments"/>
@@ -64,82 +65,82 @@
                     <div class="card">
                         <div class="card-body">
                             <jc:choose>
-                                <jc:when test="${assessments.size() < 1}">
-                                    <h4 class="mb-1">No records to display</h4>
-                                </jc:when>
-                                <jc:otherwise>
+                            <jc:when test="${assessments.size() < 1}">
+                                <h4 class="mb-1">No records to display</h4>
+                            </jc:when>
+                            <jc:otherwise>
 
-                                    <h4 class="card-title">Assessment</h4>
-                                    <p class="card-description"> Record details </p>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Trainee Name</th>
-                                                <th>Training Title</th>
-                                                <th>Date</th>
-                                                <th>Score</th>
-                                                <th>Remarks</th>
-                                                <th>Action</th>
+                            <h4 class="card-title">Assessment</h4>
+                            <p class="card-description"> Date: ${LocalDate.now()} </p>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Trainee Name</th>
+                                    <th>Training Title</th>
+                                    <th>Date</th>
+                                    <th>Score</th>
+                                    <th>Remarks</th>
+                                    <th>Action</th>
 
-                                            </tr>
-                                            </thead>
-                                            <tbody>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                                            <jc:forEach items="${assessments}" var="assessment">
+                                <jc:forEach items="${assessments}" var="assessment">
 
-                                                <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
-                                                <td>${assessment.enrollment.training.title}</td>
-                                                <td>${assessment.timeCreated}</td>
-                                                <td>${assessment.score}</td>
-                                                <td>${assessment.remarks}</td>
+                                    <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
+                                    <td>${assessment.enrollment.training.title}</td>
+                                    <td>${assessment.timeCreated}</td>
+                                    <td>${assessment.score}</td>
+                                    <td>${assessment.remarks}</td>
 
-                                                <jc:choose>
-                                                    <jc:when test="${sessionScope.userType == Usertype.TRAINER || sessionScope.userType == Usertype.ADMIN}">
+                                    <jc:choose>
+                                        <jc:when
+                                                test="${sessionScope.userType == Usertype.TRAINER || sessionScope.userType == Usertype.ADMIN}">
 
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <button class="btn btn-inverse-primary dropdown-toggle"
-                                                                        type="button" id="drop6" data-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="mdi mdi-security"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu bg-secondary"
-                                                                     aria-labelledby="drop6">
-                                                                    <h6 class="dropdown-header">Test</h6>
-                                                                    <button type="button" class="dropdown-item"
-                                                                            data-toggle="modal"
-                                                                            data-target="#assessmentDelete${enrollment.id}">
-                                                                        Delete
-                                                                    </button>
-                                                                    <button type="button" class="dropdown-item"
-                                                                            data-toggle="modal"
-                                                                            data-target="#assessmentDelete${enrollment.id}">
-                                                                        Update
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </jc:when>
-                                                </jc:choose>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-inverse-primary dropdown-toggle"
+                                                            type="button" id="drop6" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                        <i class="mdi mdi-security"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu bg-secondary"
+                                                         aria-labelledby="drop6">
+                                                        <h6 class="dropdown-header">Test</h6>
+                                                        <button type="button" class="dropdown-item"
+                                                                data-toggle="modal"
+                                                                data-target="#assessmentDelete${enrollment.id}">
+                                                            Delete
+                                                        </button>
+                                                        <button type="button" class="dropdown-item"
+                                                                data-toggle="modal"
+                                                                data-target="#assessmentDelete${enrollment.id}">
+                                                            Update
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </jc:when>
+                                    </jc:choose>
 
-                                                <%@ include file="./modals.jsp" %>
+                                    <%@ include file="./modals.jsp" %>
 
-                                                </tr>
-                                            </jc:forEach>
+                                    </tr>
+                                </jc:forEach>
 
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </jc:otherwise>
-                            </jc:choose>
-
+                                </tbody>
+                            </table>
                         </div>
+                        </jc:otherwise>
+                        </jc:choose>
+
                     </div>
                 </div>
-
-
             </div>
+
+
         </div>
+    </div>
 <cft:Footer/>
