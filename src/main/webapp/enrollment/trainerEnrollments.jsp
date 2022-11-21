@@ -71,6 +71,7 @@
                                         <th>Date Enrolled</th>
                                         <th>Status</th>
                                         <th>Actions</th>
+                                        <th>Assessments</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -84,21 +85,18 @@
                                             <td>${enrollment.training.startDate}</td>
                                             <td>${enrollment.timeCreated}</td>
                                             <td>${enrollment.status}</td>
+                                            <td>${enrollment.assessments.size()}</td>
 
                                             <td>
                                                 <div class="dropdown">
-                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="mdi mdi-security"></i>
                                                     </button>
                                                     <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
-<%--                                                        <h6 class="dropdown-header">Settings</h6>--%>
-<%--                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal${enrollment.id}">--%>
-<%--                                                            Approve--%>
-<%--                                                        </button>--%>
-<%--                                                        <div class="dropdown-divider"></div>--%>
-<%--                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal_delete${enrollment.id}">--%>
-<%--                                                            Delete--%>
-<%--                                                        </button>--%>
+                                                        <h6 class="dropdown-header">Test</h6>
+                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assessment${enrollment.id}">
+                                                            Assessment
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </td>
