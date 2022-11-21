@@ -24,6 +24,7 @@ public class Assessment extends BaseEntity {
     @JoinColumn(name = "enrollment_id", referencedColumnName = "id")
     private Enrollment enrollment;
 
+    @Transient
     private Double average;
 
     public Assessment() {
