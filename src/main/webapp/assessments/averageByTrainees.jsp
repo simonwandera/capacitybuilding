@@ -75,7 +75,7 @@
 
                                             <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
                                             <td>${assessment.enrollment.trainee.gender}</td>
-                                            <td>${assessment.enrollment.trainee.email}</td>
+                                            <td>${assessment.enrollment.trainee.username}</td>
                                             <td>${assessment.enrollment.trainee.userType}</td>
                                             <td>${assessment.enrollment.average}</td>
 

@@ -72,10 +72,10 @@
         <div class="collapse" id="assessments">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="../assessments/enrollmentByTrainees.jsp">Grouped by Trainees</a>
+              <a class="nav-link" href="../assessments/averageByTrainees.jsp">Grouped by Trainees</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../assessments/enrollmentByTraining.jsp">Grouped by Trainings</a>
+              <a class="nav-link" href="../assessments/averageByTraining.jsp">Grouped by Trainings</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../assessments/allAssessments.jsp">All assessments</a>
