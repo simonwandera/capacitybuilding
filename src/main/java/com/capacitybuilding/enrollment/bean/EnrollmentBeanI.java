@@ -25,5 +25,7 @@ public interface EnrollmentBeanI {
 
     List<Enrollment> getEnrollments(User trainee);
 
+    List<Enrollment> getEnrollmentsForTrainer(User trainer);
+
 
 }

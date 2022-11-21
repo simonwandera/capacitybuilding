@@ -2,14 +2,14 @@ package com.capacitybuilding.assignTrainer.bean;
 
 import com.capacitybuilding.assignTrainer.model.AssignStatus;
 import com.capacitybuilding.assignTrainer.model.AssignTrainer;
+import com.capacitybuilding.enrollment.bean.EnrollmentBean;
+import com.capacitybuilding.enrollment.bean.EnrollmentBeanI;
+import com.capacitybuilding.enrollment.model.Enrollment;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
+import javax.ejb.*;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +26,7 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
 
     @PersistenceContext
     EntityManager entityManager;
+
 
     public AssignTrainer assign(AssignTrainer assignTrainer) throws Exception {
         if (StringUtils.isBlank(assignTrainer.getTrainer().getId().toString()))
@@ -70,10 +71,15 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
 
     public List<Training> getTrainings(User trainer){
 
+        List<Training> trainings = new ArrayList<>();
 
-        List<Training> trainingList = new ArrayList<>();
-
-        return new ArrayList<>();
+        entityManager.createQuery("FROM AssignTrainer a WHERE a.trainer.id=:trainerId", AssignTrainer.class)
+                .setParameter("trainerId", trainer.getId())
+                .getResultList()
+                .forEach((assignTrainer) -> trainings.add(assignTrainer.getTraining()));
+        return trainings;
     }
+
+
 
 }

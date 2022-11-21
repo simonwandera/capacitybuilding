@@ -1,6 +1,7 @@
 package com.capacitybuilding.assignTrainer.bean;
 
 import com.capacitybuilding.assignTrainer.model.AssignTrainer;
+import com.capacitybuilding.enrollment.model.Enrollment;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 
@@ -14,4 +15,5 @@ public interface AssignTrainerBeanI {
     List<AssignTrainer> getTrainers(Training training);
     List<Training> getTrainings(User trainer);
     User getTrainer(Training training);
+
 }

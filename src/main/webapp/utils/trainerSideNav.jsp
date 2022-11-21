@@ -40,7 +40,13 @@
       <li class="nav-item">
         <a class="nav-link" href="index.html">
           <i class="mdi mdi-home menu-icon"></i>
-          <span class="menu-title">Notifications</span>
+          <span class="menu-title">Enrollments</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="mdi mdi-home menu-icon"></i>
+          <span class="menu-title">Assessments</span>
         </a>
       </li>
       <li class="nav-item sidebar-actions">
@@ -50,7 +56,7 @@
               <p class="text-black">Settings</p>
             </div>
             <ul class="mt-4 pl-0">
-              <li><a href="#">Sign Out</a></li>
+              <li><a href="../logout">Sign Out</a></li>
             </ul>
           </div>
         </div>

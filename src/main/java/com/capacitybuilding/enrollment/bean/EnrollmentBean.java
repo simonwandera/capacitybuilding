@@ -1,16 +1,16 @@
 package com.capacitybuilding.enrollment.bean;
 
 
+import com.capacitybuilding.assessment.bean.AssessmentBeanI;
+import com.capacitybuilding.assignTrainer.bean.AssignTrainerBeanI;
+import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.enrollment.model.Enrollment;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.training.model.TrainingStatus;
 import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
+import javax.ejb.*;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +26,9 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @EJB
+    private AssignTrainerBeanI assignTrainerBean;
 
     public Enrollment enroll(Enrollment enrollment) throws Exception {
 
@@ -69,39 +72,33 @@ public class EnrollmentBean implements EnrollmentBeanI {
     }
     public List<Enrollment> getEnrollments() {
 
-        List<Enrollment> enrollments = entityManager.createQuery("SELECT e FROM Enrollment e ", Enrollment.class)
+        return entityManager.createQuery("SELECT e FROM Enrollment e ", Enrollment.class)
                 .getResultList();
-        return enrollments;
     }
 
     public List<Enrollment> getEnrollments(Training training) {
 
-        List<Enrollment> enrollments = entityManager.createQuery("SELECT e FROM Enrollment e WHERE e.training.id=:id ", Enrollment.class)
+        return entityManager.createQuery("SELECT e FROM Enrollment e WHERE e.training.id=:id ", Enrollment.class)
                 .setParameter("id", training.getId())
                 .getResultList();
-        return enrollments;
     }
 
 
     public List<Enrollment> getEnrollmentsByTrainings() {
-        List<Enrollment> enrollments = entityManager.createQuery("SELECT new Enrollment(e.training, count(e.training)) FROM Enrollment e group by e.training", Enrollment.class)
+        return entityManager.createQuery("SELECT new Enrollment(e.training, count(e.training)) FROM Enrollment e group by e.training", Enrollment.class)
                 .getResultList();
-        return enrollments;
     }
 
     public List<Enrollment> getEnrollmentsByTrainees() {
-        List<Enrollment> enrollments = entityManager.createQuery("SELECT new Enrollment(e.trainee, count(e.trainee)) FROM Enrollment e group by e.trainee", Enrollment.class)
+        return entityManager.createQuery("SELECT new Enrollment(e.trainee, count(e.trainee)) FROM Enrollment e group by e.trainee", Enrollment.class)
                 .getResultList();
-        return enrollments;
     }
 
 
     public List<Enrollment> getTrainees(Training training) {
-
-        List<Enrollment> traineesEnrolled = entityManager.createQuery("FROM Enrollment e WHERE e.training.id=:id", Enrollment.class)
+        return entityManager.createQuery("FROM Enrollment e WHERE e.training.id=:id", Enrollment.class)
                 .setParameter("id", training.getId())
                 .getResultList();
-        return traineesEnrolled;
     }
 
     public List<Training> getTrainings(User trainee) {
@@ -137,8 +134,18 @@ public class EnrollmentBean implements EnrollmentBeanI {
     }
 
     public List<Enrollment> getEnrollments(User trainee){
-        return entityManager.createQuery("FROM Enrollment e WHERE e.trainee.id=:userId")
+        return entityManager.createQuery("FROM Enrollment e WHERE e.trainee.id=:userId", Enrollment.class)
                 .setParameter("userId", trainee.getId())
                 .getResultList();
+    }
+
+    public List<Enrollment> getEnrollmentsForTrainer(User trainer){
+
+        List<Enrollment> trainerEnrollments = new ArrayList<>();
+        for (Training training : assignTrainerBean.getTrainings(trainer)){
+            List<Enrollment> enrollments = this.getEnrollments(training);
+            trainerEnrollments.addAll(enrollments);
+        }
+        return trainerEnrollments;
     }
 }
