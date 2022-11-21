@@ -94,7 +94,7 @@ public class AssessmentBean implements AssessmentBeanI{
         return assessmentList;
     }
 
-    public List<Assessment> TrainerAvgAssessmentsByTraining(User trainer) {
+    public List<Assessment> trainerAvgAssessmentsByTraining(User trainer) {
 
         List<Assessment> trainerAssessment = new ArrayList<>();
         for (Training training : assignTrainerBean.getTrainings(trainer)){
@@ -104,7 +104,7 @@ public class AssessmentBean implements AssessmentBeanI{
         return trainerAssessment;
     }
 
-    public List<Assessment> TrainerAvgAssessmentsByUser(User trainer) {
+    public List<Assessment> trainerAvgAssessmentsByUser(User trainer) {
 
         List<Assessment> trainerAssessment = new ArrayList<>();
         for (Training training : assignTrainerBean.getTrainings(trainer)){

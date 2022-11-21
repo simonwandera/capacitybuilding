@@ -1,11 +1,9 @@
 package com.capacitybuilding.assessment.bean;
 
 import com.capacitybuilding.assessment.model.Assessment;
-import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 public interface AssessmentBeanI {
@@ -26,6 +24,6 @@ public interface AssessmentBeanI {
 
     List<Assessment> getAvgAssessmentsByUser();
 
-    List<Assessment> TrainerAvgAssessmentsByTraining(User trainer);
-    List<Assessment> TrainerAvgAssessmentsByUser(User trainer);
+    List<Assessment> trainerAvgAssessmentsByTraining(User trainer);
+    List<Assessment> trainerAvgAssessmentsByUser(User trainer);
 }
