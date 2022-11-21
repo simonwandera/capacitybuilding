@@ -50,7 +50,7 @@
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
-                    <h3 class="mb-0"> Average assessments for ${activeUser.firstName} </h3>
+                    <h3 class="mb-0"> Completed trainings + assessments for ${activeUser.firstName} </h3>
                 </div>
 
                 <div class="col-lg-12 grid-margin stretch-card">
@@ -70,7 +70,7 @@
                                     </thead>
                                     <tbody>
 
-                                    <jc:forEach items="${assessmentBean.getAvgAssessments(activeUser)}" var="assessment">
+                                    <jc:forEach items="${trainingBean.getCompletedTrainings(activeUser)}" var="assessment">
                                         <tr>
                                             <td>${assessment.enrollment.trainee.firstName} ${assessment.enrollment.trainee.lastName}</td>
                                             <td>${assessment.enrollment.training.title}</td>
