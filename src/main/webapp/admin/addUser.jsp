@@ -58,7 +58,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Default form</h4>
                             <p class="card-description">Basic form layout</p>
-                            <form class="forms-sample">
+                            <form class="forms-sample" action="../createUser">
                                 <div class="form-group">
                                     <label for="firstName">First Name</label>
                                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Jane" required />
@@ -74,7 +74,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Multiple select using select 2</label>
+                                    <label>Gender</label>
                                     <select class="js-example-basic-multiple" name="gender" multiple="multiple" style="width: 100%;">
                                         <option value="--Select Gender--">--Select Gender--</option>
                                         <option value="MALE">MALE</option>
@@ -91,6 +91,15 @@
                                 <div class="form-group">
                                     <label for="confirmPassword">Confirm Password</label>
                                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" />
+                                </div>
+
+                                <div class="my-3 py-2 text-center">
+                                    <%
+                                        String addUserError = (String) application.getAttribute("addUserError");
+                                        if (addUserError != null && !addUserError.equals("")) {
+                                    %>
+                                    <span class="text-danger"> <%= application.getAttribute("trainingError") %> </span>
+                                    <% } %>
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2"> Submit </button>
                             </form>
