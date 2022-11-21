@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.user.model.Usertype" %>
+<%@ page import="java.time.LocalDate"
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -50,14 +51,14 @@
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
-                    <h3 class="mb-0"> Completed trainings + assessments for ${activeUser.firstName} </h3>
+                    <h3 class="mb-0"> Completed trainings for ${activeUser.firstName} </h3>
                 </div>
 
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Assessments</h4>
-                            <p class="card-description"> Record details </p>
+                            <h4 class="card-title">Completed training and assessments</h4>
+                            <p class="card-description"> ${LocalDate.now()} </p>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
