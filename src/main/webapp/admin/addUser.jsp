@@ -52,13 +52,13 @@
                     <h3 class="mb-0"> Add User </h3>
                 </div>
 
-                <div class="col-md-6 grid-margin stretch-card">
+                <div class="col-md-6 grid-margin stretch-card m-auto">
 
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Default form</h4>
                             <p class="card-description">Basic form layout</p>
-                            <form class="forms-sample" action="../createUser">
+                            <form class="forms-sample" action="../createUser" method="post">
                                 <div class="form-group">
                                     <label for="firstName">First Name</label>
                                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Jane" required />
@@ -75,7 +75,7 @@
 
                                 <div class="form-group">
                                     <label>Gender</label>
-                                    <select class="js-example-basic-multiple" name="gender" multiple="multiple" style="width: 100%;">
+                                    <select class="js-example-basic-multiple" name="gender" style="width: 100%;">
                                         <option value="--Select Gender--">--Select Gender--</option>
                                         <option value="MALE">MALE</option>
                                         <option value="FEMALE">FEMALE</option>
@@ -93,7 +93,7 @@
                                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" />
                                 </div>
 
-                                <div class="my-3 py-2 text-center">
+                                <div class="my-1 py-2 text-center">
                                     <%
                                         String addUserError = (String) application.getAttribute("addUserError");
                                         if (addUserError != null && !addUserError.equals("")) {
