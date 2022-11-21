@@ -90,14 +90,14 @@
                                                         <i class="mdi mdi-security"></i>
                                                     </button>
                                                     <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
-                                                        <h6 class="dropdown-header">Settings</h6>
-                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal${enrollment.id}">
-                                                            Approve
-                                                        </button>
-                                                        <div class="dropdown-divider"></div>
-                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal_delete${enrollment.id}">
-                                                            Delete
-                                                        </button>
+<%--                                                        <h6 class="dropdown-header">Settings</h6>--%>
+<%--                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal${enrollment.id}">--%>
+<%--                                                            Approve--%>
+<%--                                                        </button>--%>
+<%--                                                        <div class="dropdown-divider"></div>--%>
+<%--                                                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal_delete${enrollment.id}">--%>
+<%--                                                            Delete--%>
+<%--                                                        </button>--%>
                                                     </div>
                                                 </div>
                                             </td>
