@@ -136,6 +136,9 @@ public class EnrollmentBean implements EnrollmentBeanI {
         return enrollmentList.size() > 0;
     }
 
-
-
+    public List<Enrollment> getEnrollments(User trainee){
+        return entityManager.createQuery("FROM Enrollment e WHERE e.trainee.id=:userId")
+                .setParameter("userId", trainee.getId())
+                .getResultList();
+    }
 }

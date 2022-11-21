@@ -12,8 +12,7 @@ public interface EnrollmentBeanI {
     void delete(Enrollment enrollment) throws Exception;
 
     Enrollment approveEnrollment(Enrollment enrollment) throws Exception;
-
-    Enrollment getEnrollment(Long id) ;
+    Enrollment getEnrollment(Long id);
     List<Enrollment> getTrainees(Training training);
     List<Training> getTrainings(User trainee);
     List<Training> getCompletedTrainings(User trainee);
@@ -22,8 +21,9 @@ public interface EnrollmentBeanI {
     List<Enrollment> getEnrollments();
     Boolean isEnrolled(Training training, User trainee);
 
-
     List<Enrollment> getEnrollments(Training training);
+
+    List<Enrollment> getEnrollments(User trainee);
 
 
 }
