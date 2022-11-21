@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.user.model.Usertype" %>
+<%@ page import="com.capacitybuilding.enrollment.model.EnrollmentStatus" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -70,8 +71,9 @@
                                         <th>Start Date</th>
                                         <th>Date Enrolled</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                         <th>Assessments</th>
+                                        <th>Actions</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -88,6 +90,7 @@
                                             <td>${enrollment.assessments.size()}</td>
 
                                             <td>
+                                                <jc:if test="${enrollment.status == EnrollmentStatus.APPROVED}">
                                                 <div class="dropdown">
                                                     <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="mdi mdi-security"></i>
@@ -99,6 +102,7 @@
                                                         </button>
                                                     </div>
                                                 </div>
+                                                </jc:if>
                                             </td>
 
                                             <%@ include file="./modals.jsp" %>
