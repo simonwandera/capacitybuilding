@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page import="com.capacitybuilding.user.model.Usertype" %>
+<%@ page import="java.time.LocalDate" %>
 <%@ taglib prefix="jc" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -56,7 +57,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Enrollments</h4>
-                            <p class="card-description"> Record details </p>
+                            <p class="card-description"> Date: ${LocalDate.now()} </p>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
