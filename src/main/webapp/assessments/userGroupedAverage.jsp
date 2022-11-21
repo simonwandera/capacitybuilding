@@ -64,8 +64,8 @@
                                     <tr>
                                         <th>Trainee Name</th>
                                         <th>Training Title</th>
-                                        <th>Duration</th>
-                                        <th>AVG Score</th>
+                                        <th>Duration(Weeks)</th>
+                                        <th>AVG Score(%)</th>
                                     </tr>
                                     </thead>
                                     <tbody>
