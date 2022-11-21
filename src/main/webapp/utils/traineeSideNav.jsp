@@ -65,7 +65,7 @@
 
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/charts/chartjs.html">
+        <a class="nav-link" href="../training/userCompletedTrainings.jsp">
           <i class="mdi mdi-chart-bar menu-icon"></i>
           <span class="menu-title">Completed Trainings</span>
         </a>
