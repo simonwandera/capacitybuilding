@@ -114,5 +114,14 @@ public class AssessmentBean implements AssessmentBeanI{
         return  trainerAssessment;
     }
 
+    public  List<Assessment> trainerGetAssessments(User trainer){
+
+        List<Assessment> trainerAssessment = new ArrayList<>();
+        for (Training training : assignTrainerBean.getTrainings(trainer)){
+            List<Assessment> assessments = this.listByTrainings(training);
+            trainerAssessment.addAll(assessments);
+        }
+        return trainerAssessment;
+    }
 
 }
