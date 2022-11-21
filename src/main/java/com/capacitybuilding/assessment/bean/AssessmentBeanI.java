@@ -18,9 +18,14 @@ public interface AssessmentBeanI {
 
     List<Assessment> getAssessments(User trainee);
 
-    List<Assessment> getAvgAssessments(User trainee);
+    List<Assessment> getAvgAssessmentsByUser(Training training);
+
+    List<Assessment> getAvgAssessments(Training training);
 
     List<Assessment> getAvgAssessmentsByTraining();
 
     List<Assessment> getAvgAssessmentsByUser();
+
+    List<Assessment> TrainerAvgAssessmentsByTraining();
+    List<Assessment> TrainerAvgAssessmentsByUser();
 }

@@ -53,13 +53,13 @@
         <div class="collapse" id="assessment">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="../training/displayTrainings.jsp">Grouped By Trainees</a>
+              <a class="nav-link" href="../assessments/averageByTrainees.jsp">Grouped by Trainees</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../training/displayTrainings.jsp">Grouped By Trainings</a>
+              <a class="nav-link" href="../assessments/averageByTraining.jsp">Grouped by Trainings</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../training/displayTrainings.jsp">All assessments</a>
+              <a class="nav-link" href="../assessments/allAssessments.jsp">All assessments</a>
             </li>
           </ul>
         </div>
