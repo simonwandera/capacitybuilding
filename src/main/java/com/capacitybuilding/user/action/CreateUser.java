@@ -4,6 +4,7 @@ import com.capacitybuilding.user.bean.UserBeanI;
 import com.capacitybuilding.user.model.User;
 import com.capacitybuilding.user.model.Usertype;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;
@@ -34,10 +35,12 @@ public class CreateUser extends HttpServlet {
         }
 
         user.setUserType(Usertype.USER);
-
+        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+        user.setConfirmPassword(DigestUtils.md5Hex(user.getConfirmPassword()));
+        
         try {
             userBean.add(user);
-            res.sendRedirect("../admin/users.jsp");
+            res.sendRedirect("./admin/users.jsp");
         } catch (Exception ex) {
             servletContext.setAttribute("registerError", ex.getMessage());
             res.sendRedirect("./addUser.jsp");

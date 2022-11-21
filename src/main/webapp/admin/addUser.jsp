@@ -77,9 +77,9 @@
                                     <label>Gender</label>
                                     <select class="js-example-basic-multiple" name="gender" style="width: 100%;">
                                         <option value="--Select Gender--">--Select Gender--</option>
-                                        <option value="MALE">MALE</option>
-                                        <option value="FEMALE">FEMALE</option>
-                                        <option value="OTHER">OTHER</option>
+                                        <option value="Male">MALE</option>
+                                        <option value="Female">FEMALE</option>
+                                        <option value="Other">OTHER</option>
                                     </select>
 
                                 </div>
