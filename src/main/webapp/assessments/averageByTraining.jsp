@@ -76,10 +76,11 @@
 
                                             <td>${assessment.enrollment.training.title}</td>
                                             <td>${assessment.enrollment.training.duration}</td>
+                                            <td>${assessment.enrollment.training.description.length() < 40 ? training.description : training.description.substring(0, 30).concat("...")}</td>
                                             <td>${assessment.enrollment.training.description}</td>
                                             <td>${assessment.enrollment.training.startDate}</td>
                                             <td>${assessment.enrollment.training.status}</td>
-                                            <td>${assessment.enrollment.average}</td>
+                                            <td>${assessment.average}</td>
 
                                             <%@ include file="./modals.jsp" %>
 

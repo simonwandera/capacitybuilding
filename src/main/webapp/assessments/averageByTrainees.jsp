@@ -77,7 +77,7 @@
                                             <td>${assessment.enrollment.trainee.gender}</td>
                                             <td>${assessment.enrollment.trainee.username}</td>
                                             <td>${assessment.enrollment.trainee.userType}</td>
-                                            <td>${assessment.enrollment.average}</td>
+                                            <td>${assessment.average}</td>
 
                                             <%@ include file="./modals.jsp" %>
 

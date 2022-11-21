@@ -12,7 +12,6 @@
 
 <cht:Header title="Display trainings | Capacity building"/>
 
-
 <body>
 <div class="container-scroller">
 

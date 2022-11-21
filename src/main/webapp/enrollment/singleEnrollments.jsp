@@ -79,7 +79,7 @@
                                             <tr>
                                                 <th>Trainee Name</th>
                                                 <th>Title</th>
-                                                <th>Duration(Weeks)</th>
+                                                <th>Duration</th>
                                                 <th>Start Date</th>
                                                 <th>Date Enrolled</th>
                                                 <th>Status</th>
