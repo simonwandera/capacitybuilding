@@ -26,7 +26,6 @@ public class AssignTrainer extends BaseEntity {
     }
 
     public void setTraining(Training training) {
-
         this.training = training;
     }
 

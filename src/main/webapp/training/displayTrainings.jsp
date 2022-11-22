@@ -151,7 +151,7 @@
                                                 <h6 class="dropdown-header">Options</h6>
                                                 <jc:choose>
                                                     <jc:when test="${sessionScope.userType == Usertype.USER}">
-                                                        <jc:if test="${!enrollmentBean.isEnrolled(training,activeUser)}">
+                                                        <jc:if test="${!enrollmentBean.isEnrolled(training,activeUser) && assignTrainerBean.getTrainers(training).size() > 1}">
                                                             <form class="dropdown-item" method="post"
                                                                   action="../enroll">
                                                                 <input type="hidden" name="trainingId"
