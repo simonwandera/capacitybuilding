@@ -8,6 +8,7 @@ import com.capacitybuilding.mail.bean.MailBeanI;
 import com.capacitybuilding.mail.model.MailWrapper;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.training.model.TrainingStatus;
+import com.capacitybuilding.user.bean.UserBeanI;
 import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -34,6 +35,9 @@ public class EnrollmentBean implements EnrollmentBeanI {
     @EJB
     private MailBeanI mailBean;
 
+    @EJB
+    private UserBeanI userBean;
+
     public Enrollment enroll(Enrollment enrollment) throws Exception {
 
         if(this.isEnrolled(enrollment.getTraining(), enrollment.getTrainee()))
@@ -46,15 +50,22 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         User trainer = assignTrainerBean.getTrainer(enrollment.getTraining());
 
-        User admin = entityManager.createQuery("SELECT u FROM User u WHERE u.userType=:userType", User.class).getSingleResult();
-
+        User admin = userBean.getAdmin();
         MailWrapper mail = new MailWrapper();
+
+        mail.setSubject("Enrollment for | " + enrollment.getTraining().getTitle());
+        mail.setMessage("You have a new Enrollment for " + enrollment.getTraining().getTitle() + " From "
+                + enrollment.getTrainee().getFirstName() + " " + enrollment.getTrainee().getLastName() + " Please check the " +
+                "enrollment and approve.");
+        mail.setTo(admin.getUsername());
+
+        mailBean.sendMail(mail);
+
         mail.setMessage("You have a new Enrollment for " + enrollment.getTraining().getTitle() + " From "
                 + enrollment.getTrainee().getFirstName() + " " + enrollment.getTrainee().getLastName() + " Please check the " +
                 "enrollment.");
 
         mail.setTo(trainer.getUsername());
-        mail.setSubject("Enrollment for | " + enrollment.getTraining().getTitle());
         mailBean.sendMail(mail);
 
         return entityManager.merge(enrollment);
