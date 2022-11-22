@@ -40,10 +40,14 @@ public class UserBean implements UserBeanI {
             throw new Exception("Password & confirm password is required and must match");
 
         MailWrapper mail = new MailWrapper();
-        mail.setSubject("Capacity Building || New User registration");
+        mail.setSubject("Capacity Building | New User registration");
         mail.setTo("simonwandera12@gmail.com");
-        mail.setMessage("Hello, \n User: " + "\n" + user.getUsername() + "\n" + user.getFirstName()
-                + "\n" + user.getUsername() + " has been registered \n Thank you!");
+
+        String msg = "Hello, \n A new user has been registered to the system" +
+                "Name: " + user.getFirstName() + " " + user.getLastName() + "\n" +
+                "Email: " + user.getUsername() + "\n" +
+                "Thank you!";
+        mail.setMessage(msg);
 
         mailBean.sendMail(mail);
 
