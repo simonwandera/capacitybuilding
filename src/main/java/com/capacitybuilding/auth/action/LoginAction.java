@@ -23,9 +23,6 @@ public class LoginAction extends HttpServlet {
     @EJB
     UserBeanI userBean;
 
-    @EJB
-    MailBeanI mailBean;
-
     private ServletContext servletContext;
 
     public void init(ServletConfig config) throws ServletException{
@@ -53,8 +50,6 @@ public class LoginAction extends HttpServlet {
             session.setAttribute("username", user.getUsername());
             session.setAttribute("userType", user.getUserType());
             session.setAttribute("activeUser", user);
-
-            mailBean.sendMail();
 
             if (user.getUserType() == Usertype.ADMIN)
                 res.sendRedirect("./main/adminDashboard.jsp");

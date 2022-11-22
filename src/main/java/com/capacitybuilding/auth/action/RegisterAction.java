@@ -1,5 +1,6 @@
 package com.capacitybuilding.auth.action;
 
+import com.capacitybuilding.mail.bean.MailBeanI;
 import com.capacitybuilding.user.bean.UserBeanI;
 import com.capacitybuilding.user.model.User;
 import com.capacitybuilding.user.model.Usertype;
@@ -19,13 +20,13 @@ import java.io.IOException;
 @WebServlet("/register")
 public class RegisterAction extends HttpServlet {
 
-
     ServletContext servletContext;
 
     @EJB
     UserBeanI userBean;
 
-    public void init(ServletConfig config) throws ServletException{
+
+    public void init(ServletConfig config) throws ServletException {
         super.init(config);
         servletContext = getServletConfig().getServletContext();
     }
@@ -34,34 +35,20 @@ public class RegisterAction extends HttpServlet {
 
         User user = new User();
 
-        if(req.getParameter("id") == null || req.getParameter("id").isEmpty() || req.getParameter("id") == ""){
-
-            try {
-                BeanUtils.populate(user, req.getParameterMap());
-                user.setUserType(Usertype.USER);
-                user.setPassword(DigestUtils.md5Hex(req.getParameter("password")));
-                user.setConfirmPassword(DigestUtils.md5Hex(req.getParameter("confirmPassword")));
-            }catch (Exception ex){
-                System.out.println(ex.getMessage());
-            }
-
-        }else {
-            try {
-                BeanUtils.populate(user, req.getParameterMap());
-                user.setId(Long.valueOf(req.getParameter("id")));
-                user.setPassword(DigestUtils.md5Hex(req.getParameter("password")));
-                user.setConfirmPassword(DigestUtils.md5Hex(user.getPassword()));
-                user.setUserType(Usertype.valueOf(req.getParameter("userType")));
-            }catch (Exception ex){
-                System.out.println(ex.getMessage());
-            }
+        try {
+            BeanUtils.populate(user, req.getParameterMap());
+            user.setUserType(Usertype.USER);
+            user.setPassword(DigestUtils.md5Hex(req.getParameter("password")));
+            user.setConfirmPassword(DigestUtils.md5Hex(req.getParameter("confirmPassword")));
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
 
         try {
             userBean.add(user);
             res.sendRedirect("./auth/login.jsp");
         } catch (Exception ex) {
-            servletContext.setAttribute("registerError" , ex.getMessage());
+            servletContext.setAttribute("registerError", ex.getMessage());
             res.sendRedirect("./auth/register.jsp");
         }
     }

@@ -1,14 +1,13 @@
 package com.capacitybuilding.user.bean;
 
+import com.capacitybuilding.mail.bean.MailBeanI;
+import com.capacitybuilding.mail.model.MailWrapper;
 import com.capacitybuilding.user.model.User;
 import com.capacitybuilding.user.model.Usertype;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
+import javax.ejb.*;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +22,9 @@ public class UserBean implements UserBeanI {
     @PersistenceContext
     EntityManager entityManager;
 
+    @EJB
+    MailBeanI mailBean;
+
     public User add(User user) throws Exception {
         if(StringUtils.isBlank(user.getFirstName()))
             throw new Exception("First name is required");
@@ -36,6 +38,14 @@ public class UserBean implements UserBeanI {
         if (StringUtils.isBlank(user.getPassword()) || StringUtils.isBlank(user.getConfirmPassword())
                 || !user.getPassword().equals(user.getConfirmPassword()))
             throw new Exception("Password & confirm password is required and must match");
+
+        MailWrapper mail = new MailWrapper();
+        mail.setSubject("Capacity Building || New User registration");
+        mail.setTo("simonwandera12@gmail.com");
+        mail.setMessage("Hello, \n User: " + "\n" + user.getUsername() + "\n" + user.getFirstName()
+                + "\n" + user.getUsername() + " has been registered \n Thank you!");
+
+        mailBean.sendMail(mail);
 
         return entityManager.merge(user);
 
