@@ -14,7 +14,6 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -104,6 +103,13 @@
       <artifactId>javaee-api</artifactId>
       <version>8.0.1</version>
       <scope>provided</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.6.2</version>
     </dependency>
 
   </dependencies>
