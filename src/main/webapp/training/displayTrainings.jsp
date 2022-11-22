@@ -163,6 +163,8 @@
 
                                                         <jc:if test="${enrollmentBean.isEnrolled(training,activeUser)}">
                                                             <a class="dropdown-item"
+                                                               href="../training/uploads.jsp?trainingId=${training.id}">Resources</a>
+                                                            <a class="dropdown-item"
                                                                href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
                                                         </jc:if>
                                                     </jc:when>
@@ -172,6 +174,8 @@
                                                                href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
                                                             <a class="dropdown-item"
                                                                href="../assessments/singleTraining.jsp?trainingId=${training.id}">View Assessments</a>
+                                                            <a class="dropdown-item"
+                                                               href="../training/uploads.jsp?trainingId=${training.id}">Resources</a>
                                                         </jc:if>
                                                         <a class="dropdown-item" href="#">Feedback</a>
                                                     </jc:when>
@@ -184,10 +188,11 @@
                                                             </button>
                                                         </jc:if>
                                                         <a class="dropdown-item"
+                                                           href="../training/uploads.jsp?trainingId=${training.id}">Resources</a>
+                                                        <a class="dropdown-item"
                                                            href="../enrollment/singleEnrollments.jsp?trainingId=${training.id}">Enrollments</a>
                                                         <a class="dropdown-item"
                                                            href="../assessments/singleTraining.jsp?trainingId=${training.id}">View Assessments</a>
-                                                        <a class="dropdown-item" href="#">Activate</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item"
                                                            href="./updateTraining.jsp?id=${training.id}">Edit</a>

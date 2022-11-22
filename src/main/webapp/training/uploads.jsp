@@ -59,7 +59,6 @@
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
                     <h3 class="mb-0"> Resources for ${trainingBean.getTraining(Long.valueOf(trainingId)).title}</h3>
-
                 </div>
 
                 <div class="col-lg-12 grid-margin stretch-card">
@@ -85,12 +84,12 @@
                                             </thead>
                                             <tbody>
 
-                                            <jc:forEach items="${enrollments}" var="enrollment">
+                                            <jc:forEach items="${uploads}" var="upload">
                                                 <tr>
 
-                                                    <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
-                                                    <td>${enrollment.training.title}</td>
-                                                    <td><a href="Delete Traiing"><i
+                                                    <td>${upload.fileName}</td>
+                                                    <td>${upload.timeCreated}</td>
+                                                    <td><a href="./modals.jsp"><i
                                                             class=" mdi mdi-delete-forever mdi-24px"></i></a></td>
 
                                                     <%@ include file="./modals.jsp" %>
