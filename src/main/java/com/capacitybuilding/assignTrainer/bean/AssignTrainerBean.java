@@ -5,6 +5,8 @@ import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.enrollment.bean.EnrollmentBean;
 import com.capacitybuilding.enrollment.bean.EnrollmentBeanI;
 import com.capacitybuilding.enrollment.model.Enrollment;
+import com.capacitybuilding.mail.bean.MailBeanI;
+import com.capacitybuilding.mail.model.MailWrapper;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
@@ -27,6 +29,9 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
     @PersistenceContext
     EntityManager entityManager;
 
+    @EJB
+    private MailBeanI mailBean;
+
 
     public AssignTrainer assign(AssignTrainer assignTrainer) throws Exception {
         if (StringUtils.isBlank(assignTrainer.getTrainer().getId().toString()))
@@ -34,6 +39,15 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
         if (StringUtils.isBlank(assignTrainer.getTraining().getId().toString()))
             throw new Exception("The training you entered for assignment is invalid");
         assignTrainer.setStatus(AssignStatus.APPROVED);
+
+        MailWrapper mail = new MailWrapper();
+        mail.setTo(assignTrainer.getTrainer().getUsername());
+        mail.setSubject("Capacity building | Training assignment");
+        mail.setSubject("Hello " + assignTrainer.getTrainer().getFirstName() + ", \n" +
+                "You have been assigned " + assignTrainer.getTraining().getTitle() + " as trainer." +
+                " The training starts on " + assignTrainer.getTraining().getStartDate() + ". \n" +
+                "Thank you");
+        mailBean.sendMail(mail);
 
         return entityManager.merge(assignTrainer);
 
