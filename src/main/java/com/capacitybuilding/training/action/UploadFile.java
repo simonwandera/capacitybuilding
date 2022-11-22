@@ -5,11 +5,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "/uploadFile", value = "/UploadFile")
+@WebServlet("/uploadFile")
 public class UploadFile extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        System.out.println("Response got here");
 
     }
 }

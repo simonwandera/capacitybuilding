@@ -2,11 +2,11 @@ package com.capacitybuilding.training.model;
 
 import com.capacitybuilding.util.model.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+
+@Entity
+@Table(name = "uploads")
 public class Upload extends BaseEntity {
 
     @Column
