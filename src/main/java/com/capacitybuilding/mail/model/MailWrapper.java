@@ -1,6 +1,8 @@
 package com.capacitybuilding.mail.model;
 
-public class MailWrapper {
+import java.io.Serializable;
+
+public class MailWrapper implements Serializable {
 
     private String to;
     private String message;
