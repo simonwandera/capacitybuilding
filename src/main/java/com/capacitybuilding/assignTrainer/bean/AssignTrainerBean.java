@@ -43,7 +43,7 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
         MailWrapper mail = new MailWrapper();
         mail.setTo(assignTrainer.getTrainer().getUsername());
         mail.setSubject("Capacity building | Training assignment");
-        mail.setSubject("Hello " + assignTrainer.getTrainer().getFirstName() + ", \n" +
+        mail.setMessage("Hello " + assignTrainer.getTrainer().getFirstName() + ", \n" +
                 "You have been assigned " + assignTrainer.getTraining().getTitle() + " as trainer." +
                 " The training starts on " + assignTrainer.getTraining().getStartDate() + ". \n" +
                 "Thank you");
