@@ -3,8 +3,9 @@ package com.capacitybuilding.enrollment.bean;
 
 import com.capacitybuilding.assessment.bean.AssessmentBeanI;
 import com.capacitybuilding.assignTrainer.bean.AssignTrainerBeanI;
-import com.capacitybuilding.assignTrainer.model.AssignTrainer;
 import com.capacitybuilding.enrollment.model.Enrollment;
+import com.capacitybuilding.mail.bean.MailBeanI;
+import com.capacitybuilding.mail.model.MailWrapper;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.training.model.TrainingStatus;
 import com.capacitybuilding.user.model.User;
@@ -30,6 +31,9 @@ public class EnrollmentBean implements EnrollmentBeanI {
     @EJB
     private AssignTrainerBeanI assignTrainerBean;
 
+    @EJB
+    private MailBeanI mailBean;
+
     public Enrollment enroll(Enrollment enrollment) throws Exception {
 
         if(this.isEnrolled(enrollment.getTraining(), enrollment.getTrainee()))
@@ -39,6 +43,17 @@ public class EnrollmentBean implements EnrollmentBeanI {
             throw new Exception("Invalid User to enroll");
         if (StringUtils.isBlank(enrollment.getTraining().getId().toString()))
             throw new Exception("Invalid training");
+
+        User trainer = assignTrainerBean.getTrainer(enrollment.getTraining());
+
+        MailWrapper mail = new MailWrapper();
+        mail.setMessage("You have a new Enrollment for " + enrollment.getTraining().getTitle() + " From "
+                + enrollment.getTrainee().getFirstName() + " " + enrollment.getTrainee().getLastName() + " Please check the" +
+                "enrollment and approve");
+
+        mail.setTo(trainer.getUsername());
+        mail.setSubject("Enrollment for | " + enrollment.getTraining().getTitle());
+        mailBean.sendMail(mail);
 
         return entityManager.merge(enrollment);
 

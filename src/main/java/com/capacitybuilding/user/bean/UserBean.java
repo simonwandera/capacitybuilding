@@ -43,7 +43,7 @@ public class UserBean implements UserBeanI {
         mail.setSubject("Capacity Building | New User registration");
         mail.setTo("simonwandera12@gmail.com");
 
-        String msg = "Hello, \n A new user has been registered to the system" +
+        String msg = "Hello, \n A new user has been registered to the system \n" +
                 "Name: " + user.getFirstName() + " " + user.getLastName() + "\n" +
                 "Email: " + user.getUsername() + "\n" +
                 "Thank you!";
