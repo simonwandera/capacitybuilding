@@ -2,6 +2,8 @@ package com.capacitybuilding.assessment.bean;
 
 import com.capacitybuilding.assessment.model.Assessment;
 import com.capacitybuilding.assignTrainer.bean.AssignTrainerBeanI;
+import com.capacitybuilding.mail.bean.MailBeanI;
+import com.capacitybuilding.mail.model.MailWrapper;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
 import org.apache.commons.lang3.StringUtils;
@@ -25,6 +27,10 @@ public class AssessmentBean implements AssessmentBeanI{
 
     @EJB
     private AssignTrainerBeanI assignTrainerBean;
+
+    @EJB
+    private MailBeanI mailBean;
+
     public Assessment add(Assessment assessment) throws Exception {
         if(StringUtils.isBlank(assessment.getRemarks()))
             throw new Exception("Remarks cannot be null");
@@ -32,6 +38,13 @@ public class AssessmentBean implements AssessmentBeanI{
             throw new Exception("Invalid score");
         if(assessment.getEnrollment().getId() == null)
             throw new Exception("Invalid enrollment");
+
+        MailWrapper mail = new MailWrapper();
+        mail.setTo(assessment.getEnrollment().getTrainee().getUsername());
+        mail.setSubject("Capacity Building | Assessment updates");
+        mail.setMessage("New assessment results for " + assessment.getEnrollment().getTraining().getTitle()
+        + " have been released. Please login to check your score");
+        mailBean.sendMail(mail);
 
         return entityManager.merge(assessment);
 

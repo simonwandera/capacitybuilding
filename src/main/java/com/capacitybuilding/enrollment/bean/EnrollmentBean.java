@@ -48,7 +48,7 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         MailWrapper mail = new MailWrapper();
         mail.setMessage("You have a new Enrollment for " + enrollment.getTraining().getTitle() + " From "
-                + enrollment.getTrainee().getFirstName() + " " + enrollment.getTrainee().getLastName() + " Please check the" +
+                + enrollment.getTrainee().getFirstName() + " " + enrollment.getTrainee().getLastName() + " Please check the " +
                 "enrollment and approve");
 
         mail.setTo(trainer.getUsername());
@@ -82,6 +82,15 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         Enrollment newEnrollment = entityManager.find(Enrollment.class, enrollment.getId());
         newEnrollment.setStatus(enrollment.getStatus());
+
+        MailWrapper mail = new MailWrapper();
+        mail.setSubject("Capacity Building | Enrollment approval");
+
+        mail.setTo(newEnrollment.getTrainee().getUsername());
+        mail.setMessage("Your Enrollment for " + newEnrollment.getTraining().getTitle() + " has " +
+                "been accepted, You can now access the training resources.");
+        mailBean.sendMail(mail);
+
         return entityManager.merge(newEnrollment);
 
     }
