@@ -52,13 +52,13 @@
                 pageContext.setAttribute("trainingId", trainingId);
             %>
 
-        <jc:set value="${enrollmentBean.getEnrollments(trainingBean.getTraining(Long.valueOf(trainingId)))}"
-                var="enrollments"/>
+        <jc:set value="${uploadsBean.getUploads(trainingBean.getTraining(Long.valueOf(trainingId)))}"
+                var="uploads"/>
 
         <div class="main-panel">
             <div class="content-wrapper pb-0">
                 <div class="page-header flex-wrap">
-                    <h3 class="mb-0"> Enrollments for ${trainingBean.getTraining(Long.valueOf(trainingId)).title}</h3>
+                    <h3 class="mb-0"> Resources for ${trainingBean.getTraining(Long.valueOf(trainingId)).title}</h3>
 
                 </div>
 
@@ -66,27 +66,20 @@
                     <div class="card">
                         <div class="card-body">
                             <jc:choose>
-                                <jc:when test="${enrollments.size() < 1}">
+                                <jc:when test="${uploads.size() < 1}">
                                     <h4 class="mb-1">No records to display</h4>
                                 </jc:when>
                                 <jc:otherwise>
 
-                                    <h4 class="card-title">Enrollments</h4>
+                                    <h4 class="card-title">Uploads</h4>
                                     <p class="card-description"> Date: ${LocalDate.now()} </p>
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th>Trainee Name</th>
-                                                <th>Title</th>
-                                                <th>Duration</th>
-                                                <th>Start Date</th>
-                                                <th>Date Enrolled</th>
-                                                <th>Status</th>
-                                                <th>Assessments</th>
-                                                <jc:if test="${activeUser.userType == Usertype.TRAINER}">
-                                                    <th>Test</th>
-                                                </jc:if>
+                                                <th>File</th>
+                                                <th>Date Added</th>
+                                                <th>Delete</th>
 
                                             </tr>
                                             </thead>
@@ -97,33 +90,13 @@
 
                                                     <td>${enrollment.trainee.firstName} ${enrollment.trainee.lastName}</td>
                                                     <td>${enrollment.training.title}</td>
-                                                    <td>${enrollment.training.duration}</td>
-                                                    <td>${enrollment.training.startDate}</td>
-                                                    <td>${enrollment.timeCreated}</td>
-                                                    <td>${enrollment.status}</td>
-                                                    <td>${enrollment.assessments.size()}</td>
-
-                                                    <jc:if test="${activeUser.userType == Usertype.TRAINER}">
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-inverse-primary dropdown-toggle" type="button" id="drop6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <i class="mdi mdi-security"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu bg-secondary" aria-labelledby="drop6">
-                                                                <h6 class="dropdown-header">Test</h6>
-                                                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#assessment${enrollment.id}">
-                                                                    Assessment
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    </jc:if>
+                                                    <td><a href="Delete Traiing"><i
+                                                            class=" mdi mdi-delete-forever mdi-24px"></i></a></td>
 
                                                     <%@ include file="./modals.jsp" %>
 
                                                 </tr>
                                             </jc:forEach>
-
 
                                             </tbody>
                                         </table>
@@ -131,6 +104,20 @@
                                 </jc:otherwise>
                             </jc:choose>
 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Upload resources</h4>
+                            <form class="form-inline" action="../uploadFile" method="post" enctype="multipart/form-data">
+                                <label class="sr-only" for="file">File</label>
+                                <input type="file" class="form-control mb-2 mr-sm-2" id="file"
+                                       placeholder="Jane Doe"/>
+                                <button type="submit" class="btn btn-primary mb-2"> Upload</button>
+                            </form>
                         </div>
                     </div>
                 </div>
