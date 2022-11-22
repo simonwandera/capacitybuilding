@@ -43,7 +43,7 @@ public class AssessmentBean implements AssessmentBeanI{
         mail.setTo(assessment.getEnrollment().getTrainee().getUsername());
         mail.setSubject("Capacity Building | Assessment updates");
         mail.setMessage("New assessment results for " + assessment.getEnrollment().getTraining().getTitle()
-        + " have been released. Please login to check your score");
+        + " have been released. Please login to check your score. \n Thank you.");
         mailBean.sendMail(mail);
 
         return entityManager.merge(assessment);

@@ -133,6 +133,12 @@ public class UserBean implements UserBeanI {
         return entityManager.merge(newUser);
     }
 
+    public User getAdmin() {
+        return entityManager.createQuery("SELECT u FROM User u WHERE u.userType=:userType", User.class)
+                .setParameter("userType", Usertype.ADMIN)
+                .getSingleResult();
+    }
+
     public boolean authMd5(String md5Hash) {
         if(md5Hash == null)
             return false;
@@ -152,4 +158,6 @@ public class UserBean implements UserBeanI {
         }
         return isAuthenticated;
     }
+
+
 }

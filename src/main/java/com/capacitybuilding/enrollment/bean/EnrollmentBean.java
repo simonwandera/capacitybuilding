@@ -46,10 +46,12 @@ public class EnrollmentBean implements EnrollmentBeanI {
 
         User trainer = assignTrainerBean.getTrainer(enrollment.getTraining());
 
+        User admin = entityManager.createQuery("SELECT u FROM User u WHERE u.userType=:userType", User.class).getSingleResult();
+
         MailWrapper mail = new MailWrapper();
         mail.setMessage("You have a new Enrollment for " + enrollment.getTraining().getTitle() + " From "
                 + enrollment.getTrainee().getFirstName() + " " + enrollment.getTrainee().getLastName() + " Please check the " +
-                "enrollment and approve");
+                "enrollment.");
 
         mail.setTo(trainer.getUsername());
         mail.setSubject("Enrollment for | " + enrollment.getTraining().getTitle());
