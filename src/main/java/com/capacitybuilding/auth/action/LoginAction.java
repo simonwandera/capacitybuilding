@@ -1,5 +1,6 @@
 package com.capacitybuilding.auth.action;
 
+import com.capacitybuilding.mail.bean.MailBeanI;
 import com.capacitybuilding.user.bean.UserBeanI;
 import com.capacitybuilding.user.model.User;
 import com.capacitybuilding.user.model.Usertype;
@@ -21,6 +22,9 @@ public class LoginAction extends HttpServlet {
 
     @EJB
     UserBeanI userBean;
+
+    @EJB
+    MailBeanI mailBean;
 
     private ServletContext servletContext;
 
@@ -49,6 +53,8 @@ public class LoginAction extends HttpServlet {
             session.setAttribute("username", user.getUsername());
             session.setAttribute("userType", user.getUserType());
             session.setAttribute("activeUser", user);
+
+            mailBean.sendMail();
 
             if (user.getUserType() == Usertype.ADMIN)
                 res.sendRedirect("./main/adminDashboard.jsp");
