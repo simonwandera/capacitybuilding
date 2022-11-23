@@ -48,13 +48,15 @@ public class FileUploadServlet extends HttpServlet {
 
         String trainingId = request.getParameter("trainingId");
         for (Part part : request.getParts()) {
-            String path = System.getProperty("user.home") + System.getProperty("path.separator");
+//            String path = System.getProperty("user.home") + System.getProperty("path.separator");
+//            String path = getServletContext().getRealPath("/"+"uploads"+ File.separator + fileName);
+            String path = "/home/magenta/Documents/capacitybuilding/uploads/" + fileName;
 
-            part.write(path + fileName);
+            part.write(path);
 
             System.out.println("*******************************************************************************************");
 
-            log.info(path + fileName);
+            log.info(path);
 
             Upload upload = new Upload();
             upload.setFileName(fileName);
