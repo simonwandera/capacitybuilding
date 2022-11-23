@@ -4,6 +4,7 @@ package com.capacitybuilding.enrollment.bean;
 import com.capacitybuilding.assessment.bean.AssessmentBeanI;
 import com.capacitybuilding.assignTrainer.bean.AssignTrainerBeanI;
 import com.capacitybuilding.enrollment.model.Enrollment;
+import com.capacitybuilding.enrollment.model.EnrollmentStatus;
 import com.capacitybuilding.mail.bean.MailBeanI;
 import com.capacitybuilding.mail.model.MailWrapper;
 import com.capacitybuilding.training.model.Training;
@@ -110,6 +111,13 @@ public class EnrollmentBean implements EnrollmentBeanI {
     public List<Enrollment> getEnrollments() {
 
         return entityManager.createQuery("SELECT e FROM Enrollment e ", Enrollment.class)
+                .getResultList();
+    }
+
+    public List<Enrollment> getApprovedEnrollments() {
+
+        return entityManager.createQuery("SELECT e FROM Enrollment e WHERE e.status=:status", Enrollment.class)
+                .setParameter("status", EnrollmentStatus.APPROVED)
                 .getResultList();
     }
 

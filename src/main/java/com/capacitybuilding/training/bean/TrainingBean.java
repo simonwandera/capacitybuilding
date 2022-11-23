@@ -71,11 +71,9 @@ public class TrainingBean implements TrainingBeanI {
     }
 
     public List<Training> getList() {
-        List<Training> trainings = entityManager.createQuery("FROM Training a ", Training.class)
 
+        return entityManager.createQuery("FROM Training a ", Training.class)
                 .getResultList();
-
-        return trainings;
     }
 
     public Training getTraining(Long id) {

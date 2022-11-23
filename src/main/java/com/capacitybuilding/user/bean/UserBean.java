@@ -32,7 +32,7 @@ public class UserBean implements UserBeanI {
             throw new Exception("Last name is required");
         if (StringUtils.isBlank(user.getUsername()))
             throw new Exception("Email is required");
-        if (StringUtils.isBlank(user.getGender()))
+        if (StringUtils.isBlank(user.getGender()) || user.getGender().equals("--Select Gender--"))
             throw new Exception("Gender is required");
 
         if (StringUtils.isBlank(user.getPassword()) || StringUtils.isBlank(user.getConfirmPassword())
@@ -98,6 +98,13 @@ public class UserBean implements UserBeanI {
     public List<User> getTrainers() {
         List<User> users = entityManager.createQuery("FROM User a WHERE a.userType=:userType" , User.class)
                 .setParameter("userType", Usertype.TRAINER)
+                .getResultList();
+        return users;
+    }
+
+    public List<User> getTrainees() {
+        List<User> users = entityManager.createQuery("FROM User a WHERE a.userType=:userType" , User.class)
+                .setParameter("userType", Usertype.USER)
                 .getResultList();
         return users;
     }

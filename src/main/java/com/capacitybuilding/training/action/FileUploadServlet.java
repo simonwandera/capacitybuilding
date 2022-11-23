@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 
 @WebServlet(name = "FileUploadServlet", urlPatterns = {"/fileuploadservlet"})
@@ -50,7 +51,7 @@ public class FileUploadServlet extends HttpServlet {
         for (Part part : request.getParts()) {
 //            String path = System.getProperty("user.home") + System.getProperty("path.separator");
 //            String path = getServletContext().getRealPath("/"+"uploads"+ File.separator + fileName);
-            String path = "/home/magenta/Documents/capacitybuilding/uploads/" + fileName;
+            String path = "/home/magenta/Documents/capacitybuilding/uploads" + File.separator+ fileName;
 
             part.write(path);
 

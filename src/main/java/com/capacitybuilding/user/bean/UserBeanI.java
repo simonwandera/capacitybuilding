@@ -17,6 +17,8 @@ public interface UserBeanI {
 
     List<User> getTrainers();
 
+    List<User> getTrainees();
+
     boolean authMd5(String md5Hash);
 
     User getAdmin();

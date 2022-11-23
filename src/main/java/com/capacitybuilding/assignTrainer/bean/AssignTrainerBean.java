@@ -61,7 +61,10 @@ public class AssignTrainerBean implements AssignTrainerBeanI {
 
     public List<AssignTrainer> list() {
 
-        return new ArrayList<>();
+        List<AssignTrainer> trainers = entityManager.createQuery("FROM AssignTrainer a  ", AssignTrainer.class)
+                .getResultList();
+
+        return trainers;
 
     }
 
