@@ -24,7 +24,6 @@ import java.io.IOException;
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
 
-
 @Log
 public class FileUploadServlet extends HttpServlet {
 
@@ -60,13 +59,13 @@ public class FileUploadServlet extends HttpServlet {
 
             try {
                 uploadsBean.upload(upload);
-                response.sendRedirect("./training/uploads.jsp");
+                response.sendRedirect("./training/uploads.jsp?trainingId=" + upload.getTraining().getId());
             } catch (Exception ex) {
                 servletContext.setAttribute("uploadError", ex.getMessage());
                 System.out.println(ex.getMessage());
-                response.sendRedirect("./training/uploads.jsp");
+                response.sendRedirect("./training/uploads.jsp?trainingId=" + upload.getTraining().getId());
             }
+            break;
         }
     }
-
 }
