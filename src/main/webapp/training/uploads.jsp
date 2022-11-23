@@ -78,7 +78,7 @@
                                             <tr>
                                                 <th>File</th>
                                                 <th>Date Added</th>
-                                                <th>Delete</th>
+                                                <th>Download</th>
 
                                             </tr>
                                             </thead>
@@ -89,9 +89,8 @@
 
                                                     <td>${upload.fileName}</td>
                                                     <td>${upload.timeCreated}</td>
-                                                    <td><a href="./modals.jsp"><i
-                                                            class=" mdi mdi-delete-forever mdi-24px"></i></a></td>
-
+                                                    <td><a href="file:///home/magenta/Documents/${upload.fileName}"><i
+                                                            class="mdi mdi-cloud-download  mdi-24px"></i></a></td>
                                                     <%@ include file="./modals.jsp" %>
 
                                                 </tr>

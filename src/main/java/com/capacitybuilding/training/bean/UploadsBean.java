@@ -25,7 +25,6 @@ public class UploadsBean implements UploadsBeanI{
 
     public Upload upload(Upload file) throws Exception {
 
-
         if (StringUtils.isBlank(file.getFileName()))
             throw new Exception("Filename is required");
         if (file.getTraining().getId() == null)

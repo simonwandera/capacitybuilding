@@ -30,7 +30,6 @@
             <!-- Print SQL to stdout. -->
             <property name="show_sql" value="true"/>
             <property name="format_sql" value="true"/>
-            <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.use_sql_comments" value="true"/>
 

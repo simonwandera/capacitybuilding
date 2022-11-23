@@ -48,10 +48,13 @@ public class FileUploadServlet extends HttpServlet {
 
         String trainingId = request.getParameter("trainingId");
         for (Part part : request.getParts()) {
-            String path = System.getProperty("user.dir") + System.getProperty("path.separator");
-            log.info(path + fileName);
+            String path = System.getProperty("user.home") + System.getProperty("path.separator");
 
             part.write(path + fileName);
+
+            System.out.println("*******************************************************************************************");
+
+            log.info(path + fileName);
 
             Upload upload = new Upload();
             upload.setFileName(fileName);
