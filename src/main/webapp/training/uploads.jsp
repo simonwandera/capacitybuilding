@@ -111,10 +111,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Upload resources</h4>
-                            <form class="form-inline" action="../uploadFile" method="post" enctype="multipart/form-data">
+                            <form class="form-inline" action="../uploadFile" method="post"
+                                  enctype="multipart/form-data">
                                 <label class="sr-only" for="file">File</label>
-                                <input type="file" class="form-control mb-2 mr-sm-2" id="file"
-                                       placeholder="Jane Doe"/>
+                                <input type="file" class="form-control mb-2 mr-sm-2" id="file" name="file"/>
                                 <button type="submit" class="btn btn-primary mb-2"> Upload</button>
                             </form>
                         </div>
