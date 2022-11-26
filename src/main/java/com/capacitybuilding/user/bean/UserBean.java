@@ -107,6 +107,8 @@ public class UserBean implements UserBeanI {
         if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
             throw new Exception("Enter username and password to login");
 
+        System.out.println(user);
+
         List<User> users = entityManager.createQuery("FROM User a WHERE a.username=:usrName " +
                         "and a.password=:pwd", User.class)
 
