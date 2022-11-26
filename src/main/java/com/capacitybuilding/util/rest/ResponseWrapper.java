@@ -21,9 +21,12 @@ public class ResponseWrapper implements Serializable {
     }
 
     public ResponseWrapper(String message, String token){
-        this.success = true;
+
         this.message = message;
         this.token = token;
+        this.success = true;
+
+        System.out.println("TOKEN: " + token);
     }
 
     public ResponseWrapper(){
@@ -54,4 +57,5 @@ public class ResponseWrapper implements Serializable {
     public void setToken(String token) {
         this.token = token;
     }
+
 }

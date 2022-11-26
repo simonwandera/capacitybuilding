@@ -36,7 +36,7 @@ public class AuthApi {
         try {
             User user1 = userBean.login(user);
             return Response.status(Response.Status.OK)
-                .entity(new ResponseWrapper("authorized", user.getBearerToken())).build();
+                .entity(new ResponseWrapper("authorized", user1.getBearerToken())).build();
 
         } catch (Exception ex) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
