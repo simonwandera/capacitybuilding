@@ -61,6 +61,8 @@ public class RestApiFilter implements ContainerRequestFilter {
 
         if (authorizationHeader.contains("Bearer")) {
             String bearerToken = authorizationHeader.replace("Bearer", "").trim();
+
+            System.out.println("\n\n\n" + "Bearer ****************** \n\n");
             System.out.println(bearerToken);
 
 

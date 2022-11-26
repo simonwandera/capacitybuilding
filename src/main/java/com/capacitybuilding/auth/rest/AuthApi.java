@@ -42,6 +42,5 @@ public class AuthApi {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                 .entity(new ResponseWrapper(false, ex.getMessage())).build();
         }
-
     }
 }
