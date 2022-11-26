@@ -6,7 +6,6 @@ public class MailWrapper implements Serializable {
 
     private String to;
     private String message;
-
     private String subject;
 
     public String getTo() {
