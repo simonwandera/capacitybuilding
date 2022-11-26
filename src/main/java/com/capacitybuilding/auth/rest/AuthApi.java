@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 public class AuthApi {
 
     @EJB
-    UserBeanI userBean;
+    private UserBeanI userBean;
 
     @PermitAll
     @POST

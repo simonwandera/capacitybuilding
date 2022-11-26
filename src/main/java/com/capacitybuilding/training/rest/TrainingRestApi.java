@@ -5,11 +5,14 @@ import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.util.rest.BaseRestApi;
 import com.capacitybuilding.util.rest.ResponseWrapper;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+
+@RolesAllowed("USER")
 @Path("/training")
 public class TrainingRestApi extends BaseRestApi {
 
@@ -31,6 +34,7 @@ public class TrainingRestApi extends BaseRestApi {
 
     }
 
+    @RolesAllowed({"ADMIN"})
     @Path("/list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

@@ -164,6 +164,7 @@ public class UserBean implements UserBeanI {
                 isAuthenticated = true;
                 break;
             }
+
         }
         return isAuthenticated;
     }

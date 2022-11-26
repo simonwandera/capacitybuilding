@@ -62,9 +62,6 @@ public class RestApiFilter implements ContainerRequestFilter {
         if (authorizationHeader.contains("Bearer")) {
             String bearerToken = authorizationHeader.replace("Bearer", "").trim();
 
-            System.out.println("\n\n\n" + "Bearer ****************** \n\n");
-            System.out.println(bearerToken);
-
 
             if (!userBean.authMd5(bearerToken)) {
                 requestContext.abortWith(Response.status(Response.Status.FORBIDDEN)
@@ -76,7 +73,8 @@ public class RestApiFilter implements ContainerRequestFilter {
                 RolesAllowed roles = method.getAnnotation(RolesAllowed.class);
                 Set<String> rolesSet = new HashSet<String>(Arrays.asList(roles.value()));
 
-                if (!rolesSet.contains("SIMON")) {
+
+                if (!rolesSet.contains("ADMIN")) {
                     requestContext.abortWith(Response.status(Response.Status.FORBIDDEN)
                             .entity(new ResponseWrapper(false, "User profile not allowed"))
                             .type(MediaType.APPLICATION_JSON).build());
