@@ -1,7 +1,7 @@
-package com.capacitybuilding.training.rest;
+package com.capacitybuilding.enrollment.rest;
 
-import com.capacitybuilding.training.bean.TrainingBeanI;
-import com.capacitybuilding.training.model.Training;
+import com.capacitybuilding.enrollment.bean.EnrollmentBeanI;
+import com.capacitybuilding.enrollment.model.Enrollment;
 import com.capacitybuilding.util.rest.BaseRestApi;
 import com.capacitybuilding.util.rest.ResponseWrapper;
 
@@ -11,19 +11,19 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-
-@Path("/training")
-public class TrainingRestApi extends BaseRestApi {
+@Path("/enrollment")
+public class EnrollmentRestApi extends BaseRestApi {
 
     @EJB
-    private TrainingBeanI trainingBean;
+    private EnrollmentBeanI enrollmentBean;
+
     @Path("/add")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response add(Training training) {
+    public Response add(Enrollment enrollment) {
         try {
-            trainingBean.add(training);
+            enrollmentBean.enroll(enrollment);
             return Response.status(Response.Status.OK).entity(new ResponseWrapper()).build();
 
         } catch (Exception ex) {
@@ -38,13 +38,13 @@ public class TrainingRestApi extends BaseRestApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
-        return Response.status(Response.Status.OK).entity(trainingBean.getList()).build();
+        return Response.status(Response.Status.OK).entity(enrollmentBean.getEnrollments()).build();
     }
 
     @Path("/get/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTraining(@PathParam("id") Long id) {
-        return Response.status(Response.Status.OK).entity(trainingBean.getTraining(id)).build();
+        return Response.status(Response.Status.OK).entity(enrollmentBean.getEnrollment(id)).build();
     }
 }

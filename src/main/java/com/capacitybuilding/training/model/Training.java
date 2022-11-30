@@ -1,9 +1,13 @@
 package com.capacitybuilding.training.model;
 
 import com.capacitybuilding.util.model.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import javax.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -17,10 +21,14 @@ public class Training extends BaseEntity {
     @Column
     private int duration;
     @Column
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate startDate;
     @Column
     @Enumerated(EnumType.STRING)
     private TrainingStatus status;
+
 
     public String getTitle() {
         return title;

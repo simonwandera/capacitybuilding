@@ -2,12 +2,13 @@ package com.capacitybuilding.enrollment.model;
 
 
 import com.capacitybuilding.assessment.model.Assessment;
-import com.capacitybuilding.util.model.BaseEntity;
 import com.capacitybuilding.training.model.Training;
 import com.capacitybuilding.user.model.User;
+import com.capacitybuilding.util.model.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,10 +21,12 @@ public class Enrollment extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trainee_id", referencedColumnName = "id")
+    @JsonManagedReference
     private User trainee;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "training_id", referencedColumnName = "id")
+    @JsonManagedReference
     private Training training;
 
     @Enumerated(EnumType.STRING)
@@ -33,7 +36,8 @@ public class Enrollment extends BaseEntity {
     private Long counts;
 
     @OneToMany(mappedBy = "enrollment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Assessment> assessments = new ArrayList<>();
+    @JsonBackReference
+    private List<Assessment> assessments;
 
     public User getTrainee() {
         return trainee;
